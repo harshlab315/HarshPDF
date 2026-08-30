@@ -2,84 +2,63 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Aadhaar Print - KaagazPro</title>
+<title>Aadhaar Card - KaagazPro</title>
 <link href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.6.1/cropper.min.css" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.6.1/cropper.min.js"></script>
 <script src="https://unpkg.com/jspdf@2.5.1/dist/jspdf.umd.min.js"></script>
 <style>
-*{box-sizing:border-box;font-family:Inter,system-ui}body{margin:0;background:#f5f7fb;padding:12px}
-.wrap{max-width:940px;margin:auto;background:#fff;border:1px solid #e5e7eb;border-radius:16px;padding:16px;box-shadow:0 10px 30px rgba(0,0,0,.06)}
-.grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}@media(max-width:700px){.grid{grid-template-columns:1fr}}
-.card{border:1.5px dashed #d1d5db;border-radius:12px;padding:12px;text-align:center;background:#fafafa}
-.prev{height:140px;background:#fff;border:1px solid #eee;border-radius:8px;display:flex;align-items:center;justify-content:center;overflow:hidden;margin:8px 0}
+*{box-sizing:border-box;font-family:Inter,system-ui}body{margin:0;background:#f6f7fb;padding:12px}
+.wrap{max-width:600px;margin:auto;background:#fff;border:1px solid #e5e7eb;border-radius:16px;padding:16px}
+.card{border:1.5px dashed #d1d5db;border-radius:12px;padding:12px;text-align:center;background:#fafafa;position:relative}
+.prev{height:220px;background:#fff;border:1px solid #eee;border-radius:10px;display:flex;align-items:center;justify-content:center;margin:10px 0;overflow:hidden}
 .prev img{max-width:100%;max-height:100%}
-.btn{padding:7px 12px;border:1px solid #e5e7eb;background:#fff;border-radius:8px;font-weight:600;cursor:pointer;font-size:13px}
+.btn{padding:8px 14px;border:1px solid #e5e7eb;background:#fff;border-radius:8px;font-weight:600;cursor:pointer;font-size:13px}
 .btn-dark{background:#111;color:#fff;border-color:#111}
-.btns{display:flex;gap:6px;justify-content:center;flex-wrap:wrap}
-#cropModal{position:fixed;inset:0;background:rgba(0,0,0,.8);display:none;z-index:99;padding:12px}
-#cropBox{background:#fff;border-radius:12px;max-width:700px;margin:auto;padding:12px}
-#cropImg{max-width:100%;max-height:60vh}
-canvas{width:100%;border:1px solid #e5e7eb;border-radius:10px}
+#cropM{position:fixed;inset:0;background:rgba(0,0,0,.85);display:none;z-index:99;padding:10px}
+#cropB{background:#fff;border-radius:12px;max-width:600px;margin:auto;padding:12px}
 </style>
 </head>
 <body>
-<div style="max-width:940px;margin:0 auto 10px;display:flex;justify-content:space-between"><a href="/" style="text-decoration:none;font-weight:800;color:#111">← KaagazPro</a><span style="font-size:12px;background:#111;color:#fff;padding:4px 10px;border-radius:20px">Aadhaar Print</span></div>
+<div style="max-width:600px;margin:0 auto 10px;display:flex;justify-content:space-between"><a href="/" style="text-decoration:none;font-weight:800;color:#111">← KaagazPro</a><button onclick="location.reload()" class="btn">↻ Refresh</button></div>
 
 <div class="wrap">
-<div class="grid">
+<h3 style="margin:0 0 10px">Aadhaar Card Tool</h3>
+
 <div class="card">
-<b>Front</b><div class="prev" id="pf">No Image</div>
-<div class="btns"><button class="btn" onclick="f_gal.click()">Gallery</button><button class="btn" onclick="f_cam.click()">Camera</button></div>
-<div class="btns" style="margin-top:6px"><button class="btn" onclick="rotate('f',-90)">↺ Rotate</button><button class="btn" onclick="openCrop('f')">✂️ Crop</button></div>
-<input id="f_gal" type="file" accept="image/*" hidden><input id="f_cam" type="file" accept="image/*" capture="environment" hidden>
+<div class="prev" id="prev">No Image Selected</div>
+<div style="display:flex;gap:6px;justify-content:center">
+<button class="btn" onclick="gal.click()">📁 Gallery</button>
+<button class="btn" onclick="cam.click()">📷 Camera</button>
 </div>
-<div class="card">
-<b>Back <span style="color:#888;font-weight:400">(Optional)</span></b><div class="prev" id="pb">No Image</div>
-<div class="btns"><button class="btn" onclick="b_gal.click()">Gallery</button><button class="btn" onclick="b_cam.click()">Camera</button></div>
-<div class="btns" style="margin-top:6px"><button class="btn" onclick="rotate('b',-90)">↺ Rotate</button><button class="btn" onclick="openCrop('b')">✂️ Crop</button></div>
-<input id="b_gal" type="file" accept="image/*" hidden><input id="b_cam" type="file" accept="image/*" capture="environment" hidden>
+<div style="display:flex;gap:6px;justify-content:center;margin-top:8px">
+<button class="btn" onclick="rotateImg()">↺ Rotate</button>
+<button class="btn" onclick="openCrop()">✂️ Crop</button>
+<button class="btn" style="color:#ef4444" onclick="clearImg()">🗑️ Remove</button>
 </div>
+<input id="gal" type="file" accept="image/*" hidden>
+<input id="cam" type="file" accept="image/*" capture="environment" hidden>
 </div>
 
 <div style="display:flex;gap:8px;margin-top:14px">
-<select id="layout" style="flex:1;padding:10px;border-radius:10px;border:1px solid #e5e7eb;font-weight:600"><option value="both">Front + Back (A4)</option><option value="front2">Front x 2 Copy</option><option value="single">Single Large</option></select>
-<button id="make" class="btn btn-dark">Generate A4</button>
+<button id="dlJ" class="btn-dark" style="display:none;flex:1">Download JPG</button>
+<button id="dlP" class="btn" style="display:none;flex:1">Download PDF</button>
+</div>
 </div>
 
-<div style="display:flex;gap:6px;margin-top:10px"><button id="dlJ" class="btn" style="display:none">JPG</button><button id="dlP" class="btn" style="display:none">PDF</button><button id="prt" class="btn" style="display:none">Print</button></div>
-
-<div style="margin-top:12px;background:#f9fafb;padding:10px;border-radius:12px;text-align:center"><canvas id="a4" width="2480" height="3508"></canvas></div>
-</div>
-
-<!-- Crop Modal -->
-<div id="cropModal"><div id="cropBox"><div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px"><b>Crop Aadhaar</b><button class="btn" onclick="closeCrop()">Close</button></div><div><img id="cropImg"></div><div style="display:flex;gap:8px;margin-top:10px"><button class="btn" onclick="cropRotate(-90)">↺ Rotate</button><button class="btn" onclick="cropRotate(90)">↻ Rotate</button><button class="btn btn-dark" onclick="doCrop()" style="flex:1">Save Crop</button></div></div></div>
+<div id="cropM"><div id="cropB"><div style="display:flex;justify-content:space-between;margin-bottom:8px"><b>Crop Aadhaar</b><button class="btn" onclick="closeCrop()">✕</button></div><img id="cropImg" style="max-width:100%"><div style="display:flex;gap:8px;margin-top:10px"><button class="btn" onclick="cropR(-90)">↺</button><button class="btn" onclick="cropR(90)">↻</button><button class="btn-dark" onclick="saveCrop()" style="flex:1">Save Crop</button></div></div></div>
 
 <script>
-let F=null,B=null,curType=null,cropper=null,rawF=null,rawB=null;
-function load(file,type){if(!file)return;let r=new FileReader();r.onload=e=>{let img=new Image();img.onload=()=>{if(type=='f'){rawF=e.target.result;F=img;pf.innerHTML=`<img src="${e.target.result}">`}else{rawB=e.target.result;B=img;pb.innerHTML=`<img src="${e.target.result}">`};openCrop(type)};img.src=e.target.result};r.readAsDataURL(file);}
-f_gal.onchange=e=>load(e.target.files[0],'f');f_cam.onchange=e=>load(e.target.files[0],'f');b_gal.onchange=e=>load(e.target.files[0],'b');b_cam.onchange=e=>load(e.target.files[0],'b');
-
-function openCrop(t){curType=t;let src=t=='f'?rawF:rawB;if(!src)return;cropImg.src=src;cropModal.style.display='block';setTimeout(()=>{if(cropper)cropper.destroy();cropper=new Cropper(cropImg,{aspectRatio:1.58,viewMode:1,autoCropArea:0.9})},100)}
-function closeCrop(){cropModal.style.display='none';if(cropper){cropper.destroy();cropper=null}}
-function cropRotate(d){if(cropper)cropper.rotate(d)}
-function doCrop(){if(!cropper)return;let c=cropper.getCroppedCanvas({width:1011,height:638,imageSmoothingQuality:'high'});let img=new Image();img.onload=()=>{if(curType=='f'){F=img;pf.innerHTML=`<img src="${c.toDataURL()}">`;rawF=c.toDataURL()}else{B=img;pb.innerHTML=`<img src="${c.toDataURL()}">`;rawB=c.toDataURL()};closeCrop()};img.src=c.toDataURL()}
-function rotate(t,d){let src=t=='f'?F:B;if(!src)return;let cv=document.createElement('canvas'),ctx=cv.getContext('2d');cv.width=src.height;cv.height=src.width;ctx.translate(cv.width/2,cv.height/2);ctx.rotate(d*Math.PI/180);ctx.drawImage(src,-src.width/2,-src.height/2);let im=new Image();im.onload=()=>{if(t=='f'){F=im;pf.innerHTML=`<img src="${cv.toDataURL()}">`;rawF=cv.toDataURL()}else{B=im;pb.innerHTML=`<img src="${cv.toDataURL()}">`;rawB=cv.toDataURL()}};im.src=cv.toDataURL()}
-
-make.onclick=()=>{
-if(!F&&!B)return alert('Select image');
-let cv=a4,ctx=cv.getContext('2d');ctx.fillStyle='#fff';ctx.fillRect(0,0,cv.width,cv.height);
-let W=1600,H=1010; // bada size - pehle chota tha isliye waisa dikha
-let f=F||B,b=B||F;
-let draw=(im,x,y)=>{ctx.drawImage(im,x,y,W,H);ctx.setLineDash([18,10]);ctx.strokeStyle='#000';ctx.lineWidth=2;ctx.strokeRect(x,y,W,H);ctx.setLineDash([]);ctx.setLineDash([4,4]);ctx.strokeStyle='#aaa';ctx.lineWidth=1;ctx.strokeRect(x-8,y-8,W+16,H+16);ctx.setLineDash([])};
-let cx=(2480-W)/2;
-if(layout.value=='both'){draw(f,cx,600);draw(b,cx,600+H+100)}
-else if(layout.value=='front2'){draw(f,cx,600);draw(f,cx,600+H+100)}
-else{draw(f,cx,900,W*1.1,H*1.1)}
-dlJ.style.display='block';dlP.style.display='block';prt.style.display='block';cv.scrollIntoView({behavior:'smooth'});
-};
-dlJ.onclick=()=>{let a=document.createElement('a');a.href=a4.toDataURL('image/jpeg',0.92);a.download='aadhaar-a4.jpg';a.click()};
-dlP.onclick=()=>{let {jsPDF}=window.jspdf;let p=new jsPDF('p','mm','a4');p.addImage(a4.toDataURL('image/jpeg',0.9),'JPEG',0,0,210,297);p.save('aadhaar-a4.pdf')};
-prt.onclick=()=>{let w=window.open('');w.document.write(`<img src="${a4.toDataURL()}" style="width:100%">`);w.document.close();w.print()};
+let curImg=null,raw=null,cropper=null;
+function load(f){if(!f)return;let r=new FileReader();r.onload=e=>{raw=e.target.result;let im=new Image();im.onload=()=>{curImg=im;prev.innerHTML=`<img src="${raw}">`;dlJ.style.display='block';dlP.style.display='block'};im.src=raw;};r.readAsDataURL(f);}
+gal.onchange=e=>load(e.target.files[0]);cam.onchange=e=>load(e.target.files[0]);
+function clearImg(){curImg=null;raw=null;prev.innerHTML='No Image Selected';gal.value='';cam.value='';dlJ.style.display='none';dlP.style.display='none'}
+function rotateImg(){if(!curImg)return;let cv=document.createElement('canvas'),x=cv.getContext('2d');cv.width=curImg.height;cv.height=curImg.width;x.translate(cv.width/2,cv.height/2);x.rotate(-90*Math.PI/180);x.drawImage(curImg,-curImg.width/2,-curImg.height/2);raw=cv.toDataURL();let im=new Image();im.onload=()=>{curImg=im;prev.innerHTML=`<img src="${raw}">`};im.src=raw}
+function openCrop(){if(!raw)return;cropImg.src=raw;cropM.style.display='block';setTimeout(()=>{if(cropper)cropper.destroy();cropper=new Cropper(cropImg,{viewMode:1,autoCropArea:0.9})},100)}
+function closeCrop(){cropM.style.display='none';if(cropper){cropper.destroy();cropper=null}}
+function cropR(d){if(cropper)cropper.rotate(d)}
+function saveCrop(){if(!cropper)return;let c=cropper.getCroppedCanvas({imageSmoothingQuality:'high'});raw=c.toDataURL();let im=new Image();im.onload=()=>{curImg=im;prev.innerHTML=`<img src="${raw}">`;closeCrop()};im.src=raw}
+dlJ.onclick=()=>{if(!raw)return;let a=document.createElement('a');a.href=raw;a.download='aadhaar.jpg';a.click()};
+dlP.onclick=()=>{if(!raw)return;let p=new jspdf.jsPDF();let w=p.internal.pageSize.getWidth();let img=new Image();img.onload=()=>{let h=(img.height/img.width)*w;p.addImage(raw,'JPEG',0,0,w,h);p.save('aadhaar.pdf')};img.src=raw};
 </script>
 </body>
 </html>
