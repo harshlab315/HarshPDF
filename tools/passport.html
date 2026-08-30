@@ -8,38 +8,38 @@
 <link href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.6.1/cropper.min.css" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.6.1/cropper.min.js"></script>
 <style>
-*{box-sizing:border-box;font-family:Inter}body{background:#f6f7fb;margin:0;padding:12px}.card{max-width:900px;margin:auto;background:#fff;border-radius:16px;padding:18px;box-shadow:0 6px 30px rgba(0,0,0,.08)}.grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}@media(max-width:700px){.grid{grid-template-columns:1fr}}.box{background:#f0f2f5;border-radius:12px;min-height:320px;display:flex;align-items:center;justify-content:center;overflow:hidden}button{padding:12px 18px;border:0;border-radius:10px;background:#4f46e5;color:#fff;font-weight:700;cursor:pointer}button.sec{background:#111}
+*{box-sizing:border-box;font-family:Inter}body{background:#f6f7fb;margin:0;padding:12px}.card{max-width:900px;margin:auto;background:#fff;border-radius:16px;padding:18px}.grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}@media(max-width:700px){.grid{grid-template-columns:1fr}}.box{background:#f0f2f5;border-radius:12px;min-height:320px;display:flex;align-items:center;justify-content:center;overflow:hidden}button{padding:10px 14px;border:0;border-radius:8px;background:#4f46e5;color:#fff;font-weight:600;cursor:pointer;margin:3px}button.sec{background:#111}button.small{background:#e5e7eb;color:#111}
 </style>
 </head>
 <body>
 <div class="card">
-<h2 style="margin:0">Passport Photo Maker - 35x45mm</h2>
-<p style="color:#666;font-size:13px">Upload > Crop face > White BG > Download print ready</p>
+<h2 style="margin:0">Passport Photo Maker</h2>
 <input type="file" id="input" accept="image/*" style="margin:10px 0">
 <div class="grid">
 <div class="box"><img id="img" style="display:none;max-width:100%"></div>
-<div class="box"><canvas id="canvas" width="350" height="450" style="display:none;background:#fff"></canvas><span id="ph">Preview</span></div>
+<div class="box"><canvas id="canvas" width="350" height="450" style="display:none"></canvas><span id="ph">Preview</span></div>
 </div>
-<div style="margin:12px 0;display:flex;gap:8px;flex-wrap:wrap">
-<label style="background:#eef2ff;padding:8px 10px;border-radius:8px;font-size:13px">BG: <select id="bg"><option value="white">White</option><option value="blue">Blue</option></select></label>
-<label style="background:#eef2ff;padding:8px 10px;border-radius:8px;font-size:13px">Copies: <select id="copies"><option value="1">1 Photo</option><option value="6" selected>6 Photos A4 Sheet</option></select></label>
-</div>
-<button id="cropBtn" class="sec">1. Crop Face</button>
-<button id="makeBtn">2. Make Passport</button>
-<button id="downBtn" style="display:none;background:#16a34a">Download</button>
-<div style="margin-top:12px"><img id="preview" style="max-width:260px;border:1px solid #ddd;border-radius:8px"><div id="info" style="font-size:13px;color:#444"></div></div>
 
-<div style="margin:20px 0;text-align:center">
-<ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-6640527517870664" data-ad-slot="auto" data-ad-format="auto" data-full-width-responsive="true"></ins>
-<script>(adsbygoogle=window.adsbygoogle||[]).push({});</script>
+
+<div style="margin:10px 0">
+<button class="small" onclick="cropper.rotate(-90)">↺ Left 90°</button>
+<button class="small" onclick="cropper.rotate(90)">↻ Right 90°</button>
+<button class="small" onclick="cropper.rotate(180)">↻ 180° (Up/Down)</button>
+<button class="small" onclick="cropper.scaleX(-cropper.getData().scaleX||-1)">⇄ Flip</button>
+<button class="small" onclick="cropper.move(0,-20)">↑</button>
+<button class="small" onclick="cropper.move(0,20)">↓</button>
 </div>
+
+<button id="cropBtn" class="sec">Crop</button>
+<button id="makeBtn">Make Passport</button>
+<button id="downBtn" style="display:none;background:#16a34a">Download</button>
+<div style="margin-top:10px"><img id="preview" style="max-width:250px;border:1px solid #ddd"><div id="info"></div></div>
 </div>
 <script>
 let cropper;const img=document.getElementById('img'),input=document.getElementById('input'),canvas=document.getElementById('canvas');
-input.addEventListener('change',e=>{const f=e.target.files[0];if(!f)return;img.src=URL.createObjectURL(f);img.style.display='block';if(cropper)cropper.destroy();img.onload=()=>{cropper=new Cropper(img,{aspectRatio:35/45,viewMode:1,autoCropArea:0.85})}});
-function toBlob(q){return new Promise(r=>{canvas.toBlob(b=>r(b),'image/jpeg',q)})}
-document.getElementById('cropBtn').onclick=()=>{if(!cropper)return alert('Photo select karo');const c=cropper.getCroppedCanvas({width:350,height:450});canvas.width=350;canvas.height=450;const ctx=canvas.getContext('2d');ctx.fillStyle=document.getElementById('bg').value;ctx.fillRect(0,0,350,450);ctx.drawImage(c,0,0);canvas.style.display='block';ph.style.display='none'};
-document.getElementById('makeBtn').onclick=async()=>{if(!canvas.width||canvas.width==0)return alert('Pehle crop karo');let finalCanvas=document.createElement('canvas');if(document.getElementById('copies').value=='6'){finalCanvas.width=2480;finalCanvas.height=3508;const ctx=finalCanvas.getContext('2d');ctx.fillStyle='white';ctx.fillRect(0,0,2480,3508);for(let r=0;r<3;r++){for(let col=0;col<2;col++){ctx.drawImage(canvas, 100+col*400, 100+r*500, 350,450)}}}else{finalCanvas=canvas}const blob=await new Promise(res=>finalCanvas.toBlob(b=>res(b),'image/jpeg',0.92));const url=URL.createObjectURL(blob);preview.src=url;info.innerText='Ready: '+(blob.size/1024).toFixed(1)+' KB - Print Ready';downBtn.style.display='inline-block';downBtn.onclick=()=>{const a=document.createElement('a');a.href=url;a.download='passport-kaagazpro.jpg';a.click()}};
+input.addEventListener('change',e=>{const f=e.target.files[0];if(!f)return;img.src=URL.createObjectURL(f);img.style.display='block';if(cropper)cropper.destroy();img.onload=()=>{cropper=new Cropper(img,{aspectRatio:35/45,viewMode:0,dragMode:'move',autoCropArea:0.9,movable:true,zoomable:true,rotatable:true,scalable:true})}});
+document.getElementById('cropBtn').onclick=()=>{if(!cropper)return;const c=cropper.getCroppedCanvas({width:350,height:450});canvas.width=350;canvas.height=450;canvas.getContext('2d').drawImage(c,0,0);canvas.style.display='block';ph.style.display='none'};
+document.getElementById('makeBtn').onclick=async()=>{const blob=await new Promise(r=>canvas.toBlob(b=>r(b),'image/jpeg',0.92));const url=URL.createObjectURL(blob);preview.src=url;info.innerText=(blob.size/1024).toFixed(1)+' KB';downBtn.style.display='inline-block';downBtn.onclick=()=>{const a=document.createElement('a');a.href=url;a.download='passport.jpg';a.click()}};
 </script>
 </body>
 </html>
