@@ -1,55 +1,75 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Signature Resizer - KaagazPro</title>
-  <link rel="stylesheet" href="../css/style.css">
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6640527517870664" crossorigin="anonymous"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Signature Resizer 20KB - KaagazPro</title>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6640527517870664" crossorigin="anonymous"></script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.6.1/cropper.min.css" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.6.1/cropper.min.js"></script>
+<style>
+*{box-sizing:border-box;font-family:Inter,system-ui}body{background:#f6f7fb;margin:0;padding:12px}.card{max-width:900px;margin:auto;background:#fff;border-radius:16px;padding:18px;box-shadow:0 6px 30px rgba(0,0,0,.07)}.box{background:#f0f2f5;border-radius:12px;min-height:260px;display:flex;align-items:center;justify-content:center;overflow:hidden}button{padding:10px 14px;border:0;border-radius:8px;background:#4f46e5;color:#fff;font-weight:600;cursor:pointer;margin:3px}button.small{background:#e5e7eb;color:#111}button.green{background:#16a34a}select,input{padding:8px;border-radius:8px;border:1px solid #ddd}
+</style>
 </head>
 <body>
-  <nav>
-    <div class="logo">Kaagaz<span>Pro</span></div>
-    <a href="../index.html">Home</a>
-  </nav>
-  <div class="page">
-    <h2>Signature to 20KB</h2>
-    <p style="font-size:13px;color:#64748b">SSC, UPSC ke liye white background me</p>
-    <input type="file" id="sigFile" accept="image/*">
-    <canvas id="sigCanvas" style="display:none"></canvas>
-    <img id="sigPreview" style="max-width:100%;margin-top:12px;border:1px dashed #cbd5e1;border-radius:10px;display:none">
-    <button class="btn" id="sigBtn">Resize & Download</button>
-  </div>
-  <script>
-    // simple logic - same as resize 20KB
-    let sigImg = new Image();
-    let ready = false;
-    document.getElementById('sigFile').onchange = (e) => {
-      let r = new FileReader();
-      r.onload = (ev) => {
-        sigImg.onload = () => {
-          ready = true;
-          document.getElementById('sigPreview').src = ev.target.result;
-          document.getElementById('sigPreview').style.display = 'block';
-        };
-        sigImg.src = ev.target.result;
-      };
-      r.readAsDataURL(e.target.files[0]);
-    };
-    document.getElementById('sigBtn').onclick = () => {
-      if(!ready) return alert('Sign upload karo');
-      let c = document.createElement('canvas');
-      c.width = 400; c.height = 150;
-      let x = c.getContext('2d');
-      x.fillStyle = '#fff'; x.fillRect(0,0,c.width,c.height);
-      x.drawImage(sigImg,0,0,c.width,c.height);
-      c.toBlob((b)=>{
-        let a=document.createElement('a');
-        a.href=URL.createObjectURL(b);
-        a.download='signature-20KB.jpg';
-        a.click();
-      },'image/jpeg',0.6);
-    };
-  </script>
+<div class="card">
+<h2 style="margin:0">Signature Resizer - 20KB</h2>
+<p style="color:#666;font-size:13px">SSC / UPSC / Bank / Govt Forms ke liye</p>
+<input type="file" id="input" accept="image/*">
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:12px">
+<div class="box"><img id="img" style="display:none;max-width:100%"></div>
+<div class="box" style="background:white;border:1px dashed #ccc;flex-direction:column"><canvas id="canvas" width="400" height="150" style="display:none;max-width:100%"></canvas><span id="ph">Preview</span><img id="preview" style="max-width:95%;display:none;margin-top:8px;border:1px solid #eee"><div id="info" style="font-size:12px;margin-top:6px"></div></div>
+</div>
+
+<div style="margin:10px 0;display:flex;flex-wrap:wrap;gap:4px">
+<button class="small" onclick="cropper.rotate(-90)">↺ Left</button>
+<button class="small" onclick="cropper.rotate(90)">↻ Right</button>
+<button class="small" onclick="cropper.rotate(180)">↻ 180° Up/Down</button>
+<button class="small" onclick="cropper.scaleX(-(cropper.getData().scaleX||1))">⇄ Flip</button>
+<button class="small" onclick="cropper.move(0,-10)">↑</button>
+<button class="small" onclick="cropper.move(0,10)">↓</button>
+<button class="small" onclick="cropper.zoom(0.1)">Zoom +</button>
+<button class="small" onclick="cropper.zoom(-0.1)">Zoom -</button>
+</div>
+
+<div style="display:flex;gap:8px;flex-wrap:wrap;margin:10px 0">
+<select id="size"><option value="20">20 KB - Govt Forms</option><option value="10">10 KB</option><option value="50">50 KB</option><option value="100">100 KB HD</option></select>
+<select id="bg"><option value="white">White BG</option><option value="transparent">Transparent</option></select>
+<label style="font-size:12px;background:#eef2ff;padding:8px;border-radius:8px">Ink Dark: <input type="range" id="dark" min="0" max="100" value="20"></label>
+</div>
+
+<button id="cropBtn" style="background:#111">1. Crop Signature</button>
+<button id="makeBtn">2. Make 20KB</button>
+<button id="downBtn" class="green" style="display:none">Download Signature</button>
+
+<div style="margin-top:14px;background:#f0fdf4;padding:10px;border-radius:8px;font-size:12px">💡 Tip: Signature ko safed paper pe kaale pen se sign karke photo lo, fir crop karo - best result ayega.</div>
+</div>
+<script>
+let cropper;const img=document.getElementById('img'),input=document.getElementById('input'),canvas=document.getElementById('canvas'),preview=document.getElementById('preview');
+input.addEventListener('change',e=>{const f=e.target.files[0];if(!f)return;img.src=URL.createObjectURL(f);img.style.display='block';if(cropper)cropper.destroy();img.onload=()=>{cropper=new Cropper(img,{viewMode:0,dragMode:'move',autoCropArea:0.8,movable:true,zoomable:true,rotatable:true,scalable:true})}});
+document.getElementById('cropBtn').onclick=()=>{if(!cropper)return alert('Pehle photo select karo');const c=cropper.getCroppedCanvas({width:500,height:200});canvas.width=500;canvas.height=200;const ctx=canvas.getContext('2d');if(document.getElementById('bg').value=='white'){ctx.fillStyle='white';ctx.fillRect(0,0,500,200)}ctx.drawImage(c,0,0,500,200);canvas.style.display='block';document.getElementById('ph').style.display='none'};
+async function makeKB(targetKB){
+ let q=0.9;let blob;let w=400;let h=150;
+ for(let i=0;i<12;i++){
+  let tc=document.createElement('canvas');tc.width=w;tc.height=h;let tctx=tc.getContext('2d');
+  if(document.getElementById('bg').value=='white'){tctx.fillStyle='white';tctx.fillRect(0,0,w,h)}
+  tctx.filter=`contrast(${100+parseInt(document.getElementById('dark').value)}%) brightness(${100-parseInt(document.getElementById('dark').value)/2}%)`;
+  tctx.drawImage(canvas,0,0,w,h);
+  blob=await new Promise(r=>tc.toBlob(b=>r(b),'image/jpeg',q));
+  let kb=blob.size/1024;if(kb<=targetKB+2&&kb>=targetKB-5)break;
+  if(kb>targetKB){q-=0.1;if(q<0.2){q=0.7;w=Math.round(w*0.85);h=Math.round(h*0.85)}}else{q+=0.05}
+ }
+ return blob;
+}
+document.getElementById('makeBtn').onclick=async()=>{
+ if(!canvas.width||canvas.style.display=='none')return alert('Pehle crop karo');
+ const target=parseInt(document.getElementById('size').value);
+ const blob=await makeKB(target);
+ const url=URL.createObjectURL(blob);preview.src=url;preview.style.display='block';
+ document.getElementById('info').innerText=`Ready: ${(blob.size/1024).toFixed(1)} KB - ${blob.size<20480?'✅ Form ke liye OK':''}`;
+ const db=document.getElementById('downBtn');db.style.display='inline-block';
+ db.onclick=()=>{const a=document.createElement('a');a.href=url;a.download=`signature-${target}kb-kaagazpro.jpg`;a.click()};
+};
+</script>
 </body>
 </html>
