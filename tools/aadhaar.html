@@ -2,89 +2,97 @@
 <html lang="hi">
 <head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Aadhaar Card Print - Front Back Same Page - KaagazPro</title>
+<title>Aadhaar Card Print - Any One Side Also - KaagazPro</title>
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6640527517870664" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.6.1/cropper.min.js"></script>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.6.1/cropper.min.css"/>
+<script src="https://unpkg.com/jspdf@2.5.1/dist/jspdf.umd.min.js"></script>
 <style>
-*{box-sizing:border-box;font-family:Inter,system-ui}body{background:#f6f7fb;margin:0;padding:10px}.card{max-width:980px;margin:auto;background:#fff;border-radius:16px;padding:16px;box-shadow:0 8px 30px rgba(0,0,0,.07)}.up{display:grid;grid-template-columns:1fr 1fr;gap:12px}@media(max-width:700px){.up{grid-template-columns:1fr}}.box{border:2px dashed #6366f1;background:#f5f3ff;border-radius:12px;padding:14px;text-align:center;cursor:pointer;min-height:180px}button{padding:11px 16px;border:0;border-radius:8px;background:#4f46e5;color:#fff;font-weight:700;margin:4px;cursor:pointer}button.green{background:#16a34a}button.black{background:#111}canvas{max-width:100%;border:1px solid #ddd;border-radius:8px}
+*{box-sizing:border-box;font-family:system-ui}body{background:#f6f7fb;margin:0;padding:10px}.card{max-width:980px;margin:auto;background:#fff;border-radius:16px;padding:16px;box-shadow:0 8px 20px rgba(0,0,0,.07)}.up{display:grid;grid-template-columns:1fr 1fr;gap:12px}@media(max-width:700px){.up{grid-template-columns:1fr}}.box{border:2px dashed #6366f1;background:#f5f3ff;border-radius:12px;padding:12px;text-align:center}button{padding:11px 14px;border:0;border-radius:8px;background:#4f46e5;color:#fff;font-weight:700;margin:4px;cursor:pointer}button.green{background:#16a34a}button.black{background:#111}button.orange{background:#f97316}canvas{width:100%;border:1px solid #ddd;border-radius:8px;max-width:600px}
 </style>
 </head>
 <body>
 <div class="card">
-<h2 style="margin:0">Aadhaar Card Print - KaagazPro 🇮🇳</h2>
-<p style="color:#666;font-size:13px;margin-top:4px">Front + Back ek hi A4 pe - Card size me cut karke wallet me rakho</p>
+<h2 style="margin:0">Aadhaar Card Print 🇮🇳 - KaagazPro</h2>
+<p style="color:#666;font-size:13px">Chahe 1 photo ho ya 2, Camera se ya Gallery se - sab chalega</p>
 
 <div class="up">
-<div class="box" id="boxF">📄 <b>Front</b> (Aadhaar ka aage wala)<br><small>Click karo</small><input type="file" id="f" accept="image/*" hidden><div id="pf" style="margin-top:8px"></div></div>
-<div class="box" id="boxB">📄 <b>Back</b> (Peechhe wala)<br><small>Click karo</small><input type="file" id="b" accept="image/*" hidden><div id="pb" style="margin-top:8px"></div></div>
+<div class="box">
+<b>Front Side</b><br><br>
+<input type="file" id="f" accept="image/*" capture="environment">
+<div id="pf" style="margin-top:8px"></div>
+<small>Gallery + Camera dono se</small>
+</div>
+<div class="box">
+<b>Back Side (Optional)</b><br><br>
+<input type="file" id="b" accept="image/*" capture="environment">
+<div id="pb" style="margin-top:8px"></div>
+<small>Na ho to bhi chalega</small>
+</div>
 </div>
 
-<div style="margin:12px 0;display:flex;flex-wrap:wrap;gap:6px;align-items:center">
-<select id="layout" style="padding:9px;border-radius:8px;border:1px solid #ddd;font-weight:600">
-<option value="2">1 A4 pe 1 Aadhaar (Front+Back) - Card Size</option>
-<option value="4">1 A4 pe 2 Aadhaar (Family) - 2 Front + 2 Back</option>
-<option value="wallet">Wallet Size - Chhota Card</option>
+<div style="margin:14px 0;display:flex;flex-wrap:wrap;gap:6px;align-items:center">
+<select id="layout" style="padding:10px;border-radius:8px;border:1px solid #ddd;font-weight:600">
+<option value="both">Front+Back ek hi A4 pe</option>
+<option value="front2">Sirf Front - 1 A4 pe 2 Card (2 Copy)</option>
+<option value="single">Sirf 1 Card - Bada wala</option>
+<option value="family">Family Pack - 4 Card ek A4 pe</option>
 </select>
-<button id="make" class="green">⚡ A4 Ready Karo</button>
-<button id="dlJ" class="black" style="display:none">⬇️ JPG Download</button>
-<button id="dlP" class="black" style="display:none">⬇️ PDF Download</button>
-<button id="print" style="display:none;background:#e11d48">🖨️ Print</button>
+<button id="make" class="green">⚡ A4 Banao</button>
+<button id="dlJ" class="black" style="display:none">⬇️ JPG</button>
+<button id="dlP" class="black" style="display:none">⬇️ PDF</button>
+<button id="print" class="orange" style="display:none">🖨️ Print</button>
 </div>
 
-<div style="text-align:center;margin-top:12px"><canvas id="a4" width="2480" height="3508" style="width:100%;max-width:600px"></canvas></div>
-<div style="margin-top:10px;background:#fef3c7;padding:10px;border-radius:8px;font-size:12px">✂️ <b>Kaise print kare:</b> Download karke kisi bhi shop pe A4 pe print nikal lo, dotted line se kaat lo - ekdum original card jaisa banega! Lamination 10rs me ho jayega.</div>
+<div style="text-align:center"><canvas id="a4" width="2480" height="3508"></canvas></div>
+<div id="msg" style="margin-top:8px;text-align:center;color:#16a34a;font-weight:700"></div>
 </div>
 
 <script>
 let frontImg=null,backImg=null;
-document.getElementById('boxF').onclick=()=>document.getElementById('f').click();
-document.getElementById('boxB').onclick=()=>document.getElementById('b').click();
-document.getElementById('f').onchange=e=>load(e.target.files[0],'front');
-document.getElementById('b').onchange=e=>load(e.target.files[0],'back');
-function load(file,type){
- if(!file)return;let r=new FileReader();r.onload=ev=>{
+function loadFile(input,type){
+ let file=input.files[0];if(!file)return;
+ let r=new FileReader();r.onload=e=>{
   let im=new Image();im.onload=()=>{
-   if(type==='front'){frontImg=im;document.getElementById('pf').innerHTML=`<img src="${ev.target.result}" style="width:100%;height:110px;object-fit:contain;border-radius:6px">`}
-   else{backImg=im;document.getElementById('pb').innerHTML=`<img src="${ev.target.result}" style="width:100%;height:110px;object-fit:contain;border-radius:6px">`}
-  };im.src=ev.target.result;
+   if(type==='front'){frontImg=im;document.getElementById('pf').innerHTML=`<img src="${e.target.result}" style="width:100%;height:120px;object-fit:contain;border-radius:8px"><br>✅ Front Ready`;}
+   else{backImg=im;document.getElementById('pb').innerHTML=`<img src="${e.target.result}" style="width:100%;height:120px;object-fit:contain;border-radius:8px"><br>✅ Back Ready`;}
+  };im.src=e.target.result;
  };r.readAsDataURL(file);
 }
+document.getElementById('f').onchange=function(){loadFile(this,'front')};
+document.getElementById('b').onchange=function(){loadFile(this,'back')};
 
-function drawCard(ctx,img,x,y,w,h){
- ctx.drawImage(img,x,y,w,h);
- ctx.setLineDash([12,8]);ctx.strokeStyle='#000';ctx.lineWidth=2;ctx.strokeRect(x,y,w,h);ctx.setLineDash([]);
+function drawCard(ctx,img,x,y,w,h,label){
+ if(!img)return;ctx.drawImage(img,x,y,w,h);
+ ctx.setLineDash([14,10]);ctx.strokeStyle='#000';ctx.lineWidth=3;ctx.strokeRect(x,y,w,h);ctx.setLineDash([]);
+ if(label){ctx.fillStyle='#000';ctx.font='bold 42px sans-serif';ctx.fillText(label,x,y-12)}
 }
 
 document.getElementById('make').onclick=()=>{
- if(!frontImg||!backImg)return alert('Dono photo Front + Back select karo');
+ if(!frontImg &&!backImg) return alert('Kam se kam ek photo to select karo yaar');
  let canvas=document.getElementById('a4');let ctx=canvas.getContext('2d');
  ctx.fillStyle='#fff';ctx.fillRect(0,0,canvas.width,canvas.height);
- let cardW=1011,cardH=638; // 85.6mm x 53.98mm @ 300dpi
- let layout=document.getElementById('layout').value;
- if(layout==='2'){
-  drawCard(ctx,frontImg,740,800,cardW,cardH);
-  drawCard(ctx,backImg,740,800+cardH+120,cardW,cardH);
-  ctx.fillStyle='#111';ctx.font='bold 60px sans-serif';ctx.fillText('FRONT', 300, 1150);ctx.fillText('BACK', 300, 1850);
- } else if(layout==='4'){
-  drawCard(ctx,frontImg,300,600,cardW,cardH);drawCard(ctx,frontImg,300+cardW+120,600,cardW,cardH);
-  drawCard(ctx,backImg,300,600+cardH+120,cardW,cardH);drawCard(ctx,backImg,300+cardW+120,600+cardH+120,cardW,cardH);
- } else {
-  cardW=850;cardH=530;drawCard(ctx,frontImg,815,1000,cardW,cardH);drawCard(ctx,backImg,815,1000+cardH+80,cardW,cardH);
+ let W=1011,H=638;let layout=document.getElementById('layout').value;
+ let f=frontImg||backImg;let b=backImg||frontImg; // agar ek hi hai toh usi ko dono jagah use karo
+
+ if(layout==='both'){
+  drawCard(ctx,f,740,700,W,H,'FRONT');drawCard(ctx,b,740,700+H+140,W,H,'BACK');
+ }else if(layout==='front2'){
+  drawCard(ctx,f,740,700,W,H,'COPY 1');drawCard(ctx,f,740,700+H+140,W,H,'COPY 2');
+ }else if(layout==='single'){
+  drawCard(ctx,f,740,1200,W*1.3,H*1.3,'AADHAAR');
+ }else if(layout==='family'){
+  drawCard(ctx,f,200,600,W,H);drawCard(ctx,f,200+W+100,600,W,H);
+  drawCard(ctx,b,200,600+H+100,W,H);drawCard(ctx,b,200+W+100,600+H+100,W,H);
  }
+ document.getElementById('msg').innerText='✅ A4 Ready hai! Neeche se Download karo';
  document.getElementById('dlJ').style.display='inline-block';
  document.getElementById('dlP').style.display='inline-block';
  document.getElementById('print').style.display='inline-block';
+ window.scrollTo({top:document.getElementById('a4').offsetTop,behavior:'smooth'});
 };
 
-document.getElementById('dlJ').onclick=()=>{
- let a=document.createElement('a');a.href=document.getElementById('a4').toDataURL('image/jpeg',0.9);a.download='Aadhaar-A4-KaagazPro.jpg';a.click();
-};
-document.getElementById('dlP').onclick=async()=>{
- let {jsPDF}=window;if(!jsPDF){let s=document.createElement('script');s.src='https://unpkg.com/jspdf@2.5.1/dist/jspdf.umd.min.js';document.head.appendChild(s);await new Promise(r=>s.onload=r)}
- let {jsPDF:PDF}=window.jspdf;let pdf=new PDF('p','mm','a4');pdf.addImage(document.getElementById('a4').toDataURL('image/jpeg',0.8),'JPEG',0,0,210,297);pdf.save('Aadhaar-Print-KaagazPro.pdf');
-};
-document.getElementById('print').onclick=()=>{let w=window.open('');w.document.write(`<img src="${document.getElementById('a4').toDataURL()}" style="width:100%">`);w.print()};
+document.getElementById('dlJ').onclick=()=>{let a=document.createElement('a');a.href=document.getElementById('a4').toDataURL('image/jpeg',0.9);a.download='Aadhaar-KaagazPro.jpg';a.click();};
+document.getElementById('dlP').onclick=()=>{let {jsPDF}=window.jspdf;let pdf=new jsPDF('p','mm','a4');pdf.addImage(document.getElementById('a4').toDataURL('image/jpeg',0.85),'JPEG',0,0,210,297);pdf.save('Aadhaar-KaagazPro.pdf');};
+document.getElementById('print').onclick=()=>{let w=window.open('');w.document.write(`<img src="${document.getElementById('a4').toDataURL()}" style="width:100%">`);w.document.close();w.print();};
 </script>
 </body>
 </html>
