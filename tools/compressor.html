@@ -1,81 +1,68 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Smart Compressor - KaagazPro</title>
-  <link rel="stylesheet" href="../css/style.css">
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6640527517870664" crossorigin="anonymous"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Image Compressor to 20KB 50KB 100KB - KaagazPro</title>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6640527517870664" crossorigin="anonymous"></script>
+<style>
+*{box-sizing:border-box;font-family:Inter,system-ui}body{background:#f6f7fb;margin:0;padding:12px}.card{max-width:900px;margin:auto;background:#fff;border-radius:16px;padding:18px;box-shadow:0 8px 30px rgba(0,0,0,.07)}.drop{border:2px dashed #6366f1;background:#f5f3ff;border-radius:12px;padding:30px;text-align:center;cursor:pointer}button{padding:10px 14px;border:0;border-radius:8px;background:#4f46e5;color:#fff;font-weight:700;margin:3px;cursor:pointer}button.small{background:#e5e7eb;color:#111}button.green{background:#16a34a}.grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:14px}.item{background:#f9fafb;border-radius:10px;padding:10px;text-align:center;border:1px solid #eee}
+</style>
 </head>
 <body>
-  <nav>
-    <div class="logo">Kaagaz<span>Pro</span></div>
-    <div class="menu"><a href="../index.html">Home</a></div>
-  </nav>
+<div class="card">
+<h2 style="margin:0">Image Compressor - KaagazPro</h2>
+<p style="color:#666;font-size:13px">Photo ko 20KB / 50KB / 100KB / 200KB me karo - Govt Form ke liye</p>
 
-  <div class="page">
-    <h2>Smart Compressor - 90% Size Kam</h2>
-    <p style="font-size:12px;color:#64748b;margin-top:6px">Quality same, size kam</p>
+<div class="drop" id="drop">📁 Photo Yaha Drop Karo ya Click Karo<br><small style="color:#666">10 photo ek saath</small><input type="file" id="input" accept="image/*" multiple hidden></div>
 
-    <input type="file" id="compFile" accept="image/*">
+<div style="margin:12px 0;display:flex;flex-wrap:wrap;gap:6px;align-items:center">
+Target: <button class="small" onclick="setTarget(20)">20KB</button><button class="small" onclick="setTarget(50)">50KB</button><button class="small" onclick="setTarget(100)">100KB</button><button class="small" onclick="setTarget(200)">200KB</button>
+<select id="target" style="padding:8px;border-radius:8px;border:1px solid #ddd"><option value="20">20KB - Form</option><option value="50">50KB</option><option value="100" selected>100KB - Best Quality</option><option value="200">200KB</option><option value="500">500KB</option></select>
+<button id="compressBtn" class="green">⚡ Compress Karo</button>
+<button id="downAll" style="display:none;background:#111">⬇️ Sab Download</button>
+</div>
 
-    <label style="font-size:13px;margin-top:12px;display:block">Quality:</label>
-    <select id="compQ">
-      <option value="0.8">High Quality (80%)</option>
-      <option value="0.5" selected>Medium - 90% Compress (50%)</option>
-      <option value="0.3">Low - Max Compress (30%)</option>
-    </select>
-
-    <img id="compPre" style="max-width:100%;margin-top:12px;border-radius:10px;display:none">
-
-    <p id="compInfo" style="font-size:13px;color:#4f46e5;margin-top:8px"></p>
-
-    <button class="btn" id="compBtn">Compress & Download</button>
-  </div>
-
-  <script>
-    let cImg = new Image();
-    let cOk = false;
-    let originalSize = 0;
-
-    document.getElementById('compFile').onchange = (e) => {
-      let file = e.target.files[0];
-      if(!file) return;
-      originalSize = file.size;
-      let r = new FileReader();
-      r.onload = (ev) => {
-        cImg.onload = () => {
-          cOk = true;
-          let pre = document.getElementById('compPre');
-          pre.src = ev.target.result;
-          pre.style.display = 'block';
-          document.getElementById('compInfo').innerText =
-            'Original: ' + (originalSize/1024).toFixed(1) + ' KB';
-        };
-        cImg.src = ev.target.result;
-      };
-      r.readAsDataURL(file);
-    };
-
-    document.getElementById('compBtn').onclick = () => {
-      if(!cOk) return alert('Pehle photo select karo');
-      let q = parseFloat(document.getElementById('compQ').value);
-      let canvas = document.createElement('canvas');
-      canvas.width = cImg.width;
-      canvas.height = cImg.height;
-      let ctx = canvas.getContext('2d');
-      ctx.drawImage(cImg, 0, 0);
-
-      canvas.toBlob((blob) => {
-        let newSize = (blob.size/1024).toFixed(1);
-        document.getElementById('compInfo').innerText =
-          'Original: ' + (originalSize/1024).toFixed(1) + ' KB → New: ' + newSize + ' KB';
-        let a = document.createElement('a');
-        a.href = URL.createObjectURL(blob);
-        a.download = 'compressed-' + newSize + 'KB.jpg';
-        a.click();
-      }, 'image/jpeg', q);
-    };
-  </script>
+<div class="grid" id="list"></div>
+<div style="margin-top:14px;background:#f0fdf4;padding:10px;border-radius:8px;font-size:12px">💡 20KB = SSC/UPSC Form, 100KB = WhatsApp/Instagram ke liye best, 200KB = Print quality</div>
+</div>
+<script>
+let files=[],results=[];
+const input=document.getElementById('input'),drop=document.getElementById('drop'),list=document.getElementById('list');
+function setTarget(k){document.getElementById('target').value=k}
+drop.onclick=()=>input.click();
+drop.ondragover=e=>{e.preventDefault();drop.style.background='#e0e7ff'};
+drop.ondrop=e=>{e.preventDefault();handleFiles(e.dataTransfer.files)};
+input.onchange=e=>handleFiles(e.target.files);
+function handleFiles(f){files=[...f];list.innerHTML='';files.forEach((file,i)=>{const r=new FileReader();r.onload=e=>{list.innerHTML+=`<div class="item" id="item${i}"><img src="${e.target.result}" style="max-width:100%;height:90px;object-fit:contain"><div style="font-size:11px;margin-top:4px">${file.name}<br> ${(file.size/1024).toFixed(1)}KB → <b id="nk${i}">?</b></div><a id="dl${i}" style="display:none;font-size:12px;color:#4f46e5">Download</a></div>`};r.readAsDataURL(file)})}
+async function compressToKB(file,targetKB){
+ return new Promise(res=>{
+  const img=new Image();img.src=URL.createObjectURL(file);
+  img.onload=async()=>{
+   let w=img.width,h=img.height;if(w>1600||h>1600){let r=Math.min(1600/w,1600/h);w=Math.round(w*r);h=Math.round(h*r)}
+   let quality=0.9;let blob;
+   for(let i=0;i<15;i++){
+    let c=document.createElement('canvas');c.width=w;c.height=h;c.getContext('2d').drawImage(img,0,0,w,h);
+    blob=await new Promise(r=>c.toBlob(b=>r(b),'image/jpeg',quality));
+    if(blob.size/1024<=targetKB+3)break;
+    quality-=0.07;if(quality<0.15){quality=0.7;w=Math.round(w*0.88);h=Math.round(h*0.88)}
+   }
+   res(blob);
+  }
+ });
+}
+document.getElementById('compressBtn').onclick=async()=>{
+ if(!files.length)return alert('Pehle photo select karo');results=[];const target=parseInt(document.getElementById('target').value);
+ for(let i=0;i<files.length;i++){
+  document.getElementById(`nk${i}`).innerText='...';
+  const blob=await compressToKB(files[i],target);
+  results[i]=blob;const url=URL.createObjectURL(blob);
+  document.getElementById(`nk${i}`).innerText=`${(blob.size/1024).toFixed(1)}KB ✅`;
+  const a=document.getElementById(`dl${i}`);a.href=url;a.download=`compressed-${target}kb-${files[i].name}`;a.style.display='inline-block';a.innerText=`⬇️ ${target}KB Download`;
+ }
+ document.getElementById('downAll').style.display='inline-block';
+};
+document.getElementById('downAll').onclick=()=>{results.forEach((b,i)=>{if(!b)return;const a=document.createElement('a');a.href=URL.createObjectURL(b);a.download=`compressed-${document.getElementById('target').value}kb-${files[i].name}`;a.click()})};
+</script>
 </body>
 </html>
