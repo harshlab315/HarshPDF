@@ -1,52 +1,45 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Passport Photo - KaagazPro</title>
-  <link rel="stylesheet" href="../css/style.css">
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6640527517870664" crossorigin="anonymous"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Passport Photo Maker 35x45 - KaagazPro</title>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6640527517870664" crossorigin="anonymous"></script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.6.1/cropper.min.css" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.6.1/cropper.min.js"></script>
+<style>
+*{box-sizing:border-box;font-family:Inter}body{background:#f6f7fb;margin:0;padding:12px}.card{max-width:900px;margin:auto;background:#fff;border-radius:16px;padding:18px;box-shadow:0 6px 30px rgba(0,0,0,.08)}.grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}@media(max-width:700px){.grid{grid-template-columns:1fr}}.box{background:#f0f2f5;border-radius:12px;min-height:320px;display:flex;align-items:center;justify-content:center;overflow:hidden}button{padding:12px 18px;border:0;border-radius:10px;background:#4f46e5;color:#fff;font-weight:700;cursor:pointer}button.sec{background:#111}
+</style>
 </head>
 <body>
-  <nav><div class="logo">Kaagaz<span>Pro</span></div><a href="../index.html">Home</a></nav>
-  <div class="page">
-    <h2>Passport - 6 Copies in One Print</h2>
-    <input type="file" id="f" accept="image/*">
-    <img id="p" style="max-width:100%;margin-top:10px;display:none">
-    <button class="btn" id="b">Create 4x6 Print & Download</button>
-  </div>
-  <script>
-    let img=new Image(),ok=false;
-    document.getElementById('f').onchange=e=>{
-      let r=new FileReader();
-      r.onload=ev=>{img.onload=()=>{ok=true;document.getElementById('p').src=ev.target.result;document.getElementById('p').style.display='block'};img.src=ev.target.result};
-      r.readAsDataURL(e.target.files[0]);
-    };
-    document.getElementById('b').onclick=()=>{
-      if(!ok) return alert('Photo select karo');
-      let c=document.createElement('canvas');
-      c.width=1800; c.height=1200;
-      let x=c.getContext('2d');
-      x.fillStyle='#fff'; x.fillRect(0,0,c.width,c.height);
-      let pw=413, ph=531, gap=20;
-      let positions=[[0,0],[pw+gap,0],[2*(pw+gap),0],[0,ph+gap],[pw+gap,ph+gap],[2*(pw+gap),ph+gap]];
-      positions.forEach(pos=>{
-        x.fillStyle='#fff'; x.fillRect(pos[0],pos[1],pw,ph);
-        let scale=Math.max(pw/img.width, ph/img.height);
-        let sx=(c.width/2 - img.width/2*scale);
-        // simple draw
-        x.drawImage(img, pos[0], pos[1], pw, ph);
-      });
-      // better single draw loop
-      c=document.createElement('canvas'); c.width=1200; c.height=1800;
-      x=c.getContext('2d'); x.fillStyle='#fff'; x.fillRect(0,0,c.width,c.height);
-      for(let i=0;i<6;i++){
-        let col=i%3, row=Math.floor(i/3);
-        let dx=col*(413+20)+30, dy=row*(531+20)+30;
-        x.drawImage(img, dx, dy, 413, 531);
-      }
-      let a=document.createElement('a'); a.href=c.toDataURL('image/jpeg',0.9); a.download='passport-6x.jpg'; a.click();
-    };
-  </script>
+<div class="card">
+<h2 style="margin:0">Passport Photo Maker - 35x45mm</h2>
+<p style="color:#666;font-size:13px">Upload > Crop face > White BG > Download print ready</p>
+<input type="file" id="input" accept="image/*" style="margin:10px 0">
+<div class="grid">
+<div class="box"><img id="img" style="display:none;max-width:100%"></div>
+<div class="box"><canvas id="canvas" width="350" height="450" style="display:none;background:#fff"></canvas><span id="ph">Preview</span></div>
+</div>
+<div style="margin:12px 0;display:flex;gap:8px;flex-wrap:wrap">
+<label style="background:#eef2ff;padding:8px 10px;border-radius:8px;font-size:13px">BG: <select id="bg"><option value="white">White</option><option value="blue">Blue</option></select></label>
+<label style="background:#eef2ff;padding:8px 10px;border-radius:8px;font-size:13px">Copies: <select id="copies"><option value="1">1 Photo</option><option value="6" selected>6 Photos A4 Sheet</option></select></label>
+</div>
+<button id="cropBtn" class="sec">1. Crop Face</button>
+<button id="makeBtn">2. Make Passport</button>
+<button id="downBtn" style="display:none;background:#16a34a">Download</button>
+<div style="margin-top:12px"><img id="preview" style="max-width:260px;border:1px solid #ddd;border-radius:8px"><div id="info" style="font-size:13px;color:#444"></div></div>
+
+<div style="margin:20px 0;text-align:center">
+<ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-6640527517870664" data-ad-slot="auto" data-ad-format="auto" data-full-width-responsive="true"></ins>
+<script>(adsbygoogle=window.adsbygoogle||[]).push({});</script>
+</div>
+</div>
+<script>
+let cropper;const img=document.getElementById('img'),input=document.getElementById('input'),canvas=document.getElementById('canvas');
+input.addEventListener('change',e=>{const f=e.target.files[0];if(!f)return;img.src=URL.createObjectURL(f);img.style.display='block';if(cropper)cropper.destroy();img.onload=()=>{cropper=new Cropper(img,{aspectRatio:35/45,viewMode:1,autoCropArea:0.85})}});
+function toBlob(q){return new Promise(r=>{canvas.toBlob(b=>r(b),'image/jpeg',q)})}
+document.getElementById('cropBtn').onclick=()=>{if(!cropper)return alert('Photo select karo');const c=cropper.getCroppedCanvas({width:350,height:450});canvas.width=350;canvas.height=450;const ctx=canvas.getContext('2d');ctx.fillStyle=document.getElementById('bg').value;ctx.fillRect(0,0,350,450);ctx.drawImage(c,0,0);canvas.style.display='block';ph.style.display='none'};
+document.getElementById('makeBtn').onclick=async()=>{if(!canvas.width||canvas.width==0)return alert('Pehle crop karo');let finalCanvas=document.createElement('canvas');if(document.getElementById('copies').value=='6'){finalCanvas.width=2480;finalCanvas.height=3508;const ctx=finalCanvas.getContext('2d');ctx.fillStyle='white';ctx.fillRect(0,0,2480,3508);for(let r=0;r<3;r++){for(let col=0;col<2;col++){ctx.drawImage(canvas, 100+col*400, 100+r*500, 350,450)}}}else{finalCanvas=canvas}const blob=await new Promise(res=>finalCanvas.toBlob(b=>res(b),'image/jpeg',0.92));const url=URL.createObjectURL(blob);preview.src=url;info.innerText='Ready: '+(blob.size/1024).toFixed(1)+' KB - Print Ready';downBtn.style.display='inline-block';downBtn.onclick=()=>{const a=document.createElement('a');a.href=url;a.download='passport-kaagazpro.jpg';a.click()}};
+</script>
 </body>
 </html>
