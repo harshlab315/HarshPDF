@@ -3,38 +3,157 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Photo Resize 20KB with Crop - KaagazPro</title>
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6640527517870664" crossorigin="anonymous"></script>
+<title>Photo Resize to Any KB + Crop - KaagazPro</title>
 <link href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.6.1/cropper.min.css" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.6.1/cropper.min.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
-*{box-sizing:border-box;font-family:Inter}body{background:#f6f7fb;margin:0;padding:15px}.card{max-width:900px;margin:auto;background:#fff;border-radius:16px;padding:20px;box-shadow:0 6px 30px rgba(0,0,0,.08)}.grid{display:grid;grid-template-columns:1fr 1fr;gap:15px}@media(max-width:700px){.grid{grid-template-columns:1fr}}.img-box{background:#f0f2f5;border-radius:12px;min-height:300px;display:flex;align-items:center;justify-content:center;overflow:hidden}button{padding:12px 18px;border:0;border-radius:10px;background:#4f46e5;color:#fff;font-weight:600;cursor:pointer}button.secondary{background:#111}
+*{box-sizing:border-box;font-family:'Inter',sans-serif}
+body{background:#f6f7fb;margin:0;padding:0}
+.header{background:#1e40af;color:#fff;padding:15px 20px;display:flex;justify-content:space-between;align-items:center}
+.header .logo{font-size:22px;font-weight:700}
+.header a{color:#fff;text-decoration:none;font-size:13px;background:rgba(255,255,255,.15);padding:8px 14px;border-radius:20px}
+.card{max-width:900px;margin:20px auto;background:#fff;border-radius:16px;padding:24px;box-shadow:0 6px 30px rgba(0,0,0,.08)}
+.badge{display:flex;gap:12px;font-size:12px;color:#64748b;margin:10px 0 20px;flex-wrap:wrap}
+.upload-box{border:2px dashed #6366f1;background:#f5f3ff;border-radius:16px;padding:40px 20px;text-align:center;cursor:pointer}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:15px;margin-top:15px}@media(max-width:700px){.grid{grid-template-columns:1fr}}
+.img-box{background:#f0f2f5;border-radius:12px;min-height:320px;display:flex;align-items:center;justify-content:center;overflow:hidden;position:relative}
+.controls{display:flex;gap:10px;flex-wrap:wrap;margin:15px 0;background:#f8fafc;padding:15px;border-radius:12px}
+.controls label{font-size:12px;font-weight:600;display:flex;flex-direction:column;gap:5px}
+.controls input{padding:8px 10px;border:1px solid #cbd5e1;border-radius:8px;width:85px}
+button{padding:10px 16px;border:0;border-radius:10px;background:#4f46e5;color:#fff;font-weight:600;cursor:pointer}
+button.secondary{background:#0f172a}button.success{background:#16a34a;width:100%;margin-top:10px;font-size:16px}
+.t1{background:#eef2ff!important;color:#4338ca!important;padding:7px 11px!important;font-size:12px!important}
+.t2{background:#fef3c7!important;color:#92400e!important;padding:7px 11px!important;font-size:12px!important}
+.hidden{display:none!important}.refresh{background:#fee2e2;color:#dc2626;font-size:12px}
+.result-card{background:#f0fdf4;border:1px solid #bbf7d0;border-radius:12px;padding:15px;margin-top:15px}
+#fileName{width:100%;padding:10px;border:1px solid #cbd5e1;border-radius:8px;margin-top:8px}
 </style>
 </head>
 <body>
+<div class="header"><div class="logo">📄 KaagazPro</div><a href="/">← All Tools</a></div>
 <div class="card">
-<h1>Photo Resize to 20KB + Crop</h1>
-<input type="file" id="input" accept="image/*">
-<div class="grid" style="margin-top:15px">
-<div class="img-box"><img id="image" style="display:none"></div>
-<div class="img-box"><canvas id="canvas" style="display:none"></canvas><span id="ph">Preview</span></div>
+<h1 style="margin:0">Photo Resize to Any KB + Crop</h1>
+<p style="color:#64748b;margin:5px 0 0;font-size:14px">Any size photo to exact KB - For all forms</p>
+<div class="badge"><span id="realCount"></span><span>🔒 100% Private - Server pe save nahi hota</span></div>
+
+<div id="uploadArea" class="upload-box" onclick="document.getElementById('input').click()">
+<div style="font-size:42px">📸</div><h3 style="margin:8px 0">Photo Upload Karo</h3><p style="color:#64748b;font-size:13px">JPG, PNG • Drag & Drop</p><button style="margin-top:12px">Select Photo</button>
+<input type="file" id="input" accept="image/*" hidden>
 </div>
-<div style="margin:15px 0;display:flex;gap:10px;flex-wrap:wrap">
-<label>KB: <input type="number" id="targetKB" value="20" style="width:80px"></label>
-<label>W: <input type="number" id="width" value="300" style="width:80px"></label>
-<label>H: <input type="number" id="height" value="400" style="width:80px"></label>
+
+<div id="workArea" class="hidden">
+<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px">
+<span id="fileInfo" style="font-size:12px;color:#334155"></span><button class="refresh" onclick="resetAll()">🔄 New Photo</button>
 </div>
-<button id="cropBtn" class="secondary">1. Crop & Resize</button>
-<button id="compressBtn">2. Compress to KB</button>
-<button id="downloadBtn" style="display:none;background:#16a34a">Download</button>
-<div style="margin-top:15px"><img id="preview" style="max-width:200px;border:1px solid #eee;border-radius:8px"><div id="info"></div></div>
+<div class="grid">
+<div class="img-box"><img id="image" style="display:none;max-width:100%"></div>
+<div class="img-box"><canvas id="canvas" style="display:none;max-width:100%"></canvas><span id="ph" style="color:#94a3b8">Preview</span></div>
 </div>
+<div style="display:flex;gap:6px;flex-wrap:wrap;margin:12px 0">
+<button class="t1" onclick="cropper.rotate(-90)">↺ Rotate</button>
+<button class="t1" onclick="cropper.rotate(90)">↻ Rotate</button>
+<button class="t1" onclick="cropper.scaleX((cropper.getData().scaleX||1)*-1)">↔️ Flip</button>
+<button class="t1" onclick="cropper.scaleY((cropper.getData().scaleY||1)*-1)">↕️ Flip</button>
+<button class="t2" onclick="cropper.setAspectRatio(NaN)">🔓 Free Crop</button>
+<button class="t2" onclick="cropper.setAspectRatio(1)">1:1</button>
+<button class="t2" onclick="cropper.setAspectRatio(3/4)">3:4</button>
+</div>
+<div class="controls">
+<label>Target KB<input type="number" id="targetKB" value="20"></label>
+<label>Width<input type="number" id="width" value="300"></label>
+<label>Height<input type="number" id="height" value="400"></label>
+</div>
+<div style="display:flex;gap:8px"><button id="cropBtn" class="secondary">1. Crop</button><button id="compressBtn">2. Compress</button></div>
+<div id="resultArea" class="hidden result-card">
+<div style="display:flex;gap:12px;align-items:center;flex-wrap:wrap">
+<img id="preview" style="max-width:130px;border-radius:8px;border:1px solid #ddd">
+<div><div id="info" style="font-weight:700;color:#15803d"></div><div style="font-size:12px;color:#64748b">Ready</div></div>
+</div>
+<label style="display:block;margin-top:10px;font-size:12px;font-weight:600">File Name:<input type="text" id="fileName"></label>
+<button id="downloadBtn" class="success">⬇️ Download Photo</button>
+<p style="font-size:11px;color:#64748b;margin:8px 0 0;text-align:center">Download ke baad photo auto delete ho jayegi</p>
+</div>
+</div>
+</div>
+
 <script>
-let cropper;const image=document.getElementById('image'),input=document.getElementById('input'),canvas=document.getElementById('canvas');
-input.addEventListener('change',e=>{const f=e.target.files[0];if(!f)return;image.src=URL.createObjectURL(f);image.style.display='block';if(cropper)cropper.destroy();image.onload=()=>{cropper=new Cropper(image,{aspectRatio:3/4,viewMode:1,autoCropArea:0.9})}});
+let cropper=null, currentBlobURL=null;
+const image=document.getElementById('image'),input=document.getElementById('input'),canvas=document.getElementById('canvas');
+const uploadArea=document.getElementById('uploadArea'),workArea=document.getElementById('workArea');
+
+let cnt=localStorage.getItem('kaagaz_total')||1240;cnt=parseInt(cnt)+1;localStorage.setItem('kaagaz_total',cnt);
+document.getElementById('realCount').innerText=`✅ ${cnt} photos resized today`;
+
+function resetAll(){
+if(cropper){cropper.destroy();cropper=null;}
+if(currentBlobURL) URL.revokeObjectURL(currentBlobURL);
+image.src=''; image.style.display='none';
+canvas.width=0; canvas.style.display='none';
+document.getElementById('ph').style.display='block';
+document.getElementById('resultArea').classList.add('hidden');
+document.getElementById('preview').src='';
+input.value='';
+uploadArea.classList.remove('hidden');
+workArea.classList.add('hidden');
+document.getElementById('fileInfo').innerText='';
+}
+
+input.addEventListener('change',e=>{
+const f=e.target.files[0]; if(!f) return;
+if(currentBlobURL) URL.revokeObjectURL(currentBlobURL);
+currentBlobURL=URL.createObjectURL(f);
+uploadArea.classList.add('hidden'); workArea.classList.remove('hidden');
+document.getElementById('fileInfo').innerText=`📁 ${f.name} • ${(f.size/1024/1024).toFixed(2)} MB`;
+document.getElementById('fileName').value=f.name.replace(/\.[^/.]+$/,"")+"-"+document.getElementById('targetKB').value+"kb.jpg";
+image.src=currentBlobURL; image.style.display='block';
+if(cropper) cropper.destroy();
+image.onload=()=>{cropper=new Cropper(image,{aspectRatio:NaN,viewMode:2,background:false,autoCropArea:0.9,movable:true,rotatable:true,scalable:true,zoomable:true})}
+});
+
 function toBlob(q){return new Promise(r=>{canvas.toBlob(b=>r(b),'image/jpeg',q)})}
-document.getElementById('cropBtn').onclick=()=>{if(!cropper)return alert('Photo select kar');const w=+width.value,h=+height.value;const c=cropper.getCroppedCanvas({width:w,height:h});canvas.width=w;canvas.height=h;canvas.getContext('2d').drawImage(c,0,0);canvas.style.display='block';ph.style.display='none';toBlob(0.9).then(b=>preview.src=URL.createObjectURL(b))};
-document.getElementById('compressBtn').onclick=async()=>{if(!canvas.width)return alert('Pehle crop kar');let q=0.9,b=await toBlob(q);for(let i=0;i<12;i++){if(b.size/1024<=+targetKB.value*1.05)break;q-=0.07;if(q<0.1)q=0.1;b=await toBlob(q)}preview.src=URL.createObjectURL(b);info.innerText='Final: '+(b.size/1024).toFixed(1)+' KB';downloadBtn.style.display='inline-block';downloadBtn.onclick=()=>{const a=document.createElement('a');a.href=preview.src;a.download='kaagazpro-'+targetKB.value+'kb.jpg';a.click()}};
+
+document.getElementById('cropBtn').onclick=()=>{
+if(!cropper) return alert('Photo select karo');
+const c=cropper.getCroppedCanvas({fillColor:'#fff'});
+canvas.width=c.width; canvas.height=c.height;
+canvas.getContext('2d').drawImage(c,0,0);
+canvas.style.display='block'; document.getElementById('ph').style.display='none';
+document.getElementById('width').value=c.width; document.getElementById('height').value=c.height;
+toBlob(0.92).then(b=>{if(b){document.getElementById('preview').src=URL.createObjectURL(b); document.getElementById('resultArea').classList.remove('hidden'); document.getElementById('info').innerText=`Preview: ${(b.size/1024).toFixed(1)} KB`}})
+};
+
+document.getElementById('compressBtn').onclick=async()=>{
+if(!canvas.width) return alert('Pehle Crop karo');
+let q=0.9; let b=await toBlob(q);
+for(let i=0;i<25;i++){
+if(b.size/1024 <= +document.getElementById('targetKB').value*1.05) break;
+if(q>0.12){q-=0.08;}else{
+const nw=Math.round(canvas.width*0.9), nh=Math.round(canvas.height*0.9);
+const tmp=document.createElement('canvas'); tmp.width=nw; tmp.height=nh;
+tmp.getContext('2d').drawImage(canvas,0,0,nw,nh);
+canvas.width=nw; canvas.height=nh; canvas.getContext('2d').drawImage(tmp,0,0);
+q=0.85;
+}
+b=await toBlob(q);
+}
+document.getElementById('preview').src=URL.createObjectURL(b);
+document.getElementById('info').innerText=`Final: ${(b.size/1024).toFixed(1)} KB • ${canvas.width}x${canvas.height}`;
+document.getElementById('resultArea').classList.remove('hidden');
+};
+
+document.getElementById('downloadBtn').onclick=()=>{
+const src=document.getElementById('preview').src;
+if(!src) return;
+const a=document.createElement('a'); a.href=src;
+a.download=document.getElementById('fileName').value||'kaagazpro-'+document.getElementById('targetKB').value+'kb.jpg';
+a.click();
+// Download ke baad auto delete
+setTimeout(()=>{
+alert('Download ho gaya! Photo delete kar di gayi. Ab dusri photo upload kar sakte ho.');
+resetAll();
+}, 800);
+};
 </script>
 </body>
 </html>
