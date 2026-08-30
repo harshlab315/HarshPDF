@@ -1,16 +1,29 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>KaagazPro - Free Tools for All Documents</title>
+    <title>KaagazPro - Free Online Tools for Images, PDF & Documents</title>
+    <meta name="description" content="Free tools to resize photo to 20KB, JPG to PDF, compress image, Aadhaar photo maker, passport photo - 100% private, no upload, works offline">
     <link rel="stylesheet" href="css/style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@600;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
     <link rel="icon" href="images/logo.jpg">
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6640527517870664" crossorigin="anonymous"></script>
+    <style>
+      .tabs{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin:18px 0 10px}
+      .tab{padding:8px 16px;border:2px solid #e2e8f0;border-radius:25px;font-size:12px;font-weight:700;cursor:pointer;background:#fff;transition:.2s}
+      .tab.active{background:#4f46e5;color:#fff;border-color:#4f46e5}
+      .tab:hover{border-color:#4f46e5}
+      .footer-grid{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:25px;max-width:1100px;margin:0 auto;padding:35px 20px;text-align:left}
+      @media(max-width:700px){.footer-grid{grid-template-columns:1fr 1fr}}
+      .footer-grid h4{font-size:13px;margin:0 0 12px;color:#0f172a}
+      .footer-grid a{display:block;font-size:12px;color:#64748b;text-decoration:none;margin:6px 0}
+      .footer-grid a:hover{color:#4f46e5}
+      .footer-grid p{font-size:12px;color:#64748b;line-height:1.6}
+    </style>
 </head>
 <body>
-     <nav>
+  <nav>
     <div class="logo" style="display:flex;align-items:center;gap:10px">
       <img src="images/logo.jpg" style="height:32px;border-radius:6px">
       <div>Kaagaz<span>Pro</span></div>
@@ -23,95 +36,119 @@
     </div>
   </nav>
 
-    <div class="hero">
-        <div class="badge">🔒 100% Private • No Upload • Works Offline</div>
-        <h1>All Tools for <span>All Documents</span><br>in One Place</h1>
-        <p>Photo resize to any KB, JPG to PDF, Compressor - Fast, Free & Secure</p>
-        <div class="stats">
-            <div><b>Private</b><span>100% Offline</span></div>
-            <div><b>0 Sec</b><span>No Upload Time</span></div>
-            <div><b>Free</b><span>Forever</span></div>
-        </div>
+  <div class="hero">
+    <div class="badge">🔒 100% Private • No Upload • Works Offline</div>
+    <h1>All Tools for <span>All Documents</span><br>in One Place</h1>
+    <p>Resize, Compress, Convert, PDF - Fast, Free & Secure in Browser</p>
+    <div class="stats">
+      <div><b>100% Offline</b><span>Private</span></div>
+      <div><b>0 Sec</b><span>Instant</span></div>
+      <div><b>Free</b><span>No Watermark</span></div>
     </div>
+  </div>
 
-    <!-- SEARCH BAR - Naya Add kiya -->
-    <div style="max-width:900px;margin:20px auto;padding:0 15px">
-      <div style="position:relative">
-        <input type="text" id="toolSearch" placeholder="🔍 Search tools... (e.g. resize, pdf, photo, compress)" 
-        style="width:100%;padding:14px 18px 14px 45px;border:2px solid #e2e8f0;border-radius:12px;font-size:14px;outline:none;background:#fff">
-        <span style="position:absolute;left:15px;top:50%;transform:translateY(-50%);font-size:18px">🔍</span>
+  <!-- TABS + SEARCH - Ek baar bana diya, aage bas tool add karna hai -->
+  <div style="max-width:1000px;margin:0 auto;padding:0 15px">
+    <div class="tabs">
+      <div class="tab active" data-cat="all">All Tools</div>
+      <div class="tab" data-cat="compress">⚡ Compress & Resize</div>
+      <div class="tab" data-cat="pdf">📄 PDF Tools</div>
+      <div class="tab" data-cat="id">🪪 ID & Govt</div>
+      <div class="tab" data-cat="bg">🤍 BG & Edit</div>
+      <div class="tab" data-cat="image">🖼️ Image Tools</div>
+      <div class="tab" data-cat="convert">🔄 Convert</div>
+    </div>
+    <div style="position:relative;max-width:500px;margin:14px auto">
+      <input type="text" id="toolSearch" placeholder="Search tools... e.g. 20kb, pdf, passport" 
+      style="width:100%;padding:13px 18px 13px 42px;border:2px solid #e2e8f0;border-radius:12px;font-size:13px;outline:none">
+      <span style="position:absolute;left:14px;top:50%;transform:translateY(-50%)">🔍</span>
+    </div>
+    <div id="noResult" style="display:none;text-align:center;padding:20px;color:#64748b;font-size:13px">No tools found. Try 'pdf' or 'photo'</div>
+  </div>
+
+  <!-- TOOLS GRID - Koi dead link nahi, sirf jo files hai wahi -->
+  <div class="grid" id="toolGrid" style="margin-top:10px">
+    <a href="tools/resize.html" class="card pro" data-cat="compress" data-name="resize photo to kb 20kb 50kb 100kb ssc"><div class="top"><div class="ico">🖼️</div><span class="tag">Most Used</span></div><h3>Resize Photo to KB</h3><p>20KB, 50KB, 100KB - Any Size</p><div class="act">Use Tool →</div></a>
+    
+    <a href="tools/compressor.html" class="card" data-cat="compress" data-name="compressor smart compress image reduce size"><div class="ico">⚡</div><h3>Smart Compressor</h3><p>90% compress without quality loss</p><div class="act">Use Tool →</div></a>
+    
+    <a href="tools/signature.html" class="card" data-cat="compress" data-name="signature resizer 20kb sign"><div class="ico">✍️</div><h3>Signature Resizer</h3><p>Resize signature to exact 20KB</p><div class="act">Use Tool →</div></a>
+
+    <a href="tools/jpg-to-pdf.html" class="card" data-cat="pdf" data-name="jpg to pdf merge images"><div class="ico">📄</div><h3>JPG to PDF Merge</h3><p>Multiple photos to one PDF</p><div class="act">Use Tool →</div></a>
+    
+    <a href="tools/merge-pdf.html" class="card" data-cat="pdf" data-name="merge pdf images combine"><div class="ico">🔗</div><h3>Merge PDF / Images</h3><p>Combine 10 images to one PDF</p><div class="act">Use Tool →</div></a>
+    
+    <a href="tools/pdf-to-jpg.html" class="card" data-cat="pdf" data-name="pdf to jpg convert"><div class="ico">🔄</div><h3>PDF to JPG</h3><p>Convert PDF pages to JPG images</p><div class="act">Use Tool →</div></a>
+
+    <a href="tools/aadhaar.html" class="card" data-cat="id" data-name="aadhaar photo maker govt 3.5x4.5"><div class="ico">🪪</div><h3>Aadhaar Photo Maker</h3><p>3.5x4.5cm perfect govt size</p><div class="act">Use Tool →</div></a>
+    
+    <a href="tools/passport.html" class="card" data-cat="id" data-name="passport photo 6 photos print 4x6"><div class="ico">👤</div><h3>Passport - 6 Photos</h3><p>4x6 inch print ready sheet</p><div class="act">Use Tool →</div></a>
+
+    <a href="tools/bg-remover.html" class="card" data-cat="bg" data-name="white background remover bg maker"><div class="ico">🤍</div><h3>White BG Maker</h3><p>Any photo background white</p><div class="act">Use Tool →</div></a>
+    
+    <a href="tools/dpi.html" class="card" data-cat="image" data-name="300 dpi fixer high quality print"><div class="ico">🎯</div><h3>300 DPI Fixer</h3><p>High quality print ready</p><div class="act">Use Tool →</div></a>
+  </div>
+
+  <div class="how">
+    <h2>How it Works?</h2>
+    <div class="steps"><div><b>1</b> Select File</div><div><b>2</b> Process Offline</div><div><b>3</b> Download Instant</div></div>
+  </div>
+
+  <!-- PROFESSIONAL FOOTER - Company jaisa -->
+  <footer style="background:#fff;border-top:1px solid #e2e8f0;margin-top:30px">
+    <div class="footer-grid">
+      <div>
+        <div style="display:flex;align-items:center;gap:8px;font-weight:800;font-family:'Plus Jakarta Sans'"><img src="images/logo.jpg" style="height:24px;border-radius:4px"> KaagazPro</div>
+        <p style="margin-top:10px">KaagazPro is 100% free, offline toolkit for students & professionals. All files processed in your browser - never uploaded to server. Fast, secure & private.</p>
+        <p style="margin-top:8px">Made with ❤️ in India</p>
       </div>
-      <div id="noResult" style="display:none;text-align:center;padding:20px;color:#64748b;font-size:13px">No tools found. Try 'pdf' or 'photo'</div>
-    </div>
-
-    <div class="grid" id="toolGrid">
-        <a href="tools/resize.html" class="card pro" data-name="resize photo kb 20kb 50kb 100kb ssc upsc">
-            <div class="top"><div class="ico">🖼️</div><span class="tag">Most Used</span></div>
-            <h3>Resize Photo to KB</h3>
-            <p>20KB, 50KB, 100KB - Any Size</p>
-            <div class="act">Use Tool →</div>
-        </a>
-        <a href="tools/jpg-to-pdf.html" class="card" data-name="jpg to pdf merge">
-            <div class="ico">📄</div><h3>JPG to PDF Merge</h3><p>Multiple photos to one PDF</p><div class="act">Use Tool →</div>
-        </a>
-        <a href="tools/compressor.html" class="card" data-name="smart compressor compress image">
-            <div class="ico">⚡</div><h3>Smart Compressor</h3><p>90% compress without loss</p><div class="act">Use Tool →</div>
-        </a>
-        <a href="tools/aadhaar.html" class="card" data-name="aadhaar photo maker">
-            <div class="ico">🪪</div><h3>Aadhaar Photo Maker</h3><p>3.5x4.5cm perfect size</p><div class="act">Use Tool →</div>
-        </a>
-        <a href="tools/signature.html" class="card" data-name="signature resizer sign">
-            <div class="ico">✍️</div><h3>Signature Resizer</h3><p>Resize signature to 20KB</p><div class="act">Use Tool →</div>
-        </a>
-        <a href="tools/bg-remover.html" class="card" data-name="white bg background remover">
-            <div class="ico">🤍</div><h3>White BG Maker</h3><p>Any photo background white</p><div class="act">Use Tool →</div>
-        </a>
-        <a href="tools/passport.html" class="card" data-name="passport photo 6 photos print">
-            <div class="ico">👤</div><h3>Passport - 6 Photos</h3><p>4x6 inch print ready</p><div class="act">Use Tool →</div>
-        </a>
-        <a href="tools/merge-pdf.html" class="card" data-name="merge pdf images">
-            <div class="ico">🔗</div><h3>Merge PDF / Images</h3><p>10 images to one PDF</p><div class="act">Use Tool →</div>
-        </a>
-        <a href="tools/dpi.html" class="card" data-name="300 dpi fixer high quality">
-            <div class="ico">🎯</div><h3>300 DPI Fixer</h3><p>High quality print</p><div class="act">Use Tool →</div>
-        </a>
-        <a href="tools/pdf-to-jpg.html" class="card" data-name="pdf to jpg convert">
-            <div class="ico">🔄</div><h3>PDF to JPG</h3><p>Convert PDF pages to JPG</p><div class="act">Use Tool →</div>
-        </a>
-    </div>
-
-    <div class="how">
-        <h2>How it Works?</h2>
-        <div class="steps"><div><b>1</b> Select File</div><div><b>2</b> Use Tool</div><div><b>3</b> Download</div></div>
-    </div>
-
-    <div style="max-width:900px;margin:40px auto;padding:20px">
-      <h2 style="text-align:center;font-family:'Plus Jakarta Sans';font-size:22px">Why Choose KaagazPro?</h2>
-      <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:15px;margin-top:20px">
-        <div class="card" style="padding:15px;text-align:center;border:1px solid #e2e8f0;border-radius:12px;background:#fff"><div style="font-size:28px">🔒</div><h3 style="font-size:14px;margin:8px 0">100% Secure</h3><p style="font-size:12px;color:#64748b">Files never leave your device.</p></div>
-        <div class="card" style="padding:15px;text-align:center;border:1px solid #e2e8f0;border-radius:12px;background:#fff"><div style="font-size:28px">⚡</div><h3 style="font-size:14px;margin:8px 0">Lightning Fast</h3><p style="font-size:12px;color:#64748b">No upload, instant.</p></div>
-        <div class="card" style="padding:15px;text-align:center;border:1px solid #e2e8f0;border-radius:12px;background:#fff"><div style="font-size:28px">💯</div><h3 style="font-size:14px;margin:8px 0">Free Forever</h3><p style="font-size:12px;color:#64748b">No watermark, no limits.</p></div>
+      <div>
+        <h4>Popular Tools</h4>
+        <a href="tools/resize.html">Resize Photo to 20KB</a>
+        <a href="tools/jpg-to-pdf.html">JPG to PDF</a>
+        <a href="tools/compressor.html">Image Compressor</a>
+        <a href="tools/passport.html">Passport Photo Maker</a>
+      </div>
+      <div>
+        <h4>More Tools</h4>
+        <a href="tools/aadhaar.html">Aadhaar Photo Maker</a>
+        <a href="tools/signature.html">Signature Resizer</a>
+        <a href="tools/bg-remover.html">White BG Maker</a>
+        <a href="tools/pdf-to-jpg.html">PDF to JPG</a>
+      </div>
+      <div>
+        <h4>Company</h4>
+        <a href="about.html">About Us</a>
+        <a href="privacy.html">Privacy Policy</a>
+        <a href="contact.html">Contact Us</a>
+        <a href="mailto:viscosity315@gmail.com">viscosity315@gmail.com</a>
       </div>
     </div>
-
-    <footer style="text-align:center;padding:25px 20px;color:#64748b;font-size:13px;border-top:1px solid #e2e8f0;margin-top:20px">
-      <div style="margin-bottom:8px"><a href="about.html" style="color:#64748b;margin:0 8px;text-decoration:none">About</a> | <a href="privacy.html" style="color:#64748b;margin:0 8px;text-decoration:none">Privacy Policy</a> | <a href="contact.html" style="color:#64748b;margin:0 8px;text-decoration:none">Contact</a></div>
-      © 2026 KaagazPro.co.in • Made in India • viscosity315@gmail.com
-    </footer>
+    <div style="text-align:center;padding:15px;border-top:1px solid #f1f5f9;color:#94a3b8;font-size:11px">© 2026 KaagazPro.co.in • All Rights Reserved • 100% Private & Secure</div>
+  </footer>
 
 <script>
-// SEARCH FUNCTION - Aage 100 tools bhi honge to kaam karega
-document.getElementById('toolSearch').addEventListener('input', function(e){
-  let q = e.target.value.toLowerCase().trim();
-  let cards = document.querySelectorAll('#toolGrid .card');
-  let found = 0;
-  cards.forEach(card=>{
-    let name = card.getAttribute('data-name') + ' ' + card.innerText.toLowerCase();
-    if(name.includes(q)){ card.style.display=''; found++; }
-    else{ card.style.display='none'; }
-  });
-  document.getElementById('noResult').style.display = found===0 ? 'block' : 'none';
+// Tabs + Search Logic - Aage 100 tools bhi handle karega
+let activeCat='all';
+document.querySelectorAll('.tab').forEach(tab=>{
+  tab.onclick=()=>{
+    document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
+    tab.classList.add('active');
+    activeCat=tab.dataset.cat;
+    filter();
+  }
 });
+function filter(){
+  let q=document.getElementById('toolSearch').value.toLowerCase().trim();
+  let found=0;
+  document.querySelectorAll('#toolGrid .card').forEach(c=>{
+    let catOk = activeCat==='all' || c.dataset.cat===activeCat;
+    let txtOk = (c.dataset.name+' '+c.innerText.toLowerCase()).includes(q);
+    if(catOk && txtOk){c.style.display=''; found++} else {c.style.display='none'}
+  });
+  document.getElementById('noResult').style.display=found? 'none':'block';
+}
+document.getElementById('toolSearch').addEventListener('input', filter);
 </script>
 </body>
 </html>
