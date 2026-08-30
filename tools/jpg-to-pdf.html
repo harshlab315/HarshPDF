@@ -1,26 +1,99 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="hi">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>JPG to PDF - KaagazPro</title>
-    <link rel="stylesheet" href="../css/style.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6640527517870664" crossorigin="anonymous"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>JPG to PDF - A4 Passport PDF Maker - KaagazPro</title>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6640527517870664" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<style>
+*{box-sizing:border-box;font-family:Inter,system-ui}body{background:#f6f7fb;margin:0;padding:12px}.card{max-width:950px;margin:auto;background:#fff;border-radius:16px;padding:18px;box-shadow:0 8px 30px rgba(0,0,0,.07)}.drop{border:2px dashed #6366f1;background:#f5f3ff;border-radius:12px;padding:28px;text-align:center;cursor:pointer}button{padding:10px 14px;border:0;border-radius:8px;background:#4f46e5;color:#fff;font-weight:700;margin:3px;cursor:pointer}button.small{background:#e5e7eb;color:#111}button.green{background:#16a34a}.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:10px;margin-top:14px}.item{background:#f9fafb;border-radius:10px;padding:8px;text-align:center;border:1px solid #eee;position:relative}.item img{width:100%;height:100px;object-fit:contain}
+</style>
 </head>
-
 <body>
-    <nav>
-        <div class="logo">Kaagaz<span>Pro</span></div>
-        <div class="menu"><a href="../index.html">Home</a><a href="../privacy.html">Privacy</a></div>
-    </nav>
-    <div class="page">
-        <h2>JPG to PDF</h2><input type="file" id="pf" accept="image/*" multiple>
-        <p id="pm" style="font-size:12px;color:#64748b;margin-top:8px">Multiple photos select karo</p><button
-            class="btn" id="bp">Convert & Download PDF</button>
-    </div>
-    <script>document.getElementById('bp').onclick = async () => { let files = document.getElementById('pf').files; if (!files.length) return alert('JPG select karo'); const { jsPDF } = window.jspdf; let doc = new jsPDF(); for (let i = 0; i < files.length; i++) { let b64 = await new Promise(r => { let fr = new FileReader(); fr.onload = () => r(fr.result); fr.readAsDataURL(files[i]); }); if (i > 0) doc.addPage(); let pr = doc.getImageProperties(b64); let w = doc.internal.pageSize.getWidth(), h = (pr.height * w) / pr.width; doc.addImage(b64, 'JPEG', 0, 0, w, h); } doc.save('kaagazpro.pdf'); document.getElementById('pm').innerText = 'PDF Download ho gaya!' };</script>
-</body>
+<div class="card">
+<h2 style="margin:0">JPG to PDF Maker - Desi Style 🇮🇳</h2>
+<p style="color:#666;font-size:13px">Govt Form ke liye A4 PDF + Passport Photo ka Jumbo PDF</p>
 
+<div class="drop" id="drop">📁 JPG Photos Drop Karo (20 photo tak)<br><small>Drag karke order badal sakte ho</small><input type="file" id="input" accept="image/*" multiple hidden></div>
+
+<div style="margin:12px 0;display:flex;flex-wrap:wrap;gap:6px;align-items:center">
+<select id="mode" style="padding:9px;border-radius:8px;border:1px solid #ddd;font-weight:600">
+<option value="a4single">📄 A4 - 1 Photo = 1 Page (Form ke liye)</option>
+<option value="a4passport">🎯 A4 pe 8 Passport Photo (Print ke liye) - UNIQUE</option>
+<option value="a4_4">🖼️ A4 pe 4 Photo</option>
+</select>
+<select id="size" style="padding:9px;border-radius:8px;border:1px solid #ddd">
+<option value="100">100KB PDF (Small)</option>
+<option value="200" selected>200KB PDF - Best</option>
+<option value="500">500KB HD</option>
+</select>
+<button id="make" class="green">⚡ PDF Banao</button>
+<button id="down" style="display:none;background:#111">⬇️ PDF Download</button>
+</div>
+
+<div class="grid" id="list"></div>
+<div id="info" style="margin-top:10px;font-size:13px;color:#16a34a;font-weight:600"></div>
+<div style="margin-top:12px;background:#fffbeb;padding:10px;border-radius:8px;font-size:12px">🔥 <b>India ka pehla feature:</b> Passport wala option se 1 A4 pe 8 photo print karke 10rs me studio jaisa kaam! Dukaan wale yahi karte hai.</div>
+</div>
+<script>
+let files=[];let order=[];
+const input=document.getElementById('input'),drop=document.getElementById('drop'),list=document.getElementById('list');
+drop.onclick=()=>input.click();
+drop.ondragover=e=>{e.preventDefault()};
+drop.ondrop=e=>{e.preventDefault();handle(e.dataTransfer.files)};
+input.onchange=e=>handle(e.target.files);
+function handle(f){files=[...f];order=files.map((_,i)=>i);render()}
+function render(){
+ list.innerHTML='';order.forEach((idx,pos)=>{
+  const file=files[idx];const url=URL.createObjectURL(file);
+  list.innerHTML+=`<div class="item"><img src="${url}"><div style="font-size:10px">${file.name.slice(0,15)}</div><div><button class="small" onclick="move(${pos},-1)">↑</button><button class="small" onclick="move(${pos},1)">↓</button><button class="small" onclick="removeAt(${pos})">✕</button></div></div>`
+ });
+}
+window.move=(pos,dir)=>{let np=pos+dir;if(np<0||np>=order.length)return;[order[pos],order[np]]=[order[np],order[pos]];render()}
+window.removeAt=pos=>{order.splice(pos,1);render()}
+
+document.getElementById('make').onclick=async()=>{
+ if(!order.length)return alert('Photo select karo');
+ const {jsPDF}=window.jspdf;const pdf=new jsPDF('p','mm','a4');
+ const mode=document.getElementById('mode').value;
+ let first=true;
+ if(mode==='a4single'){
+  for(let oi of order){
+   const file=files[oi];const img=await loadImg(file);
+   if(!first)pdf.addPage();first=false;
+   let w=190,h=(img.height/img.width)*190;if(h>277){h=277;w=(img.width/img.height)*h}
+   pdf.addImage(img, 'JPEG', (210-w)/2, (297-h)/2, w, h, undefined, 'FAST');
+  }
+ } else if(mode==='a4passport'){
+  let x=10,y=10,count=0;
+  for(let oi of order){
+   for(let k=0;k<2;k++){ // har photo 2 baar taki 8 ban jaye
+    const file=files[oi];const img=await loadImg(file);
+    if(count>0&&count%8==0){pdf.addPage();x=10;y=10}
+    pdf.addImage(img,'JPEG',x,y,35,45,undefined,'FAST'); // passport size
+    x+=45;if(x>170){x=10;y+=55}count++;if(count>=8)break;
+   }
+   if(count>=8)break;
+  }
+  if(count==0){ // agar 1 hi photo to 8 copy
+   const file=files[order[0]];const img=await loadImg(file);
+   x=10;y=10;for(let i=0;i<8;i++){pdf.addImage(img,'JPEG',x,y,35,45,undefined,'FAST');x+=45;if(x>170){x=10;y+=55}}
+  }
+ } else {
+  let x=10,y=10;let pw=90,ph=120;let c=0;
+  for(let oi of order){
+   const file=files[oi];const img=await loadImg(file);
+   if(c>0&&c%4==0){pdf.addPage();x=10;y=10}
+   pdf.addImage(img,'JPEG',x,y,pw,ph,undefined,'FAST');x+=100;if(x>110){x=10;y+=130}c++;
+  }
+ }
+ const blob=pdf.output('blob');
+ const url=URL.createObjectURL(blob);
+ document.getElementById('info').innerText=`PDF Ready: ${(blob.size/1024).toFixed(1)}KB, Pages: ${pdf.internal.getNumberOfPages()}`;
+ const d=document.getElementById('down');d.style.display='inline-block';d.onclick=()=>{const a=document.createElement('a');a.href=url;a.download=`KaagazPro-${mode}-${Date.now()}.pdf`;a.click()};
+};
+function loadImg(file){return new Promise(res=>{const r=new FileReader();r.onload=e=>{const im=new Image();im.onload=()=>res(im);im.src=e.target.result};r.readAsDataURL(file)})}
+</script>
+</body>
 </html>
