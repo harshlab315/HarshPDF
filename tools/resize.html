@@ -1,29 +1,40 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Resize Photo - KaagazPro</title>
-    <link rel="stylesheet" href="../css/style.css">
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6640527517870664" crossorigin="anonymous"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Photo Resize 20KB with Crop - KaagazPro</title>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6640527517870664" crossorigin="anonymous"></script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.6.1/cropper.min.css" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.6.1/cropper.min.js"></script>
+<style>
+*{box-sizing:border-box;font-family:Inter}body{background:#f6f7fb;margin:0;padding:15px}.card{max-width:900px;margin:auto;background:#fff;border-radius:16px;padding:20px;box-shadow:0 6px 30px rgba(0,0,0,.08)}.grid{display:grid;grid-template-columns:1fr 1fr;gap:15px}@media(max-width:700px){.grid{grid-template-columns:1fr}}.img-box{background:#f0f2f5;border-radius:12px;min-height:300px;display:flex;align-items:center;justify-content:center;overflow:hidden}button{padding:12px 18px;border:0;border-radius:10px;background:#4f46e5;color:#fff;font-weight:600;cursor:pointer}button.secondary{background:#111}
+</style>
 </head>
-
 <body>
-    <nav>
-        <div class="logo">Kaagaz<span>Pro</span></div>
-        <div class="menu"><a href="../index.html">Home</a><a href="../privacy.html">Privacy</a></div>
-    </nav>
-    <div class="page">
-        <h2>Resize Photo to 20KB / 50KB</h2><input type="file" id="f" accept="image/*"><select id="kb">
-            <option value="20">20 KB</option>
-            <option value="50" selected>50 KB</option>
-            <option value="100">100 KB</option>
-        </select><img id="pr" style="max-width:100%;display:none;margin-top:10px;border-radius:10px">
-        <p id="st" style="font-size:12px;color:#4f46e5;margin-top:6px"></p><button class="btn" id="b">Resize &
-            Download</button>
-    </div>
-    <script>let img = new Image(), ok = false; document.getElementById('f').addEventListener('change', e => { let r = new FileReader(); r.onload = ev => { img.onload = () => { ok = true; document.getElementById('pr').src = ev.target.result; document.getElementById('pr').style.display = 'block' }; img.src = ev.target.result }; r.readAsDataURL(e.target.files[0]) }); document.getElementById('b').onclick = async () => { if (!ok) return alert('Photo select karo'); let t = parseInt(document.getElementById('kb').value), c = document.createElement('canvas'), x = c.getContext('2d'), w = img.width, h = img.height, q = 0.9; for (let i = 0; i < 15; i++) { c.width = w; c.height = h; x.drawImage(img, 0, 0, w, h); let bl = await new Promise(r => c.toBlob(r, 'image/jpeg', q)); let kb = Math.round(bl.size / 1024); document.getElementById('st').innerText = kb + 'KB'; if (kb <= t + 2) { let a = document.createElement('a'); a.href = URL.createObjectURL(bl); a.download = t + 'KB.jpg'; a.click(); return } q -= 0.1; if (q < 0.2) { w *= 0.9; h *= 0.9; q = 0.85 } } }</script>
+<div class="card">
+<h1>Photo Resize to 20KB + Crop</h1>
+<input type="file" id="input" accept="image/*">
+<div class="grid" style="margin-top:15px">
+<div class="img-box"><img id="image" style="display:none"></div>
+<div class="img-box"><canvas id="canvas" style="display:none"></canvas><span id="ph">Preview</span></div>
+</div>
+<div style="margin:15px 0;display:flex;gap:10px;flex-wrap:wrap">
+<label>KB: <input type="number" id="targetKB" value="20" style="width:80px"></label>
+<label>W: <input type="number" id="width" value="300" style="width:80px"></label>
+<label>H: <input type="number" id="height" value="400" style="width:80px"></label>
+</div>
+<button id="cropBtn" class="secondary">1. Crop & Resize</button>
+<button id="compressBtn">2. Compress to KB</button>
+<button id="downloadBtn" style="display:none;background:#16a34a">Download</button>
+<div style="margin-top:15px"><img id="preview" style="max-width:200px;border:1px solid #eee;border-radius:8px"><div id="info"></div></div>
+</div>
+<script>
+let cropper;const image=document.getElementById('image'),input=document.getElementById('input'),canvas=document.getElementById('canvas');
+input.addEventListener('change',e=>{const f=e.target.files[0];if(!f)return;image.src=URL.createObjectURL(f);image.style.display='block';if(cropper)cropper.destroy();image.onload=()=>{cropper=new Cropper(image,{aspectRatio:3/4,viewMode:1,autoCropArea:0.9})}});
+function toBlob(q){return new Promise(r=>{canvas.toBlob(b=>r(b),'image/jpeg',q)})}
+document.getElementById('cropBtn').onclick=()=>{if(!cropper)return alert('Photo select kar');const w=+width.value,h=+height.value;const c=cropper.getCroppedCanvas({width:w,height:h});canvas.width=w;canvas.height=h;canvas.getContext('2d').drawImage(c,0,0);canvas.style.display='block';ph.style.display='none';toBlob(0.9).then(b=>preview.src=URL.createObjectURL(b))};
+document.getElementById('compressBtn').onclick=async()=>{if(!canvas.width)return alert('Pehle crop kar');let q=0.9,b=await toBlob(q);for(let i=0;i<12;i++){if(b.size/1024<=+targetKB.value*1.05)break;q-=0.07;if(q<0.1)q=0.1;b=await toBlob(q)}preview.src=URL.createObjectURL(b);info.innerText='Final: '+(b.size/1024).toFixed(1)+' KB';downloadBtn.style.display='inline-block';downloadBtn.onclick=()=>{const a=document.createElement('a');a.href=preview.src;a.download='kaagazpro-'+targetKB.value+'kb.jpg';a.click()}};
+</script>
 </body>
-
 </html>
