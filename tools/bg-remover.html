@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>White BG Maker - KaagazPro</title>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+  <nav><div class="logo">Kaagaz<span>Pro</span></div><a href="../index.html">Home</a></nav>
+  <div class="page">
+    <h2>White Background Maker</h2>
+    <input type="file" id="f" accept="image/*">
+    <img id="p" style="max-width:100%;margin-top:10px;display:none;border-radius:10px">
+    <button class="btn" id="b">Make White BG & Download</button>
+  </div>
+  <script>
+    let img=new Image(),ok=false;
+    document.getElementById('f').onchange=e=>{
+      let r=new FileReader();
+      r.onload=ev=>{img.onload=()=>{ok=true;let pr=document.getElementById('p');pr.src=ev.target.result;pr.style.display='block'};img.src=ev.target.result};
+      r.readAsDataURL(e.target.files[0]);
+    };
+    document.getElementById('b').onclick=()=>{
+      if(!ok) return alert('Photo dalo');
+      let c=document.createElement('canvas');
+      c.width=img.width; c.height=img.height;
+      let x=c.getContext('2d');
+      x.fillStyle='#fff'; x.fillRect(0,0,c.width,c.height);
+      x.drawImage(img,0,0);
+      let a=document.createElement('a');
+      a.href=c.toDataURL('image/jpeg',0.9);
+      a.download='white-bg.jpg'; a.click();
+    };
+  </script>
+</body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Passport Photo - KaagazPro</title>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+  <nav><div class="logo">Kaagaz<span>Pro</span></div><a href="../index.html">Home</a></nav>
+  <div class="page">
+    <h2>Passport - 6 Copies in One Print</h2>
+    <input type="file" id="f" accept="image/*">
+    <img id="p" style="max-width:100%;margin-top:10px;display:none">
+    <button class="btn" id="b">Create 4x6 Print & Download</button>
+  </div>
+  <script>
+    let img=new Image(),ok=false;
+    document.getElementById('f').onchange=e=>{
+      let r=new FileReader();
+      r.onload=ev=>{img.onload=()=>{ok=true;document.getElementById('p').src=ev.target.result;document.getElementById('p').style.display='block'};img.src=ev.target.result};
+      r.readAsDataURL(e.target.files[0]);
+    };
+    document.getElementById('b').onclick=()=>{
+      if(!ok) return alert('Photo select karo');
+      let c=document.createElement('canvas');
+      c.width=1800; c.height=1200;
+      let x=c.getContext('2d');
+      x.fillStyle='#fff'; x.fillRect(0,0,c.width,c.height);
+      let pw=413, ph=531, gap=20;
+      let positions=[[0,0],[pw+gap,0],[2*(pw+gap),0],[0,ph+gap],[pw+gap,ph+gap],[2*(pw+gap),ph+gap]];
+      positions.forEach(pos=>{
+        x.fillStyle='#fff'; x.fillRect(pos[0],pos[1],pw,ph);
+        let scale=Math.max(pw/img.width, ph/img.height);
+        let sx=(c.width/2 - img.width/2*scale);
+        // simple draw
+        x.drawImage(img, pos[0], pos[1], pw, ph);
+      });
+      // better single draw loop
+      c=document.createElement('canvas'); c.width=1200; c.height=1800;
+      x=c.getContext('2d'); x.fillStyle='#fff'; x.fillRect(0,0,c.width,c.height);
+      for(let i=0;i<6;i++){
+        let col=i%3, row=Math.floor(i/3);
+        let dx=col*(413+20)+30, dy=row*(531+20)+30;
+        x.drawImage(img, dx, dy, 413, 531);
+      }
+      let a=document.createElement('a'); a.href=c.toDataURL('image/jpeg',0.9); a.download='passport-6x.jpg'; a.click();
+    };
+  </script>
+</body>
+</html>

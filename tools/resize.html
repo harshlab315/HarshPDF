@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Resize Photo - KaagazPro</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body>
+    <nav>
+        <div class="logo">Kaagaz<span>Pro</span></div>
+        <div class="menu"><a href="../index.html">Home</a><a href="../privacy.html">Privacy</a></div>
+    </nav>
+    <div class="page">
+        <h2>Resize Photo to 20KB / 50KB</h2><input type="file" id="f" accept="image/*"><select id="kb">
+            <option value="20">20 KB</option>
+            <option value="50" selected>50 KB</option>
+            <option value="100">100 KB</option>
+        </select><img id="pr" style="max-width:100%;display:none;margin-top:10px;border-radius:10px">
+        <p id="st" style="font-size:12px;color:#4f46e5;margin-top:6px"></p><button class="btn" id="b">Resize &
+            Download</button>
+    </div>
+    <script>let img = new Image(), ok = false; document.getElementById('f').addEventListener('change', e => { let r = new FileReader(); r.onload = ev => { img.onload = () => { ok = true; document.getElementById('pr').src = ev.target.result; document.getElementById('pr').style.display = 'block' }; img.src = ev.target.result }; r.readAsDataURL(e.target.files[0]) }); document.getElementById('b').onclick = async () => { if (!ok) return alert('Photo select karo'); let t = parseInt(document.getElementById('kb').value), c = document.createElement('canvas'), x = c.getContext('2d'), w = img.width, h = img.height, q = 0.9; for (let i = 0; i < 15; i++) { c.width = w; c.height = h; x.drawImage(img, 0, 0, w, h); let bl = await new Promise(r => c.toBlob(r, 'image/jpeg', q)); let kb = Math.round(bl.size / 1024); document.getElementById('st').innerText = kb + 'KB'; if (kb <= t + 2) { let a = document.createElement('a'); a.href = URL.createObjectURL(bl); a.download = t + 'KB.jpg'; a.click(); return } q -= 0.1; if (q < 0.2) { w *= 0.9; h *= 0.9; q = 0.85 } } }</script>
+</body>
+
+</html>

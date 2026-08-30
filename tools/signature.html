@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Signature Resizer - KaagazPro</title>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+  <nav>
+    <div class="logo">Kaagaz<span>Pro</span></div>
+    <a href="../index.html">Home</a>
+  </nav>
+  <div class="page">
+    <h2>Signature to 20KB</h2>
+    <p style="font-size:13px;color:#64748b">SSC, UPSC ke liye white background me</p>
+    <input type="file" id="sigFile" accept="image/*">
+    <canvas id="sigCanvas" style="display:none"></canvas>
+    <img id="sigPreview" style="max-width:100%;margin-top:12px;border:1px dashed #cbd5e1;border-radius:10px;display:none">
+    <button class="btn" id="sigBtn">Resize & Download</button>
+  </div>
+  <script>
+    // simple logic - same as resize 20KB
+    let sigImg = new Image();
+    let ready = false;
+    document.getElementById('sigFile').onchange = (e) => {
+      let r = new FileReader();
+      r.onload = (ev) => {
+        sigImg.onload = () => {
+          ready = true;
+          document.getElementById('sigPreview').src = ev.target.result;
+          document.getElementById('sigPreview').style.display = 'block';
+        };
+        sigImg.src = ev.target.result;
+      };
+      r.readAsDataURL(e.target.files[0]);
+    };
+    document.getElementById('sigBtn').onclick = () => {
+      if(!ready) return alert('Sign upload karo');
+      let c = document.createElement('canvas');
+      c.width = 400; c.height = 150;
+      let x = c.getContext('2d');
+      x.fillStyle = '#fff'; x.fillRect(0,0,c.width,c.height);
+      x.drawImage(sigImg,0,0,c.width,c.height);
+      c.toBlob((b)=>{
+        let a=document.createElement('a');
+        a.href=URL.createObjectURL(b);
+        a.download='signature-20KB.jpg';
+        a.click();
+      },'image/jpeg',0.6);
+    };
+  </script>
+</body>
+</html>

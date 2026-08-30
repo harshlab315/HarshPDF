@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Aadhaar Photo Maker - KaagazPro</title>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+  <nav>
+    <div class="logo">Kaagaz<span>Pro</span></div>
+    <div class="menu"><a href="../index.html">Home</a></div>
+  </nav>
+
+  <div class="page">
+    <h2>Aadhaar Photo Maker - 3.5 x 4.5 cm</h2>
+    <p style="font-size:12px;color:#64748b;margin-top:6px">White BG auto + 413 x 531 px (300 DPI)</p>
+
+    <input type="file" id="aadFile" accept="image/*">
+    <img id="aadPre" style="max-width:100%;margin-top:12px;border-radius:10px;display:none;border:1px solid #e2e8f0">
+    <p id="aadInfo" style="font-size:12px;color:#4f46e5;margin-top:8px"></p>
+    <button class="btn" id="aadBtn">Make Aadhaar Photo & Download</button>
+  </div>
+
+  <script>
+    let aImg = new Image();
+    let aOk = false;
+
+    document.getElementById('aadFile').onchange = (e) => {
+      let r = new FileReader();
+      r.onload = (ev) => {
+        aImg.onload = () => {
+          aOk = true;
+          let pre = document.getElementById('aadPre');
+          pre.src = ev.target.result;
+          pre.style.display = 'block';
+        };
+        aImg.src = ev.target.result;
+      };
+      r.readAsDataURL(e.target.files[0]);
+    };
+
+    document.getElementById('aadBtn').onclick = () => {
+      if(!aOk) return alert('Photo select karo');
+
+      // Aadhaar standard 3.5x4.5cm = 413x531px at 300DPI
+      let canvas = document.createElement('canvas');
+      canvas.width = 413;
+      canvas.height = 531;
+      let ctx = canvas.getContext('2d');
+
+      // White background
+      ctx.fillStyle = '#ffffff';
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+      // Center crop logic
+      let scale = Math.max(canvas.width / aImg.width, canvas.height / aImg.height);
+      let x = (canvas.width / 2) - (aImg.width / 2) * scale;
+      let y = (canvas.height / 2) - (aImg.height / 2) * scale;
+      ctx.drawImage(aImg, x, y, aImg.width * scale, aImg.height * scale);
+
+      document.getElementById('aadInfo').innerText = 'Ready: 413x531px (35x45mm)';
+
+      canvas.toBlob((blob) => {
+        let a = document.createElement('a');
+        a.href = URL.createObjectURL(blob);
+        a.download = 'aadhaar-photo-35x45.jpg';
+        a.click();
+      }, 'image/jpeg', 0.9);
+    };
+  </script>
+</body>
+</html>

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Smart Compressor - KaagazPro</title>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+  <nav>
+    <div class="logo">Kaagaz<span>Pro</span></div>
+    <div class="menu"><a href="../index.html">Home</a></div>
+  </nav>
+
+  <div class="page">
+    <h2>Smart Compressor - 90% Size Kam</h2>
+    <p style="font-size:12px;color:#64748b;margin-top:6px">Quality same, size kam</p>
+
+    <input type="file" id="compFile" accept="image/*">
+
+    <label style="font-size:13px;margin-top:12px;display:block">Quality:</label>
+    <select id="compQ">
+      <option value="0.8">High Quality (80%)</option>
+      <option value="0.5" selected>Medium - 90% Compress (50%)</option>
+      <option value="0.3">Low - Max Compress (30%)</option>
+    </select>
+
+    <img id="compPre" style="max-width:100%;margin-top:12px;border-radius:10px;display:none">
+
+    <p id="compInfo" style="font-size:13px;color:#4f46e5;margin-top:8px"></p>
+
+    <button class="btn" id="compBtn">Compress & Download</button>
+  </div>
+
+  <script>
+    let cImg = new Image();
+    let cOk = false;
+    let originalSize = 0;
+
+    document.getElementById('compFile').onchange = (e) => {
+      let file = e.target.files[0];
+      if(!file) return;
+      originalSize = file.size;
+      let r = new FileReader();
+      r.onload = (ev) => {
+        cImg.onload = () => {
+          cOk = true;
+          let pre = document.getElementById('compPre');
+          pre.src = ev.target.result;
+          pre.style.display = 'block';
+          document.getElementById('compInfo').innerText =
+            'Original: ' + (originalSize/1024).toFixed(1) + ' KB';
+        };
+        cImg.src = ev.target.result;
+      };
+      r.readAsDataURL(file);
+    };
+
+    document.getElementById('compBtn').onclick = () => {
+      if(!cOk) return alert('Pehle photo select karo');
+      let q = parseFloat(document.getElementById('compQ').value);
+      let canvas = document.createElement('canvas');
+      canvas.width = cImg.width;
+      canvas.height = cImg.height;
+      let ctx = canvas.getContext('2d');
+      ctx.drawImage(cImg, 0, 0);
+
+      canvas.toBlob((blob) => {
+        let newSize = (blob.size/1024).toFixed(1);
+        document.getElementById('compInfo').innerText =
+          'Original: ' + (originalSize/1024).toFixed(1) + ' KB → New: ' + newSize + ' KB';
+        let a = document.createElement('a');
+        a.href = URL.createObjectURL(blob);
+        a.download = 'compressed-' + newSize + 'KB.jpg';
+        a.click();
+      }, 'image/jpeg', q);
+    };
+  </script>
+</body>
+</html>
