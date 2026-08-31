@@ -1,68 +1,207 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Image Compressor to 20KB 50KB 100KB - KaagazPro</title>
+<meta name="description" content="Smart compress 10 photos to 20KB 50KB 100KB. Convert JPG PNG WEBP. Before/After, Quality selector. 100% offline private.">
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6640527517870664" crossorigin="anonymous"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
 <style>
-*{box-sizing:border-box;font-family:Inter,system-ui}body{background:#f6f7fb;margin:0;padding:12px}.card{max-width:900px;margin:auto;background:#fff;border-radius:16px;padding:18px;box-shadow:0 8px 30px rgba(0,0,0,.07)}.drop{border:2px dashed #6366f1;background:#f5f3ff;border-radius:12px;padding:30px;text-align:center;cursor:pointer}button{padding:10px 14px;border:0;border-radius:8px;background:#4f46e5;color:#fff;font-weight:700;margin:3px;cursor:pointer}button.small{background:#e5e7eb;color:#111}button.green{background:#16a34a}.grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:14px}.item{background:#f9fafb;border-radius:10px;padding:10px;text-align:center;border:1px solid #eee}
+*{box-sizing:border-box;font-family:'Inter',sans-serif}
+body{background:#f6f7fb;margin:0;padding:0}
+.header{background:#1e40af;color:#fff;padding:12px 20px;display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;z-index:99}
+.logo{font-weight:700;font-size:20px}.hr{display:flex;gap:8px;align-items:center}
+.lang-btn{background:#fff;color:#1e40af;border:0;padding:7px 14px;border-radius:20px;font-weight:700;cursor:pointer;font-size:12px}
+.all-btn{color:#fff;text-decoration:none;font-size:12px;background:rgba(255,255,255,.18);padding:7px 14px;border-radius:20px}
+.card{max-width:1000px;margin:18px auto;background:#fff;border-radius:18px;padding:22px;box-shadow:0 8px 30px rgba(0,0,0,.07)}
+.top-blink{background:linear-gradient(90deg,#dcfce7,#bbf7d0);border:1px dashed #22c55e;padding:10px;border-radius:10px;text-align:center;margin-bottom:14px;animation:b 1.5s infinite;font-weight:600;font-size:13px;cursor:pointer}
+@keyframes b{0%,100%{opacity:1}50%{opacity:.7}}
+.badge{display:flex;gap:8px;flex-wrap:wrap;font-size:12px;color:#475569;margin:10px 0}
+.badge span{background:#f1f5f9;padding:5px 10px;border-radius:20px}
+.drop{border:2px dashed #22c55e;background:#f0fdf4;border-radius:16px;padding:32px;text-align:center;cursor:pointer}
+.drop:hover{background:#dcfce7}
+.ctrl-bar{display:flex;flex-wrap:wrap;gap:10px;margin:14px 0;background:#f8fafc;padding:14px;border-radius:12px;align-items:end}
+.ctrl{display:flex;flex-direction:column;gap:4px}.ctrl label{font-size:11px;font-weight:700;color:#334155}
+.ctrl input,.ctrl select{padding:8px 10px;border:1px solid #cbd5e1;border-radius:8px;font-size:13px;min-width:95px}
+.tbtn{padding:8px 12px;border-radius:8px;border:1px solid #e2e8f0;background:#fff;font-weight:600;cursor:pointer;font-size:12px}
+.tbtn.active{background:#16a34a;color:#fff;border-color:#16a34a}
+.qbtn{padding:8px 12px;border-radius:20px;border:1px solid #e2e8f0;background:#fff;cursor:pointer;font-size:12px}
+.qbtn.active{background:#0f172a;color:#fff}
+.btn{padding:10px 16px;border:0;border-radius:10px;font-weight:700;cursor:pointer}
+.btn.green{background:#16a34a;color:#fff}.btn.black{background:#0f172a;color:#fff}
+.item{display:grid;grid-template-columns:110px 1fr 130px;gap:12px;border:1px solid #e2e8f0;border-radius:12px;padding:12px;margin:10px 0;align-items:center;background:#fff}
+@media(max-width:700px){.item{grid-template-columns:1fr}}
+.thumb{width:100%;height:90px;object-fit:cover;border-radius:8px;background:#f1f5f9}
+.stats{font-size:12px;line-height:1.6}.bar{height:6px;background:#e2e8f0;border-radius:10px;overflow:hidden;margin:4px 0}.bar div{height:100%;background:#16a34a}
+.warn{background:#fef3c7;border:1px solid #fcd34d;color:#92400e;padding:8px 12px;border-radius:8px;font-size:12px;margin:6px 0}
+.summary{background:#ecfdf5;border:1px solid #bbf7d0;padding:14px;border-radius:12px;margin-top:14px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
+.seo{max-width:1000px;margin:18px auto;padding:0 14px}.seo-card{background:#fff;padding:18px;border-radius:14px;margin-bottom:14px;box-shadow:0 4px 14px rgba(0,0,0,.05)}
+.seo-card h2{font-size:17px;margin:0 0 8px}.seo-card p,.seo-card li{font-size:13.5px;color:#334155;line-height:1.7}
+.faq{border-bottom:1px solid #e2e8f0;padding:10px 0}.faq b{font-size:13px;display:block}
+.hidden{display:none!important}
 </style>
 </head>
 <body>
+<div class="header"><div class="logo">📄 KaagazPro</div><div class="hr"><button class="lang-btn" id="langBtn" onclick="toggleLang()">हिंदी</button><a class="all-btn" href="/">← All Tools</a></div></div>
+
 <div class="card">
-<h2 style="margin:0">Image Compressor - KaagazPro</h2>
-<p style="color:#666;font-size:13px">Photo ko 20KB / 50KB / 100KB / 200KB me karo - Govt Form ke liye</p>
+<div class="top-blink" onclick="document.getElementById('how').scrollIntoView({behavior:'smooth'})"><span data-i="blink">✨ Smart Compress - 90% Size Kam, Quality Same! How to Use 👆</span></div>
+<h2 style="margin:0" data-i="title">Image Compressor - KaagazPro</h2>
+<p style="color:#666;font-size:13px;margin:4px 0" data-i="sub">Photo ko 20KB / 50KB / 100KB / 200KB me karo - Govt Form ke liye</p>
+<div class="badge"><span id="countTxt">✅ 0 photos</span><span data-i="priv">🔒 100% Private - Server pe save nahi</span><span>⚡ Lightning Fast</span></div>
 
-<div class="drop" id="drop">📁 Photo Yaha Drop Karo ya Click Karo<br><small style="color:#666">10 photo ek saath</small><input type="file" id="input" accept="image/*" multiple hidden></div>
+<div class="drop" id="drop">📁 <b data-i="dropT">Photo Yaha Drop Karo ya Click Karo</b><br><small style="color:#666" data-i="dropS">10 photo ek saath - JPG, PNG, WEBP</small><input type="file" id="input" accept="image/*" multiple hidden></div>
 
-<div style="margin:12px 0;display:flex;flex-wrap:wrap;gap:6px;align-items:center">
-Target: <button class="small" onclick="setTarget(20)">20KB</button><button class="small" onclick="setTarget(50)">50KB</button><button class="small" onclick="setTarget(100)">100KB</button><button class="small" onclick="setTarget(200)">200KB</button>
-<select id="target" style="padding:8px;border-radius:8px;border:1px solid #ddd"><option value="20">20KB - Form</option><option value="50">50KB</option><option value="100" selected>100KB - Best Quality</option><option value="200">200KB</option><option value="500">500KB</option></select>
-<button id="compressBtn" class="green">⚡ Compress Karo</button>
-<button id="downAll" style="display:none;background:#111">⬇️ Sab Download</button>
+<div class="ctrl-bar">
+<div class="ctrl"><label data-i="target">Target Size</label><div style="display:flex;gap:6px;flex-wrap:wrap">
+<button class="tbtn active" onclick="setTarget(20,this)">20KB</button><button class="tbtn" onclick="setTarget(50,this)">50KB</button><button class="tbtn" onclick="setTarget(100,this)">100KB</button><button class="tbtn" onclick="setTarget(200,this)">200KB</button>
+</div></div>
+<div class="ctrl"><label>Custom KB</label><input type="number" id="customKB" placeholder="Ex 35" oninput="targetVal=this.value"></div>
+<div class="ctrl"><label data-i="qual">Quality</label><div style="display:flex;gap:6px">
+<button class="qbtn active" onclick="setQ('best',this)" data-i="q1">Best Quality</button><button class="qbtn" onclick="setQ('balanced',this)" data-i="q2">Balanced</button><button class="qbtn" onclick="setQ('small',this)" data-i="q3">Smallest</button>
+</div></div>
+<div class="ctrl"><label data-i="format">Convert To</label><select id="format"><option value="keep" data-i="keep">Keep Original</option><option value="image/jpeg">JPG</option><option value="image/png">PNG</option><option value="image/webp">WEBP</option></select></div>
+<div class="ctrl"><label>Max Width</label><input type="number" id="maxW" placeholder="800" style="width:90px"></div>
+<button class="btn green" id="compressBtn" data-i="compBtn">⚡ Compress Karo</button>
+<button class="btn black hidden" id="downAll">⬇️ ZIP Download</button>
 </div>
 
-<div class="grid" id="list"></div>
-<div style="margin-top:14px;background:#f0fdf4;padding:10px;border-radius:8px;font-size:12px">💡 20KB = SSC/UPSC Form, 100KB = WhatsApp/Instagram ke liye best, 200KB = Print quality</div>
+<div id="warnArea"></div>
+<div id="list"></div>
+<div id="summary" class="summary hidden"></div>
+<div style="margin-top:14px;background:#f0fdf4;padding:10px;border-radius:8px;font-size:12px" data-i="tip">💡 20KB = SSC/UPSC Form, 100KB = WhatsApp/Instagram best, 200KB = Print quality</div>
 </div>
+
+<div class="seo">
+<div class="seo-card" id="how"><h2 data-i="howT">📖 How to Use</h2>
+<p data-i="how1"><b>1. Upload:</b> 1-10 photo select karo, drag & drop bhi.</p>
+<p data-i="how2"><b>2. Setting:</b> Target KB, Quality (Best/Balanced/Smallest), Format JPG/PNG/WEBP chuno.</p>
+<p data-i="how3"><b>3. Result:</b> Before/After dekho - kitna MB se kitna KB hua, kitna % bacha.</p>
+</div>
+<div class="seo-card"><h2 data-i="whyT">🔒 Privacy + Smart Recommendation</h2><ul>
+<li data-i="why1">Offline: Photo server par nahi jati, browser me hi compress.</li>
+<li data-i="why2">Find Best Size: 20KB form, 50KB signature, 100KB WhatsApp best.</li>
+<li data-i="why3">Format: PNG to JPG 70% kam, WEBP sabse light. Degrade hone par warning.</li>
+</ul></div>
+<div class="seo-card"><h2>❓ FAQ</h2>
+<div class="faq"><b data-i="fq1">Quality kharab hogi kya?</b><span style="font-size:12px" data-i="fa1">Best Quality me 90% same rehti hai. Smallest me thoda degrade ho sakta hai.</span></div>
+<div class="faq"><b data-i="fq2">10 photo ka total kitna bacha?</b><span style="font-size:12px" data-i="fa2">Neeche summary me - Ex: 12MB se 0.9MB (92% saved) dikhega.</span></div>
+<div class="faq"><b>File corrupt hai to?</b><span style="font-size:12px" data-i="fa3">Warning ayega aur skip hoga taaki file degrade na ho.</span></div>
+</div>
+</div>
+
 <script>
-let files=[],results=[];
-const input=document.getElementById('input'),drop=document.getElementById('drop'),list=document.getElementById('list');
-function setTarget(k){document.getElementById('target').value=k}
-drop.onclick=()=>input.click();
-drop.ondragover=e=>{e.preventDefault();drop.style.background='#e0e7ff'};
-drop.ondrop=e=>{e.preventDefault();handleFiles(e.dataTransfer.files)};
-input.onchange=e=>handleFiles(e.target.files);
-function handleFiles(f){files=[...f];list.innerHTML='';files.forEach((file,i)=>{const r=new FileReader();r.onload=e=>{list.innerHTML+=`<div class="item" id="item${i}"><img src="${e.target.result}" style="max-width:100%;height:90px;object-fit:contain"><div style="font-size:11px;margin-top:4px">${file.name}<br> ${(file.size/1024).toFixed(1)}KB → <b id="nk${i}">?</b></div><a id="dl${i}" style="display:none;font-size:12px;color:#4f46e5">Download</a></div>`};r.readAsDataURL(file)})}
-async function compressToKB(file,targetKB){
- return new Promise(res=>{
-  const img=new Image();img.src=URL.createObjectURL(file);
-  img.onload=async()=>{
-   let w=img.width,h=img.height;if(w>1600||h>1600){let r=Math.min(1600/w,1600/h);w=Math.round(w*r);h=Math.round(h*r)}
-   let quality=0.9;let blob;
-   for(let i=0;i<15;i++){
-    let c=document.createElement('canvas');c.width=w;c.height=h;c.getContext('2d').drawImage(img,0,0,w,h);
-    blob=await new Promise(r=>c.toBlob(b=>r(b),'image/jpeg',quality));
-    if(blob.size/1024<=targetKB+3)break;
-    quality-=0.07;if(quality<0.15){quality=0.7;w=Math.round(w*0.88);h=Math.round(h*0.88)}
-   }
-   res(blob);
-  }
- });
-}
-document.getElementById('compressBtn').onclick=async()=>{
- if(!files.length)return alert('Pehle photo select karo');results=[];const target=parseInt(document.getElementById('target').value);
- for(let i=0;i<files.length;i++){
-  document.getElementById(`nk${i}`).innerText='...';
-  const blob=await compressToKB(files[i],target);
-  results[i]=blob;const url=URL.createObjectURL(blob);
-  document.getElementById(`nk${i}`).innerText=`${(blob.size/1024).toFixed(1)}KB ✅`;
-  const a=document.getElementById(`dl${i}`);a.href=url;a.download=`compressed-${target}kb-${files[i].name}`;a.style.display='inline-block';a.innerText=`⬇️ ${target}KB Download`;
- }
- document.getElementById('downAll').style.display='inline-block';
+let cur=localStorage.getItem('kaagaz_lang')||'hi';
+const dict={
+en:{blink:"✨ Smart Compress - 90% Smaller, Same Quality! How to Use 👆",title:"Image Compressor - KaagazPro",sub:"Compress photo to 20KB / 50KB / 100KB / 200KB - For Govt Forms",priv:"🔒 100% Private - Not saved",dropT:"Drop Photos Here or Click",dropS:"10 photos at once - JPG, PNG, WEBP",target:"Target Size",qual:"Quality",q1:"Best Quality",q2:"Balanced",q3:"Smallest",format:"Convert To",keep:"Keep Original",compBtn:"⚡ Compress",howT:"📖 How to Use",how1:"1. Upload: Select 1-10 photos, drag & drop works.",how2:"2. Setting: Choose Target KB, Quality, Format JPG/PNG/WEBP.",how3:"3. Result: See Before/After - how much saved in %.",whyT:"🔒 Privacy + Smart Recommendation",why1:"Offline: Photos never go to server, compress in browser.",why2:"Find Best Size: 20KB form, 50KB signature, 100KB WhatsApp best.",why3:"Format: PNG to JPG 70% less, WEBP lightest. Warns if degrade.",tip:"💡 20KB = SSC/UPSC Form, 100KB = WhatsApp/Instagram best, 200KB = Print quality",fq1:"Will quality be bad?",fa1:"Best Quality keeps 90% same. Smallest may degrade a bit.",fq2:"Total saved for 10 photos?",fa2:"Summary below - Ex: 12MB to 0.9MB (92% saved)",fa3:"If corrupt, warning shows and skip to avoid degrade."},
+hi:{blink:"✨ Smart Compress - 90% Size Kam, Quality Same! Kaise Use Kare 👆",title:"Image Compressor - KaagazPro",sub:"Photo ko 20KB / 50KB / 100KB / 200KB me karo - Govt Form ke liye",priv:"🔒 100% Private - Server pe save nahi",dropT:"Photo Yaha Drop Karo ya Click Karo",dropS:"10 photo ek saath - JPG, PNG, WEBP",target:"Target Size",qual:"Quality",q1:"Best Quality",q2:"Balanced",q3:"Smallest",format:"Convert To",keep:"Original Rakho",compBtn:"⚡ Compress Karo",howT:"📖 Kaise Use Kare",how1:"1. Upload: 1-10 photo select karo, drag & drop bhi.",how2:"2. Setting: Target KB, Quality, Format JPG/PNG/WEBP chuno.",how3:"3. Result: Before/After dekho - kitna MB se kitna KB hua.",whyT:"🔒 Privacy + Smart Recommendation",why1:"Offline: Photo server par nahi jati, browser me hi compress.",why2:"Find Best Size: 20KB form, 50KB signature, 100KB WhatsApp best.",why3:"Format: PNG to JPG 70% kam, WEBP sabse light. Degrade par warning.",tip:"💡 20KB = SSC/UPSC Form, 100KB = WhatsApp/Instagram best, 200KB = Print quality",fq1:"Quality kharab hogi kya?",fa1:"Best Quality me 90% same rehti hai. Smallest me thoda degrade ho sakta hai.",fq2:"10 photo ka total kitna bacha?",fa2:"Neeche summary me - Ex: 12MB se 0.9MB (92% saved) dikhega.",fa3:"File corrupt hai to warning ayega aur skip hoga taaki file degrade na ho."}
 };
-document.getElementById('downAll').onclick=()=>{results.forEach((b,i)=>{if(!b)return;const a=document.createElement('a');a.href=URL.createObjectURL(b);a.download=`compressed-${document.getElementById('target').value}kb-${files[i].name}`;a.click()})};
+function apply(){document.querySelectorAll('[data-i]').forEach(e=>{let k=e.getAttribute('data-i');if(dict[cur][k])e.innerText=dict[cur][k]});document.getElementById('langBtn').innerText=cur==='hi'?'English':'हिंदी'}
+function toggleLang(){cur=cur==='hi'?'en':'hi';localStorage.setItem('kaagaz_lang',cur);apply()} apply();
+
+let files=[],results=[], targetVal=20, qMode='best';
+const input=document.getElementById('input'),drop=document.getElementById('drop'),list=document.getElementById('list'),warnArea=document.getElementById('warnArea');
+function setTarget(k,el){targetVal=k;document.getElementById('customKB').value=k;document.querySelectorAll('.tbtn').forEach(b=>b.classList.remove('active'));el.classList.add('active')}
+function setQ(m,el){qMode=m;document.querySelectorAll('.qbtn').forEach(b=>b.classList.remove('active'));el.classList.add('active')}
+drop.onclick=()=>input.click();
+drop.ondragover=e=>{e.preventDefault();drop.style.background='#dcfce7'};
+drop.ondragleave=()=>drop.style.background='#f0fdf4';
+drop.ondrop=e=>{e.preventDefault();drop.style.background='#f0fdf4';handleFiles(e.dataTransfer.files)};
+input.onchange=e=>handleFiles(e.target.files);
+
+function handleFiles(fList){
+files=Array.from(fList).slice(0,10);results=[];list.innerHTML='';warnArea.innerHTML='';
+if(fList.length>10) warnArea.innerHTML+=`<div class="warn">⚠️ Only 10 photos allowed, extra ignored</div>`;
+document.getElementById('countTxt').innerText=`✅ ${files.length} photos`;
+files.forEach((file,i)=>{
+if(file.size<800) warnArea.innerHTML+=`<div class="warn">⚠️ ${file.name} bahut choti/corrupt lag rahi hai</div>`;
+let url=URL.createObjectURL(file);
+list.innerHTML+=`<div class="item" id="row${i}"><img class="thumb" src="${url}"><div class="stats"><b>${file.name}</b><br>Original: ${(file.size/1024).toFixed(1)}KB<br><span id="st${i}">Waiting...</span><div class="bar"><div id="bar${i}" style="width:0%"></div></div></div><div><img id="prev${i}" class="thumb hidden"><a id="dl${i}" class="hidden" style="display:block;margin-top:6px;text-align:center;background:#16a34a;color:#fff;padding:6px;border-radius:6px;text-decoration:none;font-size:12px">Download</a></div></div>`;
+});
+}
+
+async function toBlobFromFile(file, quality, maxW){
+return new Promise(res=>{
+let img=new Image(); img.src=URL.createObjectURL(file);
+img.onload=()=>{
+let w=img.width,h=img.height;
+if(maxW && w>maxW){h=Math.round(h*maxW/w);w=maxW}
+if(!maxW && (w>1600||h>1600)){let r=Math.min(1600/w,1600/h);w=Math.round(w*r);h=Math.round(h*r)}
+let canvas=document.createElement('canvas');canvas.width=w;canvas.height=h;canvas.getContext('2d').drawImage(img,0,0,w,h);
+let type=document.getElementById('format').value;
+if(type==='keep'){type=file.type.includes('png')?'image/png':file.type.includes('webp')?'image/webp':'image/jpeg'}
+canvas.toBlob(b=>res({blob:b,w,h}),type,quality);
+};
+img.onerror=()=>res(null);
+});
+}
+
+document.getElementById('compressBtn').onclick=async()=>{
+let custom=document.getElementById('customKB').value; if(custom) targetVal=parseInt(custom);
+if(!files.length) return alert(cur==='hi'?'Pehle photo select karo':'Select photos first');
+results=[]; let totalO=0,totalC=0; warnArea.innerHTML='';
+for(let i=0;i<files.length;i++){
+let f=files[i]; totalO+=f.size;
+let st=document.getElementById(`st${i}`), bar=document.getElementById(`bar${i}`);
+st.innerText='Compressing...'; bar.style.width='30%';
+let qStart = qMode==='best'?0.9:qMode==='balanced'?0.75:0.55;
+let q=qStart; let out=null; let maxW=parseInt(document.getElementById('maxW').value)||0;
+for(let iter=0;iter<20;iter++){
+let r=await toBlobFromFile(f,q,maxW); if(!r) break; out=r;
+let kb=r.blob.size/1024; bar.style.width=(30+iter*3)+'%';
+if(kb <= targetVal*1.08) break;
+if(q>0.15) q-=0.08; else {maxW = maxW?Math.round(maxW*0.88):Math.round(out.w*0.88); q=qStart*0.85}
+}
+if(!out){st.innerText='❌ Error / Corrupt'; continue}
+results[i]=out; totalC+=out.blob.size;
+let saved=100-(out.blob.size/f.size*100);
+st.innerHTML=`Before: ${(f.size/1024).toFixed(1)}KB → After: ${(out.blob.size/1024).toFixed(1)}KB<br>✅ ${saved.toFixed(0)}% saved • ${out.w}x${out.h}`;
+bar.style.width='100%'; bar.style.background=saved>70?'#16a34a':'#f59e0b';
+let url=URL.createObjectURL(out.blob);
+document.getElementById(`prev${i}`).src=url; document.getElementById(`prev${i}`).classList.remove('hidden');
+let dl=document.getElementById(`dl${i}`); dl.href=url; let ext=out.blob.type.split('/')[1]; dl.download=`${f.name.split('.')[0]}-${targetVal}kb.${ext}`; dl.classList.remove('hidden'); dl.innerText=`⬇️ ${targetVal}KB Download`;
+// Single auto delete on click
+dl.onclick=()=>{
+  setTimeout(()=>{
+    URL.revokeObjectURL(url);
+    let row=document.getElementById(`row${i}`);
+    if(row) row.remove();
+    if(document.querySelectorAll('.item').length===0){
+      document.getElementById('summary').classList.add('hidden');
+      document.getElementById('countTxt').innerText='✅ 0 photos';
+      document.getElementById('warnArea').innerHTML='<div class="warn">✅ Deleted & refreshed!</div>';
+      setTimeout(()=>location.reload(), 800);
+    }
+  },1500);
+};
+if(f.size/1024/targetVal > 25){
+warnArea.innerHTML+=`<div class="warn">⚠️ ${f.name}: ${Math.round(f.size/1024)}KB se ${targetVal}KB - bahut zyada compress, quality degrade hogi.</div>`;
+}
+}
+let savedTotal= totalO? (100-totalC/totalO*100):0;
+document.getElementById('summary').classList.remove('hidden');
+document.getElementById('summary').innerHTML=`<div><b>📊 Total: ${(totalO/1024/1024).toFixed(2)}MB → ${(totalC/1024/1024).toFixed(2)}MB</b><br><span style="font-size:12px">${savedTotal.toFixed(0)}% saved • ${files.length} photos → ${targetVal}KB each</span></div><div style="font-size:12px;color:#64748b">Auto delete after ZIP</div>`;
+document.getElementById('downAll').classList.remove('hidden');
+};
+
+document.getElementById('downAll').onclick=async()=>{
+if(!results.length) return;
+let zip=new JSZip();
+results.forEach((r,i)=>{if(r) zip.file(document.getElementById(`dl${i}`).download, r.blob)});
+let content=await zip.generateAsync({type:'blob'});
+let a=document.createElement('a');a.href=URL.createObjectURL(content);a.download=`kaagazpro-${targetVal}kb-${results.length}photos.zip`;a.click();
+
+setTimeout(()=>{
+  results.forEach(r=>{ if(r && r.blob) URL.revokeObjectURL(URL.createObjectURL(r.blob)) });
+  list.innerHTML='';
+  document.getElementById('summary').classList.add('hidden');
+  document.getElementById('countTxt').innerText='✅ 0 photos';
+  warnArea.innerHTML='<div class="warn">✅ Downloaded & deleted! Page refreshing...</div>';
+  document.getElementById('downAll').classList.add('hidden');
+  setTimeout(()=>{ location.reload(); }, 700);
+},1200);
+};
 </script>
 </body>
 </html>
