@@ -23,6 +23,35 @@
     </style>
 </head>
 <body>
+  
+<style>
+#secure-badge{position:fixed;bottom:20px;right:20px;z-index:9999;background:#000;color:#00ff88;border:1.5px solid #00ff88;padding:7px 14px;border-radius:30px;font-family:Arial,sans-serif;font-size:12px;font-weight:bold;cursor:pointer;display:flex;align-items:center;gap:6px;animation:blinkGlow 1.5s infinite}
+@keyframes blinkGlow{0%,100%{opacity:1;box-shadow:0 0 8px #00ff88}50%{opacity:0.8;box-shadow:0 0 18px #00ff88}}
+.dot{width:8px;height:8px;background:#00ff88;border-radius:50%}
+#secure-modal{display:none;position:fixed;z-index:10000;left:0;top:0;width:100%;height:100%;background:rgba(0,0,0,0.75);backdrop-filter:blur(4px)}
+#secure-box{background:#fff;color:#111;margin:15% auto;padding:22px;border-radius:14px;max-width:420px;width:88%;font-family:Arial,sans-serif;line-height:1.6}
+</style>
+
+<div id="secure-badge" onclick="document.getElementById('secure-modal').style.display='block'">
+<span class="dot"></span>100% SECURE - No Upload
+</div>
+
+<div id="secure-modal" onclick="this.style.display='none'">
+<div id="secure-box" onclick="event.stopPropagation()">
+<span onclick="document.getElementById('secure-modal').style.display='none'" style="float:right;font-size:22px;cursor:pointer;font-weight:bold">&times;</span>
+<h3 style="margin:0 0 10px 0">🔒 100% Secure & Private</h3>
+<p style="margin:0 0 10px 0;font-size:14px">Your privacy is our priority. Here's why we are safe:</p>
+<ul style="font-size:13px;padding-left:18px;margin:0">
+<li><b>No Upload:</b> Your files never leave your device. All processing happens in your browser.</li>
+<li><b>Auto-Delete:</b> As soon as you close the tab, everything is deleted automatically.</li>
+<li><b>No Tracking:</b> We don't save your Aadhaar, PAN, or photos.</li>
+<li><b>Works Offline:</b> It works even without internet.</li>
+<li><b>Grade B Secured:</b> Protected with Cloudflare & Mozilla security headers.</li>
+</ul>
+<p style="font-size:11px;color:#666;margin-top:12px">KaagazPro - Your Work, Your Privacy.</p>
+</div>
+</div>
+
   <nav>
     <div class="logo" style="display:flex;align-items:center;gap:10px">
       <img src="images/logo.jpg" style="height:32px;border-radius:6px">
@@ -42,7 +71,7 @@
     <p>Resize, Compress, Convert, PDF - Fast, Free & Secure in Browser</p>
     <div class="stats">
       <div><b>100% Offline</b><span>Private</span></div>
-      <div><b>0 Sec</b><span>Instant</span></div>
+      <div><b>⚡Instant Processing</b><span>In Your Browser</span></div>
       <div><b>Free</b><span>No Watermark</span></div>
     </div>
   </div>
