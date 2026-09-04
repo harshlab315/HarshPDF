@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EMI Calculator - Loan EMI, Interest & Total - KaagazPro</title>
+<meta name="description" content="Calculate Loan EMI instantly. Monthly EMI, total interest, total amount. 100% private & offline.">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6640527517870664" crossorigin="anonymous"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Plus+Jakarta+Sans:wght@700;800&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;font-family:'Inter',sans-serif}
+body{margin:0;background:#f6f7fb;color:#0f172a}
+.header{background:#1e40af;color:#fff;padding:12px 18px;display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;z-index:99}
+.logo{font-family:'Plus Jakarta Sans';font-weight:800;font-size:20px}
+.hr{display:flex;gap:8px;align-items:center}
+.lang-btn{background:#fff;color:#1e40af;border:0;padding:7px 14px;border-radius:20px;font-weight:800;cursor:pointer;font-size:12px}
+.all-btn{color:#fff;text-decoration:none;font-size:12px;background:rgba(255,255,255,.18);padding:7px 14px;border-radius:20px}
+.wrap{max-width:1100px;margin:18px auto;padding:0 14px;display:grid;grid-template-columns:1.15fr 0.85fr;gap:16px}
+@media(max-width:850px){.wrap{grid-template-columns:1fr}}
+.hero-card{background:linear-gradient(135deg,#ffffff 0%,#f0f7ff 100%);border-radius:20px;padding:22px;border:1px solid #e2e8f0;box-shadow:0 10px 30px rgba(30,64,175,0.06);position:relative;overflow:hidden}
+.hero-card::after{content:"";position:absolute;top:-40px;right:-40px;width:160px;height:160px;background:radial-gradient(circle,#a5b4fc 0%,transparent 70%);opacity:0.4}
+.badge-row{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px}
+.badge{font-size:11px;font-weight:700;padding:6px 12px;border-radius:100px;border:1px solid #e2e8f0;background:#fff}
+.badge.green{background:#dcfce7;border-color:#bbf7d0;color:#166534}.badge.blue{background:#dbeafe;border-color:#bfdbfe;color:#1e40af}.badge.purple{background:#f3e8ff;border-color:#e9d5ff;color:#6b21a8}
+.hero-card h1{font-family:'Plus Jakarta Sans';font-size:32px;font-weight:800;line-height:1.05;margin:0}
+.hero-card h1 span{background:linear-gradient(90deg,#1e40af,#7c3aed,#ec4899);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.hero-card p{color:#64748b;font-size:13.5px;margin:8px 0 0;line-height:1.5}
+.input-card{background:#fff;border-radius:20px;padding:20px;border:1px solid #e2e8f0;box-shadow:0 8px 24px rgba(0,0,0,0.05);margin-top:14px}
+.ctrl label{font-size:11px;font-weight:800;color:#334155;letter-spacing:0.5px;text-transform:uppercase;margin:10px 0 6px;display:block}
+.ctrl input[type=number]{width:100%;padding:12px 14px;border:1.5px solid #e2e8f0;border-radius:12px;font-size:14px;font-weight:600;background:#f8fafc;outline:none}
+.ctrl input[type=range]{width:100%;accent-color:#1e40af}
+.btn-main{width:100%;margin-top:16px;background:linear-gradient(90deg,#1e40af,#7c3aed);color:#fff;border:none;padding:14px;border-radius:14px;font-weight:800;font-size:15px;cursor:pointer;box-shadow:0 10px 20px rgba(30,64,175,0.2)}
+.result-wrap{margin-top:16px;display:none}
+.main-result{background:linear-gradient(135deg,#1e40af 0%,#7c3aed 50%,#ec4899 100%);border-radius:18px;padding:20px;text-align:center;color:#fff}
+.main-result span{font-size:10px;font-weight:800;letter-spacing:1.2px;opacity:0.8;text-transform:uppercase}
+.main-result h2{font-family:'Plus Jakarta Sans';font-size:30px;margin:6px 0 0;font-weight:800}
+.grid4{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px}
+.box{background:#fff;border:1px solid #e2e8f0;border-radius:14px;padding:14px;text-align:center}
+.box span{font-size:10px;font-weight:800;color:#94a3b8;letter-spacing:0.8px;text-transform:uppercase}
+.box strong{font-family:'Plus Jakarta Sans';font-size:18px;display:block;margin-top:4px;color:#0f172a}
+.side{position:sticky;top:76px;height:fit-content}
+.side-card{background:#fff;border:1px solid #e2e8f0;border-radius:18px;padding:18px;box-shadow:0 8px 24px rgba(0,0,0,0.04);margin-bottom:12px}
+.side-card h3{font-family:'Plus Jakarta Sans';font-size:14px;font-weight:800;margin:0 0 12px}
+.step{display:flex;gap:12px;margin-bottom:12px}.step-num{width:26px;height:26px;border-radius:8px;background:#eef2ff;color:#1e40af;font-weight:800;font-size:12px;display:flex;align-items:center;justify-content:center}.step p{margin:0;font-size:12.5px;color:#334155;line-height:1.4}.step b{color:#0f172a}
+/* FIXED FAQ CSS */
+.faq-sec{max-width:1100px;margin:10px auto 24px;padding:0 14px}
+.faq-title{font-family:'Plus Jakarta Sans';font-size:20px;font-weight:800;margin:18px 0 12px}
+.faq-item{background:#fff;border:1px solid #e2e8f0;border-radius:14px;margin-bottom:10px;overflow:hidden;cursor:pointer}
+.faq-q{padding:14px 16px;font-weight:700;font-size:13.5px;display:flex;justify-content:space-between;align-items:center}
+.faq-a{padding:0 16px 14px;color:#475569;font-size:12.5px;line-height:1.6;display:none}
+.faq-item.open .faq-a{display:block}
+.faq-item.open .faq-q{color:#1e40af}
+footer{background:#0f172a;color:#cbd5e1}.foot-inner{max-width:1100px;margin:0 auto;padding:28px 18px;display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:18px}@media(max-width:800px){.foot-inner{grid-template-columns:1fr 1fr}}@media(max-width:500px){.foot-inner{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="header"><div class="logo">📄 KaagazPro</div><div class="hr"><button class="lang-btn" id="langBtn" onclick="toggleLang()">हिंदी</button><a class="all-btn" href="/">← All Tools</a></div></div>
+
+<div class="wrap">
+<div>
+<div class="hero-card">
+<div class="badge-row"><span class="badge green">✨ 100% Accurate</span><span class="badge blue">🔒 Private</span><span class="badge purple">⚡ Instant EMI</span></div>
+<h1 data-i="h1">EMI Calculator <br><span>Loan EMI in Seconds</span></h1>
+<p data-i="h1p">Calculate Monthly EMI, Total Interest & Total Payable Amount. No data saved.</p>
+</div>
+
+<div class="input-card">
+<div class="ctrl">
+<label data-i="l1">Loan Amount (₹) *</label>
+<input type="range" id="aR" min="10000" max="10000000" step="10000" oninput="syncA(false)"><input type="number" id="amt" value="500000" oninput="syncA(true)">
+<label data-i="l2">Interest Rate (% per year) *</label>
+<input type="range" id="rR" min="1" max="30" step="0.1" oninput="syncR(false)"><input type="number" id="rate" value="9.5" step="0.1" oninput="syncR(true)">
+<label data-i="l3">Loan Tenure (Years) *</label>
+<input type="range" id="yR" min="1" max="30" step="1" oninput="syncY(false)"><input type="number" id="years" value="5" oninput="syncY(true)">
+</div>
+<button class="btn-main" onclick="calcEMI()" data-i="btn">✨ Calculate EMI →</button>
+<div id="resultWrap" class="result-wrap">
+<div class="main-result"><span data-i="emiL">MONTHLY EMI</span><h2 id="emi">--</h2></div>
+<div class="grid4">
+<div class="box"><span data-i="t1">Total Interest</span><strong id="tInt">--</strong></div>
+<div class="box"><span data-i="t2">Total Amount</span><strong id="tAmt">--</strong></div>
+<div class="box"><span data-i="t3">Loan Amount</span><strong id="loanAmt">--</strong></div>
+<div class="box"><span data-i="t4">Payable Months</span><strong id="months">--</strong></div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="side">
+<div class="side-card">
+<h3 data-i="htu">✨ How to Use?</h3>
+<div class="step"><div class="step-num">1</div><p data-i="s1"><b>Loan Amount Daalo</b><br>Kitna loan lena hai wo slider se set karo</p></div>
+<div class="step"><div class="step-num">2</div><p data-i="s2"><b>Interest & Tenure</b><br>Byaaj dar aur kitne saal ka loan hai likho</p></div>
+<div class="step"><div class="step-num">3</div><p data-i="s3"><b>EMI Dekho</b><br>Turant monthly EMI, total byaaj aur total amount</p></div>
+</div>
+<div class="side-card" style="background:linear-gradient(135deg,#fef3c7,#fde68a);border-color:#fcd34d;text-align:center"><h3>🎂 Age Calculator</h3><a href="../age-calculator/" style="display:block;background:#0f172a;color:#fff;padding:10px;border-radius:10px;text-decoration:none;font-weight:800;font-size:12px">Try Age Calculator →</a></div>
+<div class="side-card"><h3>🔒 Why KaagazPro?</h3><li style="list-style:none;font-size:12.5px;margin-bottom:6px">✅ 100% private & offline</li><li style="list-style:none;font-size:12.5px;margin-bottom:6px">✅ No login needed</li><li style="list-style:none;font-size:12.5px">✅ Free forever</li></div>
+</div>
+</div>
+
+<div class="faq-sec">
+<h2 class="faq-title" data-i="faqT">❓ EMI FAQs</h2>
+<div class="faq-item" onclick="this.classList.toggle('open')"><div class="faq-q"><span data-i="q1">EMI kaise calculate hota hai?</span><span>▼</span></div><div class="faq-a" data-i="a1">Formula: EMI = P x R x (1+R)^N / [(1+R)^N-1]. Jaha P=Loan, R=Monthly Interest, N=Months. Hamara calculator bank wala hi formula use karta hai.</div></div>
+<div class="faq-item" onclick="this.classList.toggle('open')"><div class="faq-q"><span data-i="q2">Total interest kya hai?</span><span>▼</span></div><div class="faq-a" data-i="a2">Total Interest = (EMI x Months) - Loan Amount. Ye extra paisa hai jo aap bank ko byaaj ke roop me dete ho.</div></div>
+<div class="faq-item" onclick="this.classList.toggle('open')"><div class="faq-q"><span data-i="q3">Kya data save hota hai?</span><span>▼</span></div><div class="faq-a" data-i="a3">Bilkul nahi. Sab calculation browser me hota hai. No server, no tracking. 100% private.</div></div>
+</div>
+
+<footer><div class="foot-inner">
+<div><div style="color:#fff;font-weight:800;font-size:20px;margin-bottom:8px">📄 KaagazPro</div><p style="font-size:12.5px;line-height:1.6;color:#94a3b8">India's Most Trusted Tool. EMI, Age, Image Compressor. 100% Free, Private & Offline.</p><div style="display:flex;gap:6px;margin-top:12px;flex-wrap:wrap"><span style="background:#1e293b;padding:5px 10px;border-radius:20px;font-size:11px">🔒 Private</span><span style="background:#1e293b;padding:5px 10px;border-radius:20px;font-size:11px">⚡ Offline</span><span style="background:#1e293b;padding:5px 10px;border-radius:20px;font-size:11px">🇮🇳 Made in India</span></div></div>
+<div><b style="color:#fff;font-size:12px">POPULAR TOOLS</b><div style="margin-top:12px;display:flex;flex-direction:column;gap:8px;font-size:12.5px"><a href="../age-calculator/" style="color:#94a3b8;text-decoration:none">Age Calculator</a><a href="./" style="color:#22c55e;text-decoration:none;font-weight:700">EMI Calculator</a><a href="/" style="color:#94a3b8;text-decoration:none">All Tools →</a></div></div>
+<div><b style="color:#fff;font-size:12px">LEGAL</b><div style="margin-top:12px;display:flex;flex-direction:column;gap:8px;font-size:12.5px"><a href="/privacy-policy.html" style="color:#94a3b8;text-decoration:none">Privacy</a><a href="/terms.html" style="color:#94a3b8;text-decoration:none">Terms</a><a href="/contact.html" style="color:#94a3b8;text-decoration:none">Contact</a></div></div>
+<div><b style="color:#fff;font-size:12px">FEATURES</b><div style="margin-top:12px;font-size:12px;line-height:1.7;color:#94a3b8">✔ Monthly EMI<br>✔ Total Interest<br>✔ Total Payable<br>✔ 100% private</div></div>
+</div><div style="border-top:1px solid #1e293b;padding:12px;text-align:center;font-size:11px;color:#64748b">© 2025 KaagazPro.com • Made with ❤️ in India</div></footer>
+
+<script>
+let cur=localStorage.getItem('kaagaz_lang')||'hi';
+const dict={
+en:{h1:"EMI Calculator <br><span>Loan EMI in Seconds</span>",h1p:"Calculate Monthly EMI, Total Interest & Total Payable Amount. No data saved.",l1:"Loan Amount (₹) *",l2:"Interest Rate (% per year) *",l3:"Loan Tenure (Years) *",btn:"✨ Calculate EMI →",emiL:"MONTHLY EMI",t1:"Total Interest",t2:"Total Amount",t3:"Loan Amount",t4:"Payable Months",htu:"✨ How to Use?",s1:"<b>Enter Loan Amount</b><br>Set how much loan you need via slider",s2:"<b>Interest & Tenure</b><br>Enter interest rate and loan years",s3:"<b>See EMI</b><br>Instant monthly EMI, total interest and total amount",faqT:"❓ EMI FAQs",q1:"How is EMI calculated?",a1:"Formula: EMI = P x R x (1+R)^N / [(1+R)^N-1]. Where P=Loan, R=Monthly Interest, N=Months.",q2:"What is total interest?",a2:"Total Interest = (EMI x Months) - Loan Amount. Extra money you pay to bank as interest.",q3:"Is data saved?",a3:"No. All calculation happens in browser. No server, no tracking. 100% private."},
+hi:{h1:"EMI कैलकुलेटर <br><span>सेकंड में लोन EMI</span>",h1p:"मासिक EMI, कुल ब्याज और कुल भुगतान राशि निकालें। कोई डेटा सेव नहीं।",l1:"लोन राशि (₹) *",l2:"ब्याज दर (% प्रति वर्ष) *",l3:"लोन अवधि (वर्ष) *",btn:"✨ EMI निकालें →",emiL:"मासिक EMI",t1:"कुल ब्याज",t2:"कुल राशि",t3:"लोन राशि",t4:"कुल महीने",htu:"✨ कैसे इस्तेमाल करें?",s1:"<b>लोन राशि डालें</b><br>कितना लोन लेना है वो स्लाइडर से सेट करें",s2:"<b>ब्याज और अवधि</b><br>ब्याज दर और कितने साल का लोन है लिखें",s3:"<b>EMI देखें</b><br>तुरंत मासिक EMI, कुल ब्याज और कुल राशि",faqT:"❓ EMI अक्सर पूछे जाने वाले सवाल",q1:"EMI कैसे कैलकुलेट होता है?",a1:"फॉर्मूला: EMI = P x R x (1+R)^N / [(1+R)^N-1]. जहाँ P=लोन, R=मासिक ब्याज, N=महीने।",q2:"कुल ब्याज क्या है?",a2:"कुल ब्याज = (EMI x महीने) - लोन राशि। ये अतिरिक्त पैसा है जो आप बैंक को ब्याज के रूप में देते हैं।",q3:"क्या डेटा सेव होता है?",a3:"बिल्कुल नहीं। सारी गणना ब्राउज़र में होती है। कोई सर्वर नहीं, कोई ट्रैकिंग नहीं।"}
+};
+function apply(){document.querySelectorAll('[data-i]').forEach(e=>{let k=e.getAttribute('data-i');if(dict[cur][k])e.innerHTML=dict[cur][k]});document.getElementById('langBtn').innerText=cur==='hi'?'English':'हिंदी'}
+function toggleLang(){cur=cur==='hi'?'en':'hi';localStorage.setItem('kaagaz_lang',cur);apply()}apply();
+function syncA(fromInput){let r=document.getElementById('aR'),i=document.getElementById('amt');if(fromInput)r.value=i.value;else i.value=r.value}
+function syncR(fromInput){let r=document.getElementById('rR'),i=document.getElementById('rate');if(fromInput)r.value=i.value;else i.value=r.value}
+function syncY(fromInput){let r=document.getElementById('yR'),i=document.getElementById('years');if(fromInput)r.value=i.value;else i.value=r.value}
+function calcEMI(){let P=parseFloat(document.getElementById('amt').value),R=parseFloat(document.getElementById('rate').value)/12/100,N=parseFloat(document.getElementById('years').value)*12;if(!P||!R||!N)return alert("Values bharo!");let EMI=P*R*Math.pow(1+R,N)/(Math.pow(1+R,N)-1);let total=EMI*N,interest=total-P;document.getElementById('emi').innerText='₹ '+EMI.toFixed(0).toLocaleString('en-IN');document.getElementById('tInt').innerText='₹ '+interest.toFixed(0).toLocaleString('en-IN');document.getElementById('tAmt').innerText='₹ '+total.toFixed(0).toLocaleString('en-IN');document.getElementById('loanAmt').innerText='₹ '+P.toLocaleString('en-IN');document.getElementById('months').innerText=N;document.getElementById('resultWrap').style.display='block';document.getElementById('resultWrap').scrollIntoView({behavior:'smooth'})}
+</script>
+</body>
+</html>
