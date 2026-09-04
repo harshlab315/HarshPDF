@@ -3,73 +3,252 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Signature Resizer 20KB - KaagazPro</title>
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6640527517870664" crossorigin="anonymous"></script>
+<title>Signature Resizer 20KB - KaagazPro.co.in</title>
 <link href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.6.1/cropper.min.css" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.6.1/cropper.min.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6640527517870664" crossorigin="anonymous"></script>
 <style>
-*{box-sizing:border-box;font-family:Inter,system-ui}body{background:#f6f7fb;margin:0;padding:12px}.card{max-width:900px;margin:auto;background:#fff;border-radius:16px;padding:18px;box-shadow:0 6px 30px rgba(0,0,0,.07)}.box{background:#f0f2f5;border-radius:12px;min-height:260px;display:flex;align-items:center;justify-content:center;overflow:hidden}button{padding:10px 14px;border:0;border-radius:8px;background:#4f46e5;color:#fff;font-weight:600;cursor:pointer;margin:3px}button.small{background:#e5e7eb;color:#111}button.green{background:#16a34a}select,input{padding:8px;border-radius:8px;border:1px solid #ddd}
+*{box-sizing:border-box;font-family:'Inter',system-ui}body{background:#f6f7fb;margin:0;color:#0f172a}
+nav{background:#fff;padding:14px 20px;display:flex;justify-content:space-between;align-items:center;box-shadow:0 2px 10px rgba(0,0,0,.05);position:sticky;top:0;z-index:99}
+.card{max-width:980px;margin:18px auto;background:#fff;border-radius:20px;padding:22px;box-shadow:0 10px 40px rgba(0,0,0,.07)}
+.box{background:#f8fafc;border:1px dashed #e2e8f0;border-radius:14px;min-height:320px;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.uploadGrid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:20px 0}
+.uploadBtn{border:2px dashed #94a3b8;background:#f8fafc;padding:28px;border-radius:18px;text-align:center;cursor:pointer;display:block;transition:.2s}
+.uploadBtn:active{transform:scale(.97)}
+.uploadBtn.camera{border-color:#60a5fa;background:#eff6ff}
+button{padding:12px 18px;border:0;border-radius:10px;background:#4f46e5;color:#fff;font-weight:700;cursor:pointer;margin:3px}
+button.small{background:#f1f5f9;color:#0f172a;border:1px solid #e2e8f0;font-size:13px}
+button.dark{background:#0f172a}button.green{background:#16a34a}
+select{padding:10px 12px;border-radius:10px;border:1px solid #e2e8f0;background:#fff;font-weight:600}
+#previewSection{display:none!important}
+#previewSection.show{display:block!important}
+.lang{display:flex;background:#f1f5f9;border-radius:20px;padding:3px;gap:3px}
+.lang button{padding:6px 14px;border-radius:20px;font-size:12px;background:transparent;color:#64748b;margin:0}
+.lang button.active{background:#0f172a;color:#fff}
+.section{max-width:980px;margin:18px auto;background:#fff;border-radius:20px;padding:22px;box-shadow:0 10px 40px rgba(0,0,0,.07)}
+.howGrid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:14px}
+.step{background:#f8fafc;border:1px solid #e2e8f0;border-radius:14px;padding:14px;text-align:center}
+.step b{width:32px;height:32px;background:#0f172a;color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 8px}
+@media(max-width:800px){.uploadGrid{grid-template-columns:1fr}.howGrid{grid-template-columns:1fr 1fr}}
 </style>
 </head>
 <body>
+<nav>
+<div style="font-weight:800;font-size:20px">Kaagaz<span style="color:#4f46e5">Pro</span><span style="font-size:11px;color:#64748b">.co.in</span></div>
+<div style="display:flex;gap:10px;align-items:center"><div class="lang"><button id="enBtn" class="active" onclick="setLang('en')">EN</button><button id="hiBtn" onclick="setLang('hi')">हि</button></div><a href="../../index.html" style="text-decoration:none;color:#fff;background:#0f172a;padding:8px 16px;border-radius:20px;font-weight:700;font-size:13px">Home</a></div>
+</nav>
+
 <div class="card">
-<h2 style="margin:0">Signature Resizer - 20KB</h2>
-<p style="color:#666;font-size:13px">SSC / UPSC / Bank / Govt Forms ke liye</p>
-<input type="file" id="input" accept="image/*">
-<div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:12px">
+<span style="background:#eff6ff;border:1px solid #bfdbfe;color:#1e40af;padding:6px 12px;border-radius:100px;font-size:11px;font-weight:700">🔒 100% PRIVATE</span>
+<h2 class="tr" data-en="Signature Resizer - 20KB" data-hi="सिग्नेचर रिसाइज़र - 20KB" style="margin:8px 0 4px;font-size:24px;font-weight:800">Signature Resizer - 20KB</h2>
+<p class="tr" data-en="For Forms & Documents - 10KB, 20KB, 50KB, 100KB" data-hi="फॉर्म के लिए - 10KB, 20KB, 50KB, 100KB" style="color:#64748b;font-size:13px;margin:0">For Forms & Documents - 10KB, 20KB, 50KB, 100KB</p>
+
+<!-- YAHI 2 BUTTON PEHLE DIKHENGE -->
+<div id="uploadArea" class="uploadGrid">
+<div class="uploadBtn" onclick="document.getElementById('galleryInput').click()">
+<div style="font-size:40px">🖼️</div>
+<b class="tr" data-en="Choose from Gallery" data-hi="गैलरी से चुनें" style="font-size:16px">Choose from Gallery</b><div style="font-size:12px;color:#64748b;margin-top:4px">JPG, PNG, WEBP</div>
+</div>
+<div class="uploadBtn camera" onclick="document.getElementById('cameraInput').click()">
+<div style="font-size:40px">📷</div>
+<b class="tr" data-en="Take Photo from Camera" data-hi="कैमरा से फोटो लें" style="font-size:16px">Take Photo from Camera</b><div style="font-size:12px;color:#64748b;margin-top:4px">Direct Capture</div>
+</div>
+</div>
+<!-- Hidden inputs - bahar rakhe hai isliye 100% kaam karenge -->
+<input type="file" id="galleryInput" accept="image/*" style="display:none">
+<input type="file" id="cameraInput" accept="image/*" capture="environment" style="display:none">
+
+<!-- YE FILE SELECT KE BAAD AYEGA -->
+<div id="previewSection">
+<div style="display:grid;grid-template-columns:1.2fr.8fr;gap:14px;margin-top:10px">
 <div class="box"><img id="img" style="display:none;max-width:100%"></div>
-<div class="box" style="background:white;border:1px dashed #ccc;flex-direction:column"><canvas id="canvas" width="400" height="150" style="display:none;max-width:100%"></canvas><span id="ph">Preview</span><img id="preview" style="max-width:95%;display:none;margin-top:8px;border:1px solid #eee"><div id="info" style="font-size:12px;margin-top:6px"></div></div>
+<div class="box" style="background:#fff;flex-direction:column"><canvas id="canvas" width="500" height="200" style="display:none;max-width:100%"></canvas><span id="ph" class="tr" data-en="Cropped Preview" data-hi="क्रॉप प्रीव्यू" style="color:#94a3b8">Cropped Preview</span><img id="preview" style="max-width:95%;display:none;margin-top:8px;border-radius:8px"><div id="info" style="font-size:12px;margin-top:8px;font-weight:700;color:#16a34a"></div></div>
 </div>
-
-<div style="margin:10px 0;display:flex;flex-wrap:wrap;gap:4px">
-<button class="small" onclick="cropper.rotate(-90)">↺ Left</button>
-<button class="small" onclick="cropper.rotate(90)">↻ Right</button>
-<button class="small" onclick="cropper.rotate(180)">↻ 180° Up/Down</button>
-<button class="small" onclick="cropper.scaleX(-(cropper.getData().scaleX||1))">⇄ Flip</button>
-<button class="small" onclick="cropper.move(0,-10)">↑</button>
-<button class="small" onclick="cropper.move(0,10)">↓</button>
-<button class="small" onclick="cropper.zoom(0.1)">Zoom +</button>
-<button class="small" onclick="cropper.zoom(-0.1)">Zoom -</button>
+<div style="margin:12px 0;display:flex;flex-wrap:wrap;gap:6px">
+<button class="small" onclick="if(cropper)cropper.rotate(-90)">↺ Left</button><button class="small" onclick="if(cropper)cropper.rotate(90)">↻ Right</button><button class="small" onclick="if(cropper)cropper.rotate(180)">180°</button><button class="small" onclick="if(cropper)cropper.scaleX(-(cropper.getData().scaleX||1))">⇄ Flip</button><button class="small" onclick="if(cropper)cropper.zoom(0.1)">Zoom+</button><button class="small" onclick="if(cropper)cropper.zoom(-0.1)">Zoom-</button><button class="small" style="background:#fee2e2" onclick="resetTool()">🗑️ Delete</button>
 </div>
-
-<div style="display:flex;gap:8px;flex-wrap:wrap;margin:10px 0">
-<select id="size"><option value="20">20 KB - Govt Forms</option><option value="10">10 KB</option><option value="50">50 KB</option><option value="100">100 KB HD</option></select>
+<div style="display:flex;gap:8px;flex-wrap:wrap;background:#f8fafc;padding:12px;border-radius:12px;border:1px solid #e2e8f0;margin:10px 0">
+<select id="size"><option value="20">20 KB</option><option value="10">10 KB</option><option value="50">50 KB</option><option value="100">100 KB HD</option></select>
 <select id="bg"><option value="white">White BG</option><option value="transparent">Transparent</option></select>
-<label style="font-size:12px;background:#eef2ff;padding:8px;border-radius:8px">Ink Dark: <input type="range" id="dark" min="0" max="100" value="20"></label>
+<label style="font-size:12px;background:#fff;padding:8px 12px;border-radius:8px;border:1px solid #e2e8f0">Ink: <input type="range" id="dark" min="0" max="100" value="20"></label>
+</div>
+<button id="cropBtn" class="dark tr" data-en="1. Crop Signature" data-hi="1. क्रॉप करें">1. Crop Signature</button>
+<button id="makeBtn" class="tr" data-en="2. Make File" data-hi="2. फाइल बनाएं">2. Make File</button>
+<button id="downBtn" class="green" style="display:none">⬇️ Download</button>
+</div>
 </div>
 
-<button id="cropBtn" style="background:#111">1. Crop Signature</button>
-<button id="makeBtn">2. Make 20KB</button>
-<button id="downBtn" class="green" style="display:none">Download Signature</button>
-
-<div style="margin-top:14px;background:#f0fdf4;padding:10px;border-radius:8px;font-size:12px">💡 Tip: Signature ko safed paper pe kaale pen se sign karke photo lo, fir crop karo - best result ayega.</div>
+<div class="section">
+<h3 class="tr" data-en="📖 How To Use" data-hi="📖 कैसे इस्तेमाल करें" style="margin:0">📖 How To Use</h3>
+<div class="howGrid"><div class="step"><b>1</b><div class="tr" data-en="Upload" data-hi="अपलोड" style="font-weight:700;font-size:13px">Upload</div><div style="font-size:12px;color:#64748b">Gallery / Camera</div></div><div class="step"><b>2</b><div style="font-weight:700;font-size:13px">Crop</div><div style="font-size:12px;color:#64748b">Signature</div></div><div class="step"><b>3</b><div style="font-weight:700;font-size:13px">Make 20KB</div><div style="font-size:12px;color:#64748b">File</div></div><div class="step"><b>4</b><div style="font-weight:700;font-size:13px">Download</div><div style="font-size:12px;color:#64748b">Free</div></div></div>
 </div>
+
+<div style="text-align:center;padding:18px;color:#94a3b8;font-size:12px">© KaagazPro.co.in - viscosity315@gmail.com</div>
+
 <script>
-let cropper;const img=document.getElementById('img'),input=document.getElementById('input'),canvas=document.getElementById('canvas'),preview=document.getElementById('preview');
-input.addEventListener('change',e=>{const f=e.target.files[0];if(!f)return;img.src=URL.createObjectURL(f);img.style.display='block';if(cropper)cropper.destroy();img.onload=()=>{cropper=new Cropper(img,{viewMode:0,dragMode:'move',autoCropArea:0.8,movable:true,zoomable:true,rotatable:true,scalable:true})}});
-document.getElementById('cropBtn').onclick=()=>{if(!cropper)return alert('Pehle photo select karo');const c=cropper.getCroppedCanvas({width:500,height:200});canvas.width=500;canvas.height=200;const ctx=canvas.getContext('2d');if(document.getElementById('bg').value=='white'){ctx.fillStyle='white';ctx.fillRect(0,0,500,200)}ctx.drawImage(c,0,0,500,200);canvas.style.display='block';document.getElementById('ph').style.display='none'};
-async function makeKB(targetKB){
- let q=0.9;let blob;let w=400;let h=150;
- for(let i=0;i<12;i++){
-  let tc=document.createElement('canvas');tc.width=w;tc.height=h;let tctx=tc.getContext('2d');
-  if(document.getElementById('bg').value=='white'){tctx.fillStyle='white';tctx.fillRect(0,0,w,h)}
-  tctx.filter=`contrast(${100+parseInt(document.getElementById('dark').value)}%) brightness(${100-parseInt(document.getElementById('dark').value)/2}%)`;
+let cropper=null;
+const img=document.getElementById('img'), galleryInput=document.getElementById('galleryInput'), cameraInput=document.getElementById('cameraInput'), canvas=document.getElementById('canvas'), preview=document.getElementById('preview'), previewSection=document.getElementById('previewSection'), uploadArea=document.getElementById('uploadArea');
+
+function setLang(l){
+ document.getElementById('enBtn').classList.toggle('active',l=='en');
+ document.getElementById('hiBtn').classList.toggle('active',l=='hi');
+ document.querySelectorAll('.tr').forEach(el=>{const t=el.getAttribute('data-'+l); if(t) el.innerText=t;});
+ localStorage.setItem('kl',l);
+}
+setLang(localStorage.getItem('kl')||'en');
+
+function handleFile(file){
+ if(!file) return;
+ if(!file.type.startsWith('image/')){alert('Only image');return;}
+ const url=URL.createObjectURL(file);
+ img.src=url;
+ img.style.display='block';
+ uploadArea.style.display='none';
+ previewSection.classList.add('show');
+ if(cropper) cropper.destroy();
+ img.onload=()=>{
+   cropper=new Cropper(img,{viewMode:1,dragMode:'move',autoCropArea:0.9,movable:true,zoomable:true,rotatable:true,scalable:true});
+ };
+ setTimeout(()=>{ previewSection.scrollIntoView({behavior:'smooth'}); },200);
+}
+
+galleryInput.addEventListener('change',function(){ if(this.files[0]) handleFile(this.files[0]); this.value=''; });
+cameraInput.addEventListener('change',function(){ if(this.files[0]) handleFile(this.files[0]); this.value=''; });
+
+function resetTool(){
+ if(cropper){cropper.destroy(); cropper=null;}
+ img.style.display='none'; canvas.style.display='none'; preview.style.display='none';
+ document.getElementById('ph').style.display='block';
+ document.getElementById('info').innerText='';
+ document.getElementById('downBtn').style.display='none';
+ previewSection.classList.remove('show');
+ uploadArea.style.display='grid';
+}
+
+document.getElementById('cropBtn').onclick=function(){
+ if(!cropper){alert('Select photo first');return;}
+ const c=cropper.getCroppedCanvas({width:600,height:200});
+ canvas.width=600; canvas.height=200;
+ const ctx=canvas.getContext('2d');
+ if(document.getElementById('bg').value=='white'){ctx.fillStyle='white';ctx.fillRect(0,0,600,200);}
+ ctx.drawImage(c,0,0,600,240);
+ canvas.style.display='block';
+ document.getElementById('ph').style.display='none';
+};
+
+async function makeKB(target){
+ let q=0.9,w=500,h=200,blob;
+ for(let i=0;i<20;i++){
+  let tc=document.createElement('canvas'); tc.width=w; tc.height=h;
+  let tctx=tc.getContext('2d');
+  if(document.getElementById('bg').value=='white'){tctx.fillStyle='white';tctx.fillRect(0,0,w,h);}
+  tctx.filter=`contrast(${100+parseInt(document.getElementById('dark').value)}%)`;
   tctx.drawImage(canvas,0,0,w,h);
   blob=await new Promise(r=>tc.toBlob(b=>r(b),'image/jpeg',q));
-  let kb=blob.size/1024;if(kb<=targetKB+2&&kb>=targetKB-5)break;
-  if(kb>targetKB){q-=0.1;if(q<0.2){q=0.7;w=Math.round(w*0.85);h=Math.round(h*0.85)}}else{q+=0.05}
+  let kb=blob.size/1024;
+  if(kb<=target+2 && kb>=target-6) break;
+  if(kb>target){ q-=0.08; if(q<0.2){q=0.7; w=Math.round(w*0.9); h=Math.round(h*0.9);} } else { q+=0.03; }
  }
  return blob;
 }
-document.getElementById('makeBtn').onclick=async()=>{
- if(!canvas.width||canvas.style.display=='none')return alert('Pehle crop karo');
+
+document.getElementById('makeBtn').onclick=async function(){
+ if(canvas.style.display=='none'){alert('First Crop');return;}
+ this.innerText='Processing...';
  const target=parseInt(document.getElementById('size').value);
  const blob=await makeKB(target);
- const url=URL.createObjectURL(blob);preview.src=url;preview.style.display='block';
- document.getElementById('info').innerText=`Ready: ${(blob.size/1024).toFixed(1)} KB - ${blob.size<20480?'✅ Form ke liye OK':''}`;
- const db=document.getElementById('downBtn');db.style.display='inline-block';
- db.onclick=()=>{const a=document.createElement('a');a.href=url;a.download=`signature-${target}kb-kaagazpro.jpg`;a.click()};
+ const url=URL.createObjectURL(blob);
+ preview.src=url; preview.style.display='block';
+ document.getElementById('info').innerText=`✅ ${(blob.size/1024).toFixed(1)} KB Ready`;
+ const db=document.getElementById('downBtn'); db.style.display='inline-block';
+ db.onclick=function(){ const a=document.createElement('a'); a.href=url; a.download=`signature-${target}kb-kaagazpro.jpg`; a.click(); };
+ document.getElementById('makeBtn').innerText='2. Make File';
 };
 </script>
+
+<style>
+.kp-footer{background:#0f172a;color:#cbd5e1;padding:40px 20px 0;font-family:'Inter',system-ui;margin-top:40px}
+.kp-footer-wrap{max-width:1100px;margin:auto;display:grid;grid-template-columns:1.5fr 1fr 1fr 1.3fr;gap:28px;padding-bottom:28px}
+.kp-footer h4{color:#fff;font-size:14px;font-weight:800;margin:0 0 14px;letter-spacing:.5px}
+.kp-footer a{color:#94a3b8;text-decoration:none;font-size:13.5px;line-height:2.2;display:block;transition:.2s}
+.kp-footer a:hover{color:#fff;transform:translateX(3px)}
+.kp-logo{font-size:22px;font-weight:800;color:#fff;margin-bottom:8px}
+.kp-logo span{color:#6366f1}
+.kp-desc{font-size:13px;color:#94a3b8;line-height:1.7;margin:10px 0 14px}
+.kp-badge{display:inline-flex;background:#1e293b;border:1px solid #334155;color:#e2e8f0;padding:6px 12px;border-radius:100px;font-size:11px;font-weight:700;margin:4px 4px 0 0}
+.kp-news{display:flex;gap:8px;margin-top:10px}
+.kp-news input{flex:1;padding:10px 12px;border-radius:10px;border:1px solid #334155;background:#1e293b;color:#fff;font-size:13px;outline:none}
+.kp-news button{background:#4f46e5;color:#fff;border:none;padding:10px 16px;border-radius:10px;font-weight:700;font-size:13px;cursor:pointer}
+.kp-bottom{border-top:1px solid #1e293b;padding:16px 0;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;max-width:1100px;margin:auto;font-size:12px;color:#64748b}
+.kp-bottom a{color:#64748b;display:inline}
+.kp-social{display:flex;gap:10px;margin-top:12px}
+.kp-social a{width:36px;height:36px;background:#1e293b;border:1px solid #334155;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:16px}
+.kp-social a:hover{background:#4f46e5;border-color:#4f46e5;color:#fff}
+@media(max-width:800px){.kp-footer-wrap{grid-template-columns:1fr 1fr}.kp-footer-wrap>div:first-child{grid-column:1/-1}.kp-bottom{flex-direction:column;text-align:center}}
+@media(max-width:500px){.kp-footer-wrap{grid-template-columns:1fr}}
+</style>
+
+<footer class="kp-footer">
+  <div class="kp-footer-wrap">
+    <!-- 1. Brand -->
+    <div>
+      <div class="kp-logo">Kaagaz<span>Pro</span><span style="font-size:11px;color:#94a3b8">.co.in</span></div>
+      <div class="kp-desc">India's Most Trusted 100% Private & Offline Document Tools. No upload to server, no data stored. Made in Kanpur, UP for every Indian.</div>
+      <div>
+        <span class="kp-badge">🔒 100% Private</span>
+        <span class="kp-badge">⚡ Offline</span>
+        <span class="kp-badge">💚 Free Forever</span>
+      </div>
+      <div class="kp-social">
+        <a href="mailto:viscosity315@gmail.com" title="Email">📧</a>
+        <a href="#" title="Instagram">📸</a>
+        <a href="#" title="Share">🔗</a>
+      </div>
+    </div>
+
+    <!-- 2. Tools -->
+    <div>
+      <h4>🛠️ OUR TOOLS</h4>
+      <a href="/tools/image-compressor/">Image Compressor - 20KB</a>
+      <a href="/tools/signature/">Signature Resizer - 20KB</a>
+      <a href="/tools/photo-resizer/">Photo Resizer - Passport Size</a>
+      <a href="/tools/jpg-to-pdf/">JPG to PDF Converter</a>
+      <a href="/tools/pdf-compressor/">PDF Compressor</a>
+      <a href="/index.html">All Tools →</a>
+    </div>
+
+    <!-- 3. Legal -->
+    <div>
+      <h4>📜 LEGAL & HELP</h4>
+      <a href="/about.html">About Us</a>
+      <a href="/contact.html">Contact Us</a>
+      <a href="/privacy-policy.html">Privacy Policy</a>
+      <a href="/terms.html">Terms & Conditions</a>
+      <a href="/disclaimer.html">Disclaimer</a>
+      <a href="/contact.html">Report a Bug</a>
+    </div>
+
+    <!-- 4. Contact -->
+    <div>
+      <h4>📍 CONTACT</h4>
+      <a href="mailto:viscosity315@gmail.com">📧 viscosity315@gmail.com</a>
+      <a>📍 Kanpur, Uttar Pradesh, India</a>
+      <a>⏰ Reply within 24 Hours</a>
+      <a>🌐 www.kaagazpro.co.in</a>
+      <div class="kp-news">
+        <input type="email" placeholder="Your email for updates">
+        <button>Join</button>
+      </div>
+      <div style="font-size:11px;color:#64748b;margin-top:8px">No spam, only tool updates.</div>
+    </div>
+  </div>
+
+  <div class="kp-bottom">
+    <div>© 2025 <b style="color:#e2e8f0">KaagazPro.co.in</b> - Made with ❤️ in India | All Rights Reserved | 100% Safe & Secure</div>
+    <div>🇮🇳 Made in Kanpur, UP | <a href="/privacy-policy.html">Privacy</a> • <a href="/terms.html">Terms</a> • <a href="/contact.html">Contact</a></div>
+  </div>
+</footer>
+
 </body>
 </html>
