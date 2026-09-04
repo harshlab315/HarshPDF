@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Strong Password Generator & Checker - KaagazPro</title>
+<meta name="description" content="Generate Strong Password with Numbers, Symbols, Uppercase. Check Password Strength instantly. 100% private offline.">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6640527517870664" crossorigin="anonymous"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Plus+Jakarta+Sans:wght@700;800&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;font-family:'Inter',sans-serif}body{margin:0;background:#f6f7fb;color:#0f172a}
+.header{background:#1e40af;color:#fff;padding:12px 18px;display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;z-index:99}
+.logo{font-family:'Plus Jakarta Sans';font-weight:800;font-size:20px}.hr{display:flex;gap:8px;align-items:center}
+.lang-btn{background:#fff;color:#1e40af;border:0;padding:7px 14px;border-radius:20px;font-weight:800;cursor:pointer;font-size:12px}
+.all-btn{color:#fff;text-decoration:none;font-size:12px;background:rgba(255,255,255,.18);padding:7px 14px;border-radius:20px}
+.wrap{max-width:1100px;margin:18px auto;padding:0 14px;display:grid;grid-template-columns:1.15fr 0.85fr;gap:16px}@media(max-width:850px){.wrap{grid-template-columns:1fr}}
+.hero-card{background:linear-gradient(135deg,#ffffff 0%,#f0f7ff 100%);border-radius:20px;padding:22px;border:1px solid #e2e8f0;box-shadow:0 10px 30px rgba(30,64,175,0.06)}
+.badge-row{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px}.badge{font-size:11px;font-weight:700;padding:6px 12px;border-radius:100px;border:1px solid #e2e8f0;background:#fff}
+.badge.green{background:#dcfce7;border-color:#bbf7d0;color:#166534}.badge.blue{background:#dbeafe;border-color:#bfdbfe;color:#1e40af}.badge.purple{background:#f3e8ff;border-color:#e9d5ff;color:#6b21a8}
+.hero-card h1{font-family:'Plus Jakarta Sans';font-size:30px;font-weight:800;line-height:1.05;margin:0}.hero-card h1 span{background:linear-gradient(90deg,#1e40af,#7c3aed,#ec4899);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.hero-card p{color:#64748b;font-size:13.5px;margin:8px 0 0;line-height:1.5}
+.input-card{background:#fff;border-radius:20px;padding:20px;border:1px solid #e2e8f0;margin-top:14px}
+.ctrl label{font-size:11px;font-weight:800;color:#334155;text-transform:uppercase;margin:10px 0 6px;display:block}
+.ctrl input[type=range]{width:100%;accent-color:#1e40af}
+.ctrl input[type=text]{width:100%;padding:12px 14px;border:1.5px solid #e2e8f0;border-radius:12px;font-size:14px;font-weight:600;background:#f8fafc}
+.opt-row{display:flex;justify-content:space-between;align-items:center;background:#f8fafc;border:1px solid #e2e8f0;padding:10px 12px;border-radius:10px;margin-bottom:8px;font-size:13px;font-weight:600}
+.opt-row input{width:18px;height:18px}
+.pass-box{background:linear-gradient(135deg,#1e40af,#7c3aed);color:#fff;border-radius:16px;padding:18px;text-align:center;margin-top:14px;position:relative}
+.pass-box h2{margin:0;font-size:22px;letter-spacing:1px;word-break:break-all}
+.btn-main{width:100%;margin-top:12px;background:linear-gradient(90deg,#1e40af,#7c3aed);color:#fff;border:none;padding:13px;border-radius:12px;font-weight:800;cursor:pointer}
+.btn-sec{background:#0f172a;color:#fff;border:none;padding:8px 12px;border-radius:8px;font-size:12px;font-weight:700;cursor:pointer}
+.strength-bar{height:8px;background:#e2e8f0;border-radius:20px;overflow:hidden;margin-top:8px}.strength-fill{height:100%;width:0%;transition:.3s}
+.side{position:sticky;top:76px;height:fit-content}.side-card{background:#fff;border:1px solid #e2e8f0;border-radius:18px;padding:18px;margin-bottom:12px}
+.step{display:flex;gap:12px;margin-bottom:12px}.step-num{width:26px;height:26px;border-radius:8px;background:#eef2ff;color:#1e40af;font-weight:800;font-size:12px;display:flex;align-items:center;justify-content:center}
+.faq-sec{max-width:1100px;margin:10px auto 24px;padding:0 14px}
+.faq-title{font-family:'Plus Jakarta Sans';font-size:20px;font-weight:800;margin:18px 0 12px}
+.faq-item{background:#fff;border:1px solid #e2e8f0;border-radius:14px;margin-bottom:10px;overflow:hidden;cursor:pointer}
+.faq-q{padding:14px 16px;font-weight:700;font-size:13.5px;display:flex;justify-content:space-between;align-items:center}
+.faq-a{padding:0 16px 14px;color:#475569;font-size:12.5px;line-height:1.6;display:none}
+.faq-item.open.faq-a{display:block!important}
+footer{background:#0f172a;color:#cbd5e1}.foot-inner{max-width:1100px;margin:0 auto;padding:28px 18px;display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:18px}@media(max-width:800px){.foot-inner{grid-template-columns:1fr 1fr}}
+</style>
+</head>
+<body>
+<div class="header"><div class="logo">📄 KaagazPro</div><div class="hr"><button class="lang-btn" id="langBtn" onclick="toggleLang()">हिंदी</button><a class="all-btn" href="/">← All Tools</a></div></div>
+
+<div class="wrap"><div>
+<div class="hero-card">
+<div class="badge-row"><span class="badge green">✨ Free Forever</span><span class="badge blue">🔒 100% Offline</span><span class="badge purple">⚡ Strong + Checker</span></div>
+<h1 data-i="h1">Password Generator <br><span>Strong & Secure</span></h1>
+<p data-i="h1p">Create super strong password with numbers, symbols, uppercase. Check strength instantly.</p>
+</div>
+
+<div class="input-card">
+<div class="ctrl">
+<label data-i="l1">Password Length</label>
+<input type="range" id="lenR" min="4" max="50" value="16" oninput="syncLen(false)"><div style="display:flex;justify-content:space-between;font-size:12px;font-weight:700"><span>4</span><b id="lenVal">16</b><span>50</span></div>
+
+<div class="opt-row"><span data-i="o1">Include Uppercase (A-Z)</span><input type="checkbox" id="upper" checked></div>
+<div class="opt-row"><span data-i="o2">Include Lowercase (a-z)</span><input type="checkbox" id="lower" checked></div>
+<div class="opt-row"><span data-i="o3">Include Numbers (0-9)</span><input type="checkbox" id="num" checked></div>
+<div class="opt-row"><span data-i="o4">Include Symbols (!@#$%)</span><input type="checkbox" id="sym" checked></div>
+</div>
+
+<div class="pass-box"><h2 id="outPass">Click Generate</h2><button class="btn-sec" style="margin-top:10px;background:#fff;color:#1e40af" onclick="copyPass()" data-i="copy">📋 Copy</button></div>
+<button class="btn-main" onclick="generate()" data-i="btn">✨ Generate Strong Password →</button>
+
+<hr style="margin:18px 0;border:0;border-top:1px solid #e2e8f0">
+<label style="font-size:11px;font-weight:800;text-transform:uppercase" data-i="checkL">Check Your Password Strength</label>
+<input type="text" id="checkIn" placeholder="Type any password here..." oninput="checkStrength(this.value)" style="margin-top:6px">
+<div class="strength-bar"><div id="strFill" class="strength-fill"></div></div>
+<p id="strText" style="font-size:12.5px;font-weight:700;margin:8px 0 0">-</p>
+<p id="strTime" style="font-size:11px;color:#64748b;margin:2px 0 0"></p>
+</div>
+</div>
+
+<div class="side">
+<div class="side-card"><h3 data-i="htu">✨ How to Use?</h3>
+<div class="step"><div class="step-num">1</div><p data-i="s1"><b>Select Options</b><br>Choose numbers, symbols, uppercase as you want</p></div>
+<div class="step"><div class="step-num">2</div><p data-i="s2"><b>Generate</b><br>Click Generate, password will be created instantly</p></div>
+<div class="step"><div class="step-num">3</div><p data-i="s3"><b>Check Strength</b><br>Below you can check how strong your old password is</p></div>
+</div>
+<div class="side-card" style="background:linear-gradient(135deg,#dcfce7,#bbf7d0);text-align:center"><h3 data-i="tip">💡 Strong Password = 16+ characters with Mix</h3></div>
+</div>
+</div>
+
+<div class="faq-sec">
+<h2 class="faq-title" data-i="faqT">❓ Password FAQs</h2>
+<div class="faq-item" onclick="this.classList.toggle('open')"><div class="faq-q"><span data-i="q1">What is a strong password?</span><span>▼</span></div><div class="faq-a" data-i="a1">Strong password has 16+ characters with uppercase, lowercase, numbers and symbols. It takes years to crack.</div></div>
+<div class="faq-item" onclick="this.classList.toggle('open')"><div class="faq-q"><span data-i="q2">Is my password saved?</span><span>▼</span></div><div class="faq-a" data-i="a2">No, 100% private. Password is generated in your browser only. We never store it.</div></div>
+<div class="faq-item" onclick="this.classList.toggle('open')"><div class="faq-q"><span data-i="q3">Which password is best?</span><span>▼</span></div><div class="faq-a" data-i="a3">Use at least 16 characters, mix A-Z, a-z, 0-9,!@#$. Avoid your name or DOB.</div></div>
+</div>
+
+<footer><div class="foot-inner"><div><div style="color:#fff;font-weight:800;font-size:20px">📄 KaagazPro</div><p style="font-size:12.5px;color:#94a3b8">India's Most Trusted Tools - 100% Free, Offline & Private.</p></div><div><b style="color:#fff;font-size:12px">POPULAR</b><div style="margin-top:10px;display:flex;flex-direction:column;gap:6px;font-size:12.5px"><a href="../bill-generator/" style="color:#94a3b8;text-decoration:none">Bill Generator</a><a href="../emi-calculator/" style="color:#94a3b8;text-decoration:none">EMI Calculator</a><a href="./" style="color:#22c55e;text-decoration:none;font-weight:700">Password Generator</a></div></div><div><b style="color:#fff;font-size:12px">LEGAL</b><div style="margin-top:10px;display:flex;flex-direction:column;gap:6px;font-size:12.5px"><a href="/privacy-policy.html" style="color:#94a3b8;text-decoration:none">Privacy</a><a href="/contact.html" style="color:#94a3b8;text-decoration:none">Contact</a></div></div><div><b style="color:#fff;font-size:12px">FEATURES</b><div style="margin-top:10px;font-size:12px;color:#94a3b8">✔ Numbers + Symbols<br>✔ Strength Checker<br>✔ Crack Time<br>✔ Offline</div></div></div><div style="border-top:1px solid #1e293b;padding:12px;text-align:center;font-size:11px;color:#64748b">© 2025 KaagazPro.com • Made with ❤️ in India</div></footer>
+
+<script>
+let cur=localStorage.getItem('kaagaz_lang')||'en';
+const dict={
+en:{h1:"Password Generator <br><span>Strong & Secure</span>",h1p:"Create super strong password with numbers, symbols, uppercase. Check strength instantly.",l1:"Password Length",o1:"Include Uppercase (A-Z)",o2:"Include Lowercase (a-z)",o3:"Include Numbers (0-9)",o4:"Include Symbols (!@#$%)",btn:"✨ Generate Strong Password →",copy:"📋 Copy",checkL:"Check Your Password Strength",htu:"✨ How to Use?",s1:"<b>Select Options</b><br>Choose numbers, symbols, uppercase as you want",s2:"<b>Generate</b><br>Click Generate, password will be created instantly",s3:"<b>Check Strength</b><br>Below you can check how strong your old password is",faqT:"❓ Password FAQs",q1:"What is a strong password?",a1:"Strong password has 16+ characters with uppercase, lowercase, numbers and symbols. It takes years to crack.",q2:"Is my password saved?",a2:"No, 100% private. Password is generated in your browser only. We never store it.",q3:"Which password is best?",a3:"Use at least 16 characters, mix A-Z, a-z, 0-9,!@#$. Avoid your name or DOB.",tip:"💡 Strong Password = 16+ characters with Mix"},
+hi:{h1:"पासवर्ड जनरेटर <br><span>मजबूत और सुरक्षित</span>",h1p:"नंबर, सिंबल, बड़े-छोटे अक्षरों वाला मजबूत पासवर्ड बनाएं और उसकी ताकत चेक करें।",l1:"पासवर्ड की लंबाई",o1:"बड़े अक्षर (A-Z) शामिल करें",o2:"छोटे अक्षर (a-z) शामिल करें",o3:"नंबर (0-9) शामिल करें",o4:"सिंबल (!@#$%) शामिल करें",btn:"✨ मजबूत पासवर्ड बनाएं →",copy:"📋 कॉपी करें",checkL:"अपने पासवर्ड की ताकत चेक करें",htu:"✨ कैसे इस्तेमाल करें?",s1:"<b>ऑप्शन चुनें</b><br>नंबर, सिंबल, बड़े अक्षर जैसा चाहें चुनें",s2:"<b>जनरेट करें</b><br>Generate पर क्लिक करें, पासवर्ड तुरंत बनेगा",s3:"<b>ताकत चेक करें</b><br>नीचे आप अपने पुराने पासवर्ड की ताकत भी चेक कर सकते हैं",faqT:"❓ पासवर्ड से जुड़े सवाल",q1:"मजबूत पासवर्ड क्या होता है?",a1:"मजबूत पासवर्ड 16+ अक्षरों का होता है जिसमें बड़े-छोटे अक्षर, नंबर और सिंबल होते हैं। इसे क्रैक होने में सालों लगते हैं।",q2:"क्या मेरा पासवर्ड सेव होता है?",a2:"नहीं, 100% प्राइवेट। पासवर्ड आपके ब्राउज़र में ही बनता है। हम सेव नहीं करते।",q3:"कौन सा पासवर्ड सबसे अच्छा है?",a3:"कम से कम 16 अक्षर, A-Z, a-z, 0-9,!@#$ मिलाकर बनाएं। अपना नाम या जन्मतिथि न डालें।",tip:"💡 मजबूत पासवर्ड = 16+ अक्षर + Mix"}
+};
+function apply(){document.querySelectorAll('[data-i]').forEach(e=>{let k=e.getAttribute('data-i');if(dict[cur][k])e.innerHTML=dict[cur][k]});document.getElementById('langBtn').innerText=cur==='hi'?'English':'हिंदी'}function toggleLang(){cur=cur==='hi'?'en':'hi';localStorage.setItem('kaagaz_lang',cur);apply()}apply();
+
+function syncLen(){document.getElementById('lenVal').innerText=document.getElementById('lenR').value}
+function generate(){
+let len=parseInt(document.getElementById('lenR').value);
+let upper=document.getElementById('upper').checked;
+let lower=document.getElementById('lower').checked;
+let num=document.getElementById('num').checked;
+let sym=document.getElementById('sym').checked;
+let chars=""; if(upper) chars+="ABCDEFGHIJKLMNOPQRSTUVWXYZ"; if(lower) chars+="abcdefghijklmnopqrstuvwxyz"; if(num) chars+="0123456789"; if(sym) chars+="!@#$%^&*()_+-=[]{}|;:,.<>?";
+if(!chars){alert("Select at least one option");return;}
+let pass=""; for(let i=0;i<len;i++){pass+=chars.charAt(Math.floor(Math.random()*chars.length));}
+document.getElementById('outPass').innerText=pass;
+checkStrength(pass);
+document.getElementById('checkIn').value=pass;
+}
+function copyPass(){let t=document.getElementById('outPass').innerText; if(t==="Click Generate") return; navigator.clipboard.writeText(t); alert("Copied: "+t);}
+
+function checkStrength(p){
+let score=0; if(!p){document.getElementById('strText').innerText="-";document.getElementById('strFill').style.width="0%";document.getElementById('strTime').innerText="";return;}
+if(p.length>=8) score++; if(p.length>=12) score++; if(p.length>=16) score++;
+if(/[A-Z]/.test(p)) score++; if(/[0-9]/.test(p)) score++; if(/[^A-Za-z0-9]/.test(p)) score++;
+let perc=Math.min(score*16.6,100);
+let fill=document.getElementById('strFill'), txt=document.getElementById('strText'), time=document.getElementById('strTime');
+fill.style.width=perc+"%";
+if(score<=2){fill.style.background="#ef4444"; txt.innerText=cur==='hi'?"बहुत कमजोर ❌":"Very Weak ❌"; txt.style.color="#ef4444"; time.innerText="Crack Time: Instant / तुरंत हैक";}
+else if(score<=3){fill.style.background="#f97316"; txt.innerText=cur==='hi'?"कमजोर ⚠️":"Weak ⚠️"; txt.style.color="#f97316"; time.innerText="Crack Time: Few Minutes";}
+else if(score<=4){fill.style.background="#eab308"; txt.innerText=cur==='hi'?"ठीक-ठाक 🙂":"Medium 🙂"; txt.style.color="#eab308"; time.innerText="Crack Time: Few Hours";}
+else if(score<=5){fill.style.background="#22c55e"; txt.innerText=cur==='hi'?"मजबूत ✅":"Strong ✅"; txt.style.color="#22c55e"; time.innerText="Crack Time: Years / सालों लगेंगे";}
+else{fill.style.background="#16a34a"; txt.innerText=cur==='hi'?"बहुत मजबूत 🔒":"Very Strong 🔒"; txt.style.color="#16a34a"; time.innerText="Crack Time: Centuries / सदियों लगेंगी";}
+}
+syncLen(); generate();
+</script>
+</body>
+</html>
