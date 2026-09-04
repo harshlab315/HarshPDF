@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Age Calculator - Exact Age in Years Months Days - KaagazPro</title>
+<meta name="description" content="Calculate exact age in years months days. Light, fast, 100% private.">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6640527517870664" crossorigin="anonymous"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Plus+Jakarta+Sans:wght@700;800&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;font-family:'Inter',sans-serif}
+body{margin:0;background:#f6f7fb;color:#0f172a}
+.header{background:#1e40af;color:#fff;padding:12px 18px;display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;z-index:99}
+.logo{font-family:'Plus Jakarta Sans';font-weight:800;font-size:20px;display:flex;align-items:center;gap:8px}
+.hr{display:flex;gap:8px;align-items:center}
+.lang-btn{background:#fff;color:#1e40af;border:0;padding:7px 14px;border-radius:20px;font-weight:800;cursor:pointer;font-size:12px}
+.all-btn{color:#fff;text-decoration:none;font-size:12px;background:rgba(255,255,255,.18);padding:7px 14px;border-radius:20px}
+.wrap{max-width:1100px;margin:18px auto;padding:0 14px;display:grid;grid-template-columns:1.15fr 0.85fr;gap:16px}
+@media(max-width:850px){.wrap{grid-template-columns:1fr}.hero h1{font-size:28px!important}}
+.hero-card{background:linear-gradient(135deg,#ffffff 0%,#f0f7ff 100%);border-radius:20px;padding:22px;border:1px solid #e2e8f0;box-shadow:0 10px 30px rgba(30,64,175,0.06);position:relative;overflow:hidden}
+.hero-card::after{content:"";position:absolute;top:-40px;right:-40px;width:160px;height:160px;background:radial-gradient(circle,#a5b4fc 0%,transparent 70%);opacity:0.4}
+.badge-row{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px}
+.badge{font-size:11px;font-weight:700;padding:6px 12px;border-radius:100px;border:1px solid #e2e8f0;background:#fff}
+.badge.green{background:#dcfce7;border-color:#bbf7d0;color:#166534}
+.badge.blue{background:#dbeafe;border-color:#bfdbfe;color:#1e40af}
+.badge.purple{background:#f3e8ff;border-color:#e9d5ff;color:#6b21a8}
+.hero-card h1{font-family:'Plus Jakarta Sans';font-size:32px;font-weight:800;line-height:1.05;margin:0}
+.hero-card h1 span{background:linear-gradient(90deg,#1e40af,#7c3aed,#ec4899);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.hero-card p{color:#64748b;font-size:13.5px;margin:8px 0 0;line-height:1.5}
+.input-card{background:#fff;border-radius:20px;padding:20px;border:1px solid #e2e8f0;box-shadow:0 8px 24px rgba(0,0,0,0.05);margin-top:14px}
+.ctrl{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+@media(max-width:600px){.ctrl{grid-template-columns:1fr}}
+.ctrl-item label{font-size:11px;font-weight:800;color:#334155;letter-spacing:0.5px;text-transform:uppercase;margin-bottom:6px;display:block}
+.ctrl-item input{width:100%;padding:12px 14px;border:1.5px solid #e2e8f0;border-radius:12px;font-size:14px;font-weight:600;background:#f8fafc;outline:none;transition:0.2s}
+.ctrl-item input:focus{background:#fff;border-color:#1e40af;box-shadow:0 0 0 4px rgba(30,64,175,0.1)}
+.btn-main{width:100%;margin-top:14px;background:linear-gradient(90deg,#1e40af,#7c3aed);color:#fff;border:none;padding:14px;border-radius:14px;font-weight:800;font-size:15px;cursor:pointer;box-shadow:0 10px 20px rgba(30,64,175,0.2);transition:0.2s}
+.btn-main:hover{transform:translateY(-1px);box-shadow:0 14px 28px rgba(30,64,175,0.25)}
+.btn-main:active{transform:scale(0.98)}
+.result-wrap{margin-top:16px;display:none}
+.main-result{background:linear-gradient(135deg,#1e40af 0%,#7c3aed 50%,#ec4899 100%);border-radius:18px;padding:20px;text-align:center;color:#fff;position:relative;overflow:hidden}
+.main-result::before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,transparent,rgba(255,255,255,0.15),transparent);animation:shine 2.2s infinite}
+@keyframes shine{0%{transform:translateX(-100%)}100%{transform:translateX(100%)}}
+.main-result span{font-size:10px;font-weight:800;letter-spacing:1.2px;opacity:0.8;text-transform:uppercase}
+.main-result h2{font-family:'Plus Jakarta Sans';font-size:30px;margin:6px 0 0;font-weight:800}
+.grid4{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px}
+.box{background:#fff;border:1px solid #e2e8f0;border-radius:14px;padding:14px;text-align:center;transition:0.2s}
+.box:hover{transform:translateY(-2px);box-shadow:0 8px 20px rgba(0,0,0,0.06);border-color:#cbd5e1}
+.box span{font-size:10px;font-weight:800;color:#94a3b8;letter-spacing:0.8px;text-transform:uppercase}
+.box strong{font-family:'Plus Jakarta Sans';font-size:20px;display:block;margin-top:4px;color:#0f172a}
+.side{position:sticky;top:76px;height:fit-content}
+.side-card{background:#fff;border:1px solid #e2e8f0;border-radius:18px;padding:18px;box-shadow:0 8px 24px rgba(0,0,0,0.04);margin-bottom:12px}
+.side-card h3{font-family:'Plus Jakarta Sans';font-size:14px;font-weight:800;margin:0 0 10px}
+.side-card li{font-size:12.5px;color:#475569;margin-bottom:8px;list-style:none;display:flex;gap:8px}
+.promo{background:linear-gradient(135deg,#fef3c7 0%,#fde68a 100%);border:1px solid #fcd34d;border-radius:16px;padding:16px;text-align:center}
+</style>
+</head>
+<body>
+<div class="header"><div class="logo">📄 KaagazPro</div><div class="hr"><button class="lang-btn" id="langBtn" onclick="toggleLang()">हिंदी</button><a class="all-btn" href="/">← All Tools</a></div></div>
+
+<div class="wrap">
+<div>
+<div class="hero-card">
+<div class="badge-row"><span class="badge green">✨ 100% Accurate</span><span class="badge blue">🔒 Private & Offline</span><span class="badge purple">⚡ Instant Result</span></div>
+<h1>Calculate Your Exact Age <br><span>In Years, Months & Days</span></h1>
+<p>Lightning fast, beautiful & 100% private. No data saved — everything happens in your browser.</p>
+</div>
+
+<div class="input-card">
+<div class="ctrl">
+<div class="ctrl-item"><label data-i="dobL">Date of Birth *</label><input type="date" id="dob"></div>
+<div class="ctrl-item"><label data-i="targetL">Calculate As On Date *</label><input type="date" id="targetDate"></div>
+</div>
+<button class="btn-main" onclick="calculateAge()" data-i="btn">✨ Calculate My Exact Age →</button>
+
+<div id="resultWrap" class="result-wrap">
+<div class="main-result">
+<span data-i="exact">Your Exact Age</span>
+<h2 id="exactAge">--</h2>
+</div>
+<div class="grid4">
+<div class="box"><span>Total Months</span><strong id="totalMonths">--</strong></div>
+<div class="box"><span>Total Weeks</span><strong id="totalWeeks">--</strong></div>
+<div class="box"><span>Total Days</span><strong id="totalDays">--</strong></div>
+<div class="box"><span>Next Birthday</span><strong id="nextBirthday">--</strong></div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="side">
+<div class="side-card"><h3>✨ How to Use?</h3><li>📅 Select your DOB correctly</li><li>📆 Choose date to calculate on</li><li>⚡ Tap calculate - done!</li></div>
+<div class="side-card promo"><h3 style="margin-bottom:6px">📸 Need 20KB Photo?</h3><p style="font-size:12px;color:#92400e;margin:0 0 10px">Compress up to 10 photos instantly</p><a href="/tools/compressor" style="display:block;background:#0f172a;color:#fff;padding:10px;border-radius:10px;text-decoration:none;font-weight:800;font-size:12px">Open Compressor →</a></div>
+<div class="side-card"><h3>🔒 Why KaagazPro?</h3><li>✅ 100% offline & private</li><li>✅ No data stored</li><li>✅ Works on mobile & desktop</li><li>✅ Free forever</li></div>
+</div>
+</div>
+
+<footer style="background:#0f172a;color:#cbd5e1;margin-top:26px;padding:0">
+<div style="max-width:1100px;margin:0 auto;padding:28px 18px;display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:18px">
+<div><div style="color:#fff;font-weight:800;font-size:20px;margin-bottom:8px">📄 KaagazPro</div><p style="font-size:12.5px;line-height:1.6;color:#94a3b8">India's Most Trusted Document Tool. 100% Free, Private & Offline. Calculate exact age, compress images. No data saved.</p><div style="display:flex;gap:6px;margin-top:12px;flex-wrap:wrap"><span style="background:#1e293b;padding:5px 10px;border-radius:20px;font-size:11px">🔒 Private</span><span style="background:#1e293b;padding:5px 10px;border-radius:20px;font-size:11px">⚡ Offline</span><span style="background:#1e293b;padding:5px 10px;border-radius:20px;font-size:11px">🇮🇳 Made in India</span></div></div>
+<div><b style="color:#fff;font-size:12px">POPULAR TOOLS</b><div style="margin-top:12px;display:flex;flex-direction:column;gap:8px;font-size:12.5px"><a href="/tools/compressor" style="color:#94a3b8;text-decoration:none">Image Compressor 20KB</a><a href="/tools/age-calculator" style="color:#22c55e;text-decoration:none;font-weight:700">Age Calculator</a><a href="/" style="color:#22c55e;text-decoration:none;font-weight:700">View All →</a></div></div>
+<div><b style="color:#fff;font-size:12px">LEGAL</b><div style="margin-top:12px;display:flex;flex-direction:column;gap:8px;font-size:12.5px"><a href="/privacy-policy.html" style="color:#94a3b8;text-decoration:none">Privacy Policy</a><a href="/terms.html" style="color:#94a3b8;text-decoration:none">Terms</a><a href="/contact.html" style="color:#94a3b8;text-decoration:none">Contact</a></div></div>
+<div><b style="color:#fff;font-size:12px">FEATURES</b><div style="margin-top:12px;font-size:12px;line-height:1.7;color:#94a3b8">✔ Year Month Day exact<br>✔ Total days & weeks<br>✔ Next birthday<br>✔ 100% private</div></div>
+</div>
+<div style="border-top:1px solid #1e293b;padding:12px;text-align:center;font-size:11px;color:#64748b">© 2025 KaagazPro.com • Made with ❤️ in India • Mobile & Desktop Friendly</div>
+</footer>
+
+<script>
+let cur=localStorage.getItem('kaagaz_lang')||'hi';
+const dict={en:{dobL:"Date of Birth *",targetL:"Calculate As On Date *",btn:"✨ Calculate My Exact Age →",exact:"YOUR EXACT AGE"},hi:{dobL:"जन्म तिथि *",targetL:"इस तिथि को उम्र *",btn:"✨ मेरी उम्र निकालें →",exact:"आपकी सटीक उम्र"}};
+function apply(){document.querySelectorAll('[data-i]').forEach(e=>{let k=e.getAttribute('data-i');if(dict[cur][k])e.innerText=dict[cur][k]});document.getElementById('langBtn').innerText=cur==='hi'?'English':'हिंदी'}
+function toggleLang(){cur=cur==='hi'?'en':'hi';localStorage.setItem('kaagaz_lang',cur);apply()} apply();
+window.onload=()=>{document.getElementById('targetDate').value=new Date().toISOString().split('T')[0]}
+function calculateAge(){
+let d=document.getElementById('dob').value,t=document.getElementById('targetDate').value;if(!d||!t)return alert("Date bharo!");
+let dob=new Date(d),tar=new Date(t);if(dob>tar)return alert("DOB galat hai!");
+let y=tar.getFullYear()-dob.getFullYear(),m=tar.getMonth()-dob.getMonth(),day=tar.getDate()-dob.getDate();
+if(day<0){m--;let p=new Date(tar.getFullYear(),tar.getMonth(),0);day+=p.getDate()}
+if(m<0){y--;m+=12}
+document.getElementById('exactAge').innerText=`${y}Y ${m}M ${day}D`;
+let diff=Math.abs(tar-dob),tD=Math.floor(diff/86400000),tW=Math.floor(tD/7),tM=y*12+m;
+document.getElementById('totalDays').innerText=tD.toLocaleString();
+document.getElementById('totalWeeks').innerText=tW.toLocaleString();
+document.getElementById('totalMonths').innerText=tM.toLocaleString();
+let nb=new Date(tar.getFullYear(),dob.getMonth(),dob.getDate());if(tar>nb)nb.setFullYear(nb.getFullYear()+1);
+let dB=Math.ceil((nb-tar)/86400000);document.getElementById('nextBirthday').innerText=dB==0?"Today! 🎉":dB+" Days";
+document.getElementById('resultWrap').style.display='block';
+document.getElementById('resultWrap').scrollIntoView({behavior:'smooth',block:'start'});
+}
+</script>
+</body>
+</html>
