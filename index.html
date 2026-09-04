@@ -60,7 +60,7 @@
     <div class="menu" style="display:flex;align-items:center;gap:12px">
       <a href="index.html">Home</a>
       <a href="about.html">About</a>
-      <a href="/privacy-policy.html">Privacy</a>
+      <a href="privacy-policy.html">Privacy</a>
       <a href="contact.html">Contact</a>
     </div>
   </nav>
@@ -76,7 +76,6 @@
     </div>
   </div>
 
-  <!-- TABS + SEARCH - Ek baar bana diya, aage bas tool add karna hai -->
   <div style="max-width:1000px;margin:0 auto;padding:0 15px">
     <div class="tabs">
       <div class="tab active" data-cat="all">All Tools</div>
@@ -95,26 +94,16 @@
     <div id="noResult" style="display:none;text-align:center;padding:20px;color:#64748b;font-size:13px">No tools found. Try 'pdf' or 'photo'</div>
   </div>
 
-  <!-- TOOLS GRID - Koi dead link nahi, sirf jo files hai wahi -->
   <div class="grid" id="toolGrid" style="margin-top:10px">
     <a href="tools/resize.html" class="card pro" data-cat="compress" data-name="resize photo to kb 20kb 50kb 100kb ssc"><div class="top"><div class="ico">🖼️</div><span class="tag">Most Used</span></div><h3>Resize Photo to KB</h3><p>20KB, 50KB, 100KB - Any Size</p><div class="act">Use Tool →</div></a>
-    
     <a href="tools/compressor.html" class="card" data-cat="compress" data-name="compressor smart compress image reduce size"><div class="ico">⚡</div><h3>Smart Compressor</h3><p>90% compress without quality loss</p><div class="act">Use Tool →</div></a>
-    
     <a href="tools/signature.html" class="card" data-cat="compress" data-name="signature resizer 20kb sign"><div class="ico">✍️</div><h3>Signature Resizer</h3><p>Resize signature to exact 20KB</p><div class="act">Use Tool →</div></a>
-
     <a href="tools/jpg-to-pdf.html" class="card" data-cat="pdf" data-name="jpg to pdf merge images"><div class="ico">📄</div><h3>JPG to PDF Merge</h3><p>Multiple photos to one PDF</p><div class="act">Use Tool →</div></a>
-    
     <a href="tools/merge-pdf.html" class="card" data-cat="pdf" data-name="merge pdf images combine"><div class="ico">🔗</div><h3>Merge PDF / Images</h3><p>Combine 10 images to one PDF</p><div class="act">Use Tool →</div></a>
-    
     <a href="tools/pdf-to-jpg.html" class="card" data-cat="pdf" data-name="pdf to jpg convert"><div class="ico">🔄</div><h3>PDF to JPG</h3><p>Convert PDF pages to JPG images</p><div class="act">Use Tool →</div></a>
-
     <a href="tools/aadhaar.html" class="card" data-cat="id" data-name="aadhaar photo maker govt 3.5x4.5"><div class="ico">🪪</div><h3>Aadhaar Photo Maker</h3><p>3.5x4.5cm perfect govt size</p><div class="act">Use Tool →</div></a>
-    
     <a href="tools/passport.html" class="card" data-cat="id" data-name="passport photo 6 photos print 4x6"><div class="ico">👤</div><h3>Passport - 6 Photos</h3><p>4x6 inch print ready sheet</p><div class="act">Use Tool →</div></a>
-
     <a href="tools/bg-remover.html" class="card" data-cat="bg" data-name="white background remover bg maker"><div class="ico">🤍</div><h3>White BG Maker</h3><p>Any photo background white</p><div class="act">Use Tool →</div></a>
-    
     <a href="tools/dpi.html" class="card" data-cat="image" data-name="300 dpi fixer high quality print"><div class="ico">🎯</div><h3>300 DPI Fixer</h3><p>High quality print ready</p><div class="act">Use Tool →</div></a>
   </div>
 
@@ -123,7 +112,6 @@
     <div class="steps"><div><b>1</b> Select File</div><div><b>2</b> Process Offline</div><div><b>3</b> Download Instant</div></div>
   </div>
 
-  <!-- PROFESSIONAL FOOTER - Company jaisa -->
   <footer style="background:#fff;border-top:1px solid #e2e8f0;margin-top:30px">
     <div class="footer-grid">
       <div>
@@ -148,7 +136,7 @@
       <div>
         <h4>Company</h4>
         <a href="about.html">About Us</a>
-        <a href="privacy.html">Privacy Policy</a>
+        <a href="privacy-policy.html">Privacy Policy</a>
         <a href="contact.html">Contact Us</a>
         <a href="mailto:viscosity315@gmail.com">viscosity315@gmail.com</a>
       </div>
@@ -157,7 +145,6 @@
   </footer>
 
 <script>
-// Tabs + Search Logic - Aage 100 tools bhi handle karega
 let activeCat='all';
 document.querySelectorAll('.tab').forEach(tab=>{
   tab.onclick=()=>{
