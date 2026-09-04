@@ -1,110 +1,98 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <title>Contact Us - KaagazPro.co.in</title>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500;600;700;800&display=swap" rel="stylesheet">
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6640527517870664" crossorigin="anonymous"></script>
 <style>
-*{box-sizing:border-box;font-family:'Inter',system-ui}body{background:#f6f7fb;margin:0;color:#0f172a}
-nav{background:#fff;padding:14px 22px;display:flex;justify-content:space-between;align-items:center;box-shadow:0 2px 10px rgba(0,0,0,.05);position:sticky;top:0;z-index:99}
-.card{max-width:680px;margin:28px auto;background:#fff;border-radius:20px;padding:28px;box-shadow:0 10px 40px rgba(0,0,0,.07)}
-.badge{background:#eff6ff;border:1px solid #bfdbfe;color:#1e40af;padding:7px 14px;border-radius:100px;font-size:11px;font-weight:700;letter-spacing:.3px;display:inline-flex}
-input,textarea{width:100%;padding:14px 16px;border-radius:12px;border:1.5px solid #e2e8f0;font-size:14px;outline:none;margin-top:8px;background:#f8fafc;transition:.2s}
+*{box-sizing:border-box;font-family:'Inter',system-ui;-webkit-tap-highlight-color:transparent}
+body{background:#f6f7fb;margin:0;color:#0f172a}
+nav{background:#ffffff;padding:12px 16px;display:flex;justify-content:space-between;align-items:center;box-shadow:0 1px 8px rgba(0,0,0,.06);position:sticky;top:0;z-index:99}
+.card{max-width:680px;margin:0 auto;background:#fff;padding:20px 16px 24px;min-height:100vh}
+@media(min-width:700px){
+  .card{margin:24px auto;border-radius:20px;box-shadow:0 10px 40px rgba(0,0,0,.07);min-height:auto;padding:28px}
+  body{background:#f6f7fb}
+}
+.badge{background:#eff6ff;border:1px solid #bfdbfe;color:#1e40af;padding:6px 12px;border-radius:100px;font-size:11px;font-weight:700;display:inline-flex;letter-spacing:.3px}
+h1{font-size:24px;font-weight:800;margin:12px 0 6px;letter-spacing:-.5px;line-height:1.2}
+@media(min-width:700px){h1{font-size:28px}}
+.sub{color:#64748b;font-size:14px;line-height:1.5;margin:0 0 20px}
+label{font-size:11.5px;font-weight:700;margin-top:16px;display:block;letter-spacing:.4px;color:#334155;text-transform:uppercase}
+input,textarea{width:100%;padding:15px 16px;border-radius:12px;border:1.5px solid #e2e8f0;font-size:15px;outline:none;margin-top:7px;background:#f8fafc;transition:.2s;-webkit-appearance:none;appearance:none}
 input:focus,textarea:focus{border-color:#4f46e5;background:#fff;box-shadow:0 0 0 4px #eef2ff}
-label{font-size:12.5px;font-weight:700;margin-top:18px;display:block;letter-spacing:.3px;color:#334155;text-transform:uppercase}
-button{width:100%;margin-top:22px;padding:14px;background:#0f172a;color:#fff;border:0;border-radius:12px;font-weight:700;font-size:14px;cursor:pointer;transition:.2s;letter-spacing:.3px}
-button:hover{background:#4f46e5}button:disabled{opacity:.6}
-#status{margin-top:14px;padding:12px;border-radius:10px;font-size:13px;font-weight:600;display:none}
+textarea{resize:none;min-height:120px}
+button{width:100%;margin-top:20px;padding:16px;background:#0f172a;color:#fff;border:0;border-radius:14px;font-weight:700;font-size:15px;cursor:pointer;letter-spacing:.2px}
+button:active{transform:scale(.98)}button:disabled{opacity:.6}
+#status{margin-top:14px;padding:12px 14px;border-radius:12px;font-size:13px;font-weight:600;display:none;line-height:1.4}
 .success{background:#dcfce7;color:#166534;border:1px solid #bbf7d0}.error{background:#fee2e2;color:#991b1b;border:1px solid #fecaca}
+.infoGrid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:20px}
+.infoBox{background:#f8fafc;border:1px solid #e2e8f0;border-radius:12px;padding:12px}
+.infoBox span{font-size:10px;font-weight:700;color:#94a3b8;letter-spacing:.6px;display:block}
+.infoBox b{font-size:13px;font-weight:600;margin-top:3px;display:block;word-break:break-all}
 </style>
 </head>
 <body>
-<nav><div style="font-weight:800;font-size:20px">Kaagaz<span style="color:#4f46e5">Pro</span><span style="font-size:11px;color:#64748b">.co.in</span></div><a href="index.html" style="text-decoration:none;color:#fff;background:#0f172a;padding:9px 18px;border-radius:20px;font-size:13px;font-weight:700">← Home</a></nav>
+<nav>
+  <div style="font-weight:800;font-size:18px;letter-spacing:-.3px">Kaagaz<span style="color:#4f46e5">Pro</span><span style="font-size:10px;color:#64748b">.co.in</span></div>
+  <a href="index.html" style="text-decoration:none;color:#fff;background:#0f172a;padding:8px 16px;border-radius:20px;font-size:12px;font-weight:700">← Home</a>
+</nav>
 
 <div class="card">
-<span class="badge">💬 WE REPLY WITHIN 24 HOURS</span>
-<h1 style="font-size:28px;font-weight:800;margin:14px 0 8px;letter-spacing:-.5px">Contact Us</h1>
-<p style="color:#64748b;font-size:14px;line-height:1.6;margin:0 0 22px">Have a question, suggestion, or need help? Send us a message and our team will get back to you within 24 hours.</p>
+  <span class="badge">💬 WE REPLY WITHIN 24 HOURS</span>
+  <h1>Contact Us</h1>
+  <p class="sub">Have a question or need help? Send us a message and our team will reply within 24 hours.</p>
 
-<form id="contactForm">
-  <label>Your Name</label>
-  <input type="text" id="name" placeholder="Enter your full name" required autocomplete="name">
+  <form id="contactForm" novalidate>
+    <label>Your Name</label>
+    <input type="text" id="name" placeholder="Enter your full name" required autocomplete="name" inputmode="text">
 
-  <label>Your Email</label>
-  <input type="email" id="email" placeholder="Enter your email address" required autocomplete="email">
+    <label>Your Email</label>
+    <input type="email" id="email" placeholder="Enter your email address" required autocomplete="email" inputmode="email">
 
-  <label>Your Message</label>
-  <textarea id="message" rows="5" placeholder="Enter your message here..." required></textarea>
+    <label>Your Message</label>
+    <textarea id="message" placeholder="Enter your message here..." required></textarea>
 
-  <button type="submit" id="btn">Send Message</button>
-  <div id="status"></div>
-</form>
+    <button type="submit" id="btn">Send Message</button>
+    <div id="status"></div>
+  </form>
 
-<div style="margin-top:24px;display:grid;grid-template-columns:1fr 1fr;gap:12px">
-<div style="background:#f8fafc;border:1px solid #e2e8f0;border-radius:12px;padding:14px"><div style="font-size:11px;font-weight:700;color:#64748b;letter-spacing:.5px">EMAIL</div><div style="font-size:13px;font-weight:600;margin-top:4px">viscosity315@gmail.com</div></div>
-<div style="background:#f8fafc;border:1px solid #e2e8f0;border-radius:12px;padding:14px"><div style="font-size:11px;font-weight:700;color:#64748b;letter-spacing:.5px">LOCATION</div><div style="font-size:13px;font-weight:600;margin-top:4px">Kanpur, Uttar Pradesh, India</div></div>
-</div>
+  <div class="infoGrid">
+    <div class="infoBox"><span>EMAIL</span><b>viscosity315@gmail.com</b></div>
+    <div class="infoBox"><span>LOCATION</span><b>Kanpur, UP, India</b></div>
+  </div>
 
-<div style="margin-top:14px;background:#f8fafc;border:1px dashed #cbd5e1;border-radius:12px;padding:12px;text-align:center;font-size:12px;color:#64748b">🔒 Secure & Private • No spam • 100% safe</div>
+  <div style="margin-top:14px;background:#f8fafc;border:1px dashed #cbd5e1;border-radius:12px;padding:10px;text-align:center;font-size:11px;color:#64748b">🔒 Secure & Private • No Spam</div>
 </div>
 
 <script>
-const form = document.getElementById('contactForm');
-const statusDiv = document.getElementById('status');
-const btn = document.getElementById('btn');
+const form=document.getElementById('contactForm');
+const statusDiv=document.getElementById('status');
+const btn=document.getElementById('btn');
 
 form.addEventListener('submit', async (e)=>{
   e.preventDefault();
-  const name = document.getElementById('name').value.trim();
-  const email = document.getElementById('email').value.trim();
-  const message = document.getElementById('message').value.trim();
-
-  if(!name || !email || !message){
-    showStatus('Please fill in all fields.','error'); return;
-  }
-
-  btn.disabled = true;
-  btn.innerText = 'Sending...';
-  statusDiv.style.display='none';
-
+  const name=document.getElementById('name').value.trim();
+  const email=document.getElementById('email').value.trim();
+  const message=document.getElementById('message').value.trim();
+  if(!name||!email||!message){show('Please fill all fields.','error');return;}
+  btn.disabled=true;btn.innerText='Sending...';statusDiv.style.display='none';
   try{
-    const res = await fetch('https://formsubmit.co/ajax/viscosity315@gmail.com', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-      body: JSON.stringify({
-        name: name,
-        email: email,
-        message: message,
-        _subject: `New Contact Message from ${name} - KaagazPro`,
-        _template: 'table',
-        _captcha: 'false'
-      })
+    const res=await fetch('https://formsubmit.co/ajax/viscosity315@gmail.com',{
+      method:'POST',
+      headers:{'Content-Type':'application/json','Accept':'application/json'},
+      body:JSON.stringify({name,email,message,_subject:`Contact from ${name} - KaagazPro`,_template:'table',_captcha:'false'})
     });
-
-    if(res.ok){
-      showStatus('Message sent successfully! We will reply within 24 hours.','success');
-      form.reset();
-    } else {
-      throw new Error('Failed');
-    }
-  } catch(err){
-    const subject = encodeURIComponent(`Contact Request - KaagazPro.co.in`);
-    const body = encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`);
-    window.location.href = `mailto:viscosity315@gmail.com?subject=${subject}&body=${body}`;
-  } finally {
-    btn.disabled = false;
-    btn.innerText = 'Send Message';
-  }
+    if(res.ok){show('✅ Message sent! We will reply within 24 hours.','success');form.reset();}
+    else throw new Error();
+  }catch{
+    const subject=encodeURIComponent('Contact - KaagazPro.co.in');
+    const body=encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`);
+    window.location.href=`mailto:viscosity315@gmail.com?subject=${subject}&body=${body}`;
+  }finally{btn.disabled=false;btn.innerText='Send Message';}
 });
-
-function showStatus(msg,type){
-  statusDiv.innerText = msg;
-  statusDiv.className = type;
-  statusDiv.style.display='block';
-}
+function show(m,t){statusDiv.innerText=m;statusDiv.className=t;statusDiv.style.display='block';statusDiv.scrollIntoView({behavior:'smooth',block:'center'});}
 </script>
-
-<div style="text-align:center;padding:20px;color:#94a3b8;font-size:11px;letter-spacing:.3px">© 2025 KaagazPro.co.in • Made with ❤️ in India • All Rights Reserved</div>
 </body>
 </html>
