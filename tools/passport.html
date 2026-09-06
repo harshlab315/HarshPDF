@@ -1,45 +1,150 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Passport Photo Maker 35x45 - KaagazPro</title>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Passport Photo Maker 35x45mm - KaagazPro</title>
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6640527517870664" crossorigin="anonymous"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Plus+Jakarta+Sans:wght@700;800&display=swap" rel="stylesheet">
 <link href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.6.1/cropper.min.css" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.6.1/cropper.min.js"></script>
 <style>
-*{box-sizing:border-box;font-family:Inter}body{background:#f6f7fb;margin:0;padding:12px}.card{max-width:900px;margin:auto;background:#fff;border-radius:16px;padding:18px}.grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}@media(max-width:700px){.grid{grid-template-columns:1fr}}.box{background:#f0f2f5;border-radius:12px;min-height:320px;display:flex;align-items:center;justify-content:center;overflow:hidden}button{padding:10px 14px;border:0;border-radius:8px;background:#4f46e5;color:#fff;font-weight:600;cursor:pointer;margin:3px}button.sec{background:#111}button.small{background:#e5e7eb;color:#111}
+*{box-sizing:border-box;font-family:'Inter',sans-serif}body{margin:0;background:#f6f7fb;color:#0f172a}
+.header{background:#1e40af;color:#fff;padding:12px 18px;display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;z-index:99}
+.logo{font-family:'Plus Jakarta Sans';font-weight:800;font-size:20px}.hr{display:flex;gap:8px}
+.lang-btn{background:#fff;color:#1e40af;border:0;padding:7px 14px;border-radius:20px;font-weight:800;cursor:pointer;font-size:12px}.all-btn{color:#fff;text-decoration:none;font-size:12px;background:rgba(255,255,255,.18);padding:7px 14px;border-radius:20px}
+.wrap{max-width:1150px;margin:18px auto;padding:0 14px;display:grid;grid-template-columns:1.2fr 0.8fr;gap:16px}@media(max-width:900px){.wrap{grid-template-columns:1fr}}
+.hero-card{background:#fff;border-radius:20px;padding:22px;border:1px solid #e2e8f0}.hero-card h1{font-family:'Plus Jakarta Sans';font-size:30px;font-weight:800;margin:0;line-height:1.1}
+.hero-card h1 span{background:linear-gradient(90deg,#1e40af,#7c3aed,#ec4899);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.badge-row{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px}.badge{font-size:11px;font-weight:700;padding:6px 12px;border-radius:100px;border:1px solid #e2e8f0}
+.badge.green{background:#dcfce7;color:#166534}.badge.blue{background:#dbeafe;color:#1e40af}.badge.purple{background:#f3e8ff;color:#6b21a8}
+.input-card{background:#fff;border-radius:20px;padding:20px;border:1px solid #e2e8f0;margin-top:14px}
+.upload-box{border:2px dashed #a5b4fc;background:#f8fafc;border-radius:16px;padding:28px;text-align:center;cursor:pointer;transition:.2s}
+.upload-box:hover{background:#eef2ff;border-color:#6366f1}
+#editorArea{display:none}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:16px}@media(max-width:700px){.grid{grid-template-columns:1fr}}
+.box{background:#f0f2f5;border-radius:14px;min-height:380px;display:flex;align-items:center;justify-content:center;overflow:hidden;border:1px solid #e2e8f0;position:relative}
+.box img{max-width:100%;display:block}
+#canvas{max-width:100%;border-radius:8px;background:#fff}
+.tool-row{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+.tool-btn{padding:9px 12px;border:1.5px solid #e2e8f0;background:#fff;border-radius:10px;font-weight:700;font-size:12px;cursor:pointer}
+.btn-row{display:flex;gap:12px;margin-top:14px;justify-content:center;flex-wrap:wrap}
+.btn-main{padding:14px 28px;border-radius:14px;font-weight:800;font-size:14px;cursor:pointer;border:none;background:linear-gradient(90deg,#1e40af,#7c3aed);color:#fff;min-width:200px;flex:1;max-width:340px}
+.btn-sec{padding:14px 22px;border-radius:14px;font-weight:800;font-size:14px;cursor:pointer;border:1.5px solid #e2e8f0;background:#0f172a;color:#fff;min-width:150px}
+.btn-dl{display:none;padding:14px 28px;border-radius:14px;font-weight:800;font-size:14px;cursor:pointer;border:none;background:#16a34a;color:#fff;min-width:200px}
+.btn-reset{display:none;background:#fff;color:#b91c1c;border:1.5px solid #fecaca;padding:14px 22px;border-radius:14px;font-weight:800;font-size:14px;cursor:pointer;min-width:140px}
+.side{position:sticky;top:76px;height:fit-content}.side-card{background:#fff;border:1px solid #e2e8f0;border-radius:18px;padding:18px;margin-bottom:12px}
 </style>
 </head>
 <body>
-<div class="card">
-<h2 style="margin:0">Passport Photo Maker</h2>
-<input type="file" id="input" accept="image/*" style="margin:10px 0">
+<div class="header"><div class="logo">📄 KaagazPro</div><div class="hr"><button class="lang-btn" onclick="location.reload()">हिंदी</button><a class="all-btn" href="/">← All Tools</a></div></div>
+<div class="wrap">
+<div>
+<div class="hero-card">
+<div class="badge-row"><span class="badge green">35x45mm Standard</span><span class="badge blue">100% Private</span><span class="badge purple">No Watermark</span></div>
+<h1>Passport Photo Maker<br><span>35x45mm Perfect Crop</span></h1>
+<p style="color:#64748b;font-size:13px;margin-top:8px">Upload photo, crop face in 35x45 ratio and download perfect passport size photo. No background change - original background will stay.</p>
+</div>
+<div class="input-card">
+<input type="file" id="input" accept="image/*" hidden>
+<div class="upload-box" id="uploadBox" onclick="document.getElementById('input').click()">
+<div style="font-size:36px">🖼️</div><div style="font-weight:800">Select Photo</div><div style="font-size:11px;color:#64748b">JPG, PNG, WEBP - Click or Drag & Drop</div>
+</div>
+<div id="editorArea">
 <div class="grid">
-<div class="box"><img id="img" style="display:none;max-width:100%"></div>
-<div class="box"><canvas id="canvas" width="350" height="450" style="display:none"></canvas><span id="ph">Preview</span></div>
+<div class="box"><img id="img" style="display:none"><span id="ph1" style="color:#94a3b8;font-size:12px">Original</span></div>
+<div class="box"><canvas id="canvas" width="350" height="450" style="display:none"></canvas><span id="ph" style="color:#94a3b8;font-size:12px">Preview 35x45</span></div>
 </div>
-
-
-<div style="margin:10px 0">
-<button class="small" onclick="cropper.rotate(-90)">↺ Left 90°</button>
-<button class="small" onclick="cropper.rotate(90)">↻ Right 90°</button>
-<button class="small" onclick="cropper.rotate(180)">↻ 180° (Up/Down)</button>
-<button class="small" onclick="cropper.scaleX(-cropper.getData().scaleX||-1)">⇄ Flip</button>
-<button class="small" onclick="cropper.move(0,-20)">↑</button>
-<button class="small" onclick="cropper.move(0,20)">↓</button>
+<div class="tool-row">
+<button class="tool-btn" onclick="rotate(-90)">↺ Left 90°</button>
+<button class="tool-btn" onclick="rotate(90)">↻ Right 90°</button>
+<button class="tool-btn" onclick="flip()">⇄ Flip</button>
+<button class="tool-btn" onclick="zoom(0.1)">Zoom +</button>
+<button class="tool-btn" onclick="zoom(-0.1)">Zoom -</button>
+<button class="tool-btn" onclick="cropper.reset()">Reset Crop</button>
 </div>
-
-<button id="cropBtn" class="sec">Crop</button>
-<button id="makeBtn">Make Passport</button>
-<button id="downBtn" style="display:none;background:#16a34a">Download</button>
-<div style="margin-top:10px"><img id="preview" style="max-width:250px;border:1px solid #ddd"><div id="info"></div></div>
+<div class="btn-row">
+<button id="cropBtn" class="btn-sec">Crop & Preview</button>
+<button id="makeBtn" class="btn-main">Make Passport Photo</button>
+<button id="downBtn" class="btn-dl">Download JPEG</button>
+<button id="resetBtn" class="btn-reset" onclick="clearAll()">Delete Photo</button>
 </div>
+<div style="text-align:center;margin-top:12px">
+<img id="preview" style="max-width:180px;border-radius:10px;border:1px solid #e2e8f0;display:none;margin:12px auto">
+<div id="info" style="font-weight:700;font-size:12px;color:#64748b"></div>
+</div>
+</div>
+</div>
+</div>
+<div class="side">
+<div class="side-card"><h3 style="font-size:14px;font-weight:800;margin:0 0 10px">How to Use</h3><div style="font-size:12.5px;color:#475569;line-height:1.8">1. Select your photo<br>2. Crop face tightly in 35x45 ratio<br>3. Click Crop & Preview<br>4. Click Make Passport Photo<br>5. Download</div></div>
+<div class="side-card"><h3 style="font-size:14px;font-weight:800;margin:0 0 10px">Why This Tool?</h3><div style="font-size:12.5px;color:#475569;line-height:1.8">✓ Perfect 35x45mm Size<br>✓ Easy Crop & Zoom<br>✓ 100% Offline & Private<br>✓ No Watermark - Free</div></div>
+<div class="side-card" style="background:linear-gradient(135deg,#dbeafe,#bfdbfe);border-color:#93c5fd;text-align:center"><h3 style="font-size:14px;font-weight:800;margin:0 0 6px">Need More Tools?</h3><a href="/" style="display:block;background:#0f172a;color:#fff;padding:11px;border-radius:10px;text-decoration:none;font-weight:800;font-size:12px">View All Tools →</a></div>
+</div>
+</div>
+<footer style="background:#0f172a;color:#cbd5e1;padding:0;width:100%;margin-top:20px"><div style="max-width:1150px;margin:0 auto;padding:28px 18px;display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:18px"><div><div style="color:#fff;font-weight:800;font-size:20px;margin-bottom:8px">📄 KaagazPro</div><p style="font-size:12.5px;line-height:1.6;color:#94a3b8">India's Most Trusted Document Tool. 100% Free, Private and Offline.</p></div><div><b style="color:#fff;font-size:12px">POPULAR TOOLS</b><div style="margin-top:12px;display:flex;flex-direction:column;gap:8px;font-size:12.5px"><a href="/tools/jpg-to-pdf/" style="color:#94a3b8;text-decoration:none">JPG to PDF</a><a href="/tools/pdf-to-jpg/" style="color:#94a3b8;text-decoration:none">PDF to JPG</a><a href="/tools/pdf-to-word/" style="color:#94a3b8;text-decoration:none">PDF to Word</a><a href="/tools/word-to-pdf/" style="color:#94a3b8;text-decoration:none">Word to PDF</a></div></div><div><b style="color:#fff;font-size:12px">LEGAL</b><div style="margin-top:12px;display:flex;flex-direction:column;gap:8px;font-size:12.5px"><a href="/privacy-policy.html" style="color:#94a3b8;text-decoration:none">Privacy Policy</a><a href="/terms.html" style="color:#94a3b8;text-decoration:none">Terms</a><a href="/contact.html" style="color:#94a3b8;text-decoration:none">Contact Us</a></div></div><div><b style="color:#fff;font-size:12px">FEATURES</b><div style="margin-top:12px;font-size:12px;line-height:1.7;color:#94a3b8">✓ 35x45mm Passport<br>✓ Easy Crop & Resize<br>✓ Private and Fast<br>✓ No Watermark</div></div></div><div style="border-top:1px solid #1e293b;padding:12px;text-align:center;font-size:11px;color:#64748b">© 2025 KaagazPro.com • Made with ❤️ in India</div></footer>
+
 <script>
-let cropper;const img=document.getElementById('img'),input=document.getElementById('input'),canvas=document.getElementById('canvas');
-input.addEventListener('change',e=>{const f=e.target.files[0];if(!f)return;img.src=URL.createObjectURL(f);img.style.display='block';if(cropper)cropper.destroy();img.onload=()=>{cropper=new Cropper(img,{aspectRatio:35/45,viewMode:0,dragMode:'move',autoCropArea:0.9,movable:true,zoomable:true,rotatable:true,scalable:true})}});
-document.getElementById('cropBtn').onclick=()=>{if(!cropper)return;const c=cropper.getCroppedCanvas({width:350,height:450});canvas.width=350;canvas.height=450;canvas.getContext('2d').drawImage(c,0,0);canvas.style.display='block';ph.style.display='none'};
-document.getElementById('makeBtn').onclick=async()=>{const blob=await new Promise(r=>canvas.toBlob(b=>r(b),'image/jpeg',0.92));const url=URL.createObjectURL(blob);preview.src=url;info.innerText=(blob.size/1024).toFixed(1)+' KB';downBtn.style.display='inline-block';downBtn.onclick=()=>{const a=document.createElement('a');a.href=url;a.download='passport.jpg';a.click()}};
+let cropper=null, croppedCanvas=null;
+const img=document.getElementById('img'), input=document.getElementById('input'), canvas=document.getElementById('canvas'), ph=document.getElementById('ph'), ph1=document.getElementById('ph1'), preview=document.getElementById('preview'), info=document.getElementById('info'), downBtn=document.getElementById('downBtn'), editorArea=document.getElementById('editorArea'), uploadBox=document.getElementById('uploadBox');
+
+input.addEventListener('change',e=>{ const f=e.target.files[0]; if(f) loadImage(f); });
+uploadBox.addEventListener('dragover',e=>{ e.preventDefault(); uploadBox.style.background='#dbeafe'; });
+uploadBox.addEventListener('dragleave',()=>{ uploadBox.style.background='#f8fafc'; });
+uploadBox.addEventListener('drop',e=>{ e.preventDefault(); uploadBox.style.background='#f8fafc'; const f=e.dataTransfer.files[0]; if(f) loadImage(f); });
+
+function loadImage(file){
+ img.src=URL.createObjectURL(file);
+ img.style.display='block'; ph1.style.display='none';
+ editorArea.style.display='block';
+ if(cropper) cropper.destroy();
+ img.onload=()=>{ cropper=new Cropper(img,{aspectRatio:35/45,viewMode:1,dragMode:'move',autoCropArea:0.85,movable:true,zoomable:true,rotatable:true,scalable:true,background:false}); };
+ document.getElementById('resetBtn').style.display='inline-block';
+}
+function rotate(d){ if(cropper) cropper.rotate(d); }
+function flip(){ if(cropper){ let data=cropper.getData(); cropper.scaleX(data.scaleX===-1?1:-1); } }
+function zoom(v){ if(cropper) cropper.zoom(v); }
+
+function drawFinal(){
+ if(!croppedCanvas) return;
+ canvas.width=350; canvas.height=450;
+ const ctx=canvas.getContext('2d');
+ ctx.fillStyle='#ffffff';
+ ctx.fillRect(0,0,350,450);
+ ctx.drawImage(croppedCanvas,0,0,350,450);
+ canvas.style.display='block'; ph.style.display='none';
+ info.innerText='350x450 • Ready • Original BG';
+}
+
+document.getElementById('cropBtn').onclick=()=>{
+ if(!cropper) return;
+ croppedCanvas=cropper.getCroppedCanvas({width:350,height:450,imageSmoothingQuality:'high'});
+ drawFinal();
+};
+
+document.getElementById('makeBtn').onclick=async()=>{
+ if(!croppedCanvas){ alert('Pehle Crop & Preview karo'); return; }
+ drawFinal();
+ const blob=await new Promise(r=>canvas.toBlob(b=>r(b),'image/jpeg',0.92));
+ const url=URL.createObjectURL(blob);
+ preview.src=url; preview.style.display='block'; preview.dataset.url=url;
+ info.innerText=(blob.size/1024).toFixed(1)+' KB • 350x450 • Passport Ready';
+ downBtn.style.display='inline-block';
+ downBtn.onclick=()=>{ const a=document.createElement('a'); a.href=url; a.download='KaagazPro-Passport-35x45.jpg'; a.click(); setTimeout(()=>clearAll(),800); };
+};
+
+function clearAll(){
+ if(cropper){ cropper.destroy(); cropper=null; }
+ croppedCanvas=null;
+ img.src=''; img.style.display='none';
+ const ctx=canvas.getContext('2d'); ctx.clearRect(0,0,350,450);
+ canvas.style.display='none';
+ preview.src=''; preview.style.display='none'; info.innerText='';
+ downBtn.style.display='none'; document.getElementById('resetBtn').style.display='none';
+ editorArea.style.display='none';
+ ph.style.display='block'; ph1.style.display='block';
+ input.value='';
+ if(preview.dataset.url) URL.revokeObjectURL(preview.dataset.url);
+}
 </script>
 </body>
 </html>
