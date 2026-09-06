@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PDF to Word - Convert PDF to Editable Word | KaagazPro</title>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6640527517870664" crossorigin="anonymous"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Plus+Jakarta+Sans:wght@700;800&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+<style>
+*{box-sizing:border-box;font-family:'Inter',sans-serif}body{margin:0;background:#f6f7fb;color:#0f172a}
+.header{background:#1e40af;color:#fff;padding:12px 18px;display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;z-index:99}
+.logo{font-family:'Plus Jakarta Sans';font-weight:800;font-size:20px}.hr{display:flex;gap:8px}
+.lang-btn{background:#fff;color:#1e40af;border:0;padding:7px 14px;border-radius:20px;font-weight:800;cursor:pointer;font-size:12px}.all-btn{color:#fff;text-decoration:none;font-size:12px;background:rgba(255,255,255,.18);padding:7px 14px;border-radius:20px}
+.wrap{max-width:1100px;margin:18px auto;padding:0 14px;display:grid;grid-template-columns:1.15fr 0.85fr;gap:16px}@media(max-width:850px){.wrap{grid-template-columns:1fr}}
+.hero-card{background:#fff;border-radius:20px;padding:22px;border:1px solid #e2e8f0}.hero-card h1{font-family:'Plus Jakarta Sans';font-size:30px;font-weight:800;margin:0;line-height:1.1}
+.hero-card h1 span{background:linear-gradient(90deg,#1e40af,#7c3aed,#ec4899);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.badge-row{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px}.badge{font-size:11px;font-weight:700;padding:6px 12px;border-radius:100px;border:1px solid #e2e8f0}
+.badge.green{background:#dcfce7;color:#166534}.badge.blue{background:#dbeafe;color:#1e40af}.badge.purple{background:#f3e8ff;color:#6b21a8}
+.input-card{background:#fff;border-radius:20px;padding:20px;border:1px solid #e2e8f0;margin-top:14px}
+.upload-box{border:2px dashed #a5b4fc;background:#f8fafc;border-radius:16px;padding:28px;text-align:center;cursor:pointer}.upload-box:hover{background:#eef2ff}
+.range-box{display:none;margin-top:12px;background:#eff6ff;border:1px solid #bfdbfe;padding:12px;border-radius:12px}
+.range-box input{width:75px;padding:7px;border:1px solid #cbd5e1;border-radius:8px;font-weight:700;text-align:center}
+.preview{background:#fff;border:1px solid #e2e8f0;border-radius:12px;padding:12px;margin-top:14px;max-height:350px;overflow:auto;font-size:12.5px;white-space:pre-wrap;display:none;line-height:1.7}
+.progress{height:8px;background:#e2e8f0;border-radius:10px;overflow:hidden;margin-top:12px;display:none}.progress-bar{height:100%;background:linear-gradient(90deg,#1e40af,#7c3aed);width:0%;transition:width.2s}
+.btn-main{width:100%;padding:14px;border-radius:14px;font-weight:800;font-size:14px;cursor:pointer;border:none;background:linear-gradient(90deg,#1e40af,#7c3aed);color:#fff;margin-top:14px}.btn-main:disabled{opacity:.5}
+.status{margin-top:10px;text-align:center;font-size:12px;color:#1e40af;display:none;background:#dbeafe;padding:8px;border-radius:8px;font-weight:600}
+.side{position:sticky;top:76px;height:fit-content}.side-card{background:#fff;border:1px solid #e2e8f0;border-radius:18px;padding:18px;margin-bottom:12px}
+</style>
+</head>
+<body>
+<div class="header"><div class="logo">📄 KaagazPro</div><div class="hr"><button class="lang-btn" id="langBtn" onclick="toggleLang()">हिंदी</button><a class="all-btn" href="/">← All Tools</a></div></div>
+<div class="wrap"><div>
+<div class="hero-card">
+<div class="badge-row"><span class="badge green" data-i="b1">✨ Proper Formatting</span><span class="badge blue" data-i="b2">🔒 100% Private</span><span class="badge purple" data-i="b3">⚡ Fast & Free</span></div>
+<h1 data-i="h1">PDF to Word<br><span>Convert PDF to Word</span></h1>
+<p style="color:#64748b;font-size:13px;margin-top:8px" data-i="desc">Convert PDF to editable Word DOCX with accurate paragraphs. 100% private and fast.</p>
+</div>
+<div class="input-card">
+<div class="upload-box" onclick="document.getElementById('pdfInp').click()">
+<input type="file" id="pdfInp" accept="application/pdf" hidden>
+<div style="font-size:36px">📝</div>
+<div style="font-weight:800" data-i="upTitle">Select PDF File</div>
+<div style="font-size:11px;color:#64748b" data-i="upSub">Fast conversion, large file support</div>
+</div>
+<div id="rangeBox" class="range-box">
+<div style="font-size:12px;font-weight:700" data-i="rangeTitle">📄 Large PDF detected - Convert in parts:</div>
+<div style="display:flex;gap:8px;align-items:center;margin-top:8px;flex-wrap:wrap">
+<span style="font-size:12px" data-i="from">From</span><input type="number" id="fromPage" value="1" min="1">
+<span style="font-size:12px" data-i="to">To</span><input type="number" id="toPage" value="50" min="1">
+<button onclick="updateRange()" style="background:#1e40af;color:#fff;border:0;padding:7px 14px;border-radius:8px;font-weight:700;cursor:pointer" data-i="apply">Apply</button>
+<span style="font-size:11px;color:#64748b" id="totalPagesInfo"></span>
+</div>
+</div>
+<div class="progress" id="progress"><div class="progress-bar" id="progressBar"></div></div>
+<div id="status" class="status"></div>
+<div id="preview" class="preview"></div>
+<button class="btn-main" id="btnText" disabled onclick="downloadWord()" data-i="btnText">📝 Download Word</button>
+</div>
+</div>
+<div class="side">
+<div class="side-card"><h3 style="font-size:14px;font-weight:800;margin:0 0 10px" data-i="howT">✨ How to Use</h3><div style="font-size:12.5px;color:#475569;line-height:1.8" data-i="howList">📄 Select PDF file<br>👀 Preview content<br>📝 Download editable Word</div></div>
+<div class="side-card"><h3 style="font-size:14px;font-weight:800;margin:0 0 10px" data-i="whyT">🔒 Why This Tool?</h3><div style="font-size:12.5px;color:#475569;line-height:1.8" data-i="whyList">✔ Proper paragraphs<br>✔ No broken words<br>✔ 100% offline and private<br>✔ Fast & Free</div></div>
+</div>
+</div>
+<footer style="background:#0f172a;color:#cbd5e1;padding:0;width:100%;margin-top:20px">
+<div style="max-width:1100px;margin:0 auto;padding:28px 18px;display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:18px">
+<div><div style="color:#fff;font-weight:800;font-size:20px;margin-bottom:8px">📄 KaagazPro</div><p style="font-size:12.5px;line-height:1.6;color:#94a3b8" data-i="footDesc">India's Most Trusted Document Tool. 100% Free, Private and Offline.</p></div>
+<div><b style="color:#fff;font-size:12px">POPULAR TOOLS</b><div style="margin-top:12px;display:flex;flex-direction:column;gap:8px;font-size:12.5px"><a href="../jpg-to-pdf/" style="color:#94a3b8;text-decoration:none">JPG to PDF</a><a href="../pdf-to-jpg/" style="color:#94a3b8;text-decoration:none">PDF to JPG</a><a href="./" style="color:#22c55e;text-decoration:none;font-weight:700">PDF to Word</a></div></div>
+<div><b style="color:#fff;font-size:12px">LEGAL</b><div style="margin-top:12px;display:flex;flex-direction:column;gap:8px;font-size:12.5px"><a href="/privacy-policy.html" style="color:#94a3b8;text-decoration:none">Privacy Policy</a><a href="/terms.html" style="color:#94a3b8;text-decoration:none">Terms</a></div></div>
+<div><b style="color:#fff;font-size:12px">FEATURES</b><div style="margin-top:12px;font-size:12px;line-height:1.7;color:#94a3b8">✔ PDF to DOCX<br>✔ Editable Word<br>✔ Private and Fast</div></div>
+</div>
+<div style="border-top:1px solid #1e293b;padding:12px;text-align:center;font-size:11px;color:#64748b">© 2025 KaagazPro.com • Made with ❤️ in India</div>
+</footer>
+<script>
+var curLang = localStorage.getItem('kaagaz_lang')||'en';
+var dict = {
+ en:{b1:"✨ Proper Formatting",b2:"🔒 100% Private",b3:"⚡ Fast & Free",h1:"PDF to Word<br><span>Convert PDF to Word</span>",desc:"Convert PDF to editable Word DOCX with accurate paragraphs. 100% private and fast.",upTitle:"Select PDF File",upSub:"Fast conversion, large file support",rangeTitle:"📄 Large PDF detected - Convert in parts:",from:"From",to:"To",apply:"Apply",btnText:"📝 Download Word",howT:"✨ How to Use",howList:"📄 Select PDF file<br>👀 Preview content<br>📝 Download editable Word",whyT:"🔒 Why This Tool?",whyList:"✔ Proper paragraphs<br>✔ No broken words<br>✔ 100% offline and private<br>✔ Fast & Free",footDesc:"India's Most Trusted Document Tool. 100% Free, Private and Offline."},
+ hi:{b1:"✨ सही फॉर्मेटिंग",b2:"🔒 100% सुरक्षित",b3:"⚡ तेज़ और मुफ्त",h1:"PDF से Word<br><span>Word में बदलें</span>",desc:"PDF को संपादन योग्य Word में बदलें। 100% निजी और तेज़।",upTitle:"PDF फ़ाइल चुनें",upSub:"तेज़ कन्वर्शन, बड़ी फ़ाइल सपोर्ट",rangeTitle:"📄 बड़ी PDF मिली - भागों में बदलें:",from:"से",to:"तक",apply:"लागू करें",btnText:"📝 Word डाउनलोड करें",howT:"✨ उपयोग कैसे करें",howList:"📄 PDF फ़ाइल चुनें<br>👀 सामग्री देखें<br>📝 संपादन योग्य Word डाउनलोड करें",whyT:"🔒 यह टूल क्यों?",whyList:"✔ सही पैराग्राफ<br>✔ शब्द टूटते नहीं<br>✔ 100% ऑफलाइन और निजी<br>✔ तेज़ और मुफ्त",footDesc:"भारत का सबसे विश्वसनीय डॉक्यूमेंट टूल। 100% मुफ्त, निजी और ऑफलाइन।"}
+};
+function applyLang(){document.querySelectorAll('[data-i]').forEach(function(el){var k=el.getAttribute('data-i');if(dict[curLang]&&dict[curLang][k])el.innerHTML=dict[curLang][k];});document.getElementById('langBtn').innerText=curLang==='hi'?'English':'हिंदी';}
+function toggleLang(){curLang=curLang==='hi'?'en':'hi';localStorage.setItem('kaagaz_lang',curLang);applyLang();}applyLang();
+var allLines=[];var pdfDoc=null;var totalPages=0;var fromP=1,toP=50;
+pdfjsLib.GlobalWorkerOptions.workerSrc='https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+document.getElementById('pdfInp').addEventListener('change', async function(e){
+ var file=e.target.files[0];if(!file)return;
+ var preview=document.getElementById('preview');var status=document.getElementById('status');var progress=document.getElementById('progress');var bar=document.getElementById('progressBar');
+ preview.style.display='block';preview.textContent='Loading PDF...';status.style.display='block';status.textContent='Reading PDF...';progress.style.display='block';bar.style.width='10%';
+ pdfDoc=await pdfjsLib.getDocument(URL.createObjectURL(file)).promise;
+ totalPages=pdfDoc.numPages;fromP=1;toP=Math.min(50,totalPages);
+ document.getElementById('fromPage').max=totalPages;document.getElementById('toPage').max=totalPages;
+ document.getElementById('fromPage').value=1;document.getElementById('toPage').value=toP;
+ document.getElementById('totalPagesInfo').textContent='Total: '+totalPages+' pages';
+ if(totalPages>80)document.getElementById('rangeBox').style.display='block';else document.getElementById('rangeBox').style.display='none';
+ await readPages(fromP,toP);e.target.value='';
+});
+async function readPages(from,to){
+ var preview=document.getElementById('preview');var status=document.getElementById('status');var bar=document.getElementById('progressBar');
+ allLines=[];var pagesToRead=Math.min(to,totalPages)-from+1;
+ for(var p=from;p<=Math.min(to,totalPages);p++){
+  status.textContent='Reading page '+p+' / '+totalPages+'...';bar.style.width=Math.round(((p-from+1)/pagesToRead)*70)+'%';
+  var page=await pdfDoc.getPage(p);var content=await page.getTextContent();var linesMap={};
+  content.items.forEach(function(item){var y=Math.round(item.transform[5]);if(!linesMap[y])linesMap[y]=[];linesMap[y].push(item);});
+  var yPos=Object.keys(linesMap).sort(function(a,b){return b-a;});
+  yPos.forEach(function(y){var items=linesMap[y].sort(function(a,b){return a.transform[4]-b.transform[4];});var lineText=items.map(function(it){return it.str;}).join(' ').replace(/\s+/g,' ').trim();if(lineText)allLines.push(lineText);});
+  allLines.push('');if(p%10===0)await new Promise(r=>setTimeout(r,5));
+ }
+ bar.style.width='100%';preview.textContent=allLines.slice(0,150).join('\n');
+ document.getElementById('btnText').disabled=false;
+ status.textContent='Ready: Pages '+from+' to '+Math.min(to,totalPages)+' - Click download';
+}
+function updateRange(){
+ var f=parseInt(document.getElementById('fromPage').value)||1;var t=parseInt(document.getElementById('toPage').value)||50;
+ fromP=Math.max(1,f);toP=Math.min(totalPages,t);
+ if(fromP>toP){alert('Start page should be less than end page');return;}
+ readPages(fromP,toP);
+}
+async function downloadWord(){
+ if(!allLines.length)return;
+ var status=document.getElementById('status');var bar=document.getElementById('progressBar');
+ status.style.display='block';status.textContent='Creating Word file...';bar.style.display='block';bar.style.width='85%';
+ var html='<html><head><meta charset="utf-8"></head><body>';
+ for(var i=0;i<allLines.length;i++){
+  var line=allLines[i].replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+  if(line.trim()==='')html+='<p>&nbsp;</p>';
+  else html+='<p style="margin:0 0 6px;font-family:Calibri;font-size:11pt">'+line+'</p>';
+ }
+ html+='<'+'/body><'+'/html>';
+ var blob=new Blob([html],{type:'application/msword'});
+ var a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='KaagazPro-p'+fromP+'-to-'+toP+'.doc';a.click();
+ bar.style.width='100%';status.textContent='Downloaded! Pages '+fromP+' to '+toP;
+}
+</script>
+</body>
+</html>
