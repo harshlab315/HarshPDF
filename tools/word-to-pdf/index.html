@@ -3,7 +3,6 @@
 <head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Word to PDF - Convert DOCX to PDF Online Free | KaagazPro</title>
-<meta name="description" content="Convert Word DOCX to PDF online for free. Fast, private, offline processing. No watermark.">
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6640527517870664" crossorigin="anonymous"></script>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Plus+Jakarta+Sans:wght@700;800&display=swap" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mammoth/1.6.0/mammoth.browser.min.js"></script>
@@ -19,13 +18,15 @@
 .badge-row{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px}.badge{font-size:11px;font-weight:700;padding:6px 12px;border-radius:100px;border:1px solid #e2e8f0}
 .badge.green{background:#dcfce7;color:#166534}.badge.blue{background:#dbeafe;color:#1e40af}.badge.purple{background:#f3e8ff;color:#6b21a8}
 .input-card{background:#fff;border-radius:20px;padding:20px;border:1px solid #e2e8f0;margin-top:14px}
-.upload-box{border:2px dashed #a5b4fc;background:#f8fafc;border-radius:16px;padding:28px;text-align:center;cursor:pointer}.upload-box:hover{background:#eef2ff}
+.upload-box{border:2px dashed #a5b4fc;background:#f8fafc;border-radius:16px;padding:28px;text-align:center;cursor:pointer;position:relative;overflow:hidden;transition:.2s}.upload-box:hover{background:#eef2ff;border-color:#6366f1}
+.upload-box.dragover{background:#dbeafe;border-color:#1e40af}
+.upload-box input{position:absolute;inset:0;width:100%;height:100%;opacity:0;cursor:pointer}
 .preview{background:#fff;border:1px solid #e2e8f0;border-radius:12px;padding:12px;margin-top:14px;max-height:350px;overflow:auto;font-size:12.5px;white-space:pre-wrap;display:none;line-height:1.7}
 .err{background:#fee2e2;border:1px solid #fecaca;color:#b91c1c;padding:12px;border-radius:12px;font-size:12px;margin-top:12px;display:none;line-height:1.6}
 .progress{height:8px;background:#e2e8f0;border-radius:10px;overflow:hidden;margin-top:12px;display:none}.progress-bar{height:100%;background:linear-gradient(90deg,#1e40af,#7c3aed);width:0%;transition:width.2s}
 .btn-row{display:flex;gap:12px;margin-top:14px;justify-content:center;flex-wrap:wrap}
-.btn-main{padding:14px 28px;border-radius:14px;font-weight:800;font-size:14px;cursor:pointer;border:none;background:linear-gradient(90deg,#1e40af,#7c3aed);color:#fff;min-width:220px;flex:1;max-width:340px;text-align:center}
-.btn-reset{padding:14px 28px;border-radius:14px;font-weight:800;font-size:14px;cursor:pointer;border:1.5px solid #e2e8f0;background:#fff;color:#475569;display:none;min-width:120px;max-width:160px;text-align:center}
+.btn-main{padding:14px 28px;border-radius:14px;font-weight:800;font-size:14px;cursor:pointer;border:none;background:linear-gradient(90deg,#1e40af,#7c3aed);color:#fff;min-width:220px;flex:1;max-width:340px}.btn-main:disabled{opacity:.5;cursor:not-allowed}
+.btn-reset{padding:14px 28px;border-radius:14px;font-weight:800;font-size:14px;cursor:pointer;border:1.5px solid #e2e8f0;background:#fff;color:#475569;display:none;min-width:120px;max-width:160px}
 .status{margin-top:10px;text-align:center;font-size:12px;color:#1e40af;display:none;background:#dbeafe;padding:8px;border-radius:8px;font-weight:600}
 .side{position:sticky;top:76px;height:fit-content}.side-card{background:#fff;border:1px solid #e2e8f0;border-radius:18px;padding:18px;margin-bottom:12px}
 </style>
@@ -39,11 +40,11 @@
 <p style="color:#64748b;font-size:13px;margin-top:8px" data-i="desc">Convert Microsoft Word DOCX documents to high-quality PDF instantly. Secure offline processing with no watermark.</p>
 </div>
 <div class="input-card">
-<div class="upload-box" onclick="document.getElementById('wordInp').click()">
-<input type="file" id=.btn"wordInp" accept=".docx" hidden>
+<div class="upload-box" id="uploadBox">
+<input type="file" id="wordInp" accept=".docx,application/vnd.openxmlformats-officedocument.wordprocessingml.document">
 <div style="font-size:36px">📄</div>
 <div style="font-weight:800" data-i="upTitle">Select Word File</div>
-<div style="font-size:11px;color:#64748b" data-i="upSub">Supported format:.DOCX only</div>
+<div style="font-size:11px;color:#64748b" data-i="upSub">Supported format:.DOCX only (Click or Drag & Drop)</div>
 </div>
 <div class="progress" id="progress"><div class="progress-bar" id="progressBar"></div></div>
 <div id="status" class="status"></div>
@@ -78,62 +79,49 @@
 <script>
 var curLang = localStorage.getItem('kaagaz_lang')||'en';
 var dict = {
- en:{
-  b1:"Proper Formatting",b2:"100% Private",b3:"Fast & Free",
-  h1:"Word to PDF<br><span>Convert DOCX to PDF</span>",
-  desc:"Convert Microsoft Word DOCX documents to high-quality PDF instantly. Secure offline processing with no watermark.",
-  upTitle:"Select Word File",upSub:"Supported format:.DOCX only",
-  btnDown:"Download PDF",btnReset:"Reset",
-  howT:"How to Use",howList:"1. Click and select a.DOCX file<br>2. Preview the extracted content<br>3. Click Download PDF<br>4. Use Reset to convert another file",
-  whyT:"Why This Tool?",whyList:"✓ Preserves Formatting<br>✓ 100% Offline & Private<br>✓ Fast and Free<br>✓ No Watermark",
-  docErrT:"Having.DOC Error?",docErrList:"If your file fails to load:<br>1. Open the file in Microsoft Word<br>2. Go to File > Save As<br>3. Choose format: Word Document (.docx)<br>4. Upload the new.docx file",
-  need:"Need PDF to Word?",needDesc:"Convert PDF back to editable Word document",needBtn:"Open PDF to Word →",
-  footDesc:"India's Most Trusted Document Tool. 100% Free, Private and Offline Processing.",featList:"✓ DOCX to PDF<br>✓ Perfect Layout<br>✓ Private and Fast<br>✓ No Watermark"
- },
- hi:{
-  b1:"सही फॉर्मेटिंग",b2:"100% सुरक्षित",b3:"तेज़ और मुफ्त",
-  h1:"Word से PDF<br><span>DOCX को PDF में बदलें</span>",
-  desc:"Microsoft Word DOCX दस्तावेज़ को तुरंत उच्च गुणवत्ता वाले PDF में बदलें। सुरक्षित ऑफलाइन प्रोसेसिंग, कोई वॉटरमार्क नहीं।",
-  upTitle:"Word फ़ाइल चुनें",upSub:"समर्थित प्रारूप: केवल.DOCX",
-  btnDown:"PDF डाउनलोड करें",btnReset:"रीसेट करें",
-  howT:"उपयोग कैसे करें",howList:"1. क्लिक करके.DOCX फ़ाइल चुनें<br>2. सामग्री का पूर्वावलोकन देखें<br>3. PDF डाउनलोड पर क्लिक करें<br>4. दूसरी फ़ाइल के लिए रीसेट का उपयोग करें",
-  whyT:"यह टूल क्यों?",whyList:"✓ फॉर्मेटिंग सुरक्षित रहती है<br>✓ 100% ऑफलाइन और निजी<br>✓ तेज़ और मुफ्त<br>✓ कोई वॉटरमार्क नहीं",
-  docErrT:".DOC फ़ाइल में समस्या?",docErrList:"यदि फ़ाइल लोड नहीं हो रही है:<br>1. फ़ाइल को Microsoft Word में खोलें<br>2. File > Save As पर जाएं<br>3. प्रारूप चुनें: Word Document (.docx)<br>4. नई.docx फ़ाइल अपलोड करें",
-  need:"PDF से Word चाहिए?",needDesc:"PDF को वापस संपादन योग्य Word में बदलें",needBtn:"PDF से Word खोलें →",
-  footDesc:"भारत का सबसे विश्वसनीय डॉक्यूमेंट टूल। 100% मुफ्त, निजी और ऑफलाइन।",featList:"✓ DOCX से PDF<br>✓ परफेक्ट लेआउट<br>✓ निजी और तेज़<br>✓ कोई वॉटरमार्क नहीं"
- }
+ en:{b1:"Proper Formatting",b2:"100% Private",b3:"Fast & Free",h1:"Word to PDF<br><span>Convert DOCX to PDF</span>",desc:"Convert Microsoft Word DOCX documents to high-quality PDF instantly. Secure offline processing with no watermark.",upTitle:"Select Word File",upSub:"Supported format:.DOCX only (Click or Drag & Drop)",btnDown:"Download PDF",btnReset:"Reset",howT:"How to Use",howList:"1. Click and select a.DOCX file<br>2. Preview the extracted content<br>3. Click Download PDF<br>4. Use Reset to convert another file",whyT:"Why This Tool?",whyList:"✓ Preserves Formatting<br>✓ 100% Offline & Private<br>✓ Fast and Free<br>✓ No Watermark",docErrT:"Having.DOC Error?",docErrList:"If your file fails to load:<br>1. Open the file in Microsoft Word<br>2. Go to File > Save As<br>3. Choose format: Word Document (.docx)<br>4. Upload the new.docx file",need:"Need PDF to Word?",needDesc:"Convert PDF back to editable Word document",needBtn:"Open PDF to Word →",footDesc:"India's Most Trusted Document Tool. 100% Free, Private and Offline Processing.",featList:"✓ DOCX to PDF<br>✓ Perfect Layout<br>✓ Private and Fast<br>✓ No Watermark"},
+ hi:{b1:"सही फॉर्मेटिंग",b2:"100% सुरक्षित",b3:"तेज़ और मुफ्त",h1:"Word से PDF<br><span>DOCX को PDF में बदलें</span>",desc:"Microsoft Word DOCX दस्तावेज़ को तुरंत उच्च गुणवत्ता वाले PDF में बदलें। सुरक्षित ऑफलाइन प्रोसेसिंग, कोई वॉटरमार्क नहीं।",upTitle:"Word फ़ाइल चुनें",upSub:"समर्थित प्रारूप: केवल.DOCX (क्लिक करें या ड्रैग करें)",btnDown:"PDF डाउनलोड करें",btnReset:"रीसेट करें",howT:"उपयोग कैसे करें",howList:"1. क्लिक करके.DOCX फ़ाइल चुनें<br>2. सामग्री का पूर्वावलोकन देखें<br>3. PDF डाउनलोड पर क्लिक करें<br>4. दूसरी फ़ाइल के लिए रीसेट का उपयोग करें",whyT:"यह टूल क्यों?",whyList:"✓ फॉर्मेटिंग सुरक्षित रहती है<br>✓ 100% ऑफलाइन और निजी<br>✓ तेज़ और मुफ्त<br>✓ कोई वॉटरमार्क नहीं",docErrT:".DOC फ़ाइल में समस्या?",docErrList:"यदि फ़ाइल लोड नहीं हो रही है:<br>1. फ़ाइल को Microsoft Word में खोलें<br>2. File > Save As पर जाएं<br>3. प्रारूप चुनें: Word Document (.docx)<br>4. नई.docx फ़ाइल अपलोड करें",need:"PDF से Word चाहिए?",needDesc:"PDF को वापस संपादन योग्य Word में बदलें",needBtn:"PDF से Word खोलें →",footDesc:"भारत का सबसे विश्वसनीय डॉक्यूमेंट टूल। 100% मुफ्त, निजी और ऑफलाइन।",featList:"✓ DOCX से PDF<br>✓ परफेक्ट लेआउट<br>✓ निजी और तेज़<br>✓ कोई वॉटरमार्क नहीं"}
 };
 function applyLang(){document.querySelectorAll('[data-i]').forEach(function(el){var k=el.getAttribute('data-i');if(dict[curLang]&&dict[curLang][k])el.innerHTML=dict[curLang][k];});document.getElementById('langBtn').innerText=curLang==='hi'?'English':'हिंदी';}
 function toggleLang(){curLang=curLang==='hi'?'en':'hi';localStorage.setItem('kaagaz_lang',curLang);applyLang();}
 applyLang();
 var extractedText='';
-document.getElementById('wordInp').addEventListener('change', async function(e){
- var file=e.target.files[0];if(!file)return;
+var wordInp=document.getElementById('wordInp');
+var uploadBox=document.getElementById('uploadBox');
+
+uploadBox.addEventListener('dragover',function(e){e.preventDefault();uploadBox.classList.add('dragover');});
+uploadBox.addEventListener('dragleave',function(){uploadBox.classList.remove('dragover');});
+uploadBox.addEventListener('drop',function(e){
+ e.preventDefault();uploadBox.classList.remove('dragover');
+ if(e.dataTransfer.files.length){ wordInp.files=e.dataTransfer.files; handleFile(e.dataTransfer.files[0]); }
+});
+
+wordInp.addEventListener('change',function(e){ if(e.target.files[0]) handleFile(e.target.files[0]); });
+
+async function handleFile(file){
+ if(!file) return;
  var name=file.name.toLowerCase();
  var preview=document.getElementById('preview');var status=document.getElementById('status');var progress=document.getElementById('progress');var bar=document.getElementById('progressBar');var errBox=document.getElementById('errBox');
  errBox.style.display='none';preview.style.display='block';preview.textContent=curLang==='hi'?'फ़ाइल पढ़ी जा रही है...':'Reading file...';status.style.display='block';status.textContent=curLang==='hi'?'पढ़ा जा रहा है...':'Reading...';progress.style.display='block';bar.style.width='30%';
  if(name.endsWith('.doc')&&!name.endsWith('.docx')){
    bar.style.width='0%';progress.style.display='none';preview.style.display='none';status.style.display='none';
-   errBox.style.display='block';
-   errBox.innerHTML=curLang==='hi'?'<b>पुराना.DOC प्रारूप समर्थित नहीं है।</b><br>समाधान: Word में खोलें > File > Save As >.docx के रूप में सेव करें और फिर अपलोड करें।':'<b>Old.DOC format is not supported.</b><br>Solution: Open in Word > File > Save As > Save as.docx and upload again.';
-   document.getElementById('btnReset').style.display='block';e.target.value='';return;
+   errBox.style.display='block';errBox.innerHTML=curLang==='hi'?'<b>पुराना.DOC समर्थित नहीं है।</b><br>Word में खोलें > Save As >.docx सेव करें।':'<b>Old.DOC not supported.</b><br>Open in Word > Save As >.docx and upload again.';
+   document.getElementById('btnReset').style.display='block';return;
  }
  try{
   var arrayBuffer=await file.arrayBuffer();
   var result=await mammoth.extractRawText({arrayBuffer:arrayBuffer});
   extractedText=result.value.trim();
-  if(!extractedText) throw new Error('Empty document');
+  if(!extractedText) throw new Error('Empty');
   bar.style.width='80%';preview.textContent=extractedText.substring(0,5000);
   document.getElementById('btnDown').disabled=false;document.getElementById('btnReset').style.display='block';
   status.textContent=(curLang==='hi'?'तैयार: ':'Ready: ')+extractedText.split(/\s+/).length+(curLang==='hi'?' शब्द':' words');bar.style.width='100%';
  }catch(err){
   bar.style.width='0%';preview.style.display='none';status.style.display='none';
-  errBox.style.display='block';
-  errBox.innerHTML=curLang==='hi'?'फ़ाइल पढ़ने में विफल। कृपया.DOCX फ़ाइल का उपयोग करें।':'Failed to read file. Please use a valid.DOCX file.';
+  errBox.style.display='block';errBox.innerHTML=curLang==='hi'?'फ़ाइल पढ़ने में विफल। कृपया वैध.DOCX फ़ाइल चुनें।':'Failed to read file. Please select a valid.DOCX file.';
   document.getElementById('btnReset').style.display='block';
  }
- e.target.value='';
-});
+}
 function resetTool(){extractedText='';document.getElementById('preview').style.display='none';document.getElementById('preview').textContent='';document.getElementById('status').style.display='none';document.getElementById('errBox').style.display='none';document.getElementById('progress').style.display='none';document.getElementById('progressBar').style.width='0%';document.getElementById('btnDown').disabled=true;document.getElementById('btnReset').style.display='none';document.getElementById('wordInp').value='';}
 async function downloadPDF(){if(!extractedText)return;var status=document.getElementById('status');var bar=document.getElementById('progressBar');status.style.display='block';status.textContent=curLang==='hi'?'PDF बनाया जा रहा है...':'Creating PDF...';bar.style.display='block';bar.parentElement.style.display='block';bar.style.width='90%';const {jsPDF}=window.jspdf;var doc=new jsPDF({unit:'mm',format:'a4'});var pageHeight=297;var margin=15;var y=margin;doc.setFontSize(11);var lines=doc.splitTextToSize(extractedText, 180);for(var i=0;i<lines.length;i++){if(y>pageHeight-15){doc.addPage();y=margin;}doc.text(lines[i], margin, y);y+=6;}doc.save('KaagazPro-WordToPDF.pdf');bar.style.width='100%';status.textContent=curLang==='hi'?'PDF डाउनलोड हो गया!':'PDF Downloaded!';}
 </script>
