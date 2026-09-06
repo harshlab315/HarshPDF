@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PDF to JPG - Convert PDF to JPG with ZIP - KaagazPro</title>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6640527517870664" crossorigin="anonymous"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Plus+Jakarta+Sans:wght@700;800&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+<style>
+*{box-sizing:border-box;font-family:'Inter',sans-serif}body{margin:0;background:#f6f7fb;color:#0f172a}
+.header{background:#1e40af;color:#fff;padding:12px 18px;display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;z-index:99}
+.logo{font-family:'Plus Jakarta Sans';font-weight:800;font-size:20px}.hr{display:flex;gap:8px}
+.lang-btn{background:#fff;color:#1e40af;border:0;padding:7px 14px;border-radius:20px;font-weight:800;cursor:pointer;font-size:12px}.all-btn{color:#fff;text-decoration:none;font-size:12px;background:rgba(255,255,255,.18);padding:7px 14px;border-radius:20px}
+.wrap{max-width:1100px;margin:18px auto;padding:0 14px;display:grid;grid-template-columns:1.15fr 0.85fr;gap:16px}@media(max-width:850px){.wrap{grid-template-columns:1fr}}
+.hero-card{background:#fff;border-radius:20px;padding:22px;border:1px solid #e2e8f0}
+.hero-card h1{font-family:'Plus Jakarta Sans';font-size:30px;font-weight:800;margin:0}.hero-card h1 span{background:linear-gradient(90deg,#1e40af,#7c3aed,#ec4899);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.badge-row{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px}.badge{font-size:11px;font-weight:700;padding:6px 12px;border-radius:100px;background:#fff;border:1px solid #e2e8f0}.badge.green{background:#dcfce7;color:#166534}.badge.blue{background:#dbeafe;color:#1e40af}.badge.purple{background:#f3e8ff;color:#6b21a8}
+.input-card{background:#fff;border-radius:20px;padding:20px;border:1px solid #e2e8f0;margin-top:14px}
+.upload-box{border:2px dashed #a5b4fc;background:#f8fafc;border-radius:16px;padding:28px;text-align:center;cursor:pointer}
+.top-bar{display:none;gap:8px;margin-top:14px;flex-wrap:wrap;align-items:center;background:#f8fafc;border:1px solid #e2e8f0;border-radius:12px;padding:10px}.top-bar.show{display:flex}
+.top-bar input{flex:1;min-width:180px;padding:11px;border:1.5px solid #e2e8f0;border-radius:10px;font-size:13px;font-weight:600}
+.small-btn{padding:10px 12px;border-radius:10px;border:1.5px solid #e2e8f0;background:#fff;font-weight:800;font-size:11px;cursor:pointer}
+.item{background:#fff;border:1.5px solid #e2e8f0;border-radius:16px;padding:12px;display:grid;grid-template-columns:90px 1fr;gap:12px;margin-top:12px}.item.selected{border-color:#1e40af;box-shadow:0 0 0 3px rgba(30,64,175,.1)}
+.thumb{position:relative}.thumb img{width:90px;height:90px;object-fit:cover;border-radius:12px;border:1px solid #e2e8f0}.check{position:absolute;top:-6px;left:-6px;width:22px;height:22px;accent-color:#1e40af}
+.rename input{width:100%;padding:8px 10px;border:1.5px solid #1e40af;border-radius:8px;font-size:12px;font-weight:600;background:#f8fafc;outline:none;margin-top:8px}
+.tools{display:flex;gap:6px;margin-top:8px;flex-wrap:wrap}.tools button{font-size:11px;padding:6px 10px;border-radius:20px;border:1px solid #e2e8f0;background:#f8fafc;cursor:pointer;font-weight:700}
+.btn-row{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:16px}.btn-main{padding:14px;border-radius:14px;font-weight:800;font-size:13px;cursor:pointer;border:none}.btn-main.zip{background:linear-gradient(90deg,#1e40af,#7c3aed);color:#fff}.btn-main.single{background:#fff;color:#1e40af;border:1.5px solid #1e40af}.btn-main:disabled{opacity:.5}
+.result{background:linear-gradient(135deg,#1e40af,#7c3aed,#ec4899);color:#fff;border-radius:16px;padding:18px;text-align:center;margin-top:14px;display:none}
+.side{position:sticky;top:76px;height:fit-content}.side-card{background:#fff;border:1px solid #e2e8f0;border-radius:18px;padding:18px;margin-bottom:12px}
+</style>
+</head>
+<body>
+<div class="header"><div class="logo">📄 KaagazPro</div><div class="hr"><button class="lang-btn" id="langBtn" onclick="toggleLang()">हिंदी</button><a class="all-btn" href="/">← All Tools</a></div></div>
+
+<div class="wrap"><div>
+<div class="hero-card">
+<div class="badge-row"><span class="badge green">✨ All Pages to JPG</span><span class="badge blue">📦 ZIP + Single</span><span class="badge purple">⚡ Auto Clear</span></div>
+<h1 data-i="h1">PDF to JPG <br><span>ZIP or Single JPG</span></h1>
+<p style="color:#64748b;font-size:13px;margin-top:8px" data-i="desc">Upload PDF, convert to JPG. Download as ZIP or download single JPGs without ZIP. Your choice.</p>
+</div>
+
+<div class="input-card">
+<div class="upload-box" onclick="document.getElementById('pdfInp').click()">
+<input type="file" id="pdfInp" accept="application/pdf" hidden>
+<div style="font-size:36px">📑</div>
+<div style="font-weight:800" data-i="upTitle">Select PDF File</div>
+<div style="font-size:11px;color:#64748b" data-i="upSub">All pages will convert to JPG</div>
+</div>
+
+<div class="top-bar" id="topBar">
+<input id="zipName" value="kaagazpro-images.zip">
+<button class="small-btn" onclick="selectAll(true)" data-i="selAll">Select All</button>
+<button class="small-btn" onclick="selectAll(false)" data-i="desAll">Deselect All</button>
+<button class="small-btn" onclick="clearAll()" style="color:#ef4444" data-i="clear">Clear All</button>
+<span id="count" style="font-size:11px;font-weight:800;color:#1e40af">0 selected</span>
+</div>
+
+<div id="list"></div>
+
+<div class="btn-row">
+<button class="btn-main zip" id="zipBtn" disabled onclick="downloadZIP()" data-i="btnZip">📦 Download as ZIP →</button>
+<button class="btn-main single" id="singleBtn" disabled onclick="downloadSingle()" data-i="btnSingle">🖼️ Download Without ZIP →</button>
+</div>
+
+<div id="result" class="result"><div id="info" style="font-weight:800">--</div><div style="font-size:11px;margin-top:6px;opacity:.8" data-i="autoNote">Auto cleared after download</div></div>
+</div>
+</div>
+
+<div class="side">
+<div class="side-card"><h3 style="font-size:14px;font-weight:800;margin:0 0 10px" data-i="howT">✨ How to Use</h3><div style="font-size:12.5px;color:#475569;line-height:1.8"><span data-i="how1">📄 Select PDF</span><br><span data-i="how2">🖼️ All pages to JPG</span><br><span data-i="how3">☑️ Select what you need</span><br><b data-i="how4">📦 ZIP = All in one file</b><br><b data-i="how5">🖼️ Without ZIP = One by one JPG</b></div></div>
+<div class="side-card" style="background:linear-gradient(135deg,#dbeafe,#bfdbfe);border-color:#93c5fd;text-align:center"><h3 style="font-size:14px">📄 JPG to PDF?</h3><p style="font-size:12px;color:#1e40af" data-i="promo">Combine JPG to one PDF</p><a href="../jpg-to-pdf/" style="display:block;background:#0f172a;color:#fff;padding:10px;border-radius:10px;text-decoration:none;font-weight:800;font-size:12px" data-i="promoBtn">Open JPG to PDF →</a></div>
+</div>
+</div>
+
+<footer style="background:#0f172a;color:#cbd5e1;padding:0;width:100%;display:block">
+<div style="max-width:1100px;margin:0 auto;padding:28px 18px;display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:18px">
+<div><div style="color:#fff;font-weight:800;font-size:20px;margin-bottom:8px">📄 KaagazPro</div><p style="font-size:12.5px;line-height:1.6;color:#94a3b8" data-i="footDesc">India's Most Trusted Document Tool. 100% Free, Private & Offline. Convert PDF to JPG, JPG to PDF. No data saved.</p><div style="display:flex;gap:6px;margin-top:12px;flex-wrap:wrap"><span style="background:#1e293b;padding:5px 10px;border-radius:20px;font-size:11px">🔒 Private</span><span style="background:#1e293b;padding:5px 10px;border-radius:20px;font-size:11px">⚡ Offline</span><span style="background:#1e293b;padding:5px 10px;border-radius:20px;font-size:11px">🇮🇳 Made in India</span></div></div>
+<div><b style="color:#fff;font-size:12px">POPULAR TOOLS</b><div style="margin-top:12px;display:flex;flex-direction:column;gap:8px;font-size:12.5px"><a href="../jpg-to-pdf/" style="color:#22c55e;text-decoration:none;font-weight:700">JPG to PDF</a><a href="./" style="color:#22c55e;text-decoration:none;font-weight:700">PDF to JPG</a><a href="../compressor.html" style="color:#94a3b8;text-decoration:none">Image Compressor 20KB</a><a href="/" style="color:#94a3b8;text-decoration:none">View All →</a></div></div>
+<div><b style="color:#fff;font-size:12px">LEGAL</b><div style="margin-top:12px;display:flex;flex-direction:column;gap:8px;font-size:12.5px"><a href="/privacy-policy.html" style="color:#94a3b8;text-decoration:none">Privacy Policy</a><a href="/terms.html" style="color:#94a3b8;text-decoration:none">Terms</a><a href="/contact.html" style="color:#94a3b8;text-decoration:none">Contact</a></div></div>
+<div><b style="color:#fff;font-size:12px">FEATURES</b><div style="margin-top:12px;font-size:12px;line-height:1.7;color:#94a3b8">✔ All PDF pages to JPG<br>✔ ZIP + Single JPG<br>✔ Rename & Select All<br>✔ Auto clear after download</div></div>
+</div>
+<div style="border-top:1px solid #1e293b;padding:12px;text-align:center;font-size:11px;color:#64748b">© 2025 KaagazPro.com • Made with ❤️ in India • Mobile & Desktop Friendly</div>
+</footer>
+
+<script>
+let cur=localStorage.getItem('kaagaz_lang')||'en';
+const dict={
+en:{h1:"PDF to JPG <br><span>ZIP or Single JPG</span>",desc:"Upload PDF, convert to JPG. Download as ZIP or download single JPGs without ZIP. Your choice.",upTitle:"Select PDF File",upSub:"All pages will convert to JPG",selAll:"Select All",desAll:"Deselect All",clear:"Clear All",btnZip:"📦 Download as ZIP →",btnSingle:"🖼️ Download Without ZIP →",autoNote:"Auto cleared after download",howT:"✨ How to Use",how1:"📄 Select PDF",how2:"🖼️ All pages to JPG",how3:"☑️ Select what you need",how4:"📦 ZIP = All in one file",how5:"🖼️ Without ZIP = One by one JPG",promo:"Combine JPG to one PDF",promoBtn:"Open JPG to PDF →",footDesc:"India's Most Trusted Document Tool. 100% Free, Private & Offline. Convert PDF to JPG, JPG to PDF. No data saved."},
+hi:{h1:"PDF से JPG <br><span>ZIP या बिना ZIP</span>",desc:"PDF अपलोड करें, JPG में बदलें। ZIP में या बिना ZIP के सिंगल JPG डाउनलोड करें। आपकी मर्जी।",upTitle:"PDF सेलेक्ट करें",upSub:"सभी पेज JPG बनेंगे",selAll:"सब सेलेक्ट",desAll:"सब हटाओ",clear:"सब क्लियर",btnZip:"📦 ZIP में डाउनलोड →",btnSingle:"🖼️ बिना ZIP डाउनलोड →",autoNote:"डाउनलोड के बाद ऑटो क्लियर",howT:"✨ कैसे इस्तेमाल करें",how1:"📄 PDF सेलेक्ट करें",how2:"🖼️ सभी पेज JPG बनेंगे",how3:"☑️ जो चाहिए सेलेक्ट करें",how4:"📦 ZIP = एक फाइल में सब",how5:"🖼️ बिना ZIP = एक-एक JPG",promo:"कई JPG को एक PDF में",promoBtn:"JPG to PDF खोलें →",footDesc:"भारत का सबसे भरोसेमंद डॉक्यूमेंट टूल। 100% फ्री, प्राइवेट और ऑफलाइन। PDF को JPG में, JPG को PDF में बदलें। कोई डेटा सेव नहीं।"}
+};
+function applyLang(){document.querySelectorAll('[data-i]').forEach(e=>{let k=e.getAttribute('data-i');if(dict[cur][k]) e.innerHTML=dict[cur][k]});document.getElementById('langBtn').innerText=cur==='hi'?'English':'हिंदी'}
+function toggleLang(){cur=cur==='hi'?'en':'hi';localStorage.setItem('kaagaz_lang',cur);applyLang()} applyLang();
+let data=[]; pdfjsLib.GlobalWorkerOptions.workerSrc='https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+document.getElementById('pdfInp').addEventListener('change', async e=>{
+ let file=e.target.files[0]; if(!file) return;
+ document.getElementById('list').innerHTML="<div style='text-align:center;padding:20px;color:#64748b'>Loading PDF...</div>";
+ let pdf=await pdfjsLib.getDocument(URL.createObjectURL(file)).promise; data=[];
+ for(let i=1;i<=pdf.numPages;i++){ let page=await pdf.getPage(i); let v=page.getViewport({scale:2}); let c=document.createElement('canvas'); c.width=v.width; c.height=v.height; await page.render({canvasContext:c.getContext('2d'),viewport:v}).promise; data.push({id:i,url:c.toDataURL('image/jpeg',0.92),name:`page-${i}`,selected:true}); }
+ render(); e.target.value="";
+});
+function render(){ let list=document.getElementById('list'); list.innerHTML=""; let bar=document.getElementById('topBar'); if(data.length>0) bar.classList.add('show'); else bar.classList.remove('show');
+ data.forEach((d,i)=>{ let el=document.createElement('div'); el.className='item '+(d.selected?'selected':''); el.innerHTML=`<div class="thumb"><input type="checkbox" class="check" ${d.selected?'checked':''} onchange="toggle(${i},this.checked)"><img src="${d.url}"></div><div><div style="display:flex;justify-content:space-between"><b style="font-size:12.5px">${d.name}.jpg</b><span style="font-size:10px;color:#94a3b8">Page ${d.id}</span></div><div class="rename"><input value="${d.name}" oninput="rename(${i},this.value)"></div><div class="tools"><button onclick="removeItem(${i})" style="color:#ef4444">Delete</button></div></div>`; list.appendChild(el); });
+ let c=data.filter(x=>x.selected).length; document.getElementById('count').innerText=c+" selected / "+data.length+" total"; document.getElementById('zipBtn').disabled=c==0; document.getElementById('singleBtn').disabled=c==0;
+}
+function toggle(i,v){data[i].selected=v;render()} function rename(i,v){data[i].name=v} function removeItem(i){data.splice(i,1);render()} function selectAll(v){data.forEach(d=>d.selected=v);render()} function clearAll(){if(!confirm("Clear all?")) return;data=[];document.getElementById('result').style.display='none';render()}
+async function downloadZIP(){ let zip=new JSZip(); let sel=data.filter(d=>d.selected); sel.forEach(d=>{zip.file(d.name+'.jpg', d.url.split(',')[1], {base64:true});}); let blob=await zip.generateAsync({type:'blob'}); let name=document.getElementById('zipName').value.trim()||'images.zip'; if(!name.endsWith('.zip')) name+='.zip'; let a=document.createElement('a'); a.href=URL.createObjectURL(blob); a.download=name; a.click(); document.getElementById('info').innerText=sel.length+" JPG in ZIP downloaded"; document.getElementById('result').style.display='block'; setTimeout(autoClear,900); }
+function downloadSingle(){ let sel=data.filter(d=>d.selected); sel.forEach((d,idx)=>{ setTimeout(()=>{ let a=document.createElement('a'); a.href=d.url; a.download=d.name+'.jpg'; a.click(); }, idx*400); }); document.getElementById('info').innerText=sel.length+" JPG downloaded without ZIP"; document.getElementById('result').style.display='block'; setTimeout(autoClear, sel.length*400+800); }
+function autoClear(){ data=[]; document.getElementById('list').innerHTML=""; document.getElementById('topBar').classList.remove('show'); document.getElementById('result').style.display='none'; document.getElementById('zipBtn').disabled=true; document.getElementById('singleBtn').disabled=true; document.getElementById('zipName').value="kaagazpro-images.zip"; }
+</script>
+</body>
+</html>
