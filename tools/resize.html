@@ -5,88 +5,105 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Photo Resize to Any KB + Crop - KaagazPro | Free, Private</title>
 <meta name="description" content="Resize photo to 20KB, 50KB, 100KB exact size with crop. 100% offline, no upload, for SSC, UPSC, Govt forms. Free & private.">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6640527517870664" crossorigin="anonymous"></script>
 <link href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.6.1/cropper.min.css" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.6.1/cropper.min.js"></script>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Plus+Jakarta+Sans:wght@700;800&display=swap" rel="stylesheet">
 <style>
-*{box-sizing:border-box;font-family:'Inter',sans-serif}
-body{background:#f6f7fb;margin:0;padding:0;color:#0f172a}
-.header{background:#1e40af;color:#fff;padding:12px 20px;display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;z-index:100}
-.header.logo{font-size:20px;font-weight:700}
-.header-right{display:flex;gap:8px;align-items:center}
-.lang-btn{background:#fff;color:#1e40af;border:0;padding:7px 14px;border-radius:20px;font-weight:700;cursor:pointer;font-size:12px}
-.all-btn{color:#fff;text-decoration:none;font-size:12px;background:rgba(255,255,255,.18);padding:7px 14px;border-radius:20px}
-.card{max-width:900px;margin:18px auto;background:#fff;border-radius:18px;padding:24px;box-shadow:0 6px 30px rgba(0,0,0,.08)}
-.top-blink{background:linear-gradient(90deg,#fef08a,#fde047);border:1px dashed #eab308;padding:10px 14px;border-radius:10px;text-align:center;margin-bottom:16px;animation:blink 1.6s infinite;cursor:pointer;font-weight:600;font-size:13px}
-@keyframes blink{0%,100%{opacity:1}50%{opacity:.7}}
-.badge{display:flex;gap:12px;font-size:12px;color:#64748b;margin:10px 0 20px;flex-wrap:wrap;align-items:center}
-.badge span{background:#f1f5f9;padding:5px 10px;border-radius:20px}
-.upload-box{border:2px dashed #6366f1;background:#f5f3ff;border-radius:16px;padding:40px 20px;text-align:center;cursor:pointer;transition:.2s}
-.upload-box:hover{background:#ede9fe;transform:scale(1.01)}
-.grid{display:grid;grid-template-columns:1fr 1fr;gap:15px;margin-top:15px}@media(max-width:700px){.grid{grid-template-columns:1fr}}
-.img-box{background:#f0f2f5;border-radius:12px;min-height:320px;display:flex;align-items:center;justify-content:center;overflow:hidden;position:relative}
-.controls{display:flex;gap:10px;flex-wrap:wrap;margin:15px 0;background:#f8fafc;padding:15px;border-radius:12px}
-.controls label{font-size:12px;font-weight:600;display:flex;flex-direction:column;gap:5px}
-.controls input{padding:8px 10px;border:1px solid #cbd5e1;border-radius:8px;width:85px}
-button{padding:10px 16px;border:0;border-radius:10px;background:#4f46e5;color:#fff;font-weight:600;cursor:pointer}
-button.secondary{background:#0f172a}button.success{background:#16a34a;width:100%;margin-top:10px;font-size:16px}
-.t1{background:#eef2ff!important;color:#4338ca!important;padding:7px 11px!important;font-size:12px!important}
-.t2{background:#fef3c7!important;color:#92400e!important;padding:7px 11px!important;font-size:12px!important}
-.hidden{display:none!important}.refresh{background:#fee2e2;color:#dc2626;font-size:12px}
-.result-card{background:#f0fdf4;border:1px solid #bbf7d0;border-radius:12px;padding:15px;margin-top:15px}
-#fileName{width:100%;padding:10px;border:1px solid #cbd5e1;border-radius:8px;margin-top:8px}
-.seo-section{max-width:900px;margin:20px auto;padding:0 16px}
-.seo-card{background:#fff;border-radius:14px;padding:20px;margin-bottom:16px;box-shadow:0 4px 14px rgba(0,0,0,.05)}
-.seo-card h2{font-size:18px;margin:0 0 10px}
-.seo-card h3{font-size:15px;margin:16px 0 6px}
-.seo-card p,.seo-card li{font-size:13.5px;color:#334155;line-height:1.7}
-.faq-item{border-bottom:1px solid #e2e8f0;padding:12px 0}
-.faq-item b{display:block;font-size:14px;margin-bottom:4px}
+*{box-sizing:border-box;font-family:'Inter',sans-serif}body{margin:0;background:#f6f7fb;color:#0f172a}
+.header{background:#2563eb;color:#fff;padding:0 20px;display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;z-index:1000;height:58px;box-shadow:0 2px 12px rgba(0,0,0,.15)}
+.logo{font-family:'Plus Jakarta Sans';font-weight:800;font-size:20px;letter-spacing:-.5px}.hr{display:flex;gap:8px;align-items:center}
+.lang-btn{background:#fff;color:#2563eb;border:0;padding:7px 16px;border-radius:20px;font-weight:800;cursor:pointer;font-size:13px;min-width:70px}
+.all-btn{color:#fff;text-decoration:none;font-size:12px;background:rgba(255,255,255,.2);padding:7px 14px;border-radius:20px}
+.wrap{max-width:1150px;margin:0 auto;padding:20px 14px 0;display:grid;grid-template-columns:1.15fr.85fr;gap:18px}
+@media(max-width:900px){.wrap{grid-template-columns:1fr;padding:14px 12px 0}}
+.left-card{background:#fff;border-radius:20px;padding:22px 22px 18px;border:1px solid #e2e8f0;box-shadow:0 4px 24px rgba(0,0,0,.05)}
+.badges{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:16px}
+.badge{font-size:11px;font-weight:700;padding:6px 12px;border-radius:20px;border:1px solid #e2e8f0;display:flex;align-items:center;gap:4px}
+.b-green{background:#dcfce7;color:#166534;border-color:#bbf7d0}.b-blue{background:#dbeafe;color:#1e40af;border-color:#bfdbfe}.b-purple{background:#f3e8ff;color:#6b21a8;border-color:#e9d5ff}
+.title{font-family:'Plus Jakarta Sans';font-size:30px;font-weight:800;line-height:1.1;margin:0;letter-spacing:-.8px}
+@media(max-width:600px){.title{font-size:22px}}
+.title.grad{background:linear-gradient(90deg,#2563eb,#7c3aed,#db2777);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.sub{color:#64748b;font-size:13.5px;margin:10px 0 0;line-height:1.5}
+.top-blink{background:linear-gradient(90deg,#fef9c3,#fde047);border:1px dashed #eab308;padding:11px;border-radius:12px;text-align:center;font-weight:700;font-size:12.5px;margin:16px 0;cursor:pointer;display:flex;justify-content:center;gap:6px}
+.tool-box{margin-top:16px;background:#f8fafc;border-radius:16px;padding:16px;border:1px solid #f1f5f9}
+.upload-box{border:2px dashed #a5b4fc;background:#fff;border-radius:14px;padding:38px 16px;text-align:center;cursor:pointer;transition:.2s}
+.upload-box:hover{background:#eef2ff;border-color:#6366f1;transform:translateY(-1px)}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:14px}@media(max-width:700px){.grid{grid-template-columns:1fr}}
+.img-box{background:#fff;border:1px solid #e2e8f0;border-radius:12px;min-height:300px;display:flex;align-items:center;justify-content:center;overflow:hidden;padding:6px}
+.controls{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin:14px 0}
+.controls label{font-size:11px;font-weight:800;color:#334155;display:flex;flex-direction:column;gap:6px}
+.controls input{padding:11px 12px;border:1px solid #cbd5e1;border-radius:10px;font-weight:700;width:100%;background:#fff}
+.btn-row{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px}
+button{padding:12px 16px;border:0;border-radius:11px;background:#4f46e5;color:#fff;font-weight:800;cursor:pointer;font-size:13px}
+button.secondary{background:#0f172a}button.success{background:#16a34a;width:100%;margin-top:12px;font-size:15px;padding:14px}
+.t-row{display:flex;gap:7px;flex-wrap:wrap;margin:12px 0}
+.t1{background:#eef2ff!important;color:#4338ca!important;padding:7px 11px!important;font-size:12px!important;border-radius:8px!important}
+.t2{background:#fef3c7!important;color:#92400e!important;padding:7px 11px!important;font-size:12px!important;border-radius:8px!important}
+.hidden{display:none!important}.refresh{background:#fff1f2;color:#be123c;border:1px solid #fecdd3;font-size:12px;border-radius:20px;padding:6px 12px}
+.result-card{background:#f0fdf4;border:1px solid #bbf7d0;border-radius:12px;padding:14px;margin-top:14px}
+#fileName{width:100%;padding:10px;border:1px solid #cbd5e1;border-radius:8px;margin-top:6px}
+
+/* RIGHT SIDE STYLISH */
+.right{position:sticky;top:76px;height:fit-content;display:flex;flex-direction:column;gap:14px}
+@media(max-width:900px){.right{position:static}}
+.side-card{background:#fff;border-radius:16px;padding:18px 18px 16px;border:1px solid #e2e8f0;box-shadow:0 4px 16px rgba(0,0,0,.04);position:relative;overflow:hidden}
+.side-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#2563eb,#7c3aed)}
+.side-card h3{font-size:13.5px;font-weight:800;margin:0 0 12px;display:flex;align-items:center;gap:6px;letter-spacing:-.2px}
+.side-card.item{display:flex;gap:10px;align-items:flex-start;margin:10px 0;font-size:12.5px;color:#334155;line-height:1.5}
+.side-card.icon{width:22px;height:22px;border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:11px;flex-shrink:0}
+.icon-blue{background:#dbeafe}.icon-green{background:#dcfce7}.icon-orange{background:#ffedd5}.icon-purple{background:#f3e8ff}
+.yellow-card{background:linear-gradient(135deg,#fffbeb,#fef3c7);border:1px solid #fde68a;border-radius:16px;padding:18px;text-align:center;box-shadow:0 4px 16px rgba(251,191,36,.2)}
+.yellow-card b{font-size:14px;display:block}.yellow-card p{font-size:11.5px;margin:6px 0 14px;color:#92400e}
+.black-btn{background:#0f172a;color:#fff;padding:12px;border-radius:11px;display:block;text-decoration:none;font-weight:800;font-size:13px;text-align:center;transition:.2s}
+.black-btn:hover{background:#1e293b;transform:translateY(-1px)}
+.why-card{background:#fff;border-radius:16px;padding:18px;border:1px solid #e2e8f0;box-shadow:0 4px 16px rgba(0,0,0,.04)}
+.why-card.check{display:flex;gap:8px;margin:9px 0;font-size:12.5px;color:#334155}
+.why-card.tick{width:18px;height:18px;background:#dcfce7;border-radius:5px;display:flex;align-items:center;justify-content:center;color:#166534;font-size:10px;font-weight:800}
 </style>
-<script type="application/ld+json">
-{
-"@context":"https://schema.org",
-"@type":"FAQPage",
-"mainEntity":[
-{"@type":"Question","name":"How to resize photo to 20KB?","acceptedAnswer":{"@type":"Answer","text":"Upload photo, set target 20 KB, click Crop then Compress and download."}},
-{"@type":"Question","name":"Is my photo uploaded to server?","acceptedAnswer":{"@type":"Answer","text":"No, 100% offline processing in your browser. Auto deleted after download."}},
-{"@type":"Question","name":"Can I use for SSC / UPSC forms?","acceptedAnswer":{"@type":"Answer","text":"Yes, exact KB + crop for passport size works for all govt forms."}}
-]
-}
-</script>
 </head>
 <body>
 <div class="header">
 <div class="logo">📄 KaagazPro</div>
-<div class="header-right">
+<div class="hr">
 <button class="lang-btn" id="langBtn" onclick="toggleLang()">हिंदी</button>
 <a class="all-btn" href="/">← All Tools</a>
 </div>
 </div>
 
-<div class="card">
+<div class="wrap">
+<div class="left-card">
+<div class="badges">
+<span class="badge b-green">✨ <span data-i18n="b1">100% Accurate</span></span>
+<span class="badge b-blue">🔒 <span data-i18n="b2">Private & Offline</span></span>
+<span class="badge b-purple">⚡ <span data-i18n="b3">Instant Result</span></span>
+</div>
+<h1 class="title"><span data-i18n="title">Resize Photo to Any KB</span><br><span class="grad" data-i18n="title2">With Crop</span></h1>
+<p class="sub" data-i18n="subtitle">Fast, beautiful & 100% private. No data saved — everything happens in your browser.</p>
+
 <div class="top-blink" onclick="document.getElementById('howto').scrollIntoView({behavior:'smooth'})">
-<span data-i18n="blink">👆 New? Click here - How to Use in 30 Sec</span>
+<span>👉</span><span data-i18n="blink">New? Click here - Learn in 30 Seconds</span>
 </div>
 
-<h1 style="margin:0" data-i18n="title">Photo Resize to Any KB + Crop</h1>
-<p style="color:#64748b;margin:5px 0 0;font-size:14px" data-i18n="subtitle">Any size photo to exact KB - For all forms</p>
-<div class="badge"><span id="realCount"></span><span data-i18n="private">🔒 100% Private - Server pe save nahi hota</span></div>
-
+<div class="tool-box">
 <div id="uploadArea" class="upload-box" onclick="document.getElementById('input').click()">
-<div style="font-size:42px">📸</div><h3 style="margin:8px 0" data-i18n="uploadTitle">Photo Upload Karo</h3><p style="color:#64748b;font-size:13px" data-i18n="uploadSub">JPG, PNG • Drag & Drop</p><button style="margin-top:12px" data-i18n="selectBtn">Select Photo</button>
+<div style="font-size:42px">📸</div>
+<h3 style="margin:8px 0 4px;font-weight:800" data-i18n="uploadTitle">Upload Photo</h3>
+<p style="color:#64748b;font-size:12px;margin:0" data-i18n="uploadSub">JPG, PNG • Drag & Drop</p>
+<button style="margin-top:14px" data-i18n="selectBtn">Select Photo</button>
 <input type="file" id="input" accept="image/*" hidden>
 </div>
 
 <div id="workArea" class="hidden">
-<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px">
-<span id="fileInfo" style="font-size:12px;color:#334155"></span><button class="refresh" onclick="resetAll()" data-i18n="newBtn">🔄 New Photo</button>
+<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;flex-wrap:wrap;gap:8px">
+<span id="fileInfo" style="font-size:11px;font-weight:700;background:#f1f5f9;padding:6px 10px;border-radius:20px"></span>
+<button class="refresh" onclick="resetAll()" data-i18n="newBtn">🔄 New Photo</button>
 </div>
 <div class="grid">
-<div class="img-box"><img id="image" style="display:none;max-width:100%"></div>
-<div class="img-box"><canvas id="canvas" style="display:none;max-width:100%"></canvas><span id="ph" style="color:#94a3b8" data-i18n="previewTxt">Preview</span></div>
+<div class="img-box"><img id="image" style="display:none"></div>
+<div class="img-box"><canvas id="canvas" style="display:none"></canvas><span id="ph" style="color:#94a3b8;font-size:12px;font-weight:700" data-i18n="previewTxt">Preview</span></div>
 </div>
-<div style="display:flex;gap:6px;flex-wrap:wrap;margin:12px 0">
+<div class="t-row">
 <button class="t1" onclick="cropper.rotate(-90)">↺ Rotate</button>
 <button class="t1" onclick="cropper.rotate(90)">↻ Rotate</button>
 <button class="t1" onclick="cropper.scaleX((cropper.getData().scaleX||1)*-1)">↔️ Flip</button>
@@ -96,113 +113,78 @@ button.secondary{background:#0f172a}button.success{background:#16a34a;width:100%
 </div>
 <div class="controls">
 <label><span data-i18n="kb">Target KB</span><input type="number" id="targetKB" value="20"></label>
-<label>Width<input type="number" id="width" value="300"></label>
-<label>Height<input type="number" id="height" value="400"></label>
+<label><span data-i18n="w">Width</span><input type="number" id="width" value="300"></label>
+<label><span data-i18n="h">Height</span><input type="number" id="height" value="400"></label>
 </div>
-<div style="display:flex;gap:8px"><button id="cropBtn" class="secondary" data-i18n="crop">1. Crop</button><button id="compressBtn" data-i18n="compress">2. Compress to KB</button></div>
+<div class="btn-row"><button id="cropBtn" class="secondary" data-i18n="crop">1. Crop</button><button id="compressBtn" data-i18n="compress">2. Compress to KB</button></div>
 <div id="resultArea" class="hidden result-card">
 <div style="display:flex;gap:12px;align-items:center;flex-wrap:wrap">
-<img id="preview" style="max-width:130px;border-radius:8px;border:1px solid #ddd">
-<div><div id="info" style="font-weight:700;color:#15803d"></div><div style="font-size:12px;color:#64748b" data-i18n="ready">Ready to download</div></div>
+<img id="preview" style="max-width:120px;border-radius:8px;border:1px solid #ddd">
+<div><div id="info" style="font-weight:800;color:#15803d"></div><div style="font-size:11px;color:#64748b" data-i18n="ready">Ready to download</div></div>
 </div>
-<label style="display:block;margin-top:10px;font-size:12px;font-weight:600"><span data-i18n="fname">File Name:</span><input type="text" id="fileName"></label>
+<label style="display:block;margin-top:10px;font-size:11px;font-weight:800"><span data-i18n="fname">File Name:</span><input type="text" id="fileName"></label>
 <button id="downloadBtn" class="success" data-i18n="download">⬇️ Download Photo</button>
-<p style="font-size:11px;color:#64748b;margin:8px 0 0;text-align:center" data-i18n="autoDel">Download ke baad photo auto delete ho jayegi</p>
+<p style="font-size:11px;color:#64748b;margin:8px 0 0;text-align:center" data-i18n="autoDel">Photo will auto-delete after download</p>
 </div>
 </div>
 </div>
-
-<!-- SEO Sections -->
-<div class="seo-section">
-<div class="seo-card" id="howto">
-<h2 data-i18n="howTitle">📖 How to Use - 3 Easy Steps</h2>
-<p data-i18n="how1"><b>Step 1:</b> Upload photo (JPG/PNG). Drag & Drop bhi kar sakte ho.</p>
-<p data-i18n="how2"><b>Step 2:</b> Crop karo - 1:1 for passport, Free crop for signature. Rotate/Flip bhi kar sakte ho.</p>
-<p data-i18n="how3"><b>Step 3:</b> Target KB dalo (20KB, 50KB, 100KB) > Compress > Download. Ho gaya!</p>
 </div>
 
-<div class="seo-card">
-<h2 data-i18n="whyTitle">🔒 Why KaagazPro is 100% Safe?</h2>
-<ul>
-<li data-i18n="why1">No Upload: Photo server par nahi jati, sab kaam aapke phone/browser me hota hai.</li>
-<li data-i18n="why2">Auto Delete: Download ke baad memory se delete + page refresh. Koi trace nahi.</li>
-<li data-i18n="why3">Govt Forms Ready: SSC, UPSC, IBPS, Passport ke liye exact size.</li>
-</ul>
+<div class="right">
+<div class="side-card">
+<h3>📌 <span data-i18n="howSide">How to Use?</span></h3>
+<div class="item"><div class="icon icon-blue">📄</div><div data-i18n="h1">Select your photo correctly</div></div>
+<div class="item"><div class="icon icon-orange">✂️</div><div data-i18n="h2">Choose crop (1:1 / Free)</div></div>
+<div class="item"><div class="icon icon-purple">⚡</div><div data-i18n="h3">Enter KB and tap compress - done!</div></div>
 </div>
 
-<div class="seo-card">
-<h2 data-i18n="faqTitle">❓ FAQ - Common Questions</h2>
-<div class="faq-item"><b data-i18n="q1">20KB me photo kaise karu?</b><span data-i18n="a1">Target KB me 20 likho, Compress dabao, 20-22KB me photo ready.</span></div>
-<div class="faq-item"><b data-i18n="q2">Kya quality kharab hogi?</b><span data-i18n="a2">Nahi, Smart compression use hota hai, 90% quality same rehti hai.</span></div>
-<div class="faq-item"><b data-i18n="q3">Kya mera Aadhaar photo safe hai?</b><span data-i18n="a3">100% safe. Hum photo save nahi karte. Offline hai.</span></div>
+<div class="yellow-card">
+<b data-i18n="need">📦 Need 20KB Photo?</b>
+<p data-i18n="needSub">Compress up to 10 photos instantly</p>
+<a href="/tools/compressor.html" class="black-btn" data-i18n="openComp">Open Compressor →</a>
+</div>
+
+<div class="why-card">
+<h3 style="font-size:13.5px;font-weight:800;margin:0 0 12px">🔒 <span data-i18n="whyTitle">Why KaagazPro?</span></h3>
+<div class="check"><div class="tick">✓</div><div data-i18n="why1">100% offline & private</div></div>
+<div class="check"><div class="tick">✓</div><div data-i18n="why2">No data stored</div></div>
+<div class="check"><div class="tick">✓</div><div data-i18n="why3">Works on mobile & desktop</div></div>
+<div class="check"><div class="tick">✓</div><div data-i18n="why4">Free forever</div></div>
+</div>
+
+<div class="side-card" id="howto">
+<h3>📖 <span data-i18n="steps">3 Easy Steps</span></h3>
+<div class="item"><div class="icon icon-green">1</div><div data-i18n="s1">Step 1: Upload photo.</div></div>
+<div class="item"><div class="icon icon-green">2</div><div data-i18n="s2">Step 2: Crop it.</div></div>
+<div class="item"><div class="icon icon-green">3</div><div data-i18n="s3">Step 3: Enter KB > Download.</div></div>
+</div>
 </div>
 </div>
 
 <script>
-// --- Language System ---
-let curLang = localStorage.getItem('kaagaz_lang') || 'hi';
+let curLang = localStorage.getItem('kaagaz_lang') || 'en';
 const dict = {
 en:{
-blink:"👆 New? Click here - How to Use in 30 Sec",
-title:"Photo Resize to Any KB + Crop",
-subtitle:"Any size photo to exact KB - For all govt forms",
-private:"🔒 100% Private - Not saved on server",
-uploadTitle:"Upload Photo",
-uploadSub:"JPG, PNG • Drag & Drop",
-selectBtn:"Select Photo",
-newBtn:"🔄 New Photo",
-previewTxt:"Preview",
-free:"🔓 Free Crop",
-kb:"Target KB",
-crop:"1. Crop",
-compress:"2. Compress to KB",
-ready:"Ready to download",
-fname:"File Name:",
-download:"⬇️ Download Photo",
-autoDel:"Photo will auto-delete after download",
-howTitle:"📖 How to Use - 3 Easy Steps",
-how1:"Step 1: Upload photo (JPG/PNG). You can drag & drop.",
-how2:"Step 2: Crop it - 1:1 for passport, Free for signature. Rotate/Flip available.",
-how3:"Step 3: Enter Target KB (20KB, 50KB, 100KB) > Compress > Download. Done!",
-whyTitle:"🔒 Why KaagazPro is 100% Safe?",
-why1:"No Upload: Photo never goes to server, everything happens in your browser.",
-why2:"Auto Delete: After download, memory cleared + page reset. No trace.",
-why3:"Govt Forms Ready: Exact size for SSC, UPSC, IBPS, Passport.",
-faqTitle:"❓ FAQ",
-q1:"How to resize to 20KB?", a1:"Enter 20 in Target KB, press Compress, your photo will be 20-22KB.",
-q2:"Will quality be bad?", a2:"No, smart compression keeps 90% quality.",
-q3:"Is my Aadhaar photo safe?", a3:"100% safe. We don't save anything. Offline processing."
+b1:"100% Accurate",b2:"Private & Offline",b3:"Instant Result",
+title:"Resize Photo to Any KB",title2:"With Crop",
+subtitle:"Fast, beautiful & 100% private. No data saved — everything happens in your browser.",
+blink:"New? Click here - Learn in 30 Seconds",
+uploadTitle:"Upload Photo",uploadSub:"JPG, PNG • Drag & Drop",selectBtn:"Select Photo",newBtn:"🔄 New Photo",previewTxt:"Preview",free:"🔓 Free Crop",kb:"Target KB",w:"Width",h:"Height",crop:"1. Crop",compress:"2. Compress to KB",ready:"Ready to download",fname:"File Name:",download:"⬇️ Download Photo",autoDel:"Photo will auto-delete after download",
+howSide:"How to Use?",h1:"Select your photo correctly",h2:"Choose crop (1:1 / Free)",h3:"Enter KB and tap compress - done!",
+need:"Need 20KB Photo?",needSub:"Compress up to 10 photos instantly",openComp:"Open Compressor →",
+whyTitle:"Why KaagazPro?",why1:"100% offline & private",why2:"No data stored",why3:"Works on mobile & desktop",why4:"Free forever",
+steps:"3 Easy Steps",s1:"Step 1: Upload photo.",s2:"Step 2: Crop it.",s3:"Step 3: Enter KB > Download."
 },
 hi:{
-blink:"👆 Naye ho? Yaha click karo - 30 Sec me seekho",
-title:"Photo Resize to Any KB + Crop",
-subtitle:"Kisi bhi photo ko exact KB me - Sabhi forms ke liye",
-private:"🔒 100% Private - Server pe save nahi hota",
-uploadTitle:"Photo Upload Karo",
-uploadSub:"JPG, PNG • Drag & Drop",
-selectBtn:"Photo Chuno",
-newBtn:"🔄 Nayi Photo",
-previewTxt:"Preview",
-free:"🔓 Free Crop",
-kb:"Target KB",
-crop:"1. Crop Karo",
-compress:"2. Compress Karo",
-ready:"Download ke liye ready",
-fname:"File Name:",
-download:"⬇️ Photo Download Karo",
-autoDel:"Download ke baad photo auto delete ho jayegi",
-howTitle:"📖 Kaise Use Kare - 3 Easy Steps",
-how1:"Step 1: Photo upload karo (JPG/PNG). Drag & Drop bhi kar sakte ho.",
-how2:"Step 2: Crop karo - Passport ke liye 1:1, Signature ke liye Free. Rotate/Flip bhi hai.",
-how3:"Step 3: Target KB dalo (20KB, 50KB, 100KB) > Compress > Download. Ho gaya!",
-whyTitle:"🔒 KaagazPro 100% Safe Kyu Hai?",
-why1:"No Upload: Photo server par nahi jati, sab kaam aapke phone/browser me hota hai.",
-why2:"Auto Delete: Download ke baad memory se delete + page refresh. Koi trace nahi.",
-why3:"Govt Forms Ready: SSC, UPSC, IBPS, Passport ke liye exact size.",
-faqTitle:"❓ FAQ - Sawal Jawab",
-q1:"20KB me photo kaise karu?", a1:"Target KB me 20 likho, Compress dabao, 20-22KB me photo ready.",
-q2:"Kya quality kharab hogi?", a2:"Nahi, Smart compression se 90% quality same rehti hai.",
-q3:"Kya mera Aadhaar photo safe hai?", a3:"100% safe. Hum photo save nahi karte. Offline hai."
+b1:"100% सटीक",b2:"निजी और ऑफ़लाइन",b3:"तुरंत रिज़ल्ट",
+title:"किसी भी KB में फोटो बदलें",title2:"क्रॉप के साथ",
+subtitle:"तेज़, सुंदर और 100% निजी। कोई डेटा सेव नहीं होता — सब कुछ आपके ब्राउज़र में होता है।",
+blink:"नए हैं? यहाँ क्लिक करें - 30 सेकंड में सीखें",
+uploadTitle:"फोटो अपलोड करें",uploadSub:"जेपीईजी, पीएनजी • खींचें और छोड़ें",selectBtn:"फोटो चुनें",newBtn:"🔄 नई फोटो",previewTxt:"पूर्वावलोकन",free:"🔓 मनचाहा क्रॉप",kb:"लक्षित आकार",w:"चौड़ाई",h:"ऊँचाई",crop:"1. क्रॉप करें",compress:"2. आकार घटाएँ",ready:"डाउनलोड के लिए तैयार",fname:"फ़ाइल का नाम:",download:"⬇️ फोटो डाउनलोड करें",autoDel:"डाउनलोड के बाद अपने आप हट जाएगी",
+howSide:"कैसे उपयोग करें?",h1:"फोटो सही से अपलोड करें",h2:"क्रॉप चुनें (1:1 / मनचाहा)",h3:"KB डालें और घटाएँ दबाएँ - हो गया!",
+need:"📦 20KB फोटो चाहिए?",needSub:"एक साथ 10 फोटो तुरंत कंप्रेस करें",openComp:"कंप्रेसर खोलें →",
+whyTitle:"KaagazPro क्यों?",why1:"100% ऑफ़लाइन और निजी",why2:"कोई डेटा सेव नहीं",why3:"मोबाइल और डेस्कटॉप पर काम करता है",why4:"हमेशा के लिए मुफ्त",
+steps:"3 आसान चरण",s1:"चरण 1: फोटो अपलोड करें।",s2:"चरण 2: क्रॉप करें।",s3:"चरण 3: KB डालें > डाउनलोड।"
 }
 };
 function applyLang(){
@@ -211,82 +193,70 @@ const k=el.getAttribute('data-i18n'); if(dict[curLang][k]) el.innerText=dict[cur
 });
 document.getElementById('langBtn').innerText = curLang==='hi'? 'English' : 'हिंदी';
 localStorage.setItem('kaagaz_lang',curLang);
+document.documentElement.lang = curLang;
 }
 function toggleLang(){ curLang = curLang==='hi'? 'en' : 'hi'; applyLang(); }
 applyLang();
 
-// --- Original Logic ---
 let cropper=null, currentBlobURL=null;
 const image=document.getElementById('image'),input=document.getElementById('input'),canvas=document.getElementById('canvas');
 const uploadArea=document.getElementById('uploadArea'),workArea=document.getElementById('workArea');
-let cnt=localStorage.getItem('kaagaz_total')||1240;cnt=parseInt(cnt)+1;localStorage.setItem('kaagaz_total',cnt);
-document.getElementById('realCount').innerText=`✅ ${cnt} photos resized today`;
-
-function resetAll(){
-if(cropper){cropper.destroy();cropper=null;}
-if(currentBlobURL) URL.revokeObjectURL(currentBlobURL);
-image.src=''; image.style.display='none';
-canvas.width=0; canvas.style.display='none';
-document.getElementById('ph').style.display='block';
-document.getElementById('resultArea').classList.add('hidden');
-document.getElementById('preview').src='';
-input.value='';
-uploadArea.classList.remove('hidden');
-workArea.classList.add('hidden');
-document.getElementById('fileInfo').innerText='';
-}
-input.addEventListener('change',e=>{
-const f=e.target.files[0]; if(!f) return;
-if(currentBlobURL) URL.revokeObjectURL(currentBlobURL);
-currentBlobURL=URL.createObjectURL(f);
-uploadArea.classList.add('hidden'); workArea.classList.remove('hidden');
-document.getElementById('fileInfo').innerText=`📁 ${f.name} • ${(f.size/1024/1024).toFixed(2)} MB`;
-document.getElementById('fileName').value=f.name.replace(/\.[^/.]+$/,"")+"-"+document.getElementById('targetKB').value+"kb.jpg";
-image.src=currentBlobURL; image.style.display='block';
-if(cropper) cropper.destroy();
-image.onload=()=>{cropper=new Cropper(image,{aspectRatio:NaN,viewMode:2,background:false,autoCropArea:0.9,movable:true,rotatable:true,scalable:true,zoomable:true})}
-});
+function resetAll(){if(cropper){cropper.destroy();cropper=null;}if(currentBlobURL) URL.revokeObjectURL(currentBlobURL);image.src=''; image.style.display='none';canvas.width=0; canvas.style.display='none';document.getElementById('ph').style.display='block';document.getElementById('resultArea').classList.add('hidden');document.getElementById('preview').src='';input.value='';uploadArea.classList.remove('hidden');workArea.classList.add('hidden');document.getElementById('fileInfo').innerText='';}
+input.addEventListener('change',e=>{const f=e.target.files[0]; if(!f) return;if(currentBlobURL) URL.revokeObjectURL(currentBlobURL);currentBlobURL=URL.createObjectURL(f);uploadArea.classList.add('hidden'); workArea.classList.remove('hidden');document.getElementById('fileInfo').innerText=`📁 ${f.name} • ${(f.size/1024/1024).toFixed(2)} MB`;document.getElementById('fileName').value=f.name.replace(/\.[^/.]+$/,"")+"-"+document.getElementById('targetKB').value+"kb.jpg";image.src=currentBlobURL; image.style.display='block';if(cropper) cropper.destroy();image.onload=()=>{cropper=new Cropper(image,{aspectRatio:NaN,viewMode:2,background:false,autoCropArea:0.9,movable:true,rotatable:true,scalable:true,zoomable:true})}});
 function toBlob(q){return new Promise(r=>{canvas.toBlob(b=>r(b),'image/jpeg',q)})}
-document.getElementById('cropBtn').onclick=()=>{
-if(!cropper) return alert(curLang==='hi'?'Photo select karo':'Select photo first');
-const c=cropper.getCroppedCanvas({fillColor:'#fff'});
-canvas.width=c.width; canvas.height=c.height;
-canvas.getContext('2d').drawImage(c,0,0);
-canvas.style.display='block'; document.getElementById('ph').style.display='none';
-document.getElementById('width').value=c.width; document.getElementById('height').value=c.height;
-toBlob(0.92).then(b=>{if(b){document.getElementById('preview').src=URL.createObjectURL(b); document.getElementById('resultArea').classList.remove('hidden'); document.getElementById('info').innerText=`Preview: ${(b.size/1024).toFixed(1)} KB`}})
-};
-document.getElementById('compressBtn').onclick=async()=>{
-if(!canvas.width) return alert(curLang==='hi'?'Pehle Crop karo':'Crop first');
-let q=0.9; let b=await toBlob(q);
-for(let i=0;i<25;i++){
-if(b.size/1024 <= +document.getElementById('targetKB').value*1.05) break;
-if(q>0.12){q-=0.08;}else{
-const nw=Math.round(canvas.width*0.9), nh=Math.round(canvas.height*0.9);
-const tmp=document.createElement('canvas'); tmp.width=nw; tmp.height=nh;
-tmp.getContext('2d').drawImage(canvas,0,0,nw,nh);
-canvas.width=nw; canvas.height=nh; canvas.getContext('2d').drawImage(tmp,0,0);
-q=0.85;
-}
-b=await toBlob(q);
-}
-document.getElementById('preview').src=URL.createObjectURL(b);
-document.getElementById('info').innerText=`Final: ${(b.size/1024).toFixed(1)} KB • ${canvas.width}x${canvas.height}`;
-document.getElementById('resultArea').classList.remove('hidden');
-};
-document.getElementById('downloadBtn').onclick=()=>{
-const src=document.getElementById('preview').src;
-if(!src) return;
-const a=document.createElement('a'); a.href=src;
-a.download=document.getElementById('fileName').value||'kaagazpro-'+document.getElementById('targetKB').value+'kb.jpg';
-a.click();
-// Auto delete + Refresh logic
-setTimeout(()=>{
-URL.revokeObjectURL(src);
-resetAll();
-window.scrollTo({top:0,behavior:'smooth'});
-}, 900);
-};
+document.getElementById('cropBtn').onclick=()=>{if(!cropper) return alert(curLang==='hi'?'फोटो चुनें':'Select photo first');const c=cropper.getCroppedCanvas({fillColor:'#fff'});canvas.width=c.width; canvas.height=c.height;canvas.getContext('2d').drawImage(c,0,0);canvas.style.display='block'; document.getElementById('ph').style.display='none';document.getElementById('width').value=c.width; document.getElementById('height').value=c.height;toBlob(0.92).then(b=>{if(b){document.getElementById('preview').src=URL.createObjectURL(b); document.getElementById('resultArea').classList.remove('hidden'); document.getElementById('info').innerText=`${(b.size/1024).toFixed(1)} KB`}})};
+document.getElementById('compressBtn').onclick=async()=>{if(!canvas.width) return alert(curLang==='hi'?'पहले क्रॉप करें':'Crop first');let q=0.9; let b=await toBlob(q);for(let i=0;i<25;i++){if(b.size/1024 <= +document.getElementById('targetKB').value*1.05) break;if(q>0.12){q-=0.08;}else{const nw=Math.round(canvas.width*0.9), nh=Math.round(canvas.height*0.9);const tmp=document.createElement('canvas'); tmp.width=nw; tmp.height=nh;tmp.getContext('2d').drawImage(canvas,0,0,nw,nh);canvas.width=nw; canvas.height=nh; canvas.getContext('2d').drawImage(tmp,0,0);q=0.85;}b=await toBlob(q);}document.getElementById('preview').src=URL.createObjectURL(b);document.getElementById('info').innerText=`Final: ${(b.size/1024).toFixed(1)} KB • ${canvas.width}x${canvas.height}`;document.getElementById('resultArea').classList.remove('hidden');};
+document.getElementById('downloadBtn').onclick=()=>{const src=document.getElementById('preview').src;if(!src) return;const a=document.createElement('a'); a.href=src;a.download=document.getElementById('fileName').value||'kaagazpro-'+document.getElementById('targetKB').value+'kb.jpg';a.click();setTimeout(()=>{URL.revokeObjectURL(src);resetAll();window.scrollTo({top:0,behavior:'smooth'});}, 900);};
 </script>
+
+<!-- TERA PURANA BADA FOOTER 100% SAME -->
+<footer style="background:#0f172a;color:#cbd5e1;margin-top:30px;padding:0">
+  <div style="max-width:1100px;margin:0 auto;padding:30px 20px;display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:20px">
+    <div>
+      <div style="color:#fff;font-weight:800;font-size:22px;margin-bottom:8px">📄 KaagazPro</div>
+      <p style="font-size:13px;line-height:1.6;color:#94a3b8">India's Most Trusted Document Tool. 100% Free, Private & Offline. Compress photos to 20KB, 50KB, 100KB, 200KB. Up to 90% smaller — quality optimized. No data saved on server.</p>
+      <div style="display:flex;gap:8px;margin-top:12px;flex-wrap:wrap">
+        <span style="background:#1e293b;padding:5px 10px;border-radius:20px;font-size:11px">🔒 100% Private</span>
+        <span style="background:#1e293b;padding:5px 10px;border-radius:20px;font-size:11px">⚡ Offline</span>
+        <span style="background:#1e293b;padding:5px 10px;border-radius:20px;font-size:11px">🇮🇳 Made in India</span>
+      </div>
+    </div>
+    <div>
+      <b style="color:#fff;font-size:13px">POPULAR TOOLS</b>
+      <div style="margin-top:12px;display:flex;flex-direction:column;gap:8px;font-size:13px">
+        <a href="/tools/compressor.html" style="color:#94a3b8;text-decoration:none">Image Compressor 20KB</a>
+        <a href="/tools/compressor.html" style="color:#94a3b8;text-decoration:none">100KB Compressor</a>
+        <a href="/tools/compressor.html" style="color:#94a3b8;text-decoration:none">PNG to JPG Converter</a>
+        <a href="/" style="color:#22c55e;text-decoration:none;font-weight:700">View All Tools →</a>
+      </div>
+    </div>
+    <div>
+      <b style="color:#fff;font-size:13px">LEGAL & TRUST</b>
+      <div style="margin-top:12px;display:flex;flex-direction:column;gap:8px;font-size:13px">
+        <a href="/privacy-policy.html" style="color:#94a3b8;text-decoration:none">Privacy Policy</a>
+        <a href="/terms.html" style="color:#94a3b8;text-decoration:none">Terms & Conditions</a>
+        <a href="/disclaimer.html" style="color:#94a3b8;text-decoration:none">Disclaimer</a>
+        <a href="/about.html" style="color:#94a3b8;text-decoration:none">About Us</a>
+        <a href="/contact.html" style="color:#94a3b8;text-decoration:none">Contact Us</a>
+      </div>
+    </div>
+    <div>
+      <b style="color:#fff;font-size:13px">WHY KAAGAZPRO?</b>
+      <div style="margin-top:12px;font-size:12.5px;line-height:1.7;color:#94a3b8">
+        ✔ Up to 90% smaller — quality optimized<br>
+        ✔ 20KB — for forms with small file-size limits<br>
+        ✔ 100KB — good for web & sharing<br>
+        ✔ PNG → JPG can significantly reduce file size<br>
+        ✔ Auto delete after download
+      </div>
+      <a href="mailto:viscosity315@gmail.com" style="display:inline-block;margin-top:12px;background:#16a34a;color:#fff;padding:8px 14px;border-radius:8px;text-decoration:none;font-size:12px;font-weight:700">📧 viscosity315@gmail.com</a>
+    </div>
+  </div>
+  <div style="border-top:1px solid #1e293b;padding:14px 20px;text-align:center;font-size:11.5px;color:#64748b;max-width:1100px;margin:0 auto">
+    <div style="margin-bottom:6px">© 2025 KaagazPro.com - All Rights Reserved. Made with ❤️ in India.</div>
+    <div>This tool compresses images 100% in your browser. We do not store, view or share your photos. Safe for all online form uploads, web sharing and print quality needs.</div>
+    <div style="margin-top:8px;color:#475569">Keywords: image compressor 20kb, photo compressor 50kb, jpg compressor 100kb, png to jpg converter, image size reducer, online photo compressor</div>
+  </div>
+</footer>
 </body>
 </html>
