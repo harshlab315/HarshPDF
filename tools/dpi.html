@@ -1,36 +1,210 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>300 DPI Maker - KaagazPro</title>
-  <link rel="stylesheet" href="../css/style.css">
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6640527517870664" crossorigin="anonymous"></script>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>300 DPI Maker - KaagazPro - Image to 300 DPI Converter</title>
+<meta name="description" content="Convert any image to 300 DPI for printing. Free, private, no watermark. KaagazPro DPI Maker.">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6640527517870664" crossorigin="anonymous"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Plus+Jakarta+Sans:wght@700;800&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;font-family:'Inter',sans-serif}body{margin:0;background:#f6f7fb;color:#0f172a}
+.header{background:#1e40af;color:#fff;padding:12px 18px;display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;z-index:99}
+.logo{font-family:'Plus Jakarta Sans';font-weight:800;font-size:20px}.logo span{color:#93c5fd}.hr{display:flex;gap:8px}
+.all-btn{color:#fff;text-decoration:none;font-size:12px;background:rgba(255,255,255,.18);padding:7px 14px;border-radius:20px}
+.wrap{max-width:1150px;margin:18px auto;padding:0 14px;display:grid;grid-template-columns:1.2fr 0.8fr;gap:16px}@media(max-width:900px){.wrap{grid-template-columns:1fr}}
+.hero-card{background:#fff;border-radius:20px;padding:22px;border:1px solid #e2e8f0}.hero-card h1{font-family:'Plus Jakarta Sans';font-size:28px;font-weight:800;margin:0;line-height:1.1}
+.hero-card h1 span{background:linear-gradient(90deg,#1e40af,#7c3aed,#ec4899);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.badge-row{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px}.badge{font-size:11px;font-weight:700;padding:6px 12px;border-radius:100px;border:1px solid #e2e8f0}
+.badge.green{background:#dcfce7;color:#166534}.badge.blue{background:#dbeafe;color:#1e40af}.badge.purple{background:#f3e8ff;color:#6b21a8}
+.input-card{background:#fff;border-radius:20px;padding:20px;border:1px solid #e2e8f0;margin-top:14px}
+.upload-box{border:2px dashed #a5b4fc;background:#f8fafc;border-radius:16px;padding:28px;text-align:center;cursor:pointer;transition:.2s}
+.upload-box:hover{background:#eef2ff;border-color:#6366f1}
+#editorArea{display:none}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:16px}@media(max-width:700px){.grid{grid-template-columns:1fr}}
+.box{background:#f0f2f5;border-radius:14px;min-height:320px;display:flex;align-items:center;justify-content:center;overflow:hidden;border:1px solid #e2e8f0;position:relative;padding:10px}
+.box img{max-width:100%;max-height:320px;border-radius:8px;display:block}
+.dpi-row{display:flex;align-items:center;gap:10px;margin-top:14px;flex-wrap:wrap;background:#f8fafc;padding:12px;border-radius:12px;border:1px solid #e2e8f0}
+.dpi-label{font-weight:800;font-size:12px}
+.dpi-btn{padding:8px 14px;border-radius:20px;border:1.5px solid #cbd5e1;background:#fff;font-weight:700;font-size:12px;cursor:pointer}
+.dpi-btn.active{background:#1e40af;color:#fff;border-color:#1e40af}
+.btn-row{display:flex;gap:12px;margin-top:14px;justify-content:center;flex-wrap:wrap}
+.btn-main{padding:14px 28px;border-radius:14px;font-weight:800;font-size:14px;cursor:pointer;border:none;background:linear-gradient(90deg,#1e40af,#7c3aed);color:#fff;min-width:200px;flex:1;max-width:340px}
+.btn-sec{padding:14px 22px;border-radius:14px;font-weight:800;font-size:14px;cursor:pointer;border:1.5px solid #e2e8f0;background:#0f172a;color:#fff;min-width:120px}
+.btn-dl{display:none;padding:14px 28px;border-radius:14px;font-weight:800;font-size:14px;cursor:pointer;border:none;background:#16a34a;color:#fff;min-width:200px}
+.btn-reset{display:none;background:#fff;color:#b91c1c;border:1.5px solid #fecaca;padding:14px 22px;border-radius:14px;font-weight:800;font-size:14px;cursor:pointer;min-width:140px}
+.side{position:sticky;top:76px;height:fit-content}.side-card{background:#fff;border:1px solid #e2e8f0;border-radius:18px;padding:18px;margin-bottom:12px}
+</style>
 </head>
 <body>
-  <nav><div class="logo">Kaagaz<span>Pro</span></div><a href="../index.html">Home</a></nav>
-  <div class="page">
-    <h2>Image to 300 DPI</h2>
-    <input type="file" id="f" accept="image/*">
-    <img id="p" style="max-width:100%;margin-top:10px;display:none">
-    <button class="btn" id="b">Convert to 300 DPI & Download</button>
-  </div>
-  <script>
-    let img=new Image(),ok=false;
-    document.getElementById('f').onchange=e=>{
-      let r=new FileReader();
-      r.onload=ev=>{img.onload=()=>{ok=true;document.getElementById('p').src=ev.target.result;document.getElementById('p').style.display='block'};img.src=ev.target.result};
-      r.readAsDataURL(e.target.files[0]);
-    };
-    document.getElementById('b').onclick=()=>{
-      if(!ok) return alert('Photo dalo');
-      let c=document.createElement('canvas');
-      c.width=img.width; c.height=img.height;
-      c.getContext('2d').drawImage(img,0,0);
-      let a=document.createElement('a');
-      a.href=c.toDataURL('image/jpeg',1.0);
-      a.download='300dpi.jpg'; a.click();
-    };
-  </script>
+<div class="header"><div class="logo">📄 Kaagaz<span>Pro</span></div><div class="hr"><a class="all-btn" href="../index.html">← All Tools</a></div></div>
+
+<div class="wrap">
+<div>
+<div class="hero-card">
+<div class="badge-row"><span class="badge green">Real 300 DPI</span><span class="badge blue">For Printing</span><span class="badge purple">100% Private</span></div>
+<h1>Image to <span>300 DPI Converter</span></h1>
+<p style="color:#64748b;font-size:13px;margin-top:8px">Upload any JPG/PNG - it will be converted to real 300 DPI with JFIF header for high quality printing. No AI, instant, offline.</p>
+</div>
+
+<div class="input-card">
+<input type="file" id="f" accept="image/*" hidden>
+<div class="upload-box" id="uploadBox" onclick="document.getElementById('f').click()">
+<div style="font-size:36px">🖼️</div>
+<div style="font-weight:800">Select Image</div>
+<div style="font-size:11px;color:#64748b">JPG, PNG, WEBP - Click or Drag & Drop</div>
+</div>
+
+<div id="editorArea">
+<div class="grid">
+<div class="box"><img id="p" style="display:none"><span id="ph1" style="color:#94a3b8;font-size:12px">Original Preview</span></div>
+<div class="box"><img id="p2" style="display:none"><span id="ph2" style="color:#94a3b8;font-size:12px">300 DPI Preview</span></div>
+</div>
+
+<div class="dpi-row">
+<span class="dpi-label">Select DPI:</span>
+<button class="dpi-btn" data-dpi="150" onclick="setDPI(150,this)">150 DPI</button>
+<button class="dpi-btn" data-dpi="200" onclick="setDPI(200,this)">200 DPI</button>
+<button class="dpi-btn active" data-dpi="300" onclick="setDPI(300,this)">300 DPI</button>
+<button class="dpi-btn" data-dpi="600" onclick="setDPI(600,this)">600 DPI</button>
+<span id="dpiInfo" style="font-size:11px;font-weight:700;color:#1e40af;margin-left:auto">Selected: 300 DPI</span>
+</div>
+
+<div class="btn-row">
+<button class="btn-sec" id="previewBtn">Convert & Preview</button>
+<button class="btn-main" id="b">Download 300 DPI JPEG</button>
+<button class="btn-dl" id="downBtn">Download</button>
+<button class="btn-reset" id="resetBtn" onclick="clearAll()">Delete Photo</button>
+</div>
+
+<div style="text-align:center;margin-top:12px">
+<div id="info" style="font-weight:700;font-size:12px;color:#64748b"></div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="side">
+<div class="side-card"><h3 style="font-size:14px;font-weight:800;margin:0 0 10px">How to Use</h3><div style="font-size:12.5px;color:#475569;line-height:1.8">1. Select your photo<br>2. Choose DPI - 150/200/300/600<br>3. Click Convert & Preview<br>4. Download High DPI JPEG</div></div>
+<div class="side-card"><h3 style="font-size:14px;font-weight:800;margin:0 0 10px">Why 300 DPI?</h3><div style="font-size:12.5px;color:#475569;line-height:1.8">✓ Required for Passport Printing<br>✓ High Quality Documents<br>✓ Government Forms<br>✓ 100% Real DPI Header</div></div>
+<div class="side-card" style="background:linear-gradient(135deg,#dbeafe,#bfdbfe);border-color:#93c5fd;text-align:center"><h3 style="font-size:14px;font-weight:800;margin:0 0 6px">Need More Tools?</h3><a href="../index.html" style="display:block;background:#0f172a;color:#fff;padding:11px;border-radius:10px;text-decoration:none;font-weight:800;font-size:12px">View All Tools →</a></div>
+</div>
+</div>
+
+<footer style="background:#0f172a;color:#cbd5e1;padding:0;width:100%;margin-top:20px"><div style="max-width:1150px;margin:0 auto;padding:28px 18px;display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:18px"><div><div style="color:#fff;font-weight:800;font-size:20px;margin-bottom:8px">📄 KaagazPro</div><p style="font-size:12.5px;line-height:1.6;color:#94a3b8">India's Most Trusted Document Tool. 100% Free, Private and Offline.</p></div><div><b style="color:#fff;font-size:12px">POPULAR TOOLS</b><div style="margin-top:12px;display:flex;flex-direction:column;gap:8px;font-size:12.5px"><a href="jpg-to-pdf.html" style="color:#94a3b8;text-decoration:none">JPG to PDF</a><a href="passport.html" style="color:#94a3b8;text-decoration:none">Passport Photo</a><a href="resize.html" style="color:#94a3b8;text-decoration:none">Resize Image</a></div></div><div><b style="color:#fff;font-size:12px">LEGAL</b><div style="margin-top:12px;display:flex;flex-direction:column;gap:8px;font-size:12.5px"><a href="../privacy-policy.html" style="color:#94a3b8;text-decoration:none">Privacy Policy</a><a href="../terms.html" style="color:#94a3b8;text-decoration:none">Terms</a><a href="../contact.html" style="color:#94a3b8;text-decoration:none">Contact Us</a></div></div><div><b style="color:#fff;font-size:12px">FEATURES</b><div style="margin-top:12px;font-size:12px;line-height:1.7;color:#94a3b8">✓ Real DPI Header<br>✓ 150 to 600 DPI<br>✓ Private and Fast<br>✓ No Watermark</div></div></div><div style="border-top:1px solid #1e293b;padding:12px;text-align:center;font-size:11px;color:#64748b">© 2025 KaagazPro.com • Made with ❤️ in India</div></footer>
+
+<script>
+let img = new Image(), ok=false, selectedDPI=300, convertedBlob=null, convertedUrl=null;
+const fInput=document.getElementById('f'), p=document.getElementById('p'), p2=document.getElementById('p2'), ph1=document.getElementById('ph1'), ph2=document.getElementById('ph2'), editorArea=document.getElementById('editorArea'), uploadBox=document.getElementById('uploadBox'), info=document.getElementById('info'), downBtn=document.getElementById('downBtn'), resetBtn=document.getElementById('resetBtn');
+
+fInput.addEventListener('change', e=>{
+ let file=e.target.files[0]; if(!file) return; loadFile(file);
+});
+uploadBox.addEventListener('dragover', e=>{ e.preventDefault(); uploadBox.style.background='#dbeafe'; });
+uploadBox.addEventListener('dragleave', ()=>{ uploadBox.style.background='#f8fafc'; });
+uploadBox.addEventListener('drop', e=>{ e.preventDefault(); uploadBox.style.background='#f8fafc'; let file=e.dataTransfer.files[0]; if(file) loadFile(file); });
+
+function loadFile(file){
+ let r=new FileReader();
+ r.onload=ev=>{
+   img.onload=()=>{
+     ok=true;
+     p.src=ev.target.result; p.style.display='block'; ph1.style.display='none';
+     editorArea.style.display='block';
+     resetBtn.style.display='inline-block';
+     info.innerText = `Original: ${img.width}x${img.height} • ${(file.size/1024).toFixed(1)} KB`;
+   };
+   img.src=ev.target.result;
+ };
+ r.readAsDataURL(file);
+}
+
+function setDPI(dpi, el){
+ selectedDPI=dpi;
+ document.querySelectorAll('.dpi-btn').forEach(b=>b.classList.remove('active'));
+ el.classList.add('active');
+ document.getElementById('dpiInfo').innerText='Selected: '+dpi+' DPI';
+ if(ok) doConvert();
+}
+
+async function doConvert(){
+ if(!ok) return alert('Pehle photo select karo');
+ let canvas=document.createElement('canvas');
+ canvas.width=img.width; canvas.height=img.height;
+ canvas.getContext('2d').drawImage(img,0,0);
+ let blob = await new Promise(r=>canvas.toBlob(r,'image/jpeg',0.92));
+ let arrayBuffer = await blob.arrayBuffer();
+ let withDPI = setJPEG_DPI(arrayBuffer, selectedDPI);
+ convertedBlob = new Blob([withDPI], {type:'image/jpeg'});
+ if(convertedUrl) URL.revokeObjectURL(convertedUrl);
+ convertedUrl = URL.createObjectURL(convertedBlob);
+ p2.src=convertedUrl; p2.style.display='block'; ph2.style.display='none';
+ info.innerText = `Converted to ${selectedDPI} DPI • ${img.width}x${img.height} • ${(convertedBlob.size/1024).toFixed(1)} KB • Ready for Print`;
+ downBtn.style.display='inline-block';
+}
+
+// REAL DPI HEADER - JFIF me DPI set karta hai
+function setJPEG_DPI(arrayBuffer, dpi){
+ let data = new Uint8Array(arrayBuffer);
+ // Check SOI
+ if(data[0]!==0xFF || data[1]!==0xD8) return data;
+ let dpiHex = dpi;
+ let high = (dpiHex>>8)&0xFF, low = dpiHex&0xFF;
+
+ // Agar pehle se APP0 JFIF hai to usko replace karo
+ if(data[2]===0xFF && data[3]===0xE0){
+   // length at 4,5
+   let len = (data[4]<<8)|data[5];
+   if(data[6]===0x4A && data[7]===0x46 && data[8]===0x49 && data[9]===0x46){
+     // JFIF found - set units=1 and X/Y density
+     data[12]=0x01; // units = 1 = dpi
+     data[13]=high; data[14]=low; // X
+     data[15]=high; data[16]=low; // Y
+     return data;
+   }
+ }
+ // Nahi mila to naya APP0 insert karo after SOI
+ let newHeader = new Uint8Array([0xFF,0xE0,0x00,0x10,0x4A,0x46,0x49,0x46,0x00,0x01,0x01,0x01,high,low,high,low,0x00,0x00]);
+ let newData = new Uint8Array(data.length + newHeader.length);
+ newData[0]=0xFF; newData[1]=0xD8;
+ newData.set(newHeader,2);
+ newData.set(data.subarray(2), 2+newHeader.length);
+ return newData;
+}
+
+document.getElementById('previewBtn').onclick=()=>{ doConvert(); };
+document.getElementById('b').onclick=()=>{
+ if(!ok) return alert('Photo dalo');
+ if(!convertedBlob) doConvert();
+ setTimeout(()=>{
+   let a=document.createElement('a');
+   a.href=convertedUrl;
+   a.download=`KaagazPro-${selectedDPI}DPI-${Date.now()}.jpg`;
+   a.click();
+   setTimeout(()=>clearAll(),1000);
+ },300);
+};
+downBtn.onclick=()=>{
+ if(!convertedUrl) return;
+ let a=document.createElement('a');
+ a.href=convertedUrl;
+ a.download=`KaagazPro-${selectedDPI}DPI-${Date.now()}.jpg`;
+ a.click();
+ setTimeout(()=>clearAll(),1000);
+};
+
+function clearAll(){
+ ok=false; convertedBlob=null;
+ img.src=''; p.src=''; p2.src='';
+ p.style.display='none'; p2.style.display='none';
+ ph1.style.display='block'; ph2.style.display='block';
+ editorArea.style.display='none';
+ info.innerText=''; downBtn.style.display='none'; resetBtn.style.display='none';
+ fInput.value='';
+ if(convertedUrl) URL.revokeObjectURL(convertedUrl);
+ selectedDPI=300;
+ document.querySelectorAll('.dpi-btn').forEach((b,i)=>b.classList.toggle('active', i===2));
+ document.getElementById('dpiInfo').innerText='Selected: 300 DPI';
+}
+</script>
 </body>
 </html>
