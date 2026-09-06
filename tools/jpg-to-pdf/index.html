@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>JPG to PDF - Many Images to One PDF - KaagazPro</title>
+<meta name="description" content="Add many JPG to single PDF with Select All, Crop, Rotate, Rename. Auto clear after download. 100% offline.">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6640527517870664" crossorigin="anonymous"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Plus+Jakarta+Sans:wght@700;800&display=swap" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.6.2/cropper.min.css" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.6.2/cropper.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<style>
+*{box-sizing:border-box;font-family:'Inter',sans-serif}
+body{margin:0;background:#f6f7fb;color:#0f172a}
+.header{background:#1e40af;color:#fff;padding:12px 18px;display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;z-index:99}
+.logo{font-family:'Plus Jakarta Sans';font-weight:800;font-size:20px;display:flex;align-items:center;gap:8px}
+.hr{display:flex;gap:8px;align-items:center}
+.lang-btn{background:#fff;color:#1e40af;border:0;padding:7px 14px;border-radius:20px;font-weight:800;cursor:pointer;font-size:12px}
+.all-btn{color:#fff;text-decoration:none;font-size:12px;background:rgba(255,255,255,.18);padding:7px 14px;border-radius:20px}
+.wrap{max-width:1100px;margin:18px auto;padding:0 14px;display:grid;grid-template-columns:1.15fr 0.85fr;gap:16px}
+@media(max-width:850px){.wrap{grid-template-columns:1fr}}
+.hero-card{background:linear-gradient(135deg,#ffffff 0%,#f0f7ff 100%);border-radius:20px;padding:22px;border:1px solid #e2e8f0;box-shadow:0 10px 30px rgba(30,64,175,0.06);position:relative;overflow:hidden}
+.hero-card::after{content:"";position:absolute;top:-40px;right:-40px;width:160px;height:160px;background:radial-gradient(circle,#a5b4fc 0%,transparent 70%);opacity:0.4}
+.badge-row{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px}
+.badge{font-size:11px;font-weight:700;padding:6px 12px;border-radius:100px;border:1px solid #e2e8f0;background:#fff}
+.badge.green{background:#dcfce7;border-color:#bbf7d0;color:#166534}.badge.blue{background:#dbeafe;border-color:#bfdbfe;color:#1e40af}.badge.purple{background:#f3e8ff;border-color:#e9d5ff;color:#6b21a8}
+.hero-card h1{font-family:'Plus Jakarta Sans';font-size:32px;font-weight:800;line-height:1.05;margin:0}
+.hero-card h1 span{background:linear-gradient(90deg,#1e40af,#7c3aed,#ec4899);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.hero-card p{color:#64748b;font-size:13.5px;margin:8px 0 0;line-height:1.5}
+.input-card{background:#fff;border-radius:20px;padding:20px;border:1px solid #e2e8f0;box-shadow:0 8px 24px rgba(0,0,0,0.05);margin-top:14px}
+.upload-box{border:2px dashed #a5b4fc;background:#f8fafc;border-radius:16px;padding:24px;text-align:center;cursor:pointer;transition:0.2s}
+.upload-box:hover{background:#eef2ff;border-color:#1e40af}
+.top-bar{display:none;gap:8px;margin-top:14px;flex-wrap:wrap;align-items:center;background:#f8fafc;border:1px solid #e2e8f0;border-radius:12px;padding:10px}
+.top-bar.show{display:flex}
+.top-bar input{flex:1;min-width:160px;padding:11px 12px;border:1.5px solid #e2e8f0;border-radius:10px;font-size:13px;font-weight:600;background:#fff;outline:none}
+.small-btn{padding:10px 12px;border-radius:10px;border:1.5px solid #e2e8f0;background:#fff;font-weight:800;font-size:11px;cursor:pointer}
+.item{background:#fff;border:1.5px solid #e2e8f0;border-radius:16px;padding:12px;display:grid;grid-template-columns:88px 1fr;gap:12px;margin-top:12px}
+.item.selected{border-color:#1e40af;box-shadow:0 0 0 3px rgba(30,64,175,0.1)}
+.thumb{position:relative}.thumb img{width:88px;height:88px;object-fit:cover;border-radius:12px;border:1px solid #e2e8f0;display:block}
+.check{position:absolute;top:-6px;left:-6px;width:22px;height:22px;border-radius:50%;border:2px solid #fff;box-shadow:0 2px 6px rgba(0,0,0,0.2);accent-color:#1e40af}
+.rename-box{margin-top:8px}.rename-box input{width:100%;padding:8px 10px;border:1.5px solid #1e40af;border-radius:8px;font-size:12px;font-weight:600;outline:none;background:#f8fafc}
+.tools{display:flex;gap:6px;flex-wrap:wrap;margin-top:8px}.tools button{font-size:11px;font-weight:700;padding:6px 10px;border-radius:20px;border:1px solid #e2e8f0;background:#f8fafc;cursor:pointer}
+.btn-main{width:100%;margin-top:16px;background:linear-gradient(90deg,#1e40af,#7c3aed);color:#fff;border:none;padding:14px;border-radius:14px;font-weight:800;font-size:14px;cursor:pointer;box-shadow:0 10px 20px rgba(30,64,175,0.2)}.btn-main:disabled{opacity:0.5;cursor:not-allowed}
+.result{background:linear-gradient(135deg,#1e40af,#7c3aed,#ec4899);color:#fff;border-radius:16px;padding:18px;text-align:center;margin-top:14px;display:none}
+.side{position:sticky;top:76px;height:fit-content}.side-card{background:#fff;border:1px solid #e2e8f0;border-radius:18px;padding:18px;margin-bottom:12px;box-shadow:0 8px 24px rgba(0,0,0,0.04)}.side-card h3{font-family:'Plus Jakarta Sans';font-size:14px;font-weight:800;margin:0 0 10px}.side-card li{font-size:12.5px;color:#475569;margin-bottom:8px;list-style:none;display:flex;gap:8px}
+.modal{display:none;position:fixed;inset:0;background:rgba(15,23,42,0.75);z-index:999;align-items:center;justify-content:center;padding:14px}.modal.open{display:flex}.modal-card{background:#fff;border-radius:18px;padding:14px;max-width:600px;width:100%;max-height:90vh;overflow:auto}.crop-img{max-width:100%;display:block}
+</style>
+</head>
+<body>
+<div class="header"><div class="logo">📄 KaagazPro</div><div class="hr"><button class="lang-btn" id="langBtn" onclick="toggleLang()">हिंदी</button><a class="all-btn" href="/">← All Tools</a></div></div>
+
+<div class="wrap">
+<div>
+<div class="hero-card">
+<div class="badge-row"><span class="badge green">✨ Multiple Select</span><span class="badge blue">🔒 Auto Clear</span><span class="badge purple">⚡ Fast PDF</span></div>
+<h1 data-i="h1">JPG to PDF <br><span>Many Images to One PDF</span></h1>
+<p data-i="desc">Select many JPG images at once, edit, convert to one PDF. After download everything auto clears so you can reuse.</p>
+</div>
+
+<div class="input-card">
+<div class="upload-box" onclick="document.getElementById('fileInp').click()">
+<input type="file" id="fileInp" accept="image/jpeg,image/jpg,image/png" multiple hidden>
+<div style="font-size:34px">📁</div>
+<div style="font-weight:800;margin-top:4px" data-i="upTitle">Click to Select Many JPG Images</div>
+<div style="font-size:11px;color:#64748b;margin-top:2px" data-i="upSub">Supports multiple selection - 100+ images</div>
+</div>
+
+<div class="top-bar" id="topBar">
+<input id="pdfName" value="kaagazpro-document.pdf">
+<button class="small-btn" onclick="selectAll(true)" data-i="selAll">Select All</button>
+<button class="small-btn" onclick="selectAll(false)" data-i="desAll">Deselect All</button>
+<button class="small-btn" onclick="clearAll()" style="color:#ef4444;border-color:#fecaca" data-i="clear">Clear All</button>
+<span id="count" style="font-size:11px;font-weight:800;color:#1e40af">0 selected</span>
+</div>
+
+<div id="list"></div>
+
+<button class="btn-main" id="convertBtn" disabled onclick="convertPDF()" data-i="btn">✨ Convert Selected to PDF →</button>
+
+<div id="result" class="result">
+<div style="font-size:12px;opacity:0.9;letter-spacing:1px;font-weight:800" data-i="ready">PDF READY</div>
+<div id="info" style="font-size:16px;font-weight:800;margin-top:4px">--</div>
+<button onclick="downloadPDF()" style="margin-top:12px;background:#fff;color:#1e40af;border:0;padding:10px 18px;border-radius:10px;font-weight:800;cursor:pointer" data-i="down">📥 Download PDF</button>
+<div style="font-size:11px;margin-top:8px;opacity:0.8" data-i="autoNote">After download, images will auto delete for next use</div>
+</div>
+</div>
+</div>
+
+<div class="side">
+<div class="side-card"><h3 data-i="howT">✨ How to Use?</h3><li data-i="how1">📸 Select many images at once</li><li data-i="how2">☑️ Select All option appears after selection</li><li data-i="how3">🔄 Rotate & ✂️ Crop</li><li data-i="how4">✏️ Rename appears after you select image</li><li data-i="how5">⚡ Convert & auto clear after download</li></div>
+<div class="side-card" style="background:linear-gradient(135deg,#fef3c7 0%,#fde68a 100%);border-color:#fcd34d;text-align:center">
+<h3 style="margin-bottom:6px">📸 Need 20KB Photo?</h3>
+<p style="font-size:12px;color:#92400e;margin:0 0 10px" data-i="promo">Compress up to 10 photos instantly</p>
+<a href="../compressor.html" style="display:block;background:#0f172a;color:#fff;padding:10px;border-radius:10px;text-decoration:none;font-weight:800;font-size:12px;text-align:center" data-i="promoBtn">Open Compressor →</a>
+</div>
+<div class="side-card"><h3 data-i="whyT">🔒 Why KaagazPro?</h3><li>✅ Multiple select</li><li>✅ Auto delete after download</li><li>✅ Reusable instantly</li><li>✅ 100% offline & private</li></div>
+</div>
+</div>
+
+<div class="modal" id="cropModal"><div class="modal-card">
+<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px"><h3 style="margin:0;font-family:'Plus Jakarta Sans'" data-i="cropT">Crop Image</h3><button onclick="closeCrop()" style="border:0;background:#f1f5f9;padding:6px 10px;border-radius:8px;cursor:pointer">✕</button></div>
+<div><img id="cropImage" class="crop-img"></div>
+<div style="display:flex;gap:8px;margin-top:12px"><button class="btn-main" style="margin:0" onclick="applyCrop()" data-i="apply">Apply Crop</button><button class="small-btn" style="flex:1;padding:12px" onclick="closeCrop()" data-i="cancel">Cancel</button></div>
+</div></div>
+
+<footer style="background:#0f172a;color:#cbd5e1;padding:0;width:100%;display:block">
+<div style="max-width:1100px;margin:0 auto;padding:28px 18px;display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:18px">
+<div><div style="color:#fff;font-weight:800;font-size:20px;margin-bottom:8px">📄 KaagazPro</div><p style="font-size:12.5px;line-height:1.6;color:#94a3b8" data-i="footDesc">India's Most Trusted Document Tool. 100% Free, Private & Offline. Convert JPG to PDF, compress images. No data saved.</p><div style="display:flex;gap:6px;margin-top:12px;flex-wrap:wrap"><span style="background:#1e293b;padding:5px 10px;border-radius:20px;font-size:11px">🔒 Private</span><span style="background:#1e293b;padding:5px 10px;border-radius:20px;font-size:11px">⚡ Offline</span><span style="background:#1e293b;padding:5px 10px;border-radius:20px;font-size:11px">🇮🇳 Made in India</span></div></div>
+<div><b style="color:#fff;font-size:12px">POPULAR TOOLS</b><div style="margin-top:12px;display:flex;flex-direction:column;gap:8px;font-size:12.5px"><a href="../compressor.html" style="color:#94a3b8;text-decoration:none">Image Compressor 20KB</a><a href="../age-calculator/" style="color:#94a3b8;text-decoration:none">Age Calculator</a><a href="./" style="color:#22c55e;text-decoration:none;font-weight:700">JPG to PDF</a><a href="/" style="color:#22c55e;text-decoration:none;font-weight:700">View All →</a></div></div>
+<div><b style="color:#fff;font-size:12px">LEGAL</b><div style="margin-top:12px;display:flex;flex-direction:column;gap:8px;font-size:12.5px"><a href="/privacy-policy.html" style="color:#94a3b8;text-decoration:none">Privacy Policy</a><a href="/terms.html" style="color:#94a3b8;text-decoration:none">Terms</a><a href="/contact.html" style="color:#94a3b8;text-decoration:none">Contact</a></div></div>
+<div><b style="color:#fff;font-size:12px">FEATURES</b><div style="margin-top:12px;font-size:12px;line-height:1.7;color:#94a3b8">✔ Many JPG to 1 PDF<br>✔ Rotate & Crop<br>✔ Rename & Select All<br>✔ Auto clear after download</div></div>
+</div>
+<div style="border-top:1px solid #1e293b;padding:12px;text-align:center;font-size:11px;color:#64748b">© 2025 KaagazPro.com • Made with ❤️ in India • Mobile & Desktop Friendly</div>
+</footer>
+
+<script>
+let cur=localStorage.getItem('kaagaz_lang')||'hi';
+const dict={
+en:{h1:"JPG to PDF <br><span>Many Images to One PDF</span>",desc:"Select many JPG images at once, edit, convert to one PDF. After download everything auto clears so you can reuse.",upTitle:"Click to Select Many JPG Images",upSub:"Supports multiple selection - 100+ images",selAll:"Select All",desAll:"Deselect All",clear:"Clear All",btn:"✨ Convert Selected to PDF →",ready:"PDF READY",down:"📥 Download PDF",autoNote:"After download, images will auto delete for next use",howT:"✨ How to Use?",how1:"📸 Select many images at once",how2:"☑️ Select All option appears after selection",how3:"🔄 Rotate & ✂️ Crop",how4:"✏️ Rename appears after you select image",how5:"⚡ Convert & auto clear after download",promo:"Compress up to 10 photos instantly",promoBtn:"Open Compressor →",whyT:"🔒 Why KaagazPro?",footDesc:"India's Most Trusted Document Tool. 100% Free, Private & Offline. Convert JPG to PDF, compress images. No data saved.",cropT:"Crop Image",apply:"Apply Crop",cancel:"Cancel"},
+hi:{h1:"JPG से PDF बनाएं <br><span>कई फोटो से एक PDF</span>",desc:"एक साथ कई JPG फोटो जोड़ें, एडिट करें और एक PDF बनाएं। डाउनलोड के बाद सब ऑटो डिलीट हो जाएगा ताकि फिर से बना सकें।",upTitle:"कई JPG फोटो सेलेक्ट करो",upSub:"एक साथ 100+ फोटो सेलेक्ट कर सकते हो",selAll:"सब सेलेक्ट",desAll:"सब हटाओ",clear:"सब क्लियर",btn:"✨ PDF में बदलें →",ready:"PDF तैयार है",down:"📥 PDF डाउनलोड",autoNote:"डाउनलोड के बाद फोटो ऑटो डिलीट हो जाएंगी",howT:"✨ कैसे इस्तेमाल करें?",how1:"📸 एक साथ कई फोटो सेलेक्ट करो",how2:"☑️ सेलेक्ट करने के बाद Select All दिखेगा",how3:"🔄 रोटेट और ✂️ क्रॉप करो",how4:"✏️ सेलेक्ट के बाद नाम बदलने का ऑप्शन",how5:"⚡ कन्वर्ट और डाउनलोड के बाद ऑटो क्लियर",promo:"10 फोटो तुरंत 20KB में करो",promoBtn:"कंप्रेसर खोलें →",whyT:"🔒 KaagazPro क्यों?",footDesc:"भारत का सबसे भरोसेमंद डॉक्यूमेंट टूल। 100% फ्री, प्राइवेट और ऑफलाइन। कोई डेटा सेव नहीं।",cropT:"फोटो क्रॉप करें",apply:"क्रॉप लागू करें",cancel:"कैंसल"}
+};
+function applyLang(){document.querySelectorAll('[data-i]').forEach(e=>{let k=e.getAttribute('data-i');if(dict[cur][k]) e.innerHTML=dict[cur][k]});document.getElementById('langBtn').innerText=cur==='hi'?'English':'हिंदी'}
+function toggleLang(){cur=cur==='hi'?'en':'hi';localStorage.setItem('kaagaz_lang',cur);applyLang()} applyLang();
+
+let data=[]; let cropper=null; let cropIndex=-1; let pdfBlob=null;
+document.getElementById('fileInp').addEventListener('change', e=>{
+  for(let f of e.target.files){ data.push({id:Math.random(), file:f, url:URL.createObjectURL(f), name:f.name.replace(/\.[^/.]+$/,""), original:f.name, rotation:0, selected:true}); }
+  render(); document.getElementById('fileInp').value="";
+});
+function render(){
+  let list=document.getElementById('list'); list.innerHTML="";
+  let topBar=document.getElementById('topBar');
+  if(data.length>0){ topBar.classList.add('show'); } else { topBar.classList.remove('show'); }
+  data.forEach((d,i)=>{
+    let el=document.createElement('div'); el.className='item '+(d.selected?'selected':'');
+    el.innerHTML=`<div class="thumb"><input type="checkbox" class="check" ${d.selected?'checked':''} onchange="toggle(${i},this.checked)"><img src="${d.url}" style="transform:rotate(${d.rotation}deg)"></div><div><div style="display:flex;justify-content:space-between"><div style="font-size:12.5px;font-weight:700;max-width:180px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${d.name}.jpg</div><span style="font-size:10px;color:#94a3b8">#${i+1}</span></div>${d.selected?`<div class="rename-box" style="display:block"><input value="${d.name}" oninput="rename(${i},this.value)" placeholder="Rename image"></div>`:''}<div class="tools"><button onclick="rotate(${i})">Rotate</button><button onclick="openCrop(${i})">Crop</button><button onclick="move(${i},-1)">Up</button><button onclick="move(${i},1)">Down</button><button onclick="removeItem(${i})" style="color:#ef4444">Delete</button></div></div>`;
+    list.appendChild(el);
+  });
+  let sel=data.filter(x=>x.selected).length;
+  document.getElementById('count').innerText=sel+" selected / "+data.length+" total";
+  document.getElementById('convertBtn').disabled=sel==0;
+}
+function toggle(i,v){ data[i].selected=v; render(); }
+function rename(i,v){ data[i].name=v; }
+function rotate(i){ data[i].rotation=(data[i].rotation+90)%360; render(); }
+function removeItem(i){ data.splice(i,1); render(); }
+function move(i,dir){ let n=i+dir; if(n<0||n>=data.length) return; [data[i],data[n]]=[data[n],data[i]]; render(); }
+function selectAll(v){ data.forEach(d=>d.selected=v); render(); }
+function clearAll(){ if(confirm("Clear all images?")){ data=[]; pdfBlob=null; document.getElementById('result').style.display='none'; render(); } }
+
+function openCrop(i){
+  cropIndex=i; let img=document.getElementById('cropImage'); img.src=data[i].url;
+  document.getElementById('cropModal').classList.add('open');
+  setTimeout(()=>{ if(cropper) cropper.destroy(); cropper=new Cropper(img,{viewMode:1,autoCropArea:0.9,background:false}); },100);
+}
+function closeCrop(){ document.getElementById('cropModal').classList.remove('open'); if(cropper){cropper.destroy(); cropper=null;} }
+function applyCrop(){
+  if(!cropper) return; let canvas=cropper.getCroppedCanvas({imageSmoothingQuality:'high'});
+  canvas.toBlob(blob=>{ let url=URL.createObjectURL(blob); data[cropIndex].url=url; closeCrop(); render(); },'image/jpeg',0.92);
+}
+async function convertPDF(){
+  const {jsPDF}=window.jspdf; let doc=new jsPDF(); let sel=data.filter(d=>d.selected); if(sel.length==0) return;
+  for(let idx=0; idx<sel.length; idx++){ let d=sel[idx]; let img=new Image(); img.src=d.url; await new Promise(r=>img.onload=r); let tmp=document.createElement('canvas'); let c=tmp.getContext('2d'); let w=img.width, h=img.height; if(d.rotation%180!==0){ tmp.width=h; tmp.height=w; } else { tmp.width=w; tmp.height=h; } c.translate(tmp.width/2, tmp.height/2); c.rotate(d.rotation*Math.PI/180); c.drawImage(img,-w/2,-h/2); let pw=doc.internal.pageSize.getWidth(), ph=doc.internal.pageSize.getHeight(); let iw=pw, ih=(tmp.height/tmp.width)*pw; if(ih>ph){ ih=ph; iw=(tmp.width/tmp.height)*ph; } if(idx>0) doc.addPage(); doc.addImage(tmp,'JPEG',(pw-iw)/2,(ph-ih)/2,iw,ih); }
+  pdfBlob=doc.output('blob'); document.getElementById('info').innerText=sel.length+" Images → PDF Ready"; document.getElementById('result').style.display='block'; document.getElementById('result').scrollIntoView({behavior:'smooth'});
+}
+function downloadPDF(){
+  if(!pdfBlob) return;
+  let name=document.getElementById('pdfName').value.trim()||'document.pdf'; if(!name.endsWith('.pdf')) name+='.pdf';
+  let a=document.createElement('a'); a.href=URL.createObjectURL(pdfBlob); a.download=name; a.click();
+  // AUTO DELETE AFTER DOWNLOAD
+  setTimeout(()=>{
+    data=[]; pdfBlob=null;
+    document.getElementById('list').innerHTML="";
+    document.getElementById('topBar').classList.remove('show');
+    document.getElementById('result').style.display='none';
+    document.getElementById('convertBtn').disabled=true;
+    document.getElementById('pdfName').value="kaagazpro-document.pdf";
+    alert(cur==='hi'?"PDF download ho gaya! Sab images auto clear ho gayi, ab naya PDF bana sakte ho.":"PDF downloaded! All images auto cleared, you can create new PDF now.");
+  },800);
+}
+</script>
+</body>
+</html>
