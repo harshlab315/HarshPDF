@@ -9,22 +9,22 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Plus+Jakarta+Sans:wght@700;800&display=swap" rel="stylesheet">
 <style>
 *{box-sizing:border-box;font-family:'Inter',sans-serif}html,body{margin:0;background:#f8fafc;color:#0f172a;overflow-x:hidden}
-.header{background:#2563eb;color:#fff;padding:0 18px;display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;z-index:1000;height:58px}
+.header{background:#2563eb;color:#fff;padding:0 18px;display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;z-index:1000;height:58px;box-shadow:0 4px 20px rgba(37,99,235,.3)}
 .logo{font-family:'Plus Jakarta Sans';font-weight:800;font-size:20px}
 .lang-btn{background:#fff;color:#2563eb;border:0;padding:8px 18px;border-radius:20px;font-weight:800;cursor:pointer;font-size:12.5px;min-width:70px}
 .all-btn{background:rgba(255,255,255,.18);color:#fff;text-decoration:none;font-size:12px;padding:8px 14px;border-radius:20px;border:1px solid rgba(255,255,255,.25);font-weight:600}
-.wrap{max-width:1200px;margin:0 auto;padding:16px;display:grid;grid-template-columns:1.35fr.65fr;gap:16px}
+.wrap{max-width:1220px;margin:0 auto;padding:16px;display:grid;grid-template-columns:1.35fr.65fr;gap:16px}
 @media(max-width:980px){.wrap{grid-template-columns:1fr}}
 .left{background:#fff;border-radius:20px;padding:18px;border:1px solid #eef2f7;box-shadow:0 8px 30px rgba(0,0,0,.04)}
 .badges{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px}
-.badge{font-size:11px;font-weight:700;padding:6px 12px;border-radius:20px;border:1px solid}
-.b-green{background:#f0fdf4;color:#15803d;border-color:#bbf7d0}.b-blue{background:#eff6ff;color:#1e40af;border-color:#bfdbfe}.b-purple{background:#faf5ff;color:#7c3aed;border-color:#e9d5ff}
+.badge{font-size:11px;font-weight:700;padding:7px 12px;border-radius:20px;border:1px solid;letter-spacing:.2px}
+.b-green{background:#f0fdf4;color:#166534;border-color:#bbf7d0}.b-blue{background:#eff6ff;color:#1e40af;border-color:#bfdbfe}.b-purple{background:#fff7ed;color:#9a3412;border-color:#fed7aa}
 .title{font-family:'Plus Jakarta Sans';font-size:26px;font-weight:800;margin:0;line-height:1.2;letter-spacing:-.6px}
 .title.grad{background:linear-gradient(90deg,#2563eb,#7c3aed,#db2777);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
 .sub{color:#64748b;font-size:13px;margin:6px 0 0}
 .drop{border:2px dashed #cbd5e1;background:linear-gradient(180deg,#f8fafc,#fff);border-radius:16px;padding:22px 12px;text-align:center;cursor:pointer;margin:14px 0}
 .ctrl{position:sticky;top:66px;z-index:900;display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:12px 0;background:#f8fafc;border:1px solid #f1f5f9;padding:12px;border-radius:14px}
-label{font-size:10.5px;font-weight:800;color:#475569;text-transform:uppercase;letter-spacing:.6px}
+label{font-size:10px;font-weight:800;color:#475569;text-transform:uppercase;letter-spacing:.6px}
 input,select{padding:10px;border:1px solid #e2e8f0;border-radius:10px;font-size:13px;width:100%;background:#fff;outline:none}
 .tbtn,.qbtn,.sbtn{padding:8px 12px;border-radius:9px;border:1px solid #e2e8f0;background:#fff;font-weight:700;cursor:pointer;font-size:12px}
 .tbtn.active{background:#0f172a;color:#fff;border-color:#0f172a}.qbtn.active{background:#2563eb;color:#fff;border-color:#2563eb}
@@ -33,20 +33,23 @@ input,select{padding:10px;border:1px solid #e2e8f0;border-radius:10px;font-size:
 .item{border:1px solid #eef2f7;border-radius:16px;padding:12px;margin:12px 0;background:#fff}
 .item-top{display:grid;grid-template-columns:110px 1fr;gap:12px}
 .thumb{width:100%;height:86px;object-fit:cover;border-radius:10px;background:#f1f5f9;border:1px solid #f1f5f9}
-.bar{height:6px;background:#e2e8f0;border-radius:10px;overflow:hidden;margin:8px 0}.bar div{height:100%;width:10%;background:#2563eb;transition:.3s}
+.bar{height:6px;background:#e2e8f0;border-radius:10px;overflow:hidden;margin:8px 0}.bar div{height:100%;width:10%;background:linear-gradient(90deg,#2563eb,#7c3aed);transition:.3s}
 .comp-wrap{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:10px;background:#f8fafc;border-radius:12px;padding:10px;border:1px solid #f1f5f9}
 .comp-box{background:#fff;border-radius:10px;padding:8px;border:1px solid #f1f5f9;text-align:center}.comp-box img{width:100%;height:90px;object-fit:contain;border-radius:8px}
 .rename{display:flex;gap:6px;align-items:center;margin-top:8px;border:1px solid #e2e8f0;padding:6px 8px;border-radius:9px;background:#fff}
 .rename input{border:0!important;padding:4px!important;font-size:12px;font-weight:600;box-shadow:none!important}
 .summary{background:linear-gradient(135deg,#f0fdf4,#ecfdf5);border:1px solid #bbf7d0;padding:12px;border-radius:12px;margin-top:12px;font-size:12.5px}
 .right{display:flex;flex-direction:column;gap:16px}@media(min-width:981px){.right{position:sticky;top:74px;height:fit-content}}
-.side{background:#fff;border-radius:16px;padding:18px;border:1px solid #eef2f7;box-shadow:0 4px 20px rgba(0,0,0,.03);position:relative;overflow:hidden}
-.side.dark{background:linear-gradient(135deg,#0f172a,#1e293b);color:#e2e8f0}
-.step{display:flex;gap:12px;margin:12px 0}
-.num{min-width:28px;height:28px;background:#eff6ff;color:#2563eb;border-radius:8px;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:12px;border:1px solid #bfdbfe}
-#cropModal{position:fixed;inset:0;background:rgba(15,23,42,.88);backdrop-filter:blur(4px);z-index:9999;display:none;align-items:center;justify-content:center;padding:12px}
-#cropBox{background:#fff;border-radius:16px;padding:14px;width:100%;max-width:580px}
-.crop-img-wrap{max-height:66vh;background:#0f172a;border-radius:12px;display:flex;align-items:center;justify-content:center;overflow:hidden;min-height:200px}
+.side{background:#fff;border-radius:18px;padding:18px;border:1px solid #eef2f7;box-shadow:0 6px 24px rgba(0,0,0,.04);position:relative;overflow:hidden}
+.side.dark{background:radial-gradient(120% 120% at 0% 0%,#1e293b,#0f172a);color:#e2e8f0;border-color:#1e293b}
+.side.pro{background:linear-gradient(180deg,#ffffff,#f8fafc)}
+.step{display:flex;gap:12px;margin:14px 0;align-items:flex-start}
+.num{min-width:32px;height:32px;background:linear-gradient(135deg,#eff6ff,#dbeafe);color:#2563eb;border-radius:10px;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:13px;border:1px solid #bfdbfe}
+#cropModal{position:fixed;inset:0;background:rgba(15,23,42,.88);backdrop-filter:blur(6px);z-index:9999;display:none;align-items:center;justify-content:center;padding:12px}
+#cropBox{background:#fff;border-radius:18px;padding:14px;width:100%;max-width:620px;box-shadow:0 20px 60px rgba(0,0,0,.3)}
+.crop-img-wrap{max-height:62vh;background:#0f172a;border-radius:14px;display:flex;align-items:center;justify-content:center;overflow:hidden;min-height:260px}
+.crop-tools{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin:12px 0}
+.crop-tools.sbtn{padding:10px 6px;font-size:13px}
 .footer{background:#0f172a;color:#94a3b8;margin-top:32px}
 .f-grid{max-width:1200px;margin:0 auto;padding:32px 18px;display:grid;grid-template-columns:1.6fr 1fr 1fr 1.2fr;gap:24px}
 @media(max-width:900px){.f-grid{grid-template-columns:1fr 1fr}}@media(max-width:500px){.f-grid{grid-template-columns:1fr}}
@@ -58,40 +61,41 @@ input,select{padding:10px;border:1px solid #e2e8f0;border-radius:10px;font-size:
 <div class="header"><div class="logo">📄 KaagazPro</div><div style="display:flex;gap:10px;align-items:center"><button class="lang-btn" id="langBtn" onclick="toggleLang()">हिंदी</button><a class="all-btn" href="/" data-i="allTools">← All Tools</a></div></div>
 <div class="wrap">
 <div class="left">
-<div class="badges"><span class="badge b-green" data-i="b1">Real AI Model</span><span class="badge b-blue" data-i="b2">100% Browser Based</span><span class="badge b-purple" data-i="b3">No Server Upload</span></div>
+<div class="badges"><span class="badge b-green">✓ Govt Form Size</span><span class="badge b-blue">100% Browser Based</span><span class="badge b-purple">⚡ No Server Upload</span></div>
 <h1 class="title"><span data-i="t1">Image Compressor</span><br><span class="grad" data-i="t2">Exact 20KB 50KB 100KB & Smart Crop</span></h1>
-<p class="sub" data-i="sub">Upload any photo. Compress to exact target size with rename, crop, rotate, flip. 100% private.</p>
-<div class="drop" id="drop"><div style="font-size:28px">🖼️</div><b data-i="dropT">Click to Upload or Drag & Drop</b><br><small data-i="dropS">Supports JPG, PNG, WEBP - Up to 10 files</small><input type="file" id="input" accept="image/*" multiple hidden></div>
+<p class="sub" data-i="sub">Upload any photo. Compress to exact target size with rename, crop, rotate, flip. 100% private, runs entirely in your browser.</p>
+<div class="drop" id="drop"><div style="font-size:28px">🖼️</div><b data-i="dropT">Click to Upload or Drag & Drop</b><br><small data-i="dropS">Supports JPG, PNG, WEBP - Any size auto handled - Up to 10 files</small><input type="file" id="input" accept="image/*" multiple hidden></div>
 <div class="ctrl" id="ctrlBar">
-<div><label data-i="lTarget">Target Size</label><div style="display:flex;gap:6px;flex-wrap:wrap;margin-top:6px"><button class="tbtn active" onclick="setTarget(20,this)">20KB</button><button class="tbtn" onclick="setTarget(50,this)">50KB</button><button class="tbtn" onclick="setTarget(100,this)">100KB</button><button class="tbtn" onclick="setTarget(200,this)">200KB</button></div></div>
-<div><label data-i="lCustom">Custom Size (KB)</label><input type="number" id="customKB" placeholder="e.g. 35" oninput="targetVal=parseInt(this.value)||20"></div>
-<div><label data-i="lQuality">Compression Mode</label><div style="display:flex;gap:6px;flex-wrap:wrap;margin-top:6px"><button class="qbtn active" onclick="setQ('best',this)" data-i="qBest">Best Quality</button><button class="qbtn" onclick="setQ('balanced',this)" data-i="qBal">Balanced</button><button class="qbtn" onclick="setQ('small',this)" data-i="qSmall">Max</button></div></div>
-<div><label data-i="lFormat">Output Format</label><select id="format"><option value="auto">Auto - Recommended</option><option value="image/jpeg">JPEG</option><option value="image/webp">WEBP</option></select></div>
-<div style="grid-column:1/-1"><button class="btn dark" id="compressBtn" onclick="compressAll()" data-i="compressBtn">⚡ Compress Images</button></div>
+<div><label>Target Size</label><div style="display:flex;gap:6px;flex-wrap:wrap;margin-top:6px"><button class="tbtn active" onclick="setTarget(20,this)">20KB</button><button class="tbtn" onclick="setTarget(50,this)">50KB</button><button class="tbtn" onclick="setTarget(100,this)">100KB</button><button class="tbtn" onclick="setTarget(200,this)">200KB</button></div></div>
+<div><label>Custom Size (KB)</label><input type="number" id="customKB" placeholder="e.g. 35" oninput="targetVal=parseInt(this.value)||20"></div>
+<div><label>Compression Mode</label><div style="display:flex;gap:6px;flex-wrap:wrap;margin-top:6px"><button class="qbtn active" onclick="setQ('best',this)">Best Quality</button><button class="qbtn" onclick="setQ('balanced',this)">Balanced</button><button class="qbtn" onclick="setQ('small',this)">Max Compress</button></div></div>
+<div><label>Output Format</label><select id="format"><option value="auto">Auto - Recommended</option><option value="image/jpeg">JPEG</option><option value="image/webp">WEBP</option></select></div>
+<div style="grid-column:1/-1"><button class="btn dark" id="compressBtn" onclick="compressAll()">⚡ Compress Images</button></div>
 </div>
 <div id="list"></div>
 <div id="summary" class="summary hidden"></div>
-<button class="btn blue hidden" id="downAll" data-i="zipBtn">⬇️ Download All as ZIP</button>
+<button class="btn blue hidden" id="downAll">⬇️ Download All as ZIP</button>
 </div>
+
 <div class="right">
-<div class="side"><div style="position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#2563eb,#7c3aed)"></div><h3 data-i="howTitle">How to Use</h3><div class="step"><div class="num">1</div><div style="font-size:12.5px"><b data-i="how1">Select or drop images (any size)</b><br><span style="color:#64748b;font-size:11.5px">Up to 10 files, even 10MB</span></div></div><div class="step"><div class="num">2</div><div style="font-size:12.5px"><b data-i="how2">Rename + Crop / Rotate / Flip</b></div></div><div class="step"><div class="num">3</div><div style="font-size:12.5px"><b data-i="how3">Choose 20KB / 50KB / 100KB target</b></div></div><div class="step"><div class="num">4</div><div style="font-size:12.5px"><b data-i="how4">Compress & Download</b></div></div></div>
-<div class="side dark"><h3 style="color:#fff">Why This Tool?</h3><div style="font-size:12.5px;line-height:2.1"><div>✓ Exact KB output - never fails</div><div>✓ Custom rename</div><div>✓ Real crop with ratios</div><div>✓ 100% private</div><div>✓ No watermark</div></div></div>
-<div class="side"><h3>Features</h3><div style="font-size:12.5px;line-height:2.2"><div>✓ Exact 20/50/100/200KB</div><div>✓ Custom rename</div><div>✓ Crop 1:1, 3:4, 16:9</div><div>✓ Rotate & Flip</div><div>✓ Before / After</div><div>✓ ZIP download</div></div></div>
+<div class="side pro"><div style="position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#2563eb,#7c3aed)"></div><h3 style="margin:0 0 4px;font-family:'Plus Jakarta Sans'">How to Use</h3><p style="margin:0 0 10px;color:#64748b;font-size:11.5px">4 steps • 100% offline</p><div class="step"><div class="num">1</div><div style="font-size:12.5px"><b>Select or drop images</b><br><span style="color:#64748b;font-size:11.5px">Up to 10 files, even 10MB each</span></div></div><div class="step"><div class="num">2</div><div style="font-size:12.5px"><b>Rename + Crop / Rotate / Flip</b><br><span style="color:#64748b;font-size:11.5px">All-in-one editor inside card</span></div></div><div class="step"><div class="num">3</div><div style="font-size:12.5px"><b>Choose 20KB / 50KB / 100KB</b><br><span style="color:#64748b;font-size:11.5px">Exact size guaranteed</span></div></div><div class="step"><div class="num">4</div><div style="font-size:12.5px"><b>Compress & Download ZIP</b><br><span style="color:#64748b;font-size:11.5px">Private, no upload</span></div></div></div>
+<div class="side dark"><h3 style="color:#fff;margin:0 0 8px;font-family:'Plus Jakarta Sans'">Why KaagazPro?</h3><div style="font-size:12.5px;line-height:2.2"><div>✓ Exact KB output - Govt forms</div><div>✓ Batch compress 10 files</div><div>✓ Advanced crop with zoom</div><div>✓ 100% private - browser only</div><div>✓ No watermark, free forever</div></div></div>
+<div class="side pro"><h3 style="margin:0 0 10px">Features</h3><div style="font-size:12.5px;line-height:2.2;color:#334155"><div>✓ Exact 20/50/100/200KB output</div><div>✓ Custom rename + ZIP</div><div>✓ Crop 1:1, 3:4, 16:9, Free</div><div>✓ Rotate, Flip, Zoom In/Out</div><div>✓ Apply crop to all images</div><div>✓ Before / After preview</div></div></div>
+<div class="side"><h3 style="margin:0 0 10px">Related Tools</h3><div style="display:grid;grid-template-columns:1fr 1fr;gap:8px"><a href="/tools/bg-remover.html" style="background:#f8fafc;border:1px solid #e2e8f0;padding:10px;border-radius:10px;text-align:center;text-decoration:none;color:#0f172a;font-size:11.5px;font-weight:700">BG Remover</a><a href="/tools/passport.html" style="background:#f8fafc;border:1px solid #e2e8f0;padding:10px;border-radius:10px;text-align:center;text-decoration:none;color:#0f172a;font-size:11.5px;font-weight:700">Passport Photo</a><a href="/tools/merge-pdf.html" style="background:#f8fafc;border:1px solid #e2e8f0;padding:10px;border-radius:10px;text-align:center;text-decoration:none;color:#0f172a;font-size:11.5px;font-weight:700">Merge PDF</a><a href="/tools/dpi.html" style="background:#f8fafc;border:1px solid #e2e8f0;padding:10px;border-radius:10px;text-align:center;text-decoration:none;color:#0f172a;font-size:11.5px;font-weight:700">DPI Tool</a></div></div>
 </div>
 </div>
-<div id="cropModal"><div id="cropBox"><h3 style="margin:0 0 10px;font-size:14px;font-weight:800">✂️ Crop Image</h3><div class="crop-img-wrap"><img id="cropImg" style="max-width:100%;display:block"></div><div style="display:flex;gap:6px;flex-wrap:wrap;margin:12px 0"><button class="sbtn" onclick="cropIns.rotate(-90)">↺ L</button><button class="sbtn" onclick="cropIns.rotate(90)">↻ R</button><button class="sbtn" onclick="cropIns.scaleX((cropIns.getData().scaleX||1)*-1)">↔ H</button><button class="sbtn" onclick="cropIns.scaleY((cropIns.getData().scaleY||1)*-1)">↕ V</button><button class="sbtn" onclick="cropIns.setAspectRatio(1)">1:1</button><button class="sbtn" onclick="cropIns.setAspectRatio(3/4)">3:4</button><button class="sbtn" onclick="cropIns.setAspectRatio(NaN)">Free</button></div><div style="display:flex;gap:8px"><button class="btn" style="background:#f1f5f9;color:#0f172a;border:1px solid #e2e8f0" onclick="closeCrop()">Cancel</button><button class="btn dark" onclick="applyCrop()">Apply Crop</button></div></div></div>
-<footer class="footer"><div class="f-grid"><div><div style="color:#fff;font-weight:800;font-size:20px;margin-bottom:8px">📄 KaagazPro</div><p style="font-size:13px;color:#94a3b8">India's Most Trusted Document Tool. 100% Free, Private and Offline.</p></div><div><b style="color:#e2e8f0;font-size:12px">POPULAR TOOLS</b><div style="margin-top:12px;display:flex;flex-direction:column;gap:8px;font-size:13px"><a href="/tools/compressor.html" style="color:#cbd5e1;text-decoration:none">Image Compressor</a><a href="/tools/bg-remover.html" style="color:#94a3b8;text-decoration:none">Background Remover</a></div></div><div><b style="color:#e2e8f0;font-size:12px">LEGAL</b><div style="margin-top:12px;display:flex;flex-direction:column;gap:8px;font-size:13px"><a href="/privacy-policy.html" style="color:#94a3b8;text-decoration:none">Privacy Policy</a></div></div><div><b style="color:#e2e8f0;font-size:12px">FEATURES</b><div style="margin-top:12px;font-size:12.5px;color:#94a3b8">✓ Exact KB Compressor<br>✓ Private and Fast</div></div></div><div class="f-bottom">© 2025 KaagazPro - Made in India</div></footer>
+
+<div id="cropModal"><div id="cropBox"><h3 style="margin:0 0 10px;font-size:15px;font-weight:800">✂️ Crop Image <span id="cropFileName" style="font-weight:600;color:#64748b;font-size:12px"></span></h3><div class="crop-img-wrap"><img id="cropImg" style="max-width:100%;display:block"></div><div class="crop-tools"><button class="sbtn" onclick="cropIns.zoom(0.1)">🔍+ Zoom In</button><button class="sbtn" onclick="cropIns.zoom(-0.1)">🔍- Zoom Out</button><button class="sbtn" onclick="cropIns.rotate(-90)">↺ Rotate L</button><button class="sbtn" onclick="cropIns.rotate(90)">↻ Rotate R</button><button class="sbtn" onclick="cropIns.scaleX((cropIns.getData().scaleX||1)*-1)">↔ Flip H</button><button class="sbtn" onclick="cropIns.scaleY((cropIns.getData().scaleY||1)*-1)">↕ Flip V</button><button class="sbtn" onclick="cropIns.setAspectRatio(1)">1:1</button><button class="sbtn" onclick="cropIns.setAspectRatio(3/4)">3:4</button><button class="sbtn" onclick="cropIns.setAspectRatio(4/3)">4:3</button><button class="sbtn" onclick="cropIns.setAspectRatio(16/9)">16:9</button><button class="sbtn" onclick="cropIns.setAspectRatio(NaN)">Free</button><button class="sbtn" onclick="cropIns.reset()">Reset</button></div><div style="display:flex;gap:8px;margin-top:6px"><button class="btn" style="background:#f1f5f9;color:#0f172a;border:1px solid #e2e8f0" onclick="closeCrop()">Cancel</button><button class="btn dark" onclick="applyCrop()">Apply Crop</button></div><div style="margin-top:8px"><button class="btn blue" onclick="applyCropAll()" style="background:#7c3aed">✨ Apply This Crop to All Images</button></div></div></div>
+
+<footer class="footer"><div class="f-grid"><div><div style="color:#fff;font-weight:800;font-size:20px;margin-bottom:8px">📄 KaagazPro</div><p style="font-size:13px;line-height:1.6;color:#94a3b8;margin:0">India's Most Trusted Document Tool. 100% Free, Private and Offline.</p></div><div><b style="color:#e2e8f0;font-size:12px">POPULAR TOOLS</b><div style="margin-top:12px;display:flex;flex-direction:column;gap:8px;font-size:13px"><a href="/tools/compressor.html" style="color:#cbd5e1;text-decoration:none">Image Compressor</a><a href="/tools/bg-remover.html" style="color:#94a3b8;text-decoration:none">Background Remover</a></div></div><div><b style="color:#e2e8f0;font-size:12px">LEGAL</b><div style="margin-top:12px;display:flex;flex-direction:column;gap:8px;font-size:13px"><a href="/privacy-policy.html" style="color:#94a3b8;text-decoration:none">Privacy Policy</a></div></div><div><b style="color:#e2e8f0;font-size:12px">FEATURES</b><div style="margin-top:12px;font-size:12.5px;line-height:1.9;color:#94a3b8">✓ Exact KB Compressor<br>✓ Real Crop & Rotate<br>✓ Private and Fast</div></div></div><div class="f-bottom">© 2025 KaagazPro - Made in India</div></footer>
 
 <script>
-const dict={
- en:{allTools:"← All Tools",b1:"Real AI Model",b2:"100% Browser Based",b3:"No Server Upload",t1:"Image Compressor",t2:"Exact 20KB 50KB 100KB & Smart Crop",sub:"Upload any photo. Compress to exact target size with rename, crop, rotate, flip. 100% private.",dropT:"Click to Upload or Drag & Drop",dropS:"Supports JPG, PNG, WEBP - Up to 10 files",lTarget:"Target Size",lCustom:"Custom Size (KB)",lQuality:"Compression Mode",compressBtn:"⚡ Compress Images",zipBtn:"⬇️ Download All as ZIP",howTitle:"How to Use",how1:"Select or drop images (any size)",how2:"Rename + Crop / Rotate / Flip",how3:"Choose 20KB / 50KB / 100KB target",how4:"Compress & Download"},
- hi:{allTools:"← सभी टूल्स",b1:"रियल AI मॉडल",b2:"100% ब्राउज़र में",b3:"कोई सर्वर अपलोड नहीं",t1:"इमेज कंप्रेसर",t2:"सटीक 20KB 50KB 100KB और स्मार्ट क्रॉप",sub:"कोई भी फोटो अपलोड करें। 100% प्राइवेट।",dropT:"अपलोड करने के लिए क्लिक करें",dropS:"JPG, PNG, WEBP सपोर्ट - 10 फाइल तक",lTarget:"टारगेट साइज",lCustom:"कस्टम साइज (KB)",lQuality:"कंप्रेशन मोड",compressBtn:"⚡ इमेज कंप्रेस करें",zipBtn:"⬇️ सभी ZIP डाउनलोड",howTitle:"कैसे यूज़ करें",how1:"इमेज सेलेक्ट करें",how2:"रीनेम + क्रॉप / रोटेट",how3:"20KB / 50KB / 100KB चुनें",how4:"कंप्रेस और डाउनलोड"}
-};
+const dict={en:{allTools:"← All Tools",t1:"Image Compressor",t2:"Exact 20KB 50KB 100KB & Smart Crop",sub:"Upload any photo. Compress to exact target size with rename, crop, rotate, flip. 100% private, runs entirely in your browser.",dropT:"Click to Upload or Drag & Drop",dropS:"Supports JPG, PNG, WEBP - Any size auto handled - Up to 10 files"},hi:{allTools:"← सभी टूल्स",t1:"इमेज कंप्रेसर",t2:"सटीक 20KB 50KB 100KB और स्मार्ट क्रॉप",sub:"कोई भी फोटो अपलोड करें। 100% प्राइवेट।",dropT:"अपलोड करने के लिए क्लिक करें",dropS:"JPG, PNG, WEBP - 10 फाइल तक"}};
 let curLang=localStorage.getItem('kaagaz_lang')||'en';
 function applyLang(){let d=dict[curLang];document.querySelectorAll('[data-i]').forEach(el=>{let k=el.getAttribute('data-i');if(d[k])el.textContent=d[k];});document.getElementById('langBtn').innerText=curLang==='hi'?'English':'हिंदी';}
 function toggleLang(){curLang=curLang==='hi'?'en':'hi';localStorage.setItem('kaagaz_lang',curLang);applyLang();}applyLang();
 
-let files=[],results={},targetVal=20,qMode='best',fileIdCounter=0,cropIns=null,croppingId=null,rotations={},fileNames={},fileURLs={},proxyURLs={};
+let files=[],results={},targetVal=20,qMode='best',fileIdCounter=0,cropIns=null,croppingId=null,rotations={},fileNames={},fileURLs={},lastCropData=null;
 const input=document.getElementById('input'),drop=document.getElementById('drop'),list=document.getElementById('list');
 function setTarget(k,el){targetVal=k;document.getElementById('customKB').value=k;document.querySelectorAll('.tbtn').forEach(b=>b.classList.remove('active'));el.classList.add('active');}
 function setQ(m,el){qMode=m;document.querySelectorAll('.qbtn').forEach(b=>b.classList.remove('active'));el.classList.add('active');}
@@ -100,66 +104,60 @@ drop.ondragover=e=>{e.preventDefault();drop.style.borderColor='#2563eb'};drop.on
 drop.ondrop=e=>{e.preventDefault();handleFiles(e.dataTransfer.files)};
 input.onchange=e=>handleFiles(e.target.files);
 
-// LOW RAM SAFE THUMBNAIL
 async function createThumb(file){
  try{
    if(window.createImageBitmap){
-     let bmp=await createImageBitmap(file,{resizeWidth:200,resizeQuality:'low'});
+     let bmp=await createImageBitmap(file,{resizeWidth:220,resizeQuality:'low'});
      let can=document.createElement('canvas');can.width=bmp.width;can.height=bmp.height;
-     let ctx=can.getContext('2d');ctx.drawImage(bmp,0,0);
-     let blob=await new Promise(r=>can.toBlob(r,'image/jpeg',0.7));
-     bmp.close();
+     let ctx=can.getContext('2d');ctx.drawImage(bmp,0,0);bmp.close();
+     let blob=await new Promise(r=>can.toBlob(r,'image/jpeg',0.75));
      return URL.createObjectURL(blob);
    }
  }catch(e){}
  return URL.createObjectURL(file);
 }
-
 async function handleFiles(fList){
- files=[];results={};list.innerHTML='';fileNames={};fileURLs={};proxyURLs={};
- let arr=Array.from(fList).slice(0,10);
- for(let file of arr){
+ files=[];results={};list.innerHTML='';fileNames={};fileURLs={};
+ for(let file of Array.from(fList).slice(0,10)){
   let id=fileIdCounter++;rotations[id]={rot:0,flipH:1,flipV:1};fileNames[id]=file.name.replace(/\.[^/.]+$/,"");
   let thumbURL=await createThumb(file);
   fileURLs[id]=URL.createObjectURL(file);
-  proxyURLs[id]=thumbURL;
   files.push({id,file});
-  list.innerHTML+=`<div class="item" id="row-${id}"><div class="item-top"><img class="thumb" id="thumb-${id}" src="${thumbURL}"><div class="stats"><b style="font-size:11.5px;word-break:break-all">${file.name}</b><br><span style="color:#64748b">Original: ${(file.size/1024).toFixed(1)}KB • ${(file.size/1024/1024).toFixed(2)}MB</span><br><span id="st-${id}" style="font-weight:700;color:#334155">Ready</span><div class="bar"><div id="bar-${id}" style="width:10%"></div></div><div class="rename"><span style="font-size:10px;font-weight:800;color:#475569">RENAME:</span><input value="${fileNames[id]}" oninput="fileNames[${id}]=this.value.replace(/[^a-zA-Z0-9_\\- ]/g,'')"></div><div style="display:flex;gap:5px;flex-wrap:wrap;margin-top:8px"><button class="sbtn" onclick="openCrop(${id})">✂️ Crop</button><button class="sbtn" onclick="doRotate(${id},-90)">↺</button><button class="sbtn" onclick="doRotate(${id},90)">↻</button><button class="sbtn" onclick="doFlip(${id},'h')">↔</button><button class="sbtn" onclick="doFlip(${id},'v')">↕</button></div></div><div style="display:flex;flex-direction:column;gap:6px"><button class="sbtn" style="background:#fef2f2;color:#dc2626;border-color:#fecaca" onclick="removeFile(${id})">Delete</button><a id="dl-${id}" class="hidden" style="display:block;text-align:center;background:#0f172a;color:#fff;padding:10px;border-radius:10px;text-decoration:none;font-size:11.5px;font-weight:700">Download</a></div></div><div id="comp-${id}" class="comp-wrap hidden"><div class="comp-box"><div style="font-size:10px;font-weight:800;color:#64748b">BEFORE</div><img id="bImg-${id}"><div id="bSize-${id}" style="font-size:11px;font-weight:700;margin-top:4px"></div></div><div class="comp-box"><div style="font-size:10px;font-weight:800;color:#2563eb">AFTER</div><img id="aImg-${id}"><div id="aSize-${id}" style="font-size:11px;font-weight:700;margin-top:4px;color:#16a34a"></div></div></div></div>`;
+  list.innerHTML+=`<div class="item" id="row-${id}"><div class="item-top"><img class="thumb" id="thumb-${id}" src="${thumbURL}"><div class="stats"><b style="font-size:11.5px;word-break:break-all">${file.name}</b><br><span style="color:#64748b">Original: ${(file.size/1024).toFixed(1)}KB</span><br><span id="st-${id}" style="font-weight:700;color:#334155">Ready</span><div class="bar"><div id="bar-${id}" style="width:10%"></div></div><div class="rename"><span style="font-size:10px;font-weight:800;color:#475569">RENAME:</span><input value="${fileNames[id]}" oninput="fileNames[${id}]=this.value.replace(/[^a-zA-Z0-9_\\- ]/g,'')"></div><div style="display:flex;gap:5px;flex-wrap:wrap;margin-top:8px"><button class="sbtn" onclick="openCrop(${id})">✂️ Crop</button><button class="sbtn" onclick="doRotate(${id},-90)">↺</button><button class="sbtn" onclick="doRotate(${id},90)">↻</button><button class="sbtn" onclick="doFlip(${id},'h')">↔</button><button class="sbtn" onclick="doFlip(${id},'v')">↕</button></div></div><div style="display:flex;flex-direction:column;gap:6px"><button class="sbtn" style="background:#fef2f2;color:#dc2626;border-color:#fecaca" onclick="removeFile(${id})">Delete</button><a id="dl-${id}" class="hidden" style="display:block;text-align:center;background:#0f172a;color:#fff;padding:10px;border-radius:10px;text-decoration:none;font-size:11.5px;font-weight:700">Download</a></div></div><div id="comp-${id}" class="comp-wrap hidden"><div class="comp-box"><div style="font-size:10px;font-weight:800;color:#64748b">BEFORE</div><img id="bImg-${id}"><div id="bSize-${id}" style="font-size:11px;font-weight:700;margin-top:4px"></div></div><div class="comp-box"><div style="font-size:10px;font-weight:800;color:#2563eb">AFTER</div><img id="aImg-${id}"><div id="aSize-${id}" style="font-size:11px;font-weight:700;margin-top:4px;color:#16a34a"></div></div></div></div>`;
  }
 }
 function removeFile(id){files=files.filter(f=>f.id!==id);delete results[id];delete rotations[id];delete fileNames[id];document.getElementById(`row-${id}`)?.remove();}
 function doRotate(id,deg){rotations[id].rot=(rotations[id].rot+deg)%360;let th=document.getElementById(`thumb-${id}`);let rr=rotations[id];th.style.transform=`rotate(${rr.rot}deg) scaleX(${rr.flipH}) scaleY(${rr.flipV})`;}
 function doFlip(id,type){if(type==='h')rotations[id].flipH*=-1;else rotations[id].flipV*=-1;let th=document.getElementById(`thumb-${id}`);let rr=rotations[id];th.style.transform=`rotate(${rr.rot}deg) scaleX(${rr.flipH}) scaleY(${rr.flipV})`;}
 
+// CROP FIX - FILE READER + ZOOM
+function readFileAsDataURL(file){
+ return new Promise(res=>{
+   let fr=new FileReader();
+   fr.onload=e=>res(e.target.result);
+   fr.onerror=()=>res(null);
+   fr.readAsDataURL(file);
+ });
+}
 async function openCrop(id){
  let obj=files.find(f=>f.id===id);if(!obj)return;
  croppingId=id;
  document.getElementById('cropModal').style.display='flex';
+ document.getElementById('cropFileName').innerText='- '+obj.file.name;
  let img=document.getElementById('cropImg');
- // CROPPER KE LIYE BHI CHHOTA IMAGE USE KARO - 800px
- try{
-   if(window.createImageBitmap){
-     let bmp=await createImageBitmap(obj.file,{resizeWidth:1000,resizeQuality:'medium'});
-     let can=document.createElement('canvas');can.width=bmp.width;can.height=bmp.height;
-     let ctx=can.getContext('2d');ctx.drawImage(bmp,0,0);
-     let blob=await new Promise(r=>can.toBlob(r,'image/jpeg',0.85));
-     bmp.close();
-     img.src=URL.createObjectURL(blob);
-   }else{
-     img.src=fileURLs[id];
-   }
- }catch(e){
-   img.src=fileURLs[id];
- }
+ let dataURL=await readFileAsDataURL(obj.file);
+ if(!dataURL) dataURL=fileURLs[id];
+ img.src=dataURL;
  setTimeout(()=>{
    if(cropIns)cropIns.destroy();
-   cropIns=new Cropper(img,{viewMode:1,autoCropArea:0.9,background:false,checkOrientation:false});
- },200);
+   cropIns=new Cropper(img,{viewMode:1,autoCropArea:0.85,background:false,checkOrientation:false,zoomable:true,rotatable:true,scalable:true});
+ },180);
 }
 function closeCrop(){document.getElementById('cropModal').style.display='none';if(cropIns){cropIns.destroy();cropIns=null;}}
 function applyCrop(){
  if(!cropIns||croppingId===null)return;
- let c=cropIns.getCroppedCanvas({fillColor:'#fff',maxWidth:1600,maxHeight:1600,imageSmoothingQuality:'medium'});
+ lastCropData=cropIns.getData();
+ let c=cropIns.getCroppedCanvas({fillColor:'#fff',maxWidth:2000,maxHeight:2000,imageSmoothingQuality:'high'});
  c.toBlob(b=>{
    let o=files.find(f=>f.id===croppingId);
    if(o&&b){
@@ -172,58 +170,87 @@ function applyCrop(){
      document.getElementById(`st-${croppingId}`).innerText='Cropped - Ready';
    }
    closeCrop();
- },'image/jpeg',0.88);
+ },'image/jpeg',0.92);
+}
+async function applyCropAll(){
+ if(!cropIns||!lastCropData) lastCropData=cropIns.getData();
+ let data=cropIns.getData();
+ let c=cropIns.getCroppedCanvas({fillColor:'#fff',maxWidth:2000,maxHeight:2000,imageSmoothingQuality:'high'});
+ let blob=await new Promise(r=>c.toBlob(r,'image/jpeg',0.92));
+ if(!blob) return;
+ for(let o of files){
+   let newFile=new File([blob],o.file.name,{type:'image/jpeg'});
+   o.file=newFile;
+   let newURL=URL.createObjectURL(blob);
+   let th=document.getElementById(`thumb-${o.id}`);
+   if(th){th.src=newURL;th.style.transform='none';}
+   fileURLs[o.id]=newURL;
+   rotations[o.id]={rot:0,flipH:1,flipV:1};
+   let st=document.getElementById(`st-${o.id}`);
+   if(st) st.innerText='Cropped (All) - Ready';
+ }
+ closeCrop();
 }
 
-// FINAL ENGINE - DIRECT SMALL DECODE, NEVER FAIL
+// BEST QUALITY ENGINE - NEVER 64x64 FOR 120KB
 function loadImage(file){
  return new Promise(async res=>{
    if(window.createImageBitmap){
-     try{let bmp=await createImageBitmap(file,{resizeWidth:800,resizeHeight:800,resizeQuality:'low'});res(bmp);return;}catch(e){}
+     try{let bmp=await createImageBitmap(file,{resizeWidth:1200,resizeHeight:1200,resizeQuality:'medium'});res(bmp);return;}catch(e){}
      try{let bmp=await createImageBitmap(file);res(bmp);return;}catch(e){}
    }
    let url=URL.createObjectURL(file);
-   let img=new Image();
-   img.onload=()=>{URL.revokeObjectURL(url);res(img)};
-   img.onerror=()=>{URL.revokeObjectURL(url);res(null)};
-   img.src=url;
+   let img=new Image();img.onload=()=>{URL.revokeObjectURL(url);res(img)};img.onerror=()=>{URL.revokeObjectURL(url);res(null)};img.src=url;
  });
 }
 async function compressToTarget(file, rotObj){
  let img=await loadImage(file);
  if(!img){
-   // ULTIMATE FALLBACK - 64px blank se bhi blob banao
-   let can=document.createElement('canvas');can.width=64;can.height=64;
-   let ctx=can.getContext('2d');ctx.fillStyle='#fff';ctx.fillRect(0,0,64,64);
-   let blob=await new Promise(r=>can.toBlob(r,'image/jpeg',0.1));
-   return {blob,w:64,h:64};
+   let can=document.createElement('canvas');can.width=200;can.height=200;
+   let ctx=can.getContext('2d');ctx.fillStyle='#fff';ctx.fillRect(0,0,200,200);
+   let blob=await new Promise(r=>can.toBlob(r,'image/jpeg',0.3));
+   return {blob,w:200,h:200};
  }
- let W=img.width||800,H=img.height||800;
- let best=null;
- let sizes = targetVal<=25? [W,480,360,280,200,140,100,64,48,32] : [W,800,600,450,320,220];
- let quals = [0.72,0.55,0.38,0.22,0.10,0.03,0.01];
+ let W=img.width,H=img.height;
+ let bestUnder=null, bestOver=null, smallest=null;
+ let sizes, quals;
+ if(targetVal<=25){
+   sizes=[Math.min(W,1000),800,650,550,480,420,360,320,280];
+   quals=qMode==='best'?[0.88,0.75,0.60,0.45,0.32,0.20,0.10]:qMode==='balanced'?[0.75,0.55,0.38,0.22,0.10,0.04]:[0.55,0.35,0.18,0.08,0.02];
+ }else if(targetVal<=60){
+   sizes=[Math.min(W,1200),1000,850,700,600,500,420];
+   quals=qMode==='best'?[0.90,0.78,0.65,0.50,0.35,0.22,0.12]:[0.80,0.62,0.45,0.28,0.15,0.06];
+ }else{
+   sizes=[Math.min(W,1600),1200,1000,850,700,600];
+   quals=[0.92,0.82,0.70,0.55,0.40,0.25];
+ }
  for(let max of sizes){
   let w=W,h=H;
-  if(w>max||h>max){let r=Math.min(max/w,max/h);w=Math.max(32,Math.round(w*r));h=Math.max(32,Math.round(h*r));}
+  if(w>max||h>max){let r=Math.min(max/w,max/h);w=Math.round(w*r);h=Math.round(h*r);}
+  w=Math.max(80,w);h=Math.max(80,h);
   for(let q of quals){
    let b=await renderBlob(img,w,h,q,rotObj);
    if(!b) continue;
-   if(!best || b.size < best.blob.size) best={blob:b,w,h};
-   if(b.size/1024 <= targetVal*1.5){
-     if(img.close) img.close();
-     return {blob:b,w,h};
+   if(!smallest || b.size < smallest.blob.size) smallest={blob:b,w,h};
+   let kb=b.size/1024;
+   if(kb <= targetVal){
+     if(!bestUnder || b.size > bestUnder.blob.size) bestUnder={blob:b,w,h};
+   }else if(kb <= targetVal*1.2){
+     if(!bestOver || b.size < bestOver.blob.size) bestOver={blob:b,w,h};
    }
   }
+  if(bestUnder && bestUnder.blob.size/1024 >= targetVal*0.85) break;
  }
  if(img.close) img.close();
- return best;
+ if(bestUnder) return bestUnder;
+ if(bestOver) return bestOver;
+ return smallest;
 }
 function renderBlob(img,w,h,q,rotObj){
  return new Promise(res=>{
   try{
    let isRot=Math.abs(rotObj.rot)%180===90;
-   let cw=isRot?Math.max(32,h):Math.max(32,w);
-   let ch=isRot?Math.max(32,w):Math.max(32,h);
+   let cw=isRot?h:w, ch=isRot?w:h;
    let can=document.createElement('canvas');can.width=cw;can.height=ch;
    let ctx=can.getContext('2d',{alpha:false});
    if(!ctx){res(null);return;}
@@ -232,7 +259,7 @@ function renderBlob(img,w,h,q,rotObj){
    ctx.drawImage(img,-w/2,-h/2,w,h);
    ctx.restore();
    let type=document.getElementById('format').value;if(type==='auto') type='image/jpeg';
-   can.toBlob(b=>{if(b)res(b);else res(null);},type,Math.max(0.01,Math.min(0.82,q)));
+   can.toBlob(b=>res(b),type,Math.max(0.02,Math.min(0.92,q)));
   }catch(e){res(null);}
  });
 }
@@ -244,24 +271,22 @@ async function compressAll(){
  for(let o of files){
   let f=o.file,id=o.id;totalO+=f.size;
   let st=document.getElementById(`st-${id}`),bar=document.getElementById(`bar-${id}`);
-  st.innerText='Compressing...';bar.style.width='45%';bar.style.background='#2563eb';
+  st.innerText='Compressing...';bar.style.width='50%';
   let out=await compressToTarget(f,rotations[id]||{rot:0,flipH:1,flipV:1});
-  if(!out){
-    st.innerHTML='❌ Failed';bar.style.background='#ef4444';continue;
-  }
+  if(!out){st.innerHTML='❌ Failed';bar.style.background='#ef4444';continue;}
   results[id]=out;totalC+=out.blob.size;ok++;
   let saved=(100-out.blob.size/f.size*100).toFixed(0);
-  st.innerHTML=`✓ ${(out.blob.size/1024).toFixed(1)}KB • ${saved}% saved • ${out.w}x${out.h}`;
-  bar.style.width='100%';bar.style.background='#16a34a';
+  let kb=(out.blob.size/1024).toFixed(1);
+  st.innerHTML=`✓ ${kb}KB • ${saved}% saved • ${out.w}x${out.h}`;bar.style.width='100%';bar.style.background='#16a34a';
   let url=URL.createObjectURL(out.blob);
   document.getElementById(`comp-${id}`).classList.remove('hidden');
   document.getElementById(`bImg-${id}`).src=document.getElementById(`thumb-${id}`).src;
   document.getElementById(`bSize-${id}`).innerText=`Before: ${(f.size/1024).toFixed(1)}KB`;
   document.getElementById(`aImg-${id}`).src=url;
-  document.getElementById(`aSize-${id}`).innerText=`After: ${(out.blob.size/1024).toFixed(1)}KB`;
+  document.getElementById(`aSize-${id}`).innerText=`After: ${kb}KB`;
   let dl=document.getElementById(`dl-${id}`);let nm=(fileNames[id]||'image').trim()||'image';dl.href=url;dl.download=`${nm}-${targetVal}kb.jpg`;dl.classList.remove('hidden');dl.innerText=`Download ${targetVal}KB`;
  }
- btn.textContent=dict[curLang].compressBtn;btn.disabled=false;
+ btn.textContent='⚡ Compress Images';btn.disabled=false;
  if(ok>0){
   document.getElementById('summary').classList.remove('hidden');
   let pct=totalO>0?(100-totalC/totalO*100).toFixed(0):0;
