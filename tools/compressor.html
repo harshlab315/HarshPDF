@@ -8,34 +8,35 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Plus+Jakarta+Sans:wght@700;800&display=swap" rel="stylesheet">
 <style>
-*{box-sizing:border-box;font-family:'Inter',sans-serif}html,body{margin:0;background:#f8fafc;color:#0f172a;overflow-x:hidden}
-.header{background:#2563eb;color:#fff;padding:0 18px;display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;z-index:1000;height:58px;box-shadow:0 4px 20px rgba(37,99,235,.3)}
-.logo{font-family:'Plus Jakarta Sans';font-weight:800;font-size:20px}
-.lang-btn{background:#fff;color:#2563eb;border:0;padding:8px 18px;border-radius:20px;font-weight:800;cursor:pointer;font-size:12.5px;box-shadow:0 2px 8px rgba(0,0,0,.15);min-width:72px}
-.all-btn{background:rgba(255,255,255,.2);color:#fff;text-decoration:none;font-size:12px;padding:8px 14px;border-radius:20px;border:1px solid rgba(255,255,255,.3);font-weight:600}
+*{box-sizing:border-box;font-family:'Inter',sans-serif}html,body{margin:0;background:#f8fafc;color:#0f172a;width:100%;overflow-x:hidden}
+.header{background:#2563eb;color:#fff;padding:0 18px;display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;z-index:1000;height:58px;box-shadow:0 2px 12px rgba(37,99,235,.25)}
+.logo{font-family:'Plus Jakarta Sans';font-weight:800;font-size:20px;display:flex;align-items:center;gap:6px}
+.lang-btn{background:#fff;color:#2563eb;border:0;padding:8px 18px;border-radius:20px;font-weight:800;cursor:pointer;font-size:12.5px;box-shadow:0 2px 10px rgba(0,0,0,.15);min-width:70px}
+.all-btn{background:rgba(255,255,255,.18);color:#fff;text-decoration:none;font-size:12px;padding:8px 14px;border-radius:20px;border:1px solid rgba(255,255,255,.25);font-weight:600}
 .wrap{max-width:1200px;margin:0 auto;padding:16px;display:grid;grid-template-columns:1.35fr.65fr;gap:16px}
 @media(max-width:980px){.wrap{grid-template-columns:1fr}}
-.left{background:#fff;border-radius:20px;padding:18px;border:1px solid #eef2f7;box-shadow:0 10px 40px rgba(0,0,0,.05)}
-.badges{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px}
+.left{background:#fff;border-radius:20px;padding:18px;border:1px solid #eef2f7;box-shadow:0 8px 30px rgba(0,0,0,.04)}
+.badges{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px}
 .badge{font-size:11px;font-weight:700;padding:6px 12px;border-radius:20px;border:1px solid}
 .b-green{background:#f0fdf4;color:#15803d;border-color:#bbf7d0}.b-blue{background:#eff6ff;color:#1e40af;border-color:#bfdbfe}.b-purple{background:#faf5ff;color:#7c3aed;border-color:#e9d5ff}
-.title{font-family:'Plus Jakarta Sans';font-size:26px;font-weight:800;margin:0;line-height:1.15;letter-spacing:-.6px}
+.title{font-family:'Plus Jakarta Sans';font-size:26px;font-weight:800;margin:0;line-height:1.2;letter-spacing:-.6px}
 .title.grad{background:linear-gradient(90deg,#2563eb,#7c3aed,#db2777);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
-.sub{color:#64748b;font-size:13px;margin:6px 0 0}
-.drop{border:2px dashed #cbd5e1;background:linear-gradient(180deg,#f8fafc,#ffffff);border-radius:16px;padding:24px 12px;text-align:center;cursor:pointer;margin:14px 0;transition:.2s}
+.sub{color:#64748b;font-size:13px;margin:6px 0 0;line-height:1.5}
+.drop{border:2px dashed #cbd5e1;background:linear-gradient(180deg,#f8fafc,#ffffff);border-radius:16px;padding:22px 12px;text-align:center;cursor:pointer;margin:14px 0;transition:.2s}
 .drop:hover{border-color:#2563eb;background:#eff6ff}
 .ctrl{position:sticky;top:66px;z-index:900;display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:12px 0;background:#f8fafc;border:1px solid #f1f5f9;padding:12px;border-radius:14px}
-label{font-size:10px;font-weight:800;color:#475569;text-transform:uppercase;letter-spacing:.6px}
+@media(max-width:600px){.ctrl{grid-template-columns:1fr 1fr}}
+label{font-size:10.5px;font-weight:800;color:#475569;text-transform:uppercase;letter-spacing:.6px}
 input,select{padding:10px;border:1px solid #e2e8f0;border-radius:10px;font-size:13px;width:100%;background:#fff;outline:none}
 input:focus,select:focus{border-color:#2563eb;box-shadow:0 0 0 3px rgba(37,99,235,.12)}
-.tbtn,.qbtn,.sbtn{padding:8px 12px;border-radius:9px;border:1px solid #e2e8f0;background:#fff;font-weight:700;cursor:pointer;font-size:12px}
+.tbtn,.qbtn,.sbtn{padding:8px 12px;border-radius:9px;border:1px solid #e2e8f0;background:#fff;font-weight:700;cursor:pointer;font-size:12px;transition:.15s}
 .tbtn.active{background:#0f172a;color:#fff;border-color:#0f172a}.qbtn.active{background:#2563eb;color:#fff;border-color:#2563eb}
 .btn{padding:13px;border:0;border-radius:12px;font-weight:800;cursor:pointer;font-size:14px;width:100%}
-.btn.dark{background:#0f172a;color:#fff}.btn.blue{background:#2563eb;color:#fff;margin-top:12px}
-.item{border:1px solid #eef2f7;border-radius:16px;padding:12px;margin:12px 0;background:#fff;box-shadow:0 4px 18px rgba(0,0,0,.04)}
+.btn.dark{background:#0f172a;color:#fff}.btn.blue{background:#2563eb;color:#fff;margin-top:10px}
+.item{border:1px solid #eef2f7;border-radius:16px;padding:12px;margin:12px 0;background:#fff;box-shadow:0 2px 12px rgba(0,0,0,.03)}
 .item-top{display:grid;grid-template-columns:110px 1fr;gap:12px}
 .thumb{width:100%;height:86px;object-fit:cover;border-radius:10px;background:#f1f5f9;border:1px solid #f1f5f9}
-.bar{height:6px;background:#e2e8f0;border-radius:10px;overflow:hidden;margin:8px 0}.bar div{height:100%;width:10%;transition:.3s;background:linear-gradient(90deg,#2563eb,#7c3aed)}
+.bar{height:6px;background:#e2e8f0;border-radius:10px;overflow:hidden;margin:8px 0}.bar div{height:100%;background:#2563eb;width:10%;transition:.3s}
 .comp-wrap{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:10px;background:#f8fafc;border-radius:12px;padding:10px;border:1px solid #f1f5f9}
 .comp-box{background:#fff;border-radius:10px;padding:8px;border:1px solid #f1f5f9;text-align:center}.comp-box img{width:100%;height:90px;object-fit:contain;border-radius:8px}
 .rename{display:flex;gap:6px;align-items:center;margin-top:8px;border:1px solid #e2e8f0;padding:6px 8px;border-radius:9px;background:#fff}
@@ -49,7 +50,8 @@ input:focus,select:focus{border-color:#2563eb;box-shadow:0 0 0 3px rgba(37,99,23
 #cropModal{position:fixed;inset:0;background:rgba(15,23,42,.88);backdrop-filter:blur(4px);z-index:9999;display:none;align-items:center;justify-content:center;padding:12px}
 #cropBox{background:#fff;border-radius:16px;padding:14px;width:100%;max-width:580px}
 .crop-img-wrap{max-height:66vh;background:#0f172a;border-radius:12px;display:flex;align-items:center;justify-content:center;overflow:hidden}
-.footer{background:#0f172a;color:#94a3b8;margin-top:32px}.f-grid{max-width:1200px;margin:0 auto;padding:32px 18px;display:grid;grid-template-columns:1.6fr 1fr 1fr 1.2fr;gap:24px}
+.footer{background:#0f172a;color:#94a3b8;margin-top:32px}
+.f-grid{max-width:1200px;margin:0 auto;padding:32px 18px;display:grid;grid-template-columns:1.6fr 1fr 1fr 1.2fr;gap:24px}
 @media(max-width:900px){.f-grid{grid-template-columns:1fr 1fr}}@media(max-width:500px){.f-grid{grid-template-columns:1fr}}
 .f-bottom{border-top:1px solid #1e293b;padding:14px;text-align:center;font-size:11.5px;color:#64748b;max-width:1200px;margin:0 auto}
 .hidden{display:none!important}
@@ -57,15 +59,12 @@ input:focus,select:focus{border-color:#2563eb;box-shadow:0 0 0 3px rgba(37,99,23
 </head>
 <body>
 <div class="header"><div class="logo">📄 KaagazPro</div><div style="display:flex;gap:10px;align-items:center"><button class="lang-btn" id="langBtn" onclick="toggleLang()">हिंदी</button><a class="all-btn" href="/" data-i="allTools">← All Tools</a></div></div>
-
 <div class="wrap">
 <div class="left">
 <div class="badges"><span class="badge b-green" data-i="b1">Real AI Model</span><span class="badge b-blue" data-i="b2">100% Browser Based</span><span class="badge b-purple" data-i="b3">No Server Upload</span></div>
-<h1 class="title"><span data-i="t1">Image Compressor</span><br><span class="title grad" data-i="t2">Exact 20KB 50KB 100KB & Smart Crop</span></h1>
+<h1 class="title"><span data-i="t1">Image Compressor</span><br><span class="grad" data-i="t2">Exact 20KB 50KB 100KB & Smart Crop</span></h1>
 <p class="sub" data-i="sub">Upload any photo. Compress to exact target size with rename, crop, rotate, flip. 100% private, runs entirely in your browser.</p>
-
 <div class="drop" id="drop"><div style="font-size:28px">🖼️</div><b data-i="dropT">Click to Upload or Drag & Drop</b><br><small data-i="dropS">Supports JPG, PNG, WEBP - Any size auto handled - Up to 10 files</small><input type="file" id="input" accept="image/*" multiple hidden></div>
-
 <div class="ctrl" id="ctrlBar">
 <div><label data-i="lTarget">Target Size</label><div style="display:flex;gap:6px;flex-wrap:wrap;margin-top:6px"><button class="tbtn active" onclick="setTarget(20,this)">20KB</button><button class="tbtn" onclick="setTarget(50,this)">50KB</button><button class="tbtn" onclick="setTarget(100,this)">100KB</button><button class="tbtn" onclick="setTarget(200,this)">200KB</button></div></div>
 <div><label data-i="lCustom">Custom Size (KB)</label><input type="number" id="customKB" placeholder="e.g. 35" oninput="targetVal=parseInt(this.value)||20"></div>
@@ -73,12 +72,10 @@ input:focus,select:focus{border-color:#2563eb;box-shadow:0 0 0 3px rgba(37,99,23
 <div><label data-i="lFormat">Output Format</label><select id="format"><option value="auto" data-i="auto">Auto - Recommended</option><option value="image/jpeg">JPEG - Compatible</option><option value="image/webp">WEBP - Modern</option></select></div>
 <div style="grid-column:1/-1"><button class="btn dark" id="compressBtn" onclick="compressAll()" data-i="compressBtn">⚡ Compress Images</button></div>
 </div>
-
 <div id="list"></div>
 <div id="summary" class="summary hidden"></div>
 <button class="btn blue hidden" id="downAll" data-i="zipBtn">⬇️ Download All as ZIP</button>
 </div>
-
 <div class="right">
 <div class="side"><div style="position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#2563eb,#7c3aed)"></div><h3 data-i="howTitle">How to Use</h3><div class="step"><div class="num">1</div><div style="font-size:12.5px"><b data-i="how1">Select or drop images (any size)</b><br><span style="color:#64748b;font-size:11.5px" data-i="how1d">Up to 10 files, even 10MB each</span></div></div><div class="step"><div class="num">2</div><div style="font-size:12.5px"><b data-i="how2">Rename + Crop / Rotate / Flip</b><br><span style="color:#64748b;font-size:11.5px" data-i="how2d">Edit inside card with custom name</span></div></div><div class="step"><div class="num">3</div><div style="font-size:12.5px"><b data-i="how3">Choose 20KB / 50KB / 100KB target</b><br><span style="color:#64748b;font-size:11.5px" data-i="how3d">Exact size guaranteed</span></div></div><div class="step"><div class="num">4</div><div style="font-size:12.5px"><b data-i="how4">Compress & Download JPG or ZIP</b><br><span style="color:#64748b;font-size:11.5px" data-i="how4d">100% offline, auto delete after</span></div></div></div>
 <div class="side dark"><h3 style="color:#fff" data-i="whyTitle">Why This Tool?</h3><div style="font-size:12.5px;line-height:2.1"><div>✓ <span data-i="why1">Exact KB output - never fails</span></div><div>✓ <span data-i="why2">Custom rename for each file</span></div><div>✓ <span data-i="why3">Real crop with aspect ratios</span></div><div>✓ <span data-i="why4">100% private - runs in browser</span></div><div>✓ <span data-i="why5">No watermark, free forever</span></div></div></div>
@@ -86,10 +83,8 @@ input:focus,select:focus{border-color:#2563eb;box-shadow:0 0 0 3px rgba(37,99,23
 <div class="side"><h3 data-i="relTitle">Related Tools</h3><div style="display:grid;grid-template-columns:1fr 1fr;gap:8px"><a href="/tools/bg-remover.html" style="background:#f8fafc;border:1px solid #e2e8f0;padding:10px;border-radius:10px;text-align:center;text-decoration:none;color:#0f172a;font-size:11.5px;font-weight:700">BG Remover</a><a href="/tools/passport.html" style="background:#f8fafc;border:1px solid #e2e8f0;padding:10px;border-radius:10px;text-align:center;text-decoration:none;color:#0f172a;font-size:11.5px;font-weight:700">Passport Photo</a><a href="/tools/merge-pdf.html" style="background:#f8fafc;border:1px solid #e2e8f0;padding:10px;border-radius:10px;text-align:center;text-decoration:none;color:#0f172a;font-size:11.5px;font-weight:700">Merge PDF</a><a href="/tools/dpi.html" style="background:#f8fafc;border:1px solid #e2e8f0;padding:10px;border-radius:10px;text-align:center;text-decoration:none;color:#0f172a;font-size:11.5px;font-weight:700">DPI Tool</a></div></div>
 </div>
 </div>
-
 <div id="cropModal"><div id="cropBox"><h3 style="margin:0 0 10px;font-size:14px;font-weight:800" data-i="cropTitle">✂️ Crop Image</h3><div class="crop-img-wrap"><img id="cropImg" style="max-width:100%;max-height:66vh"></div><div style="display:flex;gap:6px;flex-wrap:wrap;margin:12px 0"><button class="sbtn" onclick="cropIns.rotate(-90)">↺ L</button><button class="sbtn" onclick="cropIns.rotate(90)">↻ R</button><button class="sbtn" onclick="cropIns.scaleX((cropIns.getData().scaleX||1)*-1)">↔ H</button><button class="sbtn" onclick="cropIns.scaleY((cropIns.getData().scaleY||1)*-1)">↕ V</button><button class="sbtn" onclick="cropIns.setAspectRatio(1)">1:1</button><button class="sbtn" onclick="cropIns.setAspectRatio(3/4)">3:4</button><button class="sbtn" onclick="cropIns.setAspectRatio(NaN)" data-i="free">Free</button></div><div style="display:flex;gap:8px"><button class="btn" style="background:#f1f5f9;color:#0f172a;border:1px solid #e2e8f0" onclick="closeCrop()" data-i="cancel">Cancel</button><button class="btn dark" onclick="applyCrop()" data-i="apply">Apply Crop</button></div></div></div>
-
-<footer class="footer"><div class="f-grid"><div><div style="color:#fff;font-weight:800;font-size:20px;margin-bottom:8px">📄 KaagazPro</div><p style="font-size:13px;line-height:1.6;color:#94a3b8;margin:0" data-i="fDesc">India's Most Trusted Document Tool. 100% Free, Private and Offline.</p></div><div><b style="color:#e2e8f0;font-size:12px">POPULAR TOOLS</b><div style="margin-top:12px;display:flex;flex-direction:column;gap:8px;font-size:13px"><a href="/tools/compressor.html" style="color:#cbd5e1;text-decoration:none">Image Compressor</a><a href="/tools/bg-remover.html" style="color:#94a3b8;text-decoration:none">Background Remover</a><a href="/tools/passport.html" style="color:#94a3b8;text-decoration:none">Passport Photo</a><a href="/tools/merge-pdf.html" style="color:#94a3b8;text-decoration:none">Merge PDF</a></div></div><div><b style="color:#e2e8f0;font-size:12px">LEGAL</b><div style="margin-top:12px;display:flex;flex-direction:column;gap:8px;font-size:13px"><a href="/privacy-policy.html" style="color:#94a3b8;text-decoration:none">Privacy Policy</a><a href="/terms.html" style="color:#94a3b8;text-decoration:none">Terms</a><a href="/contact.html" style="color:#94a3b8;text-decoration:none">Contact</a></div></div><div><b style="color:#e2e8f0;font-size:12px">FEATURES</b><div style="margin-top:12px;font-size:12.5px;line-height:1.9;color:#94a3b8">✓ Exact KB Compressor<br>✓ Real AI BG Removal<br>✓ Private and Fast<br>✓ No Watermark</div></div></div><div class="f-bottom">© 2025 KaagazPro - Professional Tools - Made in India</div></footer>
+<footer class="footer"><div class="f-grid"><div><div style="color:#fff;font-weight:800;font-size:20px;margin-bottom:8px">📄 KaagazPro</div><p style="font-size:13px;line-height:1.6;color:#94a3b8;margin:0" data-i="fDesc">India's Most Trusted Document Tool. 100% Free, Private and Offline.</p></div><div><b style="color:#e2e8f0;font-size:12px;letter-spacing:.8px">POPULAR TOOLS</b><div style="margin-top:12px;display:flex;flex-direction:column;gap:8px;font-size:13px"><a href="/tools/compressor.html" style="color:#cbd5e1;text-decoration:none">Image Compressor</a><a href="/tools/bg-remover.html" style="color:#94a3b8;text-decoration:none">Background Remover</a><a href="/tools/passport.html" style="color:#94a3b8;text-decoration:none">Passport Photo</a><a href="/tools/merge-pdf.html" style="color:#94a3b8;text-decoration:none">Merge PDF</a></div></div><div><b style="color:#e2e8f0;font-size:12px">LEGAL</b><div style="margin-top:12px;display:flex;flex-direction:column;gap:8px;font-size:13px"><a href="/privacy-policy.html" style="color:#94a3b8;text-decoration:none">Privacy Policy</a><a href="/terms.html" style="color:#94a3b8;text-decoration:none">Terms</a><a href="/contact.html" style="color:#94a3b8;text-decoration:none">Contact</a></div></div><div><b style="color:#e2e8f0;font-size:12px">FEATURES</b><div style="margin-top:12px;font-size:12.5px;line-height:1.9;color:#94a3b8">✓ Exact KB Compressor<br>✓ Real AI BG Removal<br>✓ Private and Fast<br>✓ No Watermark</div></div></div><div class="f-bottom">© 2025 KaagazPro - Professional Tools - Made in India</div></footer>
 
 <script>
 const dict={
@@ -125,12 +120,19 @@ function openCrop(id){let obj=files.find(f=>f.id===id);if(!obj)return;croppingId
 function closeCrop(){document.getElementById('cropModal').style.display='none';if(cropIns){cropIns.destroy();cropIns=null;}}
 function applyCrop(){if(!cropIns||croppingId===null)return;let c=cropIns.getCroppedCanvas({fillColor:'#fff',maxWidth:2000,maxHeight:2000});c.toBlob(b=>{let o=files.find(f=>f.id===croppingId);if(o&&b){o.file=new File([b],o.file.name,{type:'image/jpeg'});document.getElementById(`thumb-${croppingId}`).src=URL.createObjectURL(b);document.getElementById(`thumb-${croppingId}`).style.transform='none';rotations[croppingId]={rot:0,flipH:1,flipV:1};document.getElementById(`st-${croppingId}`).innerText='Cropped - Ready';}closeCrop();},'image/jpeg',0.92);}
 
-// ===== 100% FAIL-PROOF ENGINE =====
-function loadImage(file){
+// ===== FINAL MEMORY-LOW FIX ENGINE =====
+function loadImage(file, maxDecode){
   return new Promise(async res=>{
     if(window.createImageBitmap){
-      try{let bmp=await createImageBitmap(file,{resizeWidth:1600});res(bmp);return;}catch(e){}
-      try{let bmp=await createImageBitmap(file);res(bmp);return;}catch(e){}
+      try{
+        let w = maxDecode || 800;
+        let bmp = await createImageBitmap(file, {resizeWidth:w, resizeHeight:w, resizeQuality:'low'});
+        res(bmp); return;
+      }catch(e){}
+      try{
+        let bmp = await createImageBitmap(file);
+        res(bmp); return;
+      }catch(e){}
     }
     let url=URL.createObjectURL(file);
     let img=new Image();
@@ -139,15 +141,14 @@ function loadImage(file){
     img.src=url;
   });
 }
-
 async function compressToTarget(file, rotObj){
- let img=await loadImage(file);if(!img) return null;
+ let maxInit = file.size > 1500000? 900 : 1200;
+ let img = await loadImage(file, maxInit);
+ if(!img) return null;
  let W=img.width||800,H=img.height||800;
  let best=null;
-
- let sizes = targetVal<=25? [700,500,400,320,260,200,160,120,90,64,48] : targetVal<=60? [900,700,550,450,350,280,200] : [1200,900,700,550,400];
- let quals = qMode==='best'? [0.82,0.65,0.48,0.32,0.18,0.08,0.03] : qMode==='balanced'? [0.65,0.42,0.22,0.10,0.04,0.015] : [0.40,0.20,0.08,0.02,0.01];
-
+ let sizes = targetVal<=25? [W,500,400,320,260,200,160,120,90,64,48,32] : targetVal<=60? [W,900,700,550,450,350,280,200] : [W,1200,900,700,550,400];
+ let quals = qMode==='best'? [0.75,0.60,0.42,0.28,0.14,0.05] : qMode==='balanced'? [0.60,0.38,0.18,0.06,0.02,0.01] : [0.40,0.20,0.08,0.02,0.01];
  for(let max of sizes){
   let w=W,h=H;
   if(w>max||h>max){let r=Math.min(max/w,max/h);w=Math.max(32,Math.round(w*r));h=Math.max(32,Math.round(h*r));}
@@ -155,24 +156,16 @@ async function compressToTarget(file, rotObj){
    let b=await renderBlob(img,w,h,q,rotObj);
    if(!b) continue;
    if(!best || b.size < best.blob.size) best={blob:b,w,h};
-   if(b.size/1024 <= targetVal*1.35){
+   if(b.size/1024 <= targetVal*1.40){
      if(img.close) img.close();
      return {blob:b,w,h};
    }
   }
  }
- // Kabhi fail nahi - sabse chhota wala de do
- if(best){
-   if(img.close) img.close();
-   return best;
- }
- // Ultimate 32px
- let b=await renderBlob(img,48,48,0.01,rotObj);
- if(b){ if(img.close) img.close(); return {blob:b,w:48,h:48}; }
+ if(best){ if(img.close) img.close(); return best; }
  if(img.close) img.close();
  return null;
 }
-
 function renderBlob(img,w,h,q,rotObj){
  return new Promise(res=>{
   try{
@@ -181,36 +174,27 @@ function renderBlob(img,w,h,q,rotObj){
    let ch=isRot?Math.max(32,w):Math.max(32,h);
    let can=document.createElement('canvas');
    can.width=cw; can.height=ch;
-   let ctx=can.getContext('2d',{alpha:false});
+   let ctx=can.getContext('2d',{alpha:false, willReadFrequently:true});
    if(!ctx){res(null);return;}
    ctx.fillStyle='#fff';ctx.fillRect(0,0,cw,ch);
    ctx.save();ctx.translate(cw/2,ch/2);ctx.rotate(rotObj.rot*Math.PI/180);ctx.scale(rotObj.flipH,rotObj.flipV);
-   try{
-     if(isRot) ctx.drawImage(img,-h/2,-w/2,w,h);
-     else ctx.drawImage(img,-w/2,-h/2,w,h);
-   }catch(e){
-     ctx.drawImage(img,-cw/2,-ch/2,cw,ch);
-   }
+   ctx.drawImage(img,-w/2,-h/2,w,h);
    ctx.restore();
    let type=document.getElementById('format').value;if(type==='auto') type='image/jpeg';
-   if(can.toBlob){
-     can.toBlob(blob=>{
-       if(blob){ res(blob); }
-       else{
-         try{
-           let dataUrl=can.toDataURL(type, Math.max(0.01,q));
-           let binStr=atob(dataUrl.split(',')[1]);
-           let len=binStr.length; let arr=new Uint8Array(len);
-           for(let i=0;i<len;i++) arr[i]=binStr.charCodeAt(i);
-           res(new Blob([arr],{type:type}));
-         }catch(e){ res(null); }
-       }
-     }, type, Math.max(0.01,Math.min(0.92,q)));
-   }else{ res(null); }
+   can.toBlob(blob=>{
+     if(blob) res(blob);
+     else{
+       try{
+         let url=can.toDataURL(type, Math.max(0.01,q));
+         let bStr=atob(url.split(',')[1]);let arr=new Uint8Array(bStr.length);
+         for(let i=0;i<bStr.length;i++) arr[i]=bStr.charCodeAt(i);
+         res(new Blob([arr],{type:type}));
+       }catch(e){ res(null); }
+     }
+   }, type, Math.max(0.01,Math.min(0.85,q)));
   }catch(e){ res(null); }
  });
 }
-
 async function compressAll(){
  let c=document.getElementById('customKB').value;if(c)targetVal=parseInt(c)||targetVal;
  if(!files.length) return alert('Upload images first');
@@ -219,13 +203,14 @@ async function compressAll(){
  for(let o of files){
   let f=o.file,id=o.id;totalO+=f.size;
   let st=document.getElementById(`st-${id}`),bar=document.getElementById(`bar-${id}`);
-  st.innerText='Compressing...';bar.style.width='35%';bar.style.background='#2563eb';
+  st.innerText='Compressing...';bar.style.width='40%';bar.style.background='#2563eb';
   let out=await compressToTarget(f,rotations[id]||{rot:0,flipH:1,flipV:1});
   if(!out) out=await compressToTarget(f,{rot:0,flipH:1,flipV:1});
-  if(!out){ st.innerText='❌ Memory low, crop small area'; bar.style.background='#ef4444'; bar.style.width='40%'; continue; }
+  if(!out){ st.innerHTML='❌ Error, try crop'; bar.style.background='#ef4444'; bar.style.width='50%'; continue; }
   results[id]=out;totalC+=out.blob.size;ok++;
   let saved=(100-out.blob.size/f.size*100).toFixed(0);
-  st.innerHTML=`✓ ${(out.blob.size/1024).toFixed(1)}KB • ${saved}% saved • ${out.w}x${out.h}`;bar.style.width='100%';bar.style.background='#16a34a';
+  st.innerHTML=`✓ ${(out.blob.size/1024).toFixed(1)}KB • ${saved}% saved • ${out.w}x${out.h}`;
+  bar.style.width='100%';bar.style.background='#16a34a';
   let url=URL.createObjectURL(out.blob);
   document.getElementById(`comp-${id}`).classList.remove('hidden');
   document.getElementById(`bImg-${id}`).src=document.getElementById(`thumb-${id}`).src;
