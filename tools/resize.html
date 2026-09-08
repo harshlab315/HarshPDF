@@ -1,61 +1,67 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1, maximum-scale=1">
 <title>Resize Photo to Any KB - KaagazPro</title>
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6640527517870664" crossorigin="anonymous"></script>
 <link href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.6.1/cropper.min.css" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.6.1/cropper.min.js"></script>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Plus+Jakarta+Sans:wght@700;800&display=swap" rel="stylesheet">
 <style>
-*{box-sizing:border-box}body{margin:0;background:#f6f7fb;color:#0f172a;font-family:'Inter',sans-serif}
-/* HEADER - NEW PROFESSIONAL */
-.header{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.92);backdrop-filter:blur(12px);border-bottom:1px solid #e2e8f0;display:flex;justify-content:space-between;align-items:center;height:62px;padding:0 14px;box-shadow:0 2px 12px rgba(0,0,0,.04)}
+*{box-sizing:border-box}html,body{overflow-x:hidden;width:100%}body{margin:0;background:#f6f7fb;color:#0f172a;font-family:'Inter',sans-serif}
+.header{position:sticky;top:0;z-index:100;background:#fff;border-bottom:1px solid #e2e8f0;display:flex;justify-content:space-between;align-items:center;height:58px;padding:0 12px;box-shadow:0 2px 12px rgba(0,0,0,.04)}
 .header-left{display:flex;align-items:center;gap:12px}
-.logo{font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;font-size:21px;letter-spacing:-.5px;display:flex;align-items:center;gap:2px}
-.logo.k{color:#0f172a}.logo.pro{background:linear-gradient(90deg,#4f46e5,#06b6d4);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
-.logo-badge{font-size:9px;background:#0f172a;color:#fff;padding:2px 6px;border-radius:20px;margin-left:6px;font-weight:700;letter-spacing:.5px}
-.icon-btn{width:44px;height:44px;display:grid;place-items:center;border-radius:12px;cursor:pointer;transition:.2s}.icon-btn:hover{background:#f1f5f9}.icon-btn:active{transform:scale(.95)}
-.dots9{display:grid;grid-template-columns:repeat(3,5px);grid-template-rows:repeat(3,5px);gap:4px}.dots9 span{width:5px;height:5px;background:#0f172a;border-radius:50%;display:block;transition:.2s}.icon-btn:hover.dots9 span{background:#4f46e5}
-.hamburger{display:flex;flex-direction:column;gap:5px;width:22px}.hamburger span{display:block;height:2.5px;background:#0f172a;border-radius:10px;transition:.2s}.hamburger span:nth-child(1){width:22px}.hamburger span:nth-child(2){width:18px}.hamburger span:nth-child(3){width:22px}.icon-btn:hover.hamburger span{background:#0f172a;width:22px}
-
+.logo{font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;font-size:20px;letter-spacing:-.5px;display:flex;align-items:center;gap:2px}
+.logo.pro{background:linear-gradient(90deg,#4f46e5,#06b6d4);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.logo-badge{font-size:8px;background:#0f172a;color:#fff;padding:2px 6px;border-radius:20px;margin-left:5px;font-weight:700}
+.icon-btn{width:42px;height:42px;display:grid;place-items:center;border-radius:12px;cursor:pointer;flex-shrink:0}.icon-btn:hover{background:#f1f5f9}
+.dots3{display:flex;flex-direction:column;gap:4px}.dots3 span{width:5px;height:5px;background:#0f172a;border-radius:50%;display:block}
+.hamburger{display:flex;flex-direction:column;gap:5px;width:20px}.hamburger span{display:block;height:2.5px;background:#0f172a;border-radius:10px}
 #leftDrawer,#rightDrawer{display:none;position:fixed;inset:0;z-index:9999;background:rgba(15,23,42,.55)}
 .left-box{position:absolute;left:0;top:0;width:92%;max-width:380px;height:100%;background:#fff;overflow:auto}
 .right-box{position:absolute;right:0;top:0;width:92%;max-width:360px;height:100%;background:#fff;overflow:auto}
 .d-tool{display:flex;gap:8px;padding:11px 14px;border-radius:10px;text-decoration:none;color:#334155;font-size:13px;font-weight:600;margin:4px 10px}.d-tool:hover{background:#f1f5f9}
 .d-link{display:block;padding:12px 14px;text-decoration:none;color:#334155;font-weight:600;margin:4px 10px;border-radius:10px}.d-link:hover{background:#f1f5f9}
-.wrap{max-width:700px;margin:0 auto;padding:14px}
-.book{background:#fff;border:1px solid #e2e8f0;border-radius:20px;padding:16px;box-shadow:0 8px 28px rgba(0,0,0,.06)}
+.wrap{max-width:700px;margin:0 auto;padding:10px;width:100%;overflow:hidden}
+.book{background:#fff;border:1px solid #e2e8f0;border-radius:20px;padding:14px;box-shadow:0 8px 28px rgba(0,0,0,.06);width:100%;overflow:hidden}
 .badges{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:8px}.badge{font-size:10.5px;font-weight:700;padding:5px 10px;border-radius:20px;border:1px solid #e2e8f0}
-.title{font-family:'Plus Jakarta Sans';font-size:26px;font-weight:800;line-height:1.1;margin:0}.grad{background:linear-gradient(90deg,#4f46e5,#06b6d4);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.title{font-family:'Plus Jakarta Sans';font-size:24px;font-weight:800;line-height:1.1;margin:0}.grad{background:linear-gradient(90deg,#4f46e5,#06b6d4);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
 .yellow{background:linear-gradient(90deg,#fef9c3,#fde047);border:1px dashed #eab308;padding:10px;border-radius:12px;text-align:center;font-weight:700;font-size:12px;margin:12px 0}
-.upload{border:2px dashed #a5b4fc;background:#f8faff;border-radius:16px;padding:30px;text-align:center;cursor:pointer}
-.img-box{background:#0f172a;border-radius:12px;overflow:hidden;max-height:64vh;display:flex;justify-content:center}
-.img-box img{max-width:100%;display:block}
-.tools{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin:10px 0}.tools button{padding:11px;border:0;border-radius:10px;background:#eef2ff;color:#4338ca;font-weight:700;font-size:12px;cursor:pointer}
-.tools2{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin-bottom:10px}.tools2 button{padding:9px;border:0;border-radius:8px;background:#f1f5f9;color:#334155;font-weight:700;font-size:11px;cursor:pointer;border:1px solid #e2e8f0}
-.row{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:12px 0}.row label{font-size:11px;font-weight:800;color:#334155;display:flex;flex-direction:column;gap:5px}
-.row input,.row select{padding:11px;border:1.5px solid #cbd5e1;border-radius:10px;font-weight:600;background:#fff}
-.btn-green{width:100%;background:#16a34a;color:#fff;border:0;padding:14px;border-radius:12px;font-weight:800;font-size:15px;cursor:pointer;box-shadow:0 6px 16px rgba(22,163,74,.3)}
+.upload{border:2px dashed #a5b4fc;background:#f8faff;border-radius:16px;padding:28px;text-align:center;cursor:pointer;width:100%}
+.img-box{background:#ffffff;border:1px solid #e2e8f0;border-radius:14px;overflow:hidden;width:100%;height:380px;max-height:65vh;display:flex;justify-content:center;align-items:center}
+.img-box img{max-width:100%;max-height:100%;display:block}
+.cropper-view-box,.cropper-face{background-color:transparent!important}
+.cropper-bg{background-image:none!important;background:#fff!important}
+.tools{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:12px 0;width:100%}
+.tools button{padding:14px 8px;border:0;border-radius:12px;background:#eef2ff;color:#4338ca;font-weight:700;font-size:13px;cursor:pointer;border:1px solid #c7d2fe}
+.tools2{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:12px;width:100%}
+.tools2 button{padding:12px 4px;border-radius:10px;background:#f8fafc;color:#334155;font-weight:700;font-size:12px;cursor:pointer;border:1px solid #e2e8f0}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:12px 0;width:100%}
+.row label{font-size:11px;font-weight:800;color:#334155;display:flex;flex-direction:column;gap:5px;width:100%;min-width:0}
+.row input,.row select{padding:11px;border:1.5px solid #cbd5e1;border-radius:10px;font-weight:600;background:#fff;width:100%;min-width:0;font-size:14px}
+.res-card{background:#f8fafc;border:1.5px solid #e2e8f0;border-radius:12px;padding:10px 12px;display:flex;align-items:center;justify-content:space-between;margin:10px 0;width:100%}
+.res-toggle{display:flex;align-items:center;gap:8px;font-size:13px;font-weight:700;color:#0f172a;cursor:pointer}
+.res-inputs{display:flex;gap:8px;width:100%;margin-top:8px}.res-inputs input{flex:1;padding:11px;border:1.5px solid #cbd5e1;border-radius:10px;font-weight:600}
+@media(max-width:600px){.row{grid-template-columns:1fr}.tools2{grid-template-columns:repeat(2,1fr)}.wrap{padding:8px}.book{padding:12px}}
+.btn-green{width:100%;background:#16a34a;color:#fff;border:0;padding:15px;border-radius:12px;font-weight:800;font-size:15px;cursor:pointer;box-shadow:0 6px 16px rgba(22,163,74,.3)}
 .btn-outline{width:100%;background:#fff;color:#0f172a;border:1.5px solid #cbd5e1;padding:12px;border-radius:12px;font-weight:700;font-size:13px;cursor:pointer;margin-top:8px}
-.result{background:#f0fdf4;border:1.5px solid #bbf7d0;border-radius:12px;padding:12px;margin-top:12px;display:flex;gap:10px;align-items:center}
+.result{background:#f0fdf4;border:1.5px solid #bbf7d0;border-radius:12px;padding:12px;margin-top:12px;display:flex;gap:10px;align-items:center;width:100%;overflow:hidden}
 .hidden{display:none!important}
-.sec{max-width:700px;margin:24px auto;padding:0 14px}
-.step{display:flex;gap:12px;align-items:flex-start;background:#fff;border:1px solid #e2e8f0;border-radius:14px;padding:14px;margin:8px 0}
+.sec{max-width:700px;margin:24px auto;padding:0 10px;width:100%}
+.step{display:flex;gap:12px;align-items:flex-start;background:#fff;border:1px solid #e2e8f0;border-radius:14px;padding:14px;margin:8px 0;width:100%}
 .num{width:32px;height:32px;border-radius:10px;display:grid;place-items:center;font-weight:800;color:#fff;flex-shrink:0}
-.quick-card{background:#fff;border:1px solid #e2e8f0;border-radius:14px;padding:14px;margin:8px 0}
-.quick-card a{display:inline-block;background:#f1f5f9;border:1px solid #e2e8f0;padding:6px 12px;border-radius:20px;font-size:11px;font-weight:600;color:#334155;text-decoration:none;margin:4px 4px 4px 0}
-.quick-card a:hover{background:#0f172a;color:#fff}
+.quick-card{background:#fff;border:1px solid #e2e8f0;border-radius:14px;padding:14px;margin:8px 0;width:100%}
+.quick-card a{display:inline-block;background:#f1f5f9;border:1px solid #e2e8f0;padding:6px 12px;border-radius:20px;font-size:11px;font-weight:600;color:#334155;text-decoration:none;margin:4px}
 .pro-footer{background:#0f172a;color:#94a3b8;padding:28px 14px 12px;margin-top:26px}.foot-grid{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1.2fr 1fr 1fr 1fr;gap:20px}@media(max-width:800px){.foot-grid{grid-template-columns:1fr 1fr}}@media(max-width:500px){.foot-grid{grid-template-columns:1fr;text-align:center}}
-.pro-footer h4{color:#fff;font-size:11px;margin:0 0 10px;letter-spacing:.08em}.pro-footer a{color:#94a3b8;text-decoration:none;font-size:12px;display:block;margin:6px 0}.pro-footer a:hover{color:#fff}
+.pro-footer h4{color:#fff;font-size:11px;margin:0 0 10px}.pro-footer a{color:#94a3b8;text-decoration:none;font-size:12px;display:block;margin:6px 0}
 </style>
 </head>
 <body>
 
 <nav class="header">
 <div class="header-left">
-<div class="icon-btn" id="openLeft"><div class="dots9"><span></span><span></span><span></span><span></span><span></span></div></div>
-<div class="logo"><span class="k">Kaagaz</span><span class="pro">Pro</span><span class="logo-badge">PRO</span></div>
+<div class="icon-btn" id="openLeft"><div class="dots3"><span></span><span></span><span></span></div></div>
+<div class="logo"><span style="color:#0f172a">Kaagaz</span><span class="pro">Pro</span><span class="logo-badge">PRO</span></div>
 </div>
 <div class="icon-btn" id="openRight"><div class="hamburger"><span></span><span></span><span></span></div></div>
 </nav>
@@ -71,17 +77,44 @@
 <div class="yellow">👉 Now 20KB, 50KB, 100KB - Even multiple photos at once!</div>
 
 <div id="uploadArea" class="upload" onclick="document.getElementById('fileInput').click()">
-<div style="font-size:42px">📸</div><b>Tap to Upload Photo(s)</b><p style="font-size:11px;color:#64748b">Single or Multiple • JPG, PNG • Now supports 20KB</p>
+<div style="font-size:42px">📸</div><b>Tap to Upload Photo(s)</b><p style="font-size:11px;color:#64748b">Single or Multiple • JPG, PNG • 20KB Supported</p>
 </div>
 
 <div id="workArea" class="hidden">
 <div style="display:flex;justify-content:space-between;align-items:center;margin:12px 0 8px"><span id="fileInfo" style="font-size:11px;font-weight:700;background:#f1f5f9;padding:6px 10px;border-radius:20px;border:1px solid #e2e8f0"></span><button onclick="resetAll()" style="background:#fff1f2;color:#be123c;border:1px solid #fecdd3;padding:6px 12px;border-radius:20px;font-size:11px;font-weight:700">↺ Reset</button></div>
-<div id="singleBox"><div class="img-box"><img id="image"></div>
-<div class="tools"><button onclick="cropper && cropper.zoom(0.1)">🔍+ Zoom In</button><button onclick="cropper && cropper.zoom(-0.1)">🔍- Zoom Out</button><button onclick="cropper && cropper.rotate(-90)">↺ Left</button><button onclick="cropper && cropper.rotate(90)">↻ Right</button></div>
-<div class="tools2"><button onclick="cropper && cropper.scaleX((cropper.getData().scaleX||1)*-1)">↔ Flip</button><button onclick="cropper && cropper.setAspectRatio(NaN)">Free</button><button onclick="cropper && cropper.setAspectRatio(1)">1:1</button><button onclick="cropper && cropper.setAspectRatio(3/4)">3:4</button></div>
+
+<div id="singleBox">
+<div class="img-box"><img id="image"></div>
+<div class="tools">
+<button onclick="doRotate(-90)">↺ Rotate Left</button>
+<button onclick="doRotate(90)">↻ Rotate Right</button>
 </div>
-<div class="row"><label>Target Size<div style="display:flex;gap:6px"><input type="number" id="targetVal" value="20" style="flex:1"><select id="unit" style="width:80px"><option value="kb">KB</option><option value="mb">MB</option></select></div></label><label>File Name<input type="text" id="fileName" value="photo-20kb.jpg"></label></div>
-<div class="row" style="margin-top:0"><label style="flex-direction:row;align-items:center;gap:6px"><input type="checkbox" id="resCheck">Change Resolution</label><div id="resBox" class="hidden" style="display:flex;gap:6px"><input type="number" id="w" placeholder="Width"><input type="number" id="h" placeholder="Height"></div></div>
+<div class="tools" style="margin-top:0">
+<button onclick="cropper && cropper.zoom(0.15)">🔍+ Zoom In</button>
+<button onclick="cropper && cropper.zoom(-0.15)">🔍- Zoom Out</button>
+</div>
+<div class="tools2">
+<button onclick="cropper && cropper.scaleX((cropper.getData().scaleX||1)*-1)">↔ Flip</button>
+<button onclick="cropper && cropper.setAspectRatio(NaN)">Free</button>
+<button onclick="cropper && cropper.setAspectRatio(1)">1:1</button>
+<button onclick="cropper && cropper.setAspectRatio(3/4)">3:4</button>
+</div>
+</div>
+
+<div class="row">
+<label>Target Size<div style="display:flex;gap:6px"><input type="number" id="targetVal" value="20" style="flex:1"><select id="unit" style="width:80px"><option value="kb">KB</option><option value="mb">MB</option></select></div></label>
+<label>File Name<input type="text" id="fileName" value="photo-20kb.jpg"></label>
+</div>
+
+<div class="res-card">
+<label class="res-toggle"><input type="checkbox" id="resCheck" style="width:18px;height:18px"> Change Resolution</label>
+<span style="font-size:10px;color:#64748b">Optional</span>
+</div>
+<div id="resBox" class="hidden">
+<div class="res-inputs"><input type="number" id="w" placeholder="Width px"><input type="number" id="h" placeholder="Height px"></div>
+<p style="font-size:10px;color:#64748b;margin:6px 0 0">Ex: 500 x 500 for passport</p>
+</div>
+
 <button class="btn-green" id="resizeBtn">Resize Image(s)</button>
 <div id="resultsList"></div>
 <button id="resetAfterBtn" class="btn-outline hidden" onclick="resetAll()">↺ Resize Another / New Photos</button>
@@ -92,8 +125,8 @@
 <div class="sec">
 <h2 style="font-family:'Plus Jakarta Sans'">How to Use?</h2>
 <div class="step"><div class="num" style="background:#4f46e5">1</div><div><b>Upload Photo</b><p style="font-size:12px;color:#475569;margin:4px 0 0">Tap upload box, select single or multiple photos from phone gallery.</p></div></div>
-<div class="step"><div class="num" style="background:#16a34a">2</div><div><b>Crop & Adjust</b><p style="font-size:12px;color:#475569;margin:4px 0 0">For single photo use Zoom, Rotate, Flip. For 20KB it will auto-shrink resolution to fit.</p></div></div>
-<div class="step"><div class="num" style="background:#f59e0b">3</div><div><b>Resize & Download</b><p style="font-size:12px;color:#475569;margin:4px 0 0">Enter 20, 50, 100 KB, tap Resize. Final size shown like Final: 19.8 KB • 480x640. Then use Reset.</p></div></div>
+<div class="step"><div class="num" style="background:#16a34a">2</div><div><b>Crop & Rotate Easily</b><p style="font-size:12px;color:#475569;margin:4px 0 0">Pinch to zoom, drag to crop, use Rotate Left/Right. No black background - pure white.</p></div></div>
+<div class="step"><div class="num" style="background:#f59e0b">3</div><div><b>Resize & Download</b><p style="font-size:12px;color:#475569;margin:4px 0 0">Enter 20KB, tap Resize. Final size shown. Then Reset to resize more.</p></div></div>
 </div>
 
 <div class="sec">
@@ -106,13 +139,12 @@
 <div class="sec">
 <h2 style="font-family:'Plus Jakarta Sans'">Popular Sizes & Related Tools</h2>
 <div class="quick-card">
-<b style="font-size:13px">Most Searched Sizes (Tap to set):</b><br><br>
-<a href="#" onclick="document.getElementById('targetVal').value=20;document.getElementById('unit').value='kb';window.scrollTo({top:0,behavior:'smooth'});return false;">20KB Photo</a>
-<a href="#" onclick="document.getElementById('targetVal').value=30;window.scrollTo({top:0,behavior:'smooth'});return false;">30KB Photo</a>
-<a href="#" onclick="document.getElementById('targetVal').value=50;window.scrollTo({top:0,behavior:'smooth'});return false;">50KB Photo</a>
-<a href="#" onclick="document.getElementById('targetVal').value=100;window.scrollTo({top:0,behavior:'smooth'});return false;">100KB Photo</a>
-<a href="#" onclick="document.getElementById('targetVal').value=200;window.scrollTo({top:0,behavior:'smooth'});return false;">200KB Photo</a>
-<a href="#" onclick="document.getElementById('unit').value='mb';document.getElementById('targetVal').value=1;window.scrollTo({top:0,behavior:'smooth'});return false;">1MB Photo</a>
+<b style="font-size:13px">Most Searched Sizes:</b><br><br>
+<a href="#" onclick="document.getElementById('targetVal').value=20;window.scrollTo({top:0,behavior:'smooth'});return false;">20KB</a>
+<a href="#" onclick="document.getElementById('targetVal').value=50;window.scrollTo({top:0,behavior:'smooth'});return false;">50KB</a>
+<a href="#" onclick="document.getElementById('targetVal').value=100;window.scrollTo({top:0,behavior:'smooth'});return false;">100KB</a>
+<a href="#" onclick="document.getElementById('targetVal').value=200;window.scrollTo({top:0,behavior:'smooth'});return false;">200KB</a>
+<a href="#" onclick="document.getElementById('unit').value='mb';document.getElementById('targetVal').value=1;window.scrollTo({top:0,behavior:'smooth'});return false;">1MB</a>
 </div>
 <div class="quick-card">
 <b style="font-size:13px">Try Other Tools:</b><br><br>
@@ -120,43 +152,24 @@
 <a href="/tools/jpg-to-pdf/">JPG to PDF</a>
 <a href="/tools/passport.html">Passport Photo Maker</a>
 <a href="/tools/bg-remover.html">Background Remover</a>
-<a href="/tools/aadhaar.html">Aadhaar Photo Resize</a>
-<a href="/tools/signature.html">Signature Resize</a>
-<a href="/tools/dpi.html">DPI Changer</a>
+<a href="/tools/aadhaar.html">Aadhaar Resize</a>
 </div>
 </div>
 
 <footer class="pro-footer">
 <div class="foot-grid">
 <div><div style="color:#fff;font-weight:800;font-size:18px">KaagazPro</div><p style="font-size:11.5px">Offline-first toolkit. Files stay on your device. No watermark, free forever.</p></div>
-<div><h4>POPULAR TOOLS</h4><a href="/tools/compressor.html">Compressor</a><a href="/tools/resize.html">Resize Photo</a><a href="/tools/jpg-to-pdf/">JPG to PDF</a><a href="/tools/passport.html">Passport Photo</a><a href="/tools/bg-remover.html">BG Remover</a></div>
+<div><h4>POPULAR TOOLS</h4><a href="/tools/compressor.html">Compressor</a><a href="/tools/resize.html">Resize Photo</a><a href="/tools/jpg-to-pdf/">JPG to PDF</a><a href="/tools/passport.html">Passport Photo</a></div>
 <div><h4>LEGAL & TRUST</h4><a href="/privacy-policy.html">Privacy Policy</a><a href="/terms.html">Terms</a><a href="/disclaimer.html">Disclaimer</a><a href="/about.html">About Us</a></div>
-<div><h4>WHY KAAGAZPRO?</h4><p style="font-size:11px;line-height:1.8">✔ 20KB Exact<br>✔ Bulk resize<br>✔ Crop & Rotate<br>✔ Reset & reuse</p></div>
+<div><h4>WHY KAAGAZPRO?</h4><p style="font-size:11px;line-height:1.8">✔ 20KB Exact<br>✔ No Black on Rotate<br>✔ Bulk resize<br>✔ Reset & reuse</p></div>
 </div>
-<div style="border-top:1px solid #1e293b;margin-top:20px;padding-top:12px;text-align:center;font-size:10px;color:#6b7280">© 2026 KaagazPro • Private by design • Now supports 20KB</div>
+<div style="border-top:1px solid #1e293b;margin-top:20px;padding-top:12px;text-align:center;font-size:10px;color:#6b7280">© 2026 KaagazPro • Private by design</div>
 </footer>
 
 <input type="file" id="fileInput" accept="image/*" multiple hidden>
-<canvas id="canvas" class="hidden"></canvas>
 
 <script>
-const tools=[
-{name:"📏 Resize Photo",link:"/tools/resize.html"},
-{name:"🗜️ Compressor",link:"/tools/compressor.html"},
-{name:"📄 JPG to PDF",link:"/tools/jpg-to-pdf/"},
-{name:"🖼️ PDF to JPG",link:"/tools/pdf-to-jpg/"},
-{name:"📝 PDF to Word",link:"/tools/pdf-to-word/"},
-{name:"📃 Word to PDF",link:"/tools/word-to-pdf/"},
-{name:"🆔 Aadhaar Resize",link:"/tools/aadhaar.html"},
-{name:"🖌️ BG Remover",link:"/tools/bg-remover.html"},
-{name:"🔍 DPI Changer",link:"/tools/dpi.html"},
-{name:"🔗 Merge PDF",link:"/tools/merge-pdf.html"},
-{name:"🎓 Passport Photo",link:"/tools/passport.html"},
-{name:"✍️ Signature Resize",link:"/tools/signature.html"},
-{name:"🧮 Age Calculator",link:"/tools/age-calculator/"},
-{name:"🧾 Bill Generator",link:"/tools/bill-generator/"},
-{name:"💰 EMI Calculator",link:"/tools/emi-calculator/"}
-];
+const tools=[{name:"📏 Resize Photo",link:"/tools/resize.html"},{name:"🗜️ Compressor",link:"/tools/compressor.html"},{name:"📄 JPG to PDF",link:"/tools/jpg-to-pdf/"},{name:"🖼️ PDF to JPG",link:"/tools/pdf-to-jpg/"},{name:"🆔 Aadhaar Resize",link:"/tools/aadhaar.html"},{name:"🖌️ BG Remover",link:"/tools/bg-remover.html"},{name:"🎓 Passport Photo",link:"/tools/passport.html"},{name:"✍️ Signature Resize",link:"/tools/signature.html"}];
 document.getElementById('leftTools').innerHTML=tools.map(t=>`<a class="d-tool" href="${t.link}">${t.name}</a>`).join('');
 const ld=document.getElementById('leftDrawer'),rd=document.getElementById('rightDrawer');
 document.getElementById('openLeft').onclick=()=>ld.style.display='block';
@@ -166,9 +179,38 @@ document.getElementById('openRight').onclick=()=>rd.style.display='block';
 document.getElementById('closeRight').onclick=()=>rd.style.display='none';
 rd.onclick=e=>{if(e.target.id==='rightDrawer')rd.style.display='none'};
 
-let cropper=null,currentURL=null,filesList=[];
+let cropper=null,currentURL=null,filesList=[],rotation=0,originalImage=null;
 const image=document.getElementById('image'),input=document.getElementById('fileInput');
+
+function doRotate(deg){
+  if(!originalImage) return;
+  rotation = (rotation + deg) % 360;
+  if(rotation<0) rotation+=360;
+  const canvas = document.createElement('canvas');
+  const ctx = canvas.getContext('2d');
+  let w = originalImage.width;
+  let h = originalImage.height;
+  if(rotation==90 || rotation==270){ canvas.width = h; canvas.height = w; } else { canvas.width = w; canvas.height = h; }
+  ctx.fillStyle = '#ffffff';
+  ctx.fillRect(0,0,canvas.width,canvas.height);
+  ctx.translate(canvas.width/2, canvas.height/2);
+  ctx.rotate(rotation * Math.PI / 180);
+  ctx.drawImage(originalImage, -w/2, -h/2);
+  if(cropper){cropper.destroy();cropper=null;}
+  if(currentURL) URL.revokeObjectURL(currentURL);
+  canvas.toBlob(blob=>{
+    currentURL = URL.createObjectURL(blob);
+    image.src = currentURL;
+    image.onload = ()=>{
+      cropper=new Cropper(image,{
+        viewMode:1, autoCropArea:0.9, background:false, rotatable:false, scalable:true, zoomable:true, movable:true, responsive:true, guides:true, center:true, highlight:true
+      });
+    }
+  },'image/jpeg',0.92);
+}
+
 function resetAll(){
+  rotation=0; originalImage=null;
   if(cropper){cropper.destroy();cropper=null}
   if(currentURL)URL.revokeObjectURL(currentURL);
   input.value=''; filesList=[]; currentURL=null;
@@ -178,12 +220,13 @@ function resetAll(){
   document.getElementById('resetAfterBtn').classList.add('hidden');
   image.src='';
 }
+
 input.addEventListener('change',e=>{
   const files=Array.from(e.target.files); if(!files.length) return;
-  filesList=files;
+  filesList=files; rotation=0;
   document.getElementById('uploadArea').classList.add('hidden');
   document.getElementById('workArea').classList.remove('hidden');
-  document.getElementById('fileInfo').innerText=`📁 ${files.length} photo(s) selected`;
+  document.getElementById('fileInfo').innerText=`📁 ${files.length} photo(s)`;
   document.getElementById('resultsList').innerHTML='';
   document.getElementById('resetAfterBtn').classList.add('hidden');
   if(files.length===1){
@@ -191,54 +234,63 @@ input.addEventListener('change',e=>{
     document.getElementById('fileName').value=files[0].name.replace(/\.[^/.]+$/,'')+'-20kb.jpg';
     if(currentURL)URL.revokeObjectURL(currentURL);
     currentURL=URL.createObjectURL(files[0]);
-    image.src=currentURL;
-    if(cropper)cropper.destroy();
-    image.onload=()=>{cropper=new Cropper(image,{viewMode:1,autoCropArea:1,background:false,rotatable:true,scalable:true,zoomable:true});}
+    originalImage = new Image();
+    originalImage.src = currentURL;
+    originalImage.onload = ()=>{
+      image.src=currentURL;
+      if(cropper)cropper.destroy();
+      image.onload=()=>{
+        cropper=new Cropper(image,{
+          viewMode:1, autoCropArea:0.9, background:false, rotatable:false, scalable:true, zoomable:true, movable:true, responsive:true, guides:true, center:true, highlight:true
+        });
+      }
+    }
   } else {
     document.getElementById('singleBox').classList.add('hidden');
-    document.getElementById('fileName').value=`${files.length}-photos-20kb`;
+    originalImage=null;
   }
 });
+
 document.getElementById('resCheck').onchange=function(){
-  const box=document.getElementById('resBox'); box.classList.toggle('hidden',!this.checked); box.style.display=this.checked?'flex':'none';
+  document.getElementById('resBox').classList.toggle('hidden',!this.checked);
 };
+
 async function processSingleFile(file, targetKB, w, h){
   return new Promise(async resolve=>{
-    const img=new Image(); const url=URL.createObjectURL(file);
-    img.src=url; await new Promise(r=>img.onload=r);
+    const img=new Image(); const url=URL.createObjectURL(file); img.src=url; await new Promise(r=>img.onload=r);
     let baseCanvas;
-    if(filesList.length===1 && cropper){ baseCanvas=cropper.getCroppedCanvas({fillColor:'#fff'}); }
-    else { baseCanvas=document.createElement('canvas'); baseCanvas.width=img.width; baseCanvas.height=img.height; baseCanvas.getContext('2d').drawImage(img,0,0); }
+    if(filesList.length===1 && cropper){ baseCanvas=cropper.getCroppedCanvas({fillColor:'#ffffff', imageSmoothingQuality:'high'}); }
+    else { baseCanvas=document.createElement('canvas'); baseCanvas.width=img.width; baseCanvas.height=img.height; baseCanvas.getContext('2d').fillStyle='#fff'; baseCanvas.getContext('2d').fillRect(0,0,baseCanvas.width,baseCanvas.height); baseCanvas.getContext('2d').drawImage(img,0,0); }
     if(!w ||!h){
       let maxSide=1200; if(targetKB<=20) maxSide=500; else if(targetKB<=30) maxSide=600; else if(targetKB<=50) maxSide=800; else if(targetKB<=100) maxSide=1000;
       let cw=baseCanvas.width, ch=baseCanvas.height;
-      if(Math.max(cw,ch)>maxSide){ let ratio=maxSide/Math.max(cw,ch); cw=Math.round(cw*ratio); ch=Math.round(ch*ratio); const rc=document.createElement('canvas'); rc.width=cw; rc.height=ch; rc.getContext('2d').drawImage(baseCanvas,0,0,cw,ch); baseCanvas=rc; }
-    } else { const rc=document.createElement('canvas'); rc.width=w; rc.height=h; rc.getContext('2d').drawImage(baseCanvas,0,0,w,h); baseCanvas=rc; }
-    const tmpCanvas=document.createElement('canvas'); tmpCanvas.width=baseCanvas.width; tmpCanvas.height=baseCanvas.height; tmpCanvas.getContext('2d').drawImage(baseCanvas,0,0);
+      if(Math.max(cw,ch)>maxSide){ let ratio=maxSide/Math.max(cw,ch); cw=Math.round(cw*ratio); ch=Math.round(ch*ratio); const rc=document.createElement('canvas'); rc.width=cw; rc.height=ch; rc.getContext('2d').fillStyle='#fff'; rc.getContext('2d').fillRect(0,0,cw,ch); rc.getContext('2d').drawImage(baseCanvas,0,0,cw,ch); baseCanvas=rc; }
+    } else { const rc=document.createElement('canvas'); rc.width=w; rc.height=h; rc.getContext('2d').fillStyle='#fff'; rc.getContext('2d').fillRect(0,0,w,h); rc.getContext('2d').drawImage(baseCanvas,0,0,w,h); baseCanvas=rc; }
+    const tmpCanvas=document.createElement('canvas'); tmpCanvas.width=baseCanvas.width; tmpCanvas.height=baseCanvas.height; tmpCanvas.getContext('2d').fillStyle='#fff'; tmpCanvas.getContext('2d').fillRect(0,0,tmpCanvas.width,tmpCanvas.height); tmpCanvas.getContext('2d').drawImage(baseCanvas,0,0);
     let q=0.92; let b=await new Promise(r=>tmpCanvas.toBlob(bb=>r(bb),'image/jpeg',q));
     while(b.size/1024 > targetKB*1.08 && q > 0.05){ q-=0.07; if(q<0.05) q=0.05; b=await new Promise(r=>tmpCanvas.toBlob(bb=>r(bb),'image/jpeg',q)); if(q<=0.05) break; }
-    let attempts=0; while(b.size/1024 > targetKB*1.08 && attempts < 15){ attempts++; let newW=Math.round(tmpCanvas.width*0.85); let newH=Math.round(tmpCanvas.height*0.85); if(newW<80||newH<80) break; const rc=document.createElement('canvas'); rc.width=newW; rc.height=newH; rc.getContext('2d').drawImage(tmpCanvas,0,0,newW,newH); tmpCanvas.width=newW; tmpCanvas.height=newH; tmpCanvas.getContext('2d').drawImage(rc,0,0); let q2=targetKB<=30?0.6:0.75; b=await new Promise(r=>tmpCanvas.toBlob(bb=>r(bb),'image/jpeg',q2)); }
+    let attempts=0; while(b.size/1024 > targetKB*1.08 && attempts < 15){ attempts++; let newW=Math.round(tmpCanvas.width*0.85); let newH=Math.round(tmpCanvas.height*0.85); if(newW<80||newH<80) break; const rc=document.createElement('canvas'); rc.width=newW; rc.height=newH; rc.getContext('2d').fillStyle='#fff'; rc.getContext('2d').fillRect(0,0,newW,newH); rc.getContext('2d').drawImage(tmpCanvas,0,0,newW,newH); tmpCanvas.width=newW; tmpCanvas.height=newH; tmpCanvas.getContext('2d').fillStyle='#fff'; tmpCanvas.getContext('2d').fillRect(0,0,newW,newH); tmpCanvas.getContext('2d').drawImage(rc,0,0); let q2=targetKB<=30?0.6:0.75; b=await new Promise(r=>tmpCanvas.toBlob(bb=>r(bb),'image/jpeg',q2)); }
     URL.revokeObjectURL(url); resolve({blob:b, width:tmpCanvas.width, height:tmpCanvas.height});
   });
 }
+
 document.getElementById('resizeBtn').onclick=async()=>{
   if(!filesList.length) return alert('Upload photo first');
   let val=parseFloat(document.getElementById('targetVal').value); let unit=document.getElementById('unit').value; if(!val) return alert('Enter size');
   let targetKB=unit==='mb'?val*1024:val;
   const w=document.getElementById('resCheck').checked?parseInt(document.getElementById('w').value):0;
   const h=document.getElementById('resCheck').checked?parseInt(document.getElementById('h').value):0;
-  document.getElementById('resizeBtn').innerText='Resizing to '+val+unit+'...';
+  document.getElementById('resizeBtn').innerText='Resizing...';
   const list=document.getElementById('resultsList'); list.innerHTML='';
   for(let i=0;i<filesList.length;i++){
     const file=filesList[i]; const res=await processSingleFile(file, targetKB, w, h);
     const url=URL.createObjectURL(res.blob);
     const div=document.createElement('div'); div.className='result';
-    div.innerHTML=`<img src="${url}" style="width:64px;height:64px;object-fit:cover;border-radius:8px;border:1px solid #ddd"><div style="flex:1"><div style="font-weight:800;color:${res.blob.size/1024 <= targetKB*1.15? '#15803d' : '#dc2626'};font-size:13px">Final: ${(res.blob.size/1024).toFixed(1)} KB • ${res.width}×${res.height} ${res.blob.size/1024 <= targetKB*1.15? '✓' : ''}</div><div style="font-size:11px;color:#64748b">${file.name}</div><div style="display:flex;gap:6px;margin-top:8px"><input value="${file.name.replace(/\.[^/.]+$/,'')}-${val}${unit}.jpg" style="flex:1;padding:8px;border:1px solid #cbd5e1;border-radius:8px;font-size:11px" class="fn"><button style="background:#16a34a;color:#fff;border:0;padding:8px 14px;border-radius:8px;font-weight:700" onclick="const a=document.createElement('a');a.href='${url}';a.download=this.parentElement.querySelector('.fn').value;a.click()">Download</button></div></div>`;
+    div.innerHTML=`<img src="${url}" style="width:64px;height:64px;object-fit:cover;border-radius:8px;border:1px solid #ddd;flex-shrink:0"><div style="flex:1;min-width:0"><div style="font-weight:800;color:#15803d;font-size:13px">Final: ${(res.blob.size/1024).toFixed(1)} KB • ${res.width}×${res.height} ✓</div><div style="font-size:11px;color:#64748b;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${file.name}</div><div style="display:flex;gap:6px;margin-top:8px"><input value="${file.name.replace(/\.[^/.]+$/,'')}-${val}${unit}.jpg" style="flex:1;min-width:0;padding:8px;border:1px solid #cbd5e1;border-radius:8px;font-size:11px" class="fn"><button style="background:#16a34a;color:#fff;border:0;padding:8px 14px;border-radius:8px;font-weight:700;flex-shrink:0" onclick="const a=document.createElement('a');a.href='${url}';a.download=this.parentElement.querySelector('.fn').value;a.click()">Download</button></div></div>`;
     list.appendChild(div);
   }
   document.getElementById('resizeBtn').innerText='Resize Image(s)';
   document.getElementById('resetAfterBtn').classList.remove('hidden');
-  document.getElementById('resultsList').scrollIntoView({behavior:'smooth'});
 };
 </script>
 </body>
