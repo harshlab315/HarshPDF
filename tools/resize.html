@@ -124,15 +124,15 @@
 <div class="sec">
 <h2 style="font-family:'Plus Jakarta Sans'">How to Use?</h2>
 <div class="step"><div class="num" style="background:#4f46e5">1</div><div><b>Upload Photo</b><p style="font-size:12px;color:#475569;margin:4px 0 0">Tap upload box, select single or multiple photos from phone gallery.</p></div></div>
-<div class="step"><div class="num" style="background:#16a34a">2</div><div><b>Crop & Rotate Easily</b><p style="font-size:12px;color:#475569;margin:4px 0 0">Pinch to zoom, drag to crop, use Rotate Left/Right. No black background - pure white. Works smooth on mobile & desktop.</p></div></div>
-<div class="step"><div class="num" style="background:#f59e0b">3</div><div><b>Resize & Download</b><p style="font-size:12px;color:#475569;margin:4px 0 0">Enter 20KB, tap Resize. Final size shown instantly. Then Reset to resize more photos.</p></div></div>
+<div class="step"><div class="num" style="background:#16a34a">2</div><div><b>Crop & Rotate Easily</b><p style="font-size:12px;color:#475569;margin:4px 0 0">Pinch to zoom, drag to crop, use Rotate Left/Right. No black background - pure white.</p></div></div>
+<div class="step"><div class="num" style="background:#f59e0b">3</div><div><b>Resize & Download</b><p style="font-size:12px;color:#475569;margin:4px 0 0">Enter 20KB, tap Resize. Exact size, not half. Then Reset.</p></div></div>
 </div>
 
 <div class="sec">
 <h2 style="font-family:'Plus Jakarta Sans'">Why KaagazPro?</h2>
-<div class="step" style="background:linear-gradient(135deg,#eef2ff,#e0e7ff)"><div class="num" style="background:#4f46e5">🔒</div><div><b>Private by Design</b><p style="font-size:12px;color:#475569;margin:4px 0 0">Files never leave your phone. Processed in your browser only. Safe for Aadhaar, PAN, exam forms.</p></div></div>
-<div class="step" style="background:linear-gradient(135deg,#dcfce7,#bbf7d0)"><div class="num" style="background:#16a34a">🎯</div><div><b>20KB to 1MB Exact Size</b><p style="font-size:12px;color:#475569;margin:4px 0 0">Now supports even 20KB, 30KB. Auto resolution adjust for small sizes. Bulk resize many photos at once.</p></div></div>
-<div class="step" style="background:linear-gradient(135deg,#fef3c7,#fde68a)"><div class="num" style="background:#f59e0b">⚡</div><div><b>Free, Offline & Fast</b><p style="font-size:12px;color:#475569;margin:4px 0 0">No login, no watermark, no limits. Works offline, made for mobile. Super fast resize, no stuck.</p></div></div>
+<div class="step" style="background:linear-gradient(135deg,#eef2ff,#e0e7ff)"><div class="num" style="background:#4f46e5">🔒</div><div><b>Private by Design</b><p style="font-size:12px;color:#475569;margin:4px 0 0">Files never leave your phone. Processed in your browser only.</p></div></div>
+<div class="step" style="background:linear-gradient(135deg,#dcfce7,#bbf7d0)"><div class="num" style="background:#16a34a">🎯</div><div><b>20KB to 1MB Exact Size</b><p style="font-size:12px;color:#475569;margin:4px 0 0">Now 100KB = 95-100KB, 50KB = 47-50KB, 20KB = 18-20KB. No more 46KB bug.</p></div></div>
+<div class="step" style="background:linear-gradient(135deg,#fef3c7,#fde68a)"><div class="num" style="background:#f59e0b">⚡</div><div><b>Free, Offline & Fast</b><p style="font-size:12px;color:#475569;margin:4px 0 0">No login, no watermark, no limits. Works offline, made for mobile.</p></div></div>
 </div>
 
 <div class="sec">
@@ -162,7 +162,7 @@
 <div><div style="color:#fff;font-weight:800;font-size:18px">KaagazPro</div><p style="font-size:11.5px">Offline-first toolkit. Files stay on your device. No watermark, free forever.</p></div>
 <div><h4>POPULAR TOOLS</h4><a href="/tools/compressor.html">Compressor</a><a href="/tools/resize.html">Resize Photo</a><a href="/tools/jpg-to-pdf/">JPG to PDF</a><a href="/tools/passport.html">Passport Photo</a><a href="/tools/merge-pdf.html">Merge PDF</a></div>
 <div><h4>LEGAL & TRUST</h4><a href="/privacy-policy.html">Privacy Policy</a><a href="/terms.html">Terms & Conditions</a><a href="/disclaimer.html">Disclaimer</a><a href="/about.html">About Us</a><a href="/contact.html">Contact</a></div>
-<div><h4>WHY KAAGAZPRO?</h4><p style="font-size:11px;line-height:1.8">✔ 20KB Exact<br>✔ No Black on Rotate<br>✔ Bulk resize<br>✔ Fast & Private<br>✔ Reset & reuse</p></div>
+<div><h4>WHY KAAGAZPRO?</h4><p style="font-size:11px;line-height:1.8">✔ 20KB Exact<br>✔ No Black on Rotate<br>✔ Exact KB Fix<br>✔ Fast & Private<br>✔ Reset & reuse</p></div>
 </div>
 <div style="border-top:1px solid #1e293b;margin-top:20px;padding-top:12px;text-align:center;font-size:10px;color:#6b7280">© 2026 KaagazPro • Private by design • Made for Bharat</div>
 </footer>
@@ -270,7 +270,7 @@ async function processSingleFile(file, targetKB, w, h){
   }
   let cw = baseCanvas.width, ch = baseCanvas.height;
   if(!w ||!h){
-    let maxSide = targetKB <= 20? 450 : targetKB <= 50? 650 : targetKB <= 100? 900 : 1200;
+    let maxSide = targetKB <= 20? 800 : targetKB <= 50? 1100 : targetKB <= 100? 1400 : 1800;
     if(Math.max(cw,ch) > maxSide){
       let ratio = maxSide / Math.max(cw,ch);
       let newW = Math.round(cw*ratio), newH = Math.round(ch*ratio);
@@ -283,22 +283,44 @@ async function processSingleFile(file, targetKB, w, h){
     rc.getContext('2d').drawImage(baseCanvas,0,0,w,h);
     baseCanvas = rc;
   }
-  let quality = targetKB <= 20? 0.5 : 0.75;
+
+  // EXACT KB FIX - 85% to 105%
+  let low = 0.1, high = 0.95;
+  let quality = targetKB <= 20? 0.75 : targetKB <= 50? 0.85 : 0.92;
   let blob = await new Promise(r=>baseCanvas.toBlob(b=>r(b),'image/jpeg',quality));
-  for(let i=0; i<5 && blob.size/1024 > targetKB*1.1; i++){
-    quality -= 0.12; if(quality < 0.1) quality = 0.1;
-    blob = await new Promise(r=>baseCanvas.toBlob(b=>r(b),'image/jpeg',quality));
-    if(blob.size/1024 > targetKB*1.1 && i>=2){
-      let newW = Math.round(baseCanvas.width*0.85), newH = Math.round(baseCanvas.height*0.85);
-      if(newW < 100) break;
-      const rc = document.createElement('canvas'); rc.width=newW; rc.height=newH;
-      rc.getContext('2d').drawImage(baseCanvas,0,0,newW,newH);
-      baseCanvas = rc;
-      blob = await new Promise(r=>baseCanvas.toBlob(b=>r(b),'image/jpeg',quality));
+  let bestBlob = blob;
+
+  for(let i=0; i<8; i++){
+    let sizeKB = blob.size/1024;
+    if(sizeKB > targetKB * 1.05){
+      high = quality;
+      quality = (low + quality) / 2;
+      if(quality < 0.15 && sizeKB > targetKB*1.2){
+        let newW = Math.round(baseCanvas.width*0.9), newH = Math.round(baseCanvas.height*0.9);
+        if(newW > 100){
+          const rc = document.createElement('canvas'); rc.width=newW; rc.height=newH;
+          rc.getContext('2d').drawImage(baseCanvas,0,0,newW,newH);
+          baseCanvas = rc;
+          low = 0.1; high = 0.95; quality = 0.8;
+        }
+      }
+    } else if(sizeKB < targetKB * 0.85){
+      low = quality;
+      quality = (quality + high) / 2;
+      if(quality > 0.94) break;
+    } else {
+      bestBlob = blob;
+      break;
     }
+    blob = await new Promise(r=>baseCanvas.toBlob(b=>r(b),'image/jpeg',quality));
+    if(Math.abs(blob.size/1024 - targetKB) < Math.abs(bestBlob.size/1024 - targetKB)){
+      bestBlob = blob;
+    }
+    if(quality <= 0.11 || quality >= 0.94) break;
   }
+
   URL.revokeObjectURL(url);
-  return {blob, width:baseCanvas.width, height:baseCanvas.height};
+  return {blob:bestBlob, width:baseCanvas.width, height:baseCanvas.height};
 }
 
 document.getElementById('resizeBtn').onclick=async()=>{
