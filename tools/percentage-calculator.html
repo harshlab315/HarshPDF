@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1, maximum-scale=1">
+<title>Percentage Calculator - KaagazPro</title>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6640527517870664" crossorigin="anonymous"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Plus+Jakarta+Sans:wght@700;800&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box}html,body{overflow-x:hidden;width:100%}body{margin:0;background:#f6f7fb;color:#0f172a;font-family:'Inter',sans-serif}
+.header{position:sticky;top:0;z-index:100;background:#fff;border-bottom:1px solid #e2e8f0;display:flex;justify-content:space-between;align-items:center;height:58px;padding:0 12px;box-shadow:0 2px 12px rgba(0,0,0,.04)}
+.header-left{display:flex;align-items:center;gap:12px}
+.logo{font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;font-size:20px;letter-spacing:-.5px;display:flex;align-items:center;gap:2px}
+.logo.pro{background:linear-gradient(90deg,#4f46e5,#06b6d4);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.logo-badge{font-size:8px;background:#0f172a;color:#fff;padding:2px 6px;border-radius:20px;margin-left:5px;font-weight:700}
+.icon-btn{width:42px;height:42px;display:grid;place-items:center;border-radius:12px;cursor:pointer;flex-shrink:0}.icon-btn:hover{background:#f1f5f9}
+.dots3{display:flex;flex-direction:column;gap:4px}.dots3 span{width:5px;height:5px;background:#0f172a;border-radius:50%;display:block}
+.hamburger{display:flex;flex-direction:column;gap:5px;width:20px}.hamburger span{display:block;height:2.5px;background:#0f172a;border-radius:10px}
+#leftDrawer,#rightDrawer{display:none;position:fixed;inset:0;z-index:9999;background:rgba(15,23,42,.55)}
+.left-box{position:absolute;left:0;top:0;width:92%;max-width:380px;height:100%;background:#fff;overflow:auto}
+.right-box{position:absolute;right:0;top:0;width:92%;max-width:360px;height:100%;background:#fff;overflow:auto}
+.d-tool{display:flex;gap:8px;padding:11px 14px;border-radius:10px;text-decoration:none;color:#334155;font-size:13px;font-weight:600;margin:4px 10px}.d-tool:hover{background:#f1f5f9}
+.d-link{display:block;padding:12px 14px;text-decoration:none;color:#334155;font-weight:600;margin:4px 10px;border-radius:10px}.d-link:hover{background:#f1f5f9}
+.wrap{max-width:700px;margin:0 auto;padding:10px;width:100%;overflow:hidden}
+.book{background:#fff;border:1px solid #e2e8f0;border-radius:20px;padding:14px;box-shadow:0 8px 28px rgba(0,0,0,.06);width:100%;overflow:hidden}
+.badges{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:8px}.badge{font-size:10.5px;font-weight:700;padding:5px 10px;border-radius:20px;border:1px solid #e2e8f0}
+.title{font-family:'Plus Jakarta Sans';font-size:24px;font-weight:800;line-height:1.1;margin:0}.grad{background:linear-gradient(90deg,#4f46e5,#06b6d4);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.yellow{background:linear-gradient(90deg,#fef9c3,#fde047);border:1px dashed #eab308;padding:10px;border-radius:12px;text-align:center;font-weight:700;font-size:12px;margin:12px 0}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:12px 0;width:100%}
+.row label{font-size:11px;font-weight:800;color:#334155;display:flex;flex-direction:column;gap:5px;width:100%;min-width:0}
+.row input,.row select{padding:11px;border:1.5px solid #cbd5e1;border-radius:10px;font-weight:600;background:#fff;width:100%;font-size:14px}
+@media(max-width:600px){.row{grid-template-columns:1fr}.wrap{padding:8px}.book{padding:12px}}
+.btn-green{width:100%;background:#16a34a;color:#fff;border:0;padding:15px;border-radius:12px;font-weight:800;font-size:15px;cursor:pointer;box-shadow:0 6px 16px rgba(22,163,74,.3)}
+.btn-outline{width:100%;background:#fff;color:#0f172a;border:1.5px solid #cbd5e1;padding:12px;border-radius:12px;font-weight:700;font-size:13px;cursor:pointer;margin-top:8px}
+.hidden{display:none!important}
+.sec{max-width:700px;margin:24px auto;padding:0 10px;width:100%}
+.step{display:flex;gap:12px;align-items:flex-start;background:#fff;border:1px solid #e2e8f0;border-radius:14px;padding:14px;margin:8px 0;width:100%}
+.num{width:32px;height:32px;border-radius:10px;display:grid;place-items:center;font-weight:800;color:#fff;flex-shrink:0}
+.quick-card{background:#fff;border:1px solid #e2e8f0;border-radius:14px;padding:14px;margin:8px 0;width:100%}
+.quick-card a{display:inline-block;background:#f1f5f9;border:1px solid #e2e8f0;padding:6px 12px;border-radius:20px;font-size:11px;font-weight:600;color:#334155;text-decoration:none;margin:4px}
+.pro-footer{background:#0f172a;color:#94a3b8;padding:28px 14px 12px;margin-top:26px}.foot-grid{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1.2fr 1fr 1fr 1fr;gap:20px}@media(max-width:800px){.foot-grid{grid-template-columns:1fr 1fr}}@media(max-width:500px){.foot-grid{grid-template-columns:1fr;text-align:center}}
+.pro-footer h4{color:#fff;font-size:11px;margin:0 0 10px;letter-spacing:.08em}.pro-footer a{color:#94a3b8;text-decoration:none;font-size:12px;display:block;margin:6px 0}.pro-footer a:hover{color:#fff}
+
+
+.pct-tabs{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin:12px 0}
+.pct-tab{padding:10px 6px;border-radius:10px;border:1.5px solid #e2e8f0;background:#f8fafc;font-size:11px;font-weight:800;cursor:pointer;text-align:center;line-height:1.2}
+.pct-tab.active{background:#0f172a;color:#fff;border-color:#0f172a}
+.pct-panel{display:none}.pct-panel.active{display:block}
+.pct-error{display:none;background:#fff1f2;border:1px solid #fecdd3;color:#be123c;padding:10px 12px;border-radius:10px;font-size:12px;font-weight:600;margin-top:12px}
+.pct-result{display:none;margin-top:14px;background:#f8fafc;border:1px solid #e2e8f0;border-radius:12px;padding:14px;text-align:center}
+.pct-result.show{display:block}
+.pct-big{font-size:34px;font-weight:800;line-height:1}
+.pct-badge{display:inline-block;margin-top:8px;padding:5px 12px;border-radius:999px;font-size:11px;font-weight:800}
+.pct-badge.up{background:#dcfce7;color:#15803d}.pct-badge.down{background:#ffe4e6;color:#be123c}.pct-badge.zero{background:#e2e8f0;color:#334155}
+</style>
+</head>
+<body>
+
+<nav class="header">
+<div class="header-left">
+<div class="icon-btn" id="openLeft"><div class="dots3"><span></span><span></span><span></span></div></div>
+<div class="logo"><span style="color:#0f172a">Kaagaz</span><span class="pro">Pro</span><span class="logo-badge">PRO</span></div>
+</div>
+<div class="icon-btn" id="openRight"><div class="hamburger"><span></span><span></span><span></span></div></div>
+</nav>
+
+<div id="leftDrawer"><div class="left-box"><div style="display:flex;justify-content:space-between;align-items:center;padding:18px;border-bottom:1px solid #e2e8f0"><b style="font-size:11px;color:#94a3b8;letter-spacing:1px">ALL TOOLS</b><span id="closeLeft" style="cursor:pointer;font-size:22px">✕</span></div><div id="leftTools"></div></div></div>
+<div id="rightDrawer"><div class="right-box"><div style="display:flex;justify-content:space-between;padding:16px;border-bottom:1px solid #e2e8f0"><b>MENU</b><span id="closeRight" style="cursor:pointer">✕</span></div><a class="d-link" href="/">Home</a><a class="d-link" href="/about.html">About</a><a class="d-link" href="/contact.html">Contact</a><a class="d-link" href="/privacy-policy.html">Privacy</a><a class="d-link" href="/terms.html">Terms</a><a class="d-link" href="/disclaimer.html">Disclaimer</a></div></div>
+
+<div class="wrap">
+<div class="book">
+<div class="badges"><span class="badge" style="background:#dcfce7">✓ Exact Formula</span><span class="badge" style="background:#dbeafe">🔒 Private & Offline</span><span class="badge" style="background:#f3e8ff">⚡ No Backend</span></div>
+<h1 class="title">Percentage <span class="grad">Calculator</span></h1>
+<p style="color:#64748b;font-size:12.5px;margin:6px 0 0">4 calculators in one - 100% offline.</p>
+<div class="yellow">👉 Select mode - % of Number, X is what % of Y, Increase/Decrease, Marks %</div>
+
+
+<div class="pct-tabs">
+<button class="pct-tab active" data-mode="p1">% of Number</button>
+<button class="pct-tab" data-mode="p2">X is what % of Y</button>
+<button class="pct-tab" data-mode="p3">Increase / Decrease</button>
+<button class="pct-tab" data-mode="p4">Marks %</button>
+</div>
+
+
+<div class="pct-panel active" id="panel-p1">
+<div class="row"><label>Percentage (%)<input type="number" id="p1-perc" placeholder="e.g. 20" step="any"></label><label>Number<input type="number" id="p1-num" placeholder="e.g. 500" step="any"></label></div>
+<button class="btn-green" data-calc="p1">Calculate</button><button class="btn-outline" data-reset="p1">↺ Reset</button>
+<div class="pct-error" id="err-p1"></div><div class="pct-result" id="res-p1"><div class="pct-big" id="big-p1"></div><div style="font-size:12px;color:#475569;margin-top:6px;font-weight:600" id="small-p1"></div></div>
+</div>
+
+
+<div class="pct-panel" id="panel-p2">
+<div class="row"><label>Value X<input type="number" id="p2-x" placeholder="e.g. 50" step="any"></label><label>Value Y<input type="number" id="p2-y" placeholder="e.g. 200" step="any"></label></div>
+<button class="btn-green" data-calc="p2">Calculate</button><button class="btn-outline" data-reset="p2">↺ Reset</button>
+<div class="pct-error" id="err-p2"></div><div class="pct-result" id="res-p2"><div class="pct-big" id="big-p2"></div><div style="font-size:12px;color:#475569;margin-top:6px;font-weight:600" id="small-p2"></div></div>
+</div>
+
+
+<div class="pct-panel" id="panel-p3">
+<div class="row"><label>Original Value<input type="number" id="p3-orig" placeholder="e.g. 100" step="any"></label><label>New Value<input type="number" id="p3-new" placeholder="e.g. 125" step="any"></label></div>
+<button class="btn-green" data-calc="p3">Calculate</button><button class="btn-outline" data-reset="p3">↺ Reset</button>
+<div class="pct-error" id="err-p3"></div><div class="pct-result" id="res-p3"><div class="pct-big" id="big-p3"></div><div style="font-size:12px;color:#475569;margin-top:6px;font-weight:600" id="small-p3"></div><div id="badge-p3"></div></div>
+</div>
+
+
+<div class="pct-panel" id="panel-p4">
+<div class="row"><label>Marks Obtained<input type="number" id="p4-obt" placeholder="e.g. 450" min="0" step="any"></label><label>Total Marks<input type="number" id="p4-total" placeholder="e.g. 600" min="0" step="any"></label></div>
+<button class="btn-green" data-calc="p4">Calculate</button><button class="btn-outline" data-reset="p4">↺ Reset</button>
+<div class="pct-error" id="err-p4"></div><div class="pct-result" id="res-p4"><div class="pct-big" id="big-p4"></div><div style="font-size:12px;color:#475569;margin-top:6px;font-weight:600" id="small-p4"></div></div>
+</div>
+
+
+</div>
+</div>
+
+<div class="sec">
+<h2 style="font-family:'Plus Jakarta Sans'">How to Use?</h2>
+<div class="step"><div class="num" style="background:#4f46e5">1</div><div><b>Choose Mode</b><p style="font-size:12px;color:#475569;margin:4px 0 0">% of Number, X is what % of Y, Increase/Decrease, Marks %</p></div></div>
+<div class="step"><div class="num" style="background:#16a34a">2</div><div><b>Enter Values</b><p style="font-size:12px;color:#475569;margin:4px 0 0">Enter numbers, supports decimal values.</p></div></div>
+<div class="step"><div class="num" style="background:#f59e0b">3</div><div><b>Calculate</b><p style="font-size:12px;color:#475569;margin:4px 0 0">Tap Calculate or press Enter - result shows instantly.</p></div></div>
+</div>
+
+<div class="sec">
+<h2 style="font-family:'Plus Jakarta Sans'">Why KaagazPro Percentage Calculator?</h2>
+<div class="step" style="background:linear-gradient(135deg,#eef2ff,#e0e7ff)"><div class="num" style="background:#4f46e5">🎯</div><div><b>100% Correct Formula</b><p style="font-size:12px;color:#475569;margin:4px 0 0">We use exact formulas - (P/100)*N, (A/B)*100, ((New-Old)/Old)*100 - no fake accuracy.</p></div></div>
+<div class="step" style="background:linear-gradient(135deg,#dcfce7,#bbf7d0)"><div class="num" style="background:#16a34a">🔒</div><div><b>Private & Offline</b><p style="font-size:12px;color:#475569;margin:4px 0 0">No data sent to server. All calculations happen in your browser. Files never leave your phone.</p></div></div>
+<div class="step" style="background:linear-gradient(135deg,#fef3c7,#fde68a)"><div class="num" style="background:#f59e0b">⚡</div><div><b>Fast, Free & Mobile Friendly</b><p style="font-size:12px;color:#475569;margin:4px 0 0">No login, no ads popup, no watermark. Works offline, made for Bharat - enter value and press Enter.</p></div></div>
+</div>
+
+<div class="sec">
+<h2 style="font-family:'Plus Jakarta Sans'">Related Tools</h2>
+<div class="quick-card">
+<a href="/tools/resize.html">Resize Photo</a>
+<a href="/tools/compressor.html">Image Compressor</a>
+<a href="/tools/passport.html">Passport Photo Maker</a>
+<a href="/tools/jpg-to-pdf/">JPG to PDF</a>
+<a href="/tools/attendance.html">Attendance Calculator</a>
+</div>
+</div>
+
+<footer class="pro-footer">
+<div class="foot-grid">
+<div><div style="color:#fff;font-weight:800;font-size:18px">KaagazPro</div><p style="font-size:11.5px">Offline-first toolkit. Files stay on your device. No watermark, free forever.</p></div>
+<div><h4>POPULAR TOOLS</h4><a href="/tools/compressor.html">Compressor</a><a href="/tools/resize.html">Resize Photo</a><a href="/tools/jpg-to-pdf/">JPG to PDF</a><a href="/tools/passport.html">Passport Photo</a><a href="/tools/merge-pdf.html">Merge PDF</a></div>
+<div><h4>LEGAL & TRUST</h4><a href="/privacy-policy.html">Privacy Policy</a><a href="/terms.html">Terms & Conditions</a><a href="/disclaimer.html">Disclaimer</a><a href="/about.html">About Us</a><a href="/contact.html">Contact</a></div>
+<div><h4>WHY KAAGAZPRO?</h4><p style="font-size:11px;line-height:1.8">✔ Correct Formula<br>✔ Fast & Private<br>✔ Mobile Friendly<br>✔ Free Forever</p></div>
+</div>
+<div style="border-top:1px solid #1e293b;margin-top:20px;padding-top:12px;text-align:center;font-size:10px;color:#6b7280">© 2026 KaagazPro • Private by design • Made for Bharat</div>
+</footer>
+
+<script>
+const tools=[{name:"📏 Resize Photo",link:"/tools/resize.html"},{name:"🗜️ Compressor",link:"/tools/compressor.html"},{name:"📄 JPG to PDF",link:"/tools/jpg-to-pdf/"},{name:"🖼️ PDF to JPG",link:"/tools/pdf-to-jpg/"},{name:"📝 PDF to Word",link:"/tools/pdf-to-word/"},{name:"📃 Word to PDF",link:"/tools/word-to-pdf/"},{name:"🆔 Aadhaar Resize",link:"/tools/aadhaar.html"},{name:"🖌️ BG Remover",link:"/tools/bg-remover.html"},{name:"🔍 DPI Changer",link:"/tools/dpi.html"},{name:"🔗 Merge PDF",link:"/tools/merge-pdf.html"},{name:"🎓 Passport Photo",link:"/tools/passport.html"},{name:"✍️ Signature Resize",link:"/tools/signature.html"},{name:"📊 Attendance Calculator",link:"/tools/attendance.html"},{name:"% Percentage Calculator",link:"/tools/percentage-calculator.html"}];
+document.getElementById('leftTools').innerHTML=tools.map(t=>`<a class="d-tool" href="${t.link}">${t.name}</a>`).join('');
+const ld=document.getElementById('leftDrawer'),rd=document.getElementById('rightDrawer');
+document.getElementById('openLeft').onclick=()=>ld.style.display='block';
+document.getElementById('closeLeft').onclick=()=>ld.style.display='none';
+ld.onclick=e=>{if(e.target.id==='leftDrawer')ld.style.display='none'};
+document.getElementById('openRight').onclick=()=>rd.style.display='block';
+document.getElementById('closeRight').onclick=()=>rd.style.display='none';
+rd.onclick=e=>{if(e.target.id==='rightDrawer')rd.style.display='none'};
+
+function fmt(n){ if(!isFinite(n)) return ''; let s=n.toFixed(2); s=s.replace(/\.?0+$/,''); if(s==='-0') s='0'; return s; }
+function showErr(id,msg){const el=document.getElementById(id); el.textContent=msg; el.style.display='block';}
+function hideErr(id){const el=document.getElementById(id); el.textContent=''; el.style.display='none';}
+function getNum(id){const v=document.getElementById(id).value.trim(); if(v==='') return null; const n=Number(v); return isNaN(n)?NaN:n;}
+
+document.querySelectorAll('.pct-tab').forEach(btn=>{
+  btn.addEventListener('click', ()=>{
+    document.querySelectorAll('.pct-tab').forEach(b=>b.classList.remove('active'));
+    btn.classList.add('active');
+    const mode=btn.dataset.mode;
+    document.querySelectorAll('.pct-panel').forEach(p=>p.classList.remove('active'));
+    document.getElementById('panel-'+mode).classList.add('active');
+  });
+});
+
+function calc_p1(){ hideErr('err-p1'); document.getElementById('res-p1').classList.remove('show');
+  const perc=getNum('p1-perc'), num=getNum('p1-num');
+  if(perc===null||num===null) return showErr('err-p1','Please enter both values.');
+  if(isNaN(perc)||isNaN(num)) return showErr('err-p1','Invalid numbers.');
+  const result=perc/100*num; // (percentage/100)*number
+  document.getElementById('big-p1').textContent=fmt(result); document.getElementById('small-p1').textContent=fmt(perc)+'% of '+fmt(num)+' = '+fmt(result);
+  document.getElementById('res-p1').classList.add('show');
+}
+function calc_p2(){ hideErr('err-p2'); document.getElementById('res-p2').classList.remove('show');
+  const x=getNum('p2-x'), y=getNum('p2-y');
+  if(x===null||y===null) return showErr('err-p2','Please enter both values.');
+  if(y===0) return showErr('err-p2','Y cannot be 0 - division by zero.');
+  const result=x/y*100; // (A/B)*100
+  document.getElementById('big-p2').textContent=fmt(result)+'%'; document.getElementById('small-p2').textContent=fmt(x)+' is '+fmt(result)+'% of '+fmt(y);
+  document.getElementById('res-p2').classList.add('show');
+}
+function calc_p3(){ hideErr('err-p3'); document.getElementById('res-p3').classList.remove('show');
+  const orig=getNum('p3-orig'), nw=getNum('p3-new');
+  if(orig===null||nw===null) return showErr('err-p3','Please enter both values.');
+  if(orig===0) return showErr('err-p3','Original cannot be 0 - division by zero.');
+  const diff=nw-orig; const perc=(diff/orig)*100; // ((new-original)/original)*100
+  document.getElementById('big-p3').textContent=fmt(Math.abs(perc))+'%';
+  document.getElementById('small-p3').textContent='From '+fmt(orig)+' to '+fmt(nw)+' (Diff: '+fmt(diff)+')';
+  const badge=document.getElementById('badge-p3');
+  if(perc>0) badge.innerHTML='<span class="pct-badge up">↑ '+fmt(perc)+'% increase</span>';
+  else if(perc<0) badge.innerHTML='<span class="pct-badge down">↓ '+fmt(Math.abs(perc))+'% decrease</span>';
+  else badge.innerHTML='<span class="pct-badge zero">No change (0%)</span>';
+  document.getElementById('res-p3').classList.add('show');
+}
+function calc_p4(){ hideErr('err-p4'); document.getElementById('res-p4').classList.remove('show');
+  const obt=getNum('p4-obt'), total=getNum('p4-total');
+  if(obt===null||total===null) return showErr('err-p4','Please enter both marks.');
+  if(total===0) return showErr('err-p4','Total cannot be 0 - division by zero.');
+  if(total<0||obt<0) return showErr('err-p4','Marks cannot be negative.');
+  if(obt>total) return showErr('err-p4','Obtained cannot exceed total.');
+  const result=obt/total*100; // (obtained/total)*100
+  document.getElementById('big-p4').textContent=fmt(result)+'%'; document.getElementById('small-p4').textContent=fmt(obt)+' out of '+fmt(total)+' = '+fmt(result)+'%';
+  document.getElementById('res-p4').classList.add('show');
+}
+const calcMap={p1:calc_p1,p2:calc_p2,p3:calc_p3,p4:calc_p4};
+document.querySelectorAll('[data-calc]').forEach(b=>{b.addEventListener('click',()=>calcMap[b.dataset.calc]());});
+document.querySelectorAll('[data-reset]').forEach(b=>{
+  b.addEventListener('click',()=>{
+    const mode=b.dataset.reset;
+    document.querySelectorAll('#panel-'+mode+' input').forEach(i=>i.value='');
+    hideErr('err-'+mode); document.getElementById('res-'+mode).classList.remove('show');
+    if(mode==='p3') document.getElementById('badge-p3').innerHTML='';
+  });
+});
+document.querySelectorAll('.pct-panel input').forEach(inp=>{
+  inp.addEventListener('keydown', e=>{ if(e.key==='Enter'){ const panel=inp.closest('.pct-panel'); const mode=panel.id.replace('panel-',''); calcMap[mode](); }});
+});
+</script>
+</body>
+</html>
