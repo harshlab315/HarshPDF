@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
+  <!-- Main Pages -->
   <url>
     <loc>https://kaagazpro.co.in/</loc>
   </url>
@@ -23,6 +24,75 @@
 
   <url>
     <loc>https://kaagazpro.co.in/disclaimer.html</loc>
+  </url>
+
+  <!-- Tools -->
+  <url>
+    <loc>https://kaagazpro.co.in/tools/age-calculator/</loc>
+  </url>
+
+  <url>
+    <loc>https://kaagazpro.co.in/tools/bill-generator/</loc>
+  </url>
+
+  <url>
+    <loc>https://kaagazpro.co.in/tools/emi-calculator/</loc>
+  </url>
+
+  <url>
+    <loc>https://kaagazpro.co.in/tools/jpg-to-pdf/</loc>
+  </url>
+
+  <url>
+    <loc>https://kaagazpro.co.in/tools/password-generator/</loc>
+  </url>
+
+  <url>
+    <loc>https://kaagazpro.co.in/tools/pdf-to-jpg/</loc>
+  </url>
+
+  <url>
+    <loc>https://kaagazpro.co.in/tools/pdf-to-word/</loc>
+  </url>
+
+  <url>
+    <loc>https://kaagazpro.co.in/tools/word-to-pdf/</loc>
+  </url>
+
+  <url>
+    <loc>https://kaagazpro.co.in/tools/aadhaar.html</loc>
+  </url>
+
+  <url>
+    <loc>https://kaagazpro.co.in/tools/attendance-calculator.html</loc>
+  </url>
+
+  <url>
+    <loc>https://kaagazpro.co.in/tools/bg-remover.html</loc>
+  </url>
+
+  <url>
+    <loc>https://kaagazpro.co.in/tools/compressor.html</loc>
+  </url>
+
+  <url>
+    <loc>https://kaagazpro.co.in/tools/dpi.html</loc>
+  </url>
+
+  <url>
+    <loc>https://kaagazpro.co.in/tools/merge-pdf.html</loc>
+  </url>
+
+  <url>
+    <loc>https://kaagazpro.co.in/tools/passport.html</loc>
+  </url>
+
+  <url>
+    <loc>https://kaagazpro.co.in/tools/resize.html</loc>
+  </url>
+
+  <url>
+    <loc>https://kaagazpro.co.in/tools/signature.html</loc>
   </url>
 
 </urlset>
