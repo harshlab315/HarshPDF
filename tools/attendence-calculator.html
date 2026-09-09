@@ -133,7 +133,7 @@
 <a href="/tools/compressor.html">Image Compressor</a>
 <a href="/tools/passport.html">Passport Photo Maker</a>
 <a href="/tools/jpg-to-pdf/">JPG to PDF</a>
-<a href="/tools/attendance.html">Attendance Calculator</a>
+<a href="/tools/attendence-calculator.html">Attendance Calculator</a>
 </div>
 </div>
 
@@ -148,7 +148,7 @@
 </footer>
 
 <script>
-const tools=[{name:"📏 Resize Photo",link:"/tools/resize.html"},{name:"🗜️ Compressor",link:"/tools/compressor.html"},{name:"📄 JPG to PDF",link:"/tools/jpg-to-pdf/"},{name:"🖼️ PDF to JPG",link:"/tools/pdf-to-jpg/"},{name:"📝 PDF to Word",link:"/tools/pdf-to-word/"},{name:"📃 Word to PDF",link:"/tools/word-to-pdf/"},{name:"🆔 Aadhaar Resize",link:"/tools/aadhaar.html"},{name:"🖌️ BG Remover",link:"/tools/bg-remover.html"},{name:"🔍 DPI Changer",link:"/tools/dpi.html"},{name:"🔗 Merge PDF",link:"/tools/merge-pdf.html"},{name:"🎓 Passport Photo",link:"/tools/passport.html"},{name:"✍️ Signature Resize",link:"/tools/signature.html"},{name:"📊 Attendance Calc",link:"/tools/attendance.html"}];
+const tools=[{name:"📏 Resize Photo",link:"/tools/resize.html"},{name:"🗜️ Compressor",link:"/tools/compressor.html"},{name:"📄 JPG to PDF",link:"/tools/jpg-to-pdf/"},{name:"🖼️ PDF to JPG",link:"/tools/pdf-to-jpg/"},{name:"📝 PDF to Word",link:"/tools/pdf-to-word/"},{name:"📃 Word to PDF",link:"/tools/word-to-pdf/"},{name:"🆔 Aadhaar Resize",link:"/tools/aadhaar.html"},{name:"🖌️ BG Remover",link:"/tools/bg-remover.html"},{name:"🔍 DPI Changer",link:"/tools/dpi.html"},{name:"🔗 Merge PDF",link:"/tools/merge-pdf.html"},{name:"🎓 Passport Photo",link:"/tools/passport.html"},{name:"✍️ Signature Resize",link:"/tools/signature.html"},{name:"📊 Attendance Calculator",link:"/tools/attendence-calculator.html"}];
 document.getElementById('leftTools').innerHTML=tools.map(t=>`<a class="d-tool" href="${t.link}">${t.name}</a>`).join('');
 const ld=document.getElementById('leftDrawer'),rd=document.getElementById('rightDrawer');
 document.getElementById('openLeft').onclick=()=>ld.style.display='block';
