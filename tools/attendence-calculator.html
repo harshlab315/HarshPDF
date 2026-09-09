@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1, maximum-scale=1">
+<title>Attendance Calculator - KaagazPro</title>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6640527517870664" crossorigin="anonymous"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Plus+Jakarta+Sans:wght@700;800&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box}html,body{overflow-x:hidden;width:100%}body{margin:0;background:#f6f7fb;color:#0f172a;font-family:'Inter',sans-serif}
+.header{position:sticky;top:0;z-index:100;background:#fff;border-bottom:1px solid #e2e8f0;display:flex;justify-content:space-between;align-items:center;height:58px;padding:0 12px;box-shadow:0 2px 12px rgba(0,0,0,.04)}
+.header-left{display:flex;align-items:center;gap:12px}
+.logo{font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;font-size:20px;letter-spacing:-.5px;display:flex;align-items:center;gap:2px}
+.logo.pro{background:linear-gradient(90deg,#4f46e5,#06b6d4);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.logo-badge{font-size:8px;background:#0f172a;color:#fff;padding:2px 6px;border-radius:20px;margin-left:5px;font-weight:700}
+.icon-btn{width:42px;height:42px;display:grid;place-items:center;border-radius:12px;cursor:pointer;flex-shrink:0}.icon-btn:hover{background:#f1f5f9}
+.dots3{display:flex;flex-direction:column;gap:4px}.dots3 span{width:5px;height:5px;background:#0f172a;border-radius:50%;display:block}
+.hamburger{display:flex;flex-direction:column;gap:5px;width:20px}.hamburger span{display:block;height:2.5px;background:#0f172a;border-radius:10px}
+#leftDrawer,#rightDrawer{display:none;position:fixed;inset:0;z-index:9999;background:rgba(15,23,42,.55)}
+.left-box{position:absolute;left:0;top:0;width:92%;max-width:380px;height:100%;background:#fff;overflow:auto}
+.right-box{position:absolute;right:0;top:0;width:92%;max-width:360px;height:100%;background:#fff;overflow:auto}
+.d-tool{display:flex;gap:8px;padding:11px 14px;border-radius:10px;text-decoration:none;color:#334155;font-size:13px;font-weight:600;margin:4px 10px}.d-tool:hover{background:#f1f5f9}
+.d-link{display:block;padding:12px 14px;text-decoration:none;color:#334155;font-weight:600;margin:4px 10px;border-radius:10px}.d-link:hover{background:#f1f5f9}
+.wrap{max-width:700px;margin:0 auto;padding:10px;width:100%;overflow:hidden}
+.book{background:#fff;border:1px solid #e2e8f0;border-radius:20px;padding:14px;box-shadow:0 8px 28px rgba(0,0,0,.06);width:100%;overflow:hidden}
+.badges{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:8px}.badge{font-size:10.5px;font-weight:700;padding:5px 10px;border-radius:20px;border:1px solid #e2e8f0}
+.title{font-family:'Plus Jakarta Sans';font-size:24px;font-weight:800;line-height:1.1;margin:0}.grad{background:linear-gradient(90deg,#4f46e5,#06b6d4);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.yellow{background:linear-gradient(90deg,#fef9c3,#fde047);border:1px dashed #eab308;padding:10px;border-radius:12px;text-align:center;font-weight:700;font-size:12px;margin:12px 0}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:12px 0;width:100%}
+.row label{font-size:11px;font-weight:800;color:#334155;display:flex;flex-direction:column;gap:5px;width:100%;min-width:0}
+.row input,.row select{padding:11px;border:1.5px solid #cbd5e1;border-radius:10px;font-weight:600;background:#fff;width:100%;font-size:14px}
+@media(max-width:600px){.row{grid-template-columns:1fr}.wrap{padding:8px}.book{padding:12px}}
+.btn-green{width:100%;background:#16a34a;color:#fff;border:0;padding:15px;border-radius:12px;font-weight:800;font-size:15px;cursor:pointer;box-shadow:0 6px 16px rgba(22,163,74,.3)}
+.btn-outline{width:100%;background:#fff;color:#0f172a;border:1.5px solid #cbd5e1;padding:12px;border-radius:12px;font-weight:700;font-size:13px;cursor:pointer;margin-top:8px}
+.hidden{display:none!important}
+.sec{max-width:700px;margin:24px auto;padding:0 10px;width:100%}
+.step{display:flex;gap:12px;align-items:flex-start;background:#fff;border:1px solid #e2e8f0;border-radius:14px;padding:14px;margin:8px 0;width:100%}
+.num{width:32px;height:32px;border-radius:10px;display:grid;place-items:center;font-weight:800;color:#fff;flex-shrink:0}
+.quick-card{background:#fff;border:1px solid #e2e8f0;border-radius:14px;padding:14px;margin:8px 0;width:100%}
+.quick-card a{display:inline-block;background:#f1f5f9;border:1px solid #e2e8f0;padding:6px 12px;border-radius:20px;font-size:11px;font-weight:600;color:#334155;text-decoration:none;margin:4px}
+.pro-footer{background:#0f172a;color:#94a3b8;padding:28px 14px 12px;margin-top:26px}.foot-grid{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1.2fr 1fr 1fr 1fr;gap:20px}@media(max-width:800px){.foot-grid{grid-template-columns:1fr 1fr}}@media(max-width:500px){.foot-grid{grid-template-columns:1fr;text-align:center}}
+.pro-footer h4{color:#fff;font-size:11px;margin:0 0 10px;letter-spacing:.08em}.pro-footer a{color:#94a3b8;text-decoration:none;font-size:12px;display:block;margin:6px 0}.pro-footer a:hover{color:#fff}
+
+.att-targets{display:flex;flex-wrap:wrap;gap:6px;margin-top:6px}
+.att-targets button{padding:7px 12px;border-radius:20px;border:1px solid #e2e8f0;background:#f8fafc;font-size:12px;font-weight:700;cursor:pointer}
+.att-targets button.active{background:#4f46e5;color:#fff;border-color:#4f46e5}
+.att-error{display:none;background:#fff1f2;border:1px solid #fecdd3;color:#be123c;padding:10px 12px;border-radius:10px;font-size:12px;font-weight:600;margin-top:12px}
+.att-results{display:none;margin-top:14px;background:#f8fafc;border:1px solid #e2e8f0;border-radius:12px;padding:12px}
+.att-results.show{display:block}
+.att-main{text-align:center;padding:12px 0;border-bottom:1px dashed #e2e8f0;margin-bottom:10px}
+.att-main .perc{font-size:38px;font-weight:800;line-height:1}
+.att-card{background:#fff;border:1px solid #e2e8f0;border-radius:10px;padding:12px;margin-top:8px;display:flex;justify-content:space-between;align-items:center}
+.att-card span{font-weight:800}
+</style>
+</head>
+<body>
+
+<nav class="header">
+<div class="header-left">
+<div class="icon-btn" id="openLeft"><div class="dots3"><span></span><span></span><span></span></div></div>
+<div class="logo"><span style="color:#0f172a">Kaagaz</span><span class="pro">Pro</span><span class="logo-badge">PRO</span></div>
+</div>
+<div class="icon-btn" id="openRight"><div class="hamburger"><span></span><span></span><span></span></div></div>
+</nav>
+
+<div id="leftDrawer"><div class="left-box"><div style="display:flex;justify-content:space-between;align-items:center;padding:18px;border-bottom:1px solid #e2e8f0"><b style="font-size:11px;color:#94a3b8;letter-spacing:1px">ALL TOOLS</b><span id="closeLeft" style="cursor:pointer;font-size:22px">✕</span></div><div id="leftTools"></div></div></div>
+<div id="rightDrawer"><div class="right-box"><div style="display:flex;justify-content:space-between;padding:16px;border-bottom:1px solid #e2e8f0"><b>MENU</b><span id="closeRight" style="cursor:pointer">✕</span></div><a class="d-link" href="/">Home</a><a class="d-link" href="/about.html">About</a><a class="d-link" href="/contact.html">Contact</a><a class="d-link" href="/privacy-policy.html">Privacy</a><a class="d-link" href="/terms.html">Terms</a><a class="d-link" href="/disclaimer.html">Disclaimer</a></div></div>
+
+<div class="wrap">
+<div class="book">
+<div class="badges"><span class="badge" style="background:#dcfce7">✓ Exact %</span><span class="badge" style="background:#dbeafe">🔒 Private & Offline</span><span class="badge" style="background:#f3e8ff">⚡ 75% Calculator</span></div>
+<h1 class="title">Attendance <span class="grad">Calculator</span></h1>
+<p style="color:#64748b;font-size:12.5px;margin:6px 0 0">Find how many classes you can miss or need to attend.</p>
+<div class="yellow">👉 Enter Total & Attended - Get Can Miss & Need to Attend instantly!</div>
+
+
+<div class="row">
+<label>Total Classes<input type="number" id="attTotal" placeholder="e.g. 100" inputmode="numeric"></label>
+<label>Attended Classes<input type="number" id="attAttended" placeholder="e.g. 75" inputmode="numeric"></label>
+</div>
+
+<div style="margin:12px 0">
+<label style="font-size:11px;font-weight:800;color:#334155">Target Attendance %</label>
+<div class="att-targets" id="attTargetBtns">
+<button data-val="50">50%</button>
+<button data-val="60">60%</button>
+<button data-val="65">65%</button>
+<button data-val="70">70%</button>
+<button data-val="75" class="active">75%</button>
+<button data-val="80">80%</button>
+<button data-val="85">85%</button>
+<button data-val="90">90%</button>
+<button data-val="custom">Custom</button>
+</div>
+<div id="attCustomInput" style="display:none;margin-top:8px"><input type="number" id="attCustom" placeholder="Enter 1-100" style="width:100%;padding:11px;border:1.5px solid #cbd5e1;border-radius:10px;font-weight:600"></div>
+</div>
+
+<button class="btn-green" id="attCalcBtn">Calculate Attendance</button>
+<button class="btn-outline" id="attResetBtn">↺ Reset</button>
+
+<div class="att-error" id="attError"></div>
+
+<div class="att-results" id="attResults">
+<div class="att-main">
+<div class="perc" id="attPerc">0%</div>
+<div style="font-size:12px;color:#64748b;margin-top:4px"><span id="attAttShow">0</span> attended • <span id="attMissShow">0</span> missed • <span id="attTotalShow">0</span> total</div>
+</div>
+<div class="att-card"><b>✅ You can miss</b><span id="attCanMiss" style="color:#16a34a">0 classes</span></div>
+<div class="att-card"><b>📌 You need to attend</b><span id="attNeed" style="color:#4f46e5">0 classes</span></div>
+<div class="att-card" id="attNote" style="display:none;background:#fef3c7;border-color:#fde68a;font-size:12px"></div>
+</div>
+
+
+</div>
+</div>
+
+<div class="sec">
+<h2 style="font-family:'Plus Jakarta Sans'">How to Use?</h2>
+<div class="step"><div class="num" style="background:#4f46e5">1</div><div><b>Enter Classes</b><p style="font-size:12px;color:#475569;margin:4px 0 0">Total classes and how many you attended.</p></div></div>
+<div class="step"><div class="num" style="background:#16a34a">2</div><div><b>Select Target</b><p style="font-size:12px;color:#475569;margin:4px 0 0">Choose 75%, 80% etc or Custom. 75% is default for college.</p></div></div>
+<div class="step"><div class="num" style="background:#f59e0b">3</div><div><b>Calculate</b><p style="font-size:12px;color:#475569;margin:4px 0 0">Tap Calculate - see exact %, can miss, need to attend.</p></div></div>
+</div>
+
+<div class="sec">
+<h2 style="font-family:'Plus Jakarta Sans'">Why KaagazPro Attendance?</h2>
+<div class="step" style="background:linear-gradient(135deg,#eef2ff,#e0e7ff)"><div class="num" style="background:#4f46e5">🎯</div><div><b>Correct Formula</b><p style="font-size:12px;color:#475569;margin:4px 0 0">Can Miss = a/p - t, Need = (p*t - a)/(1-p) - 100% accurate.</p></div></div>
+<div class="step" style="background:linear-gradient(135deg,#dcfce7,#bbf7d0)"><div class="num" style="background:#16a34a">⚡</div><div><b>Fast & Offline</b><p style="font-size:12px;color:#475569;margin:4px 0 0">No login, works offline, mobile friendly.</p></div></div>
+</div>
+
+<div class="sec">
+<h2 style="font-family:'Plus Jakarta Sans'">Related Tools</h2>
+<div class="quick-card">
+<a href="/tools/resize.html">Resize Photo</a>
+<a href="/tools/compressor.html">Image Compressor</a>
+<a href="/tools/passport.html">Passport Photo Maker</a>
+<a href="/tools/jpg-to-pdf/">JPG to PDF</a>
+<a href="/tools/attendance.html">Attendance Calculator</a>
+</div>
+</div>
+
+<footer class="pro-footer">
+<div class="foot-grid">
+<div><div style="color:#fff;font-weight:800;font-size:18px">KaagazPro</div><p style="font-size:11.5px">Offline-first toolkit. Files stay on your device. No watermark, free forever.</p></div>
+<div><h4>POPULAR TOOLS</h4><a href="/tools/compressor.html">Compressor</a><a href="/tools/resize.html">Resize Photo</a><a href="/tools/jpg-to-pdf/">JPG to PDF</a><a href="/tools/passport.html">Passport Photo</a><a href="/tools/merge-pdf.html">Merge PDF</a></div>
+<div><h4>LEGAL & TRUST</h4><a href="/privacy-policy.html">Privacy Policy</a><a href="/terms.html">Terms & Conditions</a><a href="/disclaimer.html">Disclaimer</a><a href="/about.html">About Us</a><a href="/contact.html">Contact</a></div>
+<div><h4>WHY KAAGAZPRO?</h4><p style="font-size:11px;line-height:1.8">✔ Correct Formula<br>✔ Fast & Private<br>✔ Mobile Friendly<br>✔ Free Forever</p></div>
+</div>
+<div style="border-top:1px solid #1e293b;margin-top:20px;padding-top:12px;text-align:center;font-size:10px;color:#6b7280">© 2026 KaagazPro • Private by design • Made for Bharat</div>
+</footer>
+
+<script>
+const tools=[{name:"📏 Resize Photo",link:"/tools/resize.html"},{name:"🗜️ Compressor",link:"/tools/compressor.html"},{name:"📄 JPG to PDF",link:"/tools/jpg-to-pdf/"},{name:"🖼️ PDF to JPG",link:"/tools/pdf-to-jpg/"},{name:"📝 PDF to Word",link:"/tools/pdf-to-word/"},{name:"📃 Word to PDF",link:"/tools/word-to-pdf/"},{name:"🆔 Aadhaar Resize",link:"/tools/aadhaar.html"},{name:"🖌️ BG Remover",link:"/tools/bg-remover.html"},{name:"🔍 DPI Changer",link:"/tools/dpi.html"},{name:"🔗 Merge PDF",link:"/tools/merge-pdf.html"},{name:"🎓 Passport Photo",link:"/tools/passport.html"},{name:"✍️ Signature Resize",link:"/tools/signature.html"},{name:"📊 Attendance Calc",link:"/tools/attendance.html"}];
+document.getElementById('leftTools').innerHTML=tools.map(t=>`<a class="d-tool" href="${t.link}">${t.name}</a>`).join('');
+const ld=document.getElementById('leftDrawer'),rd=document.getElementById('rightDrawer');
+document.getElementById('openLeft').onclick=()=>ld.style.display='block';
+document.getElementById('closeLeft').onclick=()=>ld.style.display='none';
+ld.onclick=e=>{if(e.target.id==='leftDrawer')ld.style.display='none'};
+document.getElementById('openRight').onclick=()=>rd.style.display='block';
+document.getElementById('closeRight').onclick=()=>rd.style.display='none';
+rd.onclick=e=>{if(e.target.id==='rightDrawer')rd.style.display='none'};
+
+
+(function(){
+  const totalEl = document.getElementById('attTotal');
+  const attEl = document.getElementById('attAttended');
+  const customEl = document.getElementById('attCustom');
+  const customWrap = document.getElementById('attCustomInput');
+  const btns = document.querySelectorAll('#attTargetBtns button');
+  const errorEl = document.getElementById('attError');
+  const resultsEl = document.getElementById('attResults');
+  let target = 75;
+  btns.forEach(b=>{
+    b.addEventListener('click', ()=>{
+      btns.forEach(x=>x.classList.remove('active'));
+      b.classList.add('active');
+      if(b.dataset.val === 'custom'){
+        customWrap.style.display = 'block';
+        customEl.focus();
+        target = parseFloat(customEl.value) || 75;
+      } else {
+        customWrap.style.display = 'none';
+        target = parseFloat(b.dataset.val);
+      }
+    });
+  });
+  customEl.addEventListener('input', ()=>{ target = parseFloat(customEl.value); });
+  function showError(msg){ errorEl.textContent = msg; errorEl.style.display = 'block'; resultsEl.classList.remove('show'); }
+  function hideError(){ errorEl.style.display='none'; }
+  function calculate(){
+    hideError();
+    const t = parseFloat(totalEl.value);
+    const a = parseFloat(attEl.value);
+    let p = target;
+    if(isNaN(t) || t <= 0) return showError('Total classes must be greater than 0.');
+    if(isNaN(a) || a < 0) return showError('Attended cannot be negative.');
+    if(a > t) return showError('Attended cannot exceed total.');
+    if(isNaN(p) || p <= 0 || p > 100) return showError('Target must be 1-100.');
+    const pFrac = p / 100;
+    const perc = (a / t) * 100;
+    const missed = t - a;
+    let canMiss = 0;
+    if(perc >= p){ canMiss = Math.floor((a / pFrac) - t); if(canMiss < 0) canMiss = 0; }
+    let need = 0;
+    if(perc >= p){ need = 0; }
+    else {
+      if(p === 100){ need = a===t?0:Infinity; }
+      else { need = Math.ceil((pFrac * t - a) / (1 - pFrac)); if(need < 0) need = 0; }
+    }
+    document.getElementById('attPerc').textContent = perc.toFixed(2) + '%';
+    document.getElementById('attAttShow').textContent = a;
+    document.getElementById('attMissShow').textContent = missed;
+    document.getElementById('attTotalShow').textContent = t;
+    document.getElementById('attCanMiss').textContent = canMiss + (canMiss===1?' class':' classes');
+    const needEl = document.getElementById('attNeed');
+    const noteEl = document.getElementById('attNote');
+    if(need === Infinity){
+      needEl.textContent = 'Impossible';
+      noteEl.style.display='block';
+      noteEl.textContent = 'You can never reach 100% if you missed any class.';
+    } else {
+      needEl.textContent = need + (need===1?' class':' classes');
+      if(perc < p){
+        noteEl.style.display='block';
+        noteEl.innerHTML = `<b>Below ${p}%:</b> Attend next ${need} class${need>1?'es':''} continuously.`;
+      } else if(canMiss>0){
+        noteEl.style.display='block';
+        noteEl.innerHTML = `<b>Safe:</b> You can miss next ${canMiss} class${canMiss>1?'es':''} and stay >= ${p}%.`;
+      } else { noteEl.style.display='none'; }
+    }
+    resultsEl.classList.add('show');
+    resultsEl.scrollIntoView({behavior:'smooth'});
+  }
+  function reset(){ totalEl.value=''; attEl.value=''; customEl.value=''; target=75; btns.forEach(b=>b.classList.remove('active')); document.querySelector('#attTargetBtns button[data-val="75"]').classList.add('active'); customWrap.style.display='none'; hideError(); resultsEl.classList.remove('show'); }
+  document.getElementById('attCalcBtn').addEventListener('click', calculate);
+  document.getElementById('attResetBtn').addEventListener('click', reset);
+  [totalEl, attEl, customEl].forEach(el=>{ el.addEventListener('keydown', e=>{ if(e.key==='Enter') calculate(); }); });
+})();
+</script>
+</body>
+</html>
