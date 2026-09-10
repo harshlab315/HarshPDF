@@ -1,131 +1,380 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Invoice Generator - Free GST Bill Maker - KaagazPro</title>
-<meta name="description" content="Free Invoice Generator. Create GST Bill, Logo, GST, Discount. 100% private, offline, PDF download.">
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1, maximum-scale=1">
+<title>Invoice Generator - GST Bill Maker | KaagazPro</title>
+<meta name="description" content="Create professional GST invoice with logo, CGST SGST IGST, discount and download PDF instantly.">
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6640527517870664" crossorigin="anonymous"></script>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Plus+Jakarta+Sans:wght@700;800&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 <style>
-*{box-sizing:border-box;font-family:'Inter',sans-serif}body{margin:0;background:#f6f7fb;color:#0f172a}
-.header{background:#1e40af;color:#fff;padding:12px 18px;display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;z-index:99}
-.logo{font-family:'Plus Jakarta Sans';font-weight:800;font-size:20px}.hr{display:flex;gap:8px;align-items:center}
-.lang-btn{background:#fff;color:#1e40af;border:0;padding:7px 14px;border-radius:20px;font-weight:800;cursor:pointer;font-size:12px}
-.all-btn{color:#fff;text-decoration:none;font-size:12px;background:rgba(255,255,255,.18);padding:7px 14px;border-radius:20px}
-.wrap{max-width:1100px;margin:18px auto;padding:0 14px;display:grid;grid-template-columns:1.15fr 0.85fr;gap:16px}@media(max-width:850px){.wrap{grid-template-columns:1fr}}
-.hero-card{background:linear-gradient(135deg,#ffffff 0%,#f0f7ff 100%);border-radius:20px;padding:22px;border:1px solid #e2e8f0;box-shadow:0 10px 30px rgba(30,64,175,0.06)}
-.badge-row{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px}.badge{font-size:11px;font-weight:700;padding:6px 12px;border-radius:100px;border:1px solid #e2e8f0;background:#fff}
-.badge.green{background:#dcfce7;border-color:#bbf7d0;color:#166534}.badge.blue{background:#dbeafe;border-color:#bfdbfe;color:#1e40af}.badge.purple{background:#f3e8ff;border-color:#e9d5ff;color:#6b21a8}
-.hero-card h1{font-family:'Plus Jakarta Sans';font-size:30px;font-weight:800;line-height:1.05;margin:0}.hero-card h1 span{background:linear-gradient(90deg,#1e40af,#7c3aed,#ec4899);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
-.hero-card p{color:#64748b;font-size:13.5px;margin:8px 0 0;line-height:1.5}
-.input-card{background:#fff;border-radius:20px;padding:20px;border:1px solid #e2e8f0;margin-top:14px}
-.ctrl label{font-size:11px;font-weight:800;color:#334155;text-transform:uppercase;margin:10px 0 6px;display:block}
-.ctrl input,.ctrl textarea{width:100%;padding:11px 14px;border:1.5px solid #e2e8f0;border-radius:10px;font-size:13px;background:#f8fafc;outline:none}
-.item-row{display:grid;grid-template-columns:2fr 0.7fr 0.7fr 0.7fr 30px;gap:6px;margin-bottom:6px}
-.btn-main{width:100%;margin-top:12px;background:linear-gradient(90deg,#1e40af,#7c3aed);color:#fff;border:none;padding:13px;border-radius:12px;font-weight:800;cursor:pointer}
-.btn-sec{background:#0f172a;color:#fff;border:none;padding:8px 12px;border-radius:8px;font-size:12px;font-weight:700;cursor:pointer;margin-top:8px}
-.bill-paper{background:#fff;border:1px solid #e2e8f0;border-radius:14px;padding:18px;margin-top:14px}
-.side{position:sticky;top:76px;height:fit-content}.side-card{background:#fff;border:1px solid #e2e8f0;border-radius:18px;padding:18px;margin-bottom:12px}
-.step{display:flex;gap:12px;margin-bottom:12px}.step-num{width:26px;height:26px;border-radius:8px;background:#eef2ff;color:#1e40af;font-weight:800;font-size:12px;display:flex;align-items:center;justify-content:center}
-/* --- FIXED FAQ CSS --- */
-.faq-sec{max-width:1100px;margin:10px auto 24px;padding:0 14px}
-.faq-title{font-family:'Plus Jakarta Sans';font-size:20px;font-weight:800;margin:18px 0 12px}
-.faq-item{background:#fff;border:1px solid #e2e8f0;border-radius:14px;margin-bottom:10px;overflow:hidden;cursor:pointer}
-.faq-q{padding:14px 16px;font-weight:700;font-size:13.5px;display:flex;justify-content:space-between;align-items:center}
-.faq-a{padding:0 16px 14px;color:#475569;font-size:12.5px;line-height:1.6;display:none}
-.faq-item.open .faq-a{display:block!important}
-footer{background:#0f172a;color:#cbd5e1}.foot-inner{max-width:1100px;margin:0 auto;padding:28px 18px;display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:18px}@media(max-width:800px){.foot-inner{grid-template-columns:1fr 1fr}}
-@media print{body *{visibility:hidden}.bill-paper,.bill-paper *{visibility:visible}.bill-paper{position:absolute;left:0;top:0;width:100%;border:none}}
+*{box-sizing:border-box}html,body{overflow-x:hidden;width:100%}body{margin:0;background:#f6f7fb;color:#0f172a;font-family:'Inter',sans-serif}
+.header{position:sticky;top:0;z-index:100;background:#fff;border-bottom:1px solid #e2e8f0;display:flex;justify-content:space-between;align-items:center;height:58px;padding:0 12px;box-shadow:0 2px 12px rgba(0,0,0,.04)}
+.header-left{display:flex;align-items:center;gap:12px}
+.logo{font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;font-size:20px;letter-spacing:-.5px;display:flex;align-items:center;gap:2px}
+.logo.pro{background:linear-gradient(90deg,#4f46e5,#06b6d4);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.logo-badge{font-size:8px;background:#0f172a;color:#fff;padding:2px 6px;border-radius:20px;margin-left:5px;font-weight:700}
+.icon-btn{width:42px;height:42px;display:grid;place-items:center;border-radius:12px;cursor:pointer;flex-shrink:0}.icon-btn:hover{background:#f1f5f9}
+.dots3{display:flex;flex-direction:column;gap:4px}.dots3 span{width:5px;height:5px;background:#0f172a;border-radius:50%;display:block}
+.hamburger{display:flex;flex-direction:column;gap:5px;width:20px}.hamburger span{display:block;height:2.5px;background:#0f172a;border-radius:10px}
+#leftDrawer,#rightDrawer{display:none;position:fixed;inset:0;z-index:9999;background:rgba(15,23,42,.55)}
+.left-box{position:absolute;left:0;top:0;width:92%;max-width:380px;height:100%;background:#fff;overflow:auto}
+.right-box{position:absolute;right:0;top:0;width:92%;max-width:360px;height:100%;background:#fff;overflow:auto}
+.d-tool{display:flex;gap:8px;padding:11px 14px;border-radius:10px;text-decoration:none;color:#334155;font-size:13px;font-weight:600;margin:4px 10px}.d-tool:hover{background:#f1f5f9}
+.d-link{display:block;padding:12px 14px;text-decoration:none;color:#334155;font-weight:600;margin:4px 10px;border-radius:10px}.d-link:hover{background:#f1f5f9}
+.wrap{max-width:800px;margin:0 auto;padding:10px;width:100%;overflow:hidden}
+.book{background:#fff;border:1px solid #e2e8f0;border-radius:20px;padding:14px;box-shadow:0 8px 28px rgba(0,0,0,.06);width:100%;overflow:hidden}
+.badges{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:8px}.badge{font-size:10.5px;font-weight:700;padding:5px 10px;border-radius:20px;border:1px solid #e2e8f0}
+.title{font-family:'Plus Jakarta Sans';font-size:24px;font-weight:800;line-height:1.1;margin:0}.grad{background:linear-gradient(90deg,#4f46e5,#06b6d4);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.yellow{background:linear-gradient(90deg,#fef9c3,#fde047);border:1px dashed #eab308;padding:10px;border-radius:12px;text-align:center;font-weight:700;font-size:12px;margin:12px 0}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:12px 0;width:100%}
+.row label{font-size:11px;font-weight:800;color:#334155;display:flex;flex-direction:column;gap:5px;width:100%;min-width:0}
+.row input,.row select,.row textarea{padding:11px;border:1.5px solid #cbd5e1;border-radius:10px;font-weight:600;background:#fff;width:100%;font-size:13px;font-family:'Inter',sans-serif}
+.row textarea{resize:vertical;min-height:60px}
+@media(max-width:700px){.row{grid-template-columns:1fr}.wrap{padding:8px}.book{padding:12px}}
+.btn-green{width:100%;background:#0f172a;color:#fff;border:0;padding:15px;border-radius:12px;font-weight:800;font-size:15px;cursor:pointer}
+.btn-outline{width:100%;background:#fff;color:#0f172a;border:1.5px solid #cbd5e1;padding:12px;border-radius:12px;font-weight:700;font-size:13px;cursor:pointer;margin-top:8px}
+.pro-footer{background:#0f172a;color:#94a3b8;padding:28px 14px 12px;margin-top:26px}.foot-grid{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1.2fr 1fr 1fr 1fr;gap:20px}@media(max-width:800px){.foot-grid{grid-template-columns:1fr 1fr}}@media(max-width:500px){.foot-grid{grid-template-columns:1fr;text-align:center}}
+.pro-footer h4{color:#fff;font-size:11px;margin:0 0 10px;letter-spacing:.08em}.pro-footer a{color:#94a3b8;text-decoration:none;font-size:12px;display:block;margin:6px 0}.pro-footer a:hover{color:#fff}
+.sec{max-width:800px;margin:24px auto;padding:0 10px;width:100%}
+.chip{display:flex;flex-wrap:wrap;gap:6px;margin-top:6px}
+.chip button{padding:7px 12px;border-radius:20px;border:1px solid #e2e8f0;background:#f8fafc;font-size:12px;font-weight:700;cursor:pointer}
+.chip button.active{background:#0f172a;color:#fff;border-color:#0f172a}
+.inv-items{margin:10px 0;border:1px solid #e2e8f0;border-radius:12px;overflow:hidden;overflow-x:auto}
+.inv-head{display:grid;grid-template-columns:1.4fr.6fr.5fr.6fr.6fr.6fr.7fr 34px;background:#f8fafc;padding:8px 10px;font-size:10px;font-weight:800;color:#64748b;min-width:680px}
+.inv-row{display:grid;grid-template-columns:1.4fr.6fr.5fr.6fr.6fr.6fr.7fr 34px;gap:6px;padding:8px 10px;border-top:1px solid #e2e8f0;align-items:center;min-width:680px}
+.inv-row input{padding:8px;border:1px solid #cbd5e1;border-radius:8px;font-size:12px;font-weight:600;width:100%}
+.del{width:28px;height:28px;border-radius:8px;border:1px solid #fecdd3;background:#fff1f2;color:#be123c;display:grid;place-items:center;cursor:pointer;font-weight:800}
+.totbox{background:#f8fafc;border:1px solid #e2e8f0;border-radius:12px;padding:12px;margin-top:12px}
+.line{display:flex;justify-content:space-between;padding:6px 0;font-size:13px}
+.line.grand{border-top:1px dashed #cbd5e1;margin-top:6px;padding-top:10px;font-size:16px;font-weight:800}
+.preview{margin-top:16px;border:2px dashed #cbd5e1;border-radius:14px;padding:12px;background:#fff}
+.logoPrev{width:54px;height:54px;border:1px dashed #cbd5e1;border-radius:10px;object-fit:cover;display:none;margin-top:6px}
+@media print{body *{visibility:hidden}.preview, .preview *{visibility:visible}.preview{position:absolute;left:0;top:0;width:100%;border:none}}
 </style>
 </head>
 <body>
-<div class="header"><div class="logo">📄 KaagazPro</div><div class="hr"><button class="lang-btn" id="langBtn" onclick="toggleLang()">हिंदी</button><a class="all-btn" href="/">← All Tools</a></div></div>
 
-<div class="wrap"><div>
-<div class="hero-card">
-<div class="badge-row"><span class="badge green">✨ Free Forever</span><span class="badge blue">🔒 Private</span><span class="badge purple">⚡ GST + PDF</span></div>
-<h1 data-i="h1">Invoice Generator <br><span>GST Bill in 30 Seconds</span></h1>
-<p data-i="h1p">For Shop, Freelancer, Business. Logo, GST, Discount, PDF Print - all offline.</p>
+<nav class="header">
+<div class="header-left">
+<div class="icon-btn" id="openLeft"><div class="dots3"><span></span><span></span><span></span></div></div>
+<div class="logo"><span style="color:#0f172a">Kaagaz</span><span class="pro">Pro</span><span class="logo-badge">PRO</span></div>
 </div>
+<div class="icon-btn" id="openRight"><div class="hamburger"><span></span><span></span><span></span></div></div>
+</nav>
 
-<div class="input-card">
-<div class="ctrl" style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
-<div><label data-i="l1">Your Business Name</label><input id="bName" placeholder="KaagazPro Store"></div>
-<div><label data-i="l2">Logo Upload</label><input type="file" id="logoIn" accept="image/*"></div>
-<div><label data-i="l3">Your GSTIN / Phone</label><input id="bGst" placeholder="GSTIN or Mobile"></div>
-<div><label data-i="l4">Invoice No. & Date</label><input id="invNo" value="INV-001"><input id="invDate" type="date" style="margin-top:6px"></div>
-<div><label data-i="l5">Bill To (Client Name)</label><textarea id="client" rows="2" placeholder="Customer Name & Address"></textarea></div>
-<div><label data-i="l6">GST % & Discount ₹</label><input id="gst" type="number" value="18" placeholder="GST %"><input id="disc" type="number" value="0" placeholder="Discount ₹" style="margin-top:6px"></div>
-</div>
-<h4 style="margin:14px 0 8px" data-i="itemsH">Items</h4>
-<div id="items"></div>
-<button class="btn-sec" onclick="addItem()" data-i="addBtn">+ Add Item</button>
-<button class="btn-main" onclick="makeBill()" data-i="btn">✨ Generate Bill Preview →</button>
+<div id="leftDrawer"><div class="left-box"><div style="display:flex;justify-content:space-between;align-items:center;padding:18px;border-bottom:1px solid #e2e8f0"><b style="font-size:11px;color:#94a3b8;letter-spacing:1px">ALL TOOLS</b><span id="closeLeft" style="cursor:pointer;font-size:22px">✕</span></div><div id="leftTools"></div></div></div>
+<div id="rightDrawer"><div class="right-box"><div style="display:flex;justify-content:space-between;padding:16px;border-bottom:1px solid #e2e8f0"><b>MENU</b><span id="closeRight" style="cursor:pointer">✕</span></div><a class="d-link" href="/">Home</a><a class="d-link" href="/about.html">About</a><a class="d-link" href="/contact.html">Contact</a><a class="d-link" href="/privacy-policy.html">Privacy</a><a class="d-link" href="/terms.html">Terms</a><a class="d-link" href="/disclaimer.html">Disclaimer</a></div></div>
 
-<div id="bill" class="bill-paper" style="display:none">
-<div style="display:flex;justify-content:space-between"><div><h2 id="outBName" style="margin:0;font-family:'Plus Jakarta Sans'">Your Business</h2><small id="outBGst"></small><br><img id="outLogo" style="max-width:80px;margin-top:6px;display:none"></div><div style="text-align:right"><b id="outInvNo">INV-001</b><br><small id="outDate"></small></div></div>
-<hr>
-<div><b>Bill To:</b><br><span id="outClient" style="font-size:13px"></span></div>
-<table width="100%" style="margin-top:12px;border-collapse:collapse;font-size:13px"><thead><tr style="background:#f1f5f9"><th align="left" style="padding:8px;border:1px solid #e2e8f0">Item</th><th style="padding:8px;border:1px solid #e2e8f0">Qty</th><th style="padding:8px;border:1px solid #e2e8f0">Rate</th><th style="padding:8px;border:1px solid #e2e8f0">Total</th></tr></thead><tbody id="outItems"></tbody></table>
-<div style="text-align:right;margin-top:10px;font-size:13px;line-height:1.8"><div>Subtotal: <b id="outSub">₹0</b></div><div>GST (<span id="outGstP">18</span>%): <b id="outGstA">₹0</b></div><div>Discount: <b id="outDisc">₹0</b></div><div style="font-size:18px;font-weight:800">Grand Total: <span id="outGrand">₹0</span></div></div>
-<div style="text-align:center;margin-top:14px"><button class="btn-main" onclick="window.print()" style="width:auto;padding:10px 22px">🖨️ Print / Save PDF</button></div>
-</div>
-</div>
-</div>
+<div class="wrap">
+<div class="book">
+<div class="badges"><span class="badge" style="background:#dcfce7">✓ GST Bill</span><span class="badge" style="background:#dbeafe">🔒 Private & Offline</span><span class="badge" style="background:#f3e8ff">⚡ No Backend</span></div>
+<h1 class="title">Invoice <span class="grad">Generator</span></h1>
+<p style="color:#64748b;font-size:12.5px;margin:6px 0 0">Create GST invoice with logo, CGST/SGST/IGST, discount & download PDF.</p>
+<div class="yellow">👉 Logo + Customer + Items add karo - PDF 1 click me!</div>
 
-<div class="side">
-<div class="side-card"><h3 data-i="htu">✨ How to Use?</h3>
-<div class="step"><div class="step-num">1</div><p data-i="s1"><b>Business + Client</b><br>Enter your shop and customer name</p></div>
-<div class="step"><div class="step-num">2</div><p data-i="s2"><b>Add Items</b><br>Enter product, qty, rate - auto total</p></div>
-<div class="step"><div class="step-num">3</div><p data-i="s3"><b>GST + Print</b><br>Apply GST % and Print / Save PDF</p></div>
+<!-- BUSINESS -->
+<h3 style="font-size:13px;margin:18px 0 4px">Business Details</h3>
+<div class="row">
+<label>Logo (JPG/PNG)<input type="file" id="logoInput" accept="image/png,image/jpeg,image/jpg"><img id="logoPreview" class="logoPrev"><button id="logoRemoveBtn" style="font-size:11px;margin-top:4px;display:none">Remove Logo</button></label>
+<label>Signature (Optional)<input type="file" id="signInput" accept="image/png,image/jpeg,image/jpg"><img id="signPreview" class="logoPrev"><input type="text" id="signNameEl" placeholder="Authorized Signatory Name" style="margin-top:6px"></label>
 </div>
-<div class="side-card" style="background:linear-gradient(135deg,#dcfce7,#bbf7d0);text-align:center"><h3>💰 EMI Calculator</h3><a href="../emi-calculator/" style="display:block;background:#0f172a;color:#fff;padding:10px;border-radius:10px;text-decoration:none;font-weight:800;font-size:12px">Open →</a></div>
+<div class="row">
+<label>Business Name<input type="text" id="bName" placeholder="KaagazPro Pvt Ltd"></label>
+<label>GSTIN<input type="text" id="bGstin" placeholder="22AAAAA0000A1Z5"></label>
 </div>
+<div class="row">
+<label>Address<textarea id="bAddr" placeholder="Street, City, Pincode"></textarea></label>
+<label>Phone / Email / Website<textarea id="bPhone" placeholder="Phone, Email, Website"></textarea></label>
 </div>
 
-<div class="faq-sec">
-<h2 class="faq-title" data-i="faqT">❓ Invoice FAQs</h2>
-<div class="faq-item" onclick="this.classList.toggle('open')"><div class="faq-q"><span data-i="q1">Is GST bill created?</span><span>▼</span></div><div class="faq-a" data-i="a1">Yes, enter GST % - GST will be auto calculated and GSTIN will be printed on bill.</div></div>
-<div class="faq-item" onclick="this.classList.toggle('open')"><div class="faq-q"><span data-i="q2">Is it free? Is data saved?</span><span>▼</span></div><div class="faq-a" data-i="a2">100% Free and Private. Everything happens in your browser. We don't store any bill. Works offline too.</div></div>
-<div class="faq-item" onclick="this.classList.toggle('open')"><div class="faq-q"><span data-i="q3">How to save PDF?</span><span>▼</span></div><div class="faq-a" data-i="a3">After generating, click Print / Save PDF button - in Chrome select Destination as Save as PDF.</div></div>
+<!-- INVOICE DETAILS -->
+<h3 style="font-size:13px;margin:18px 0 4px">Invoice Details</h3>
+<div class="row">
+<label>Invoice Number<input type="text" id="invNumber" value="INV-001"></label>
+<label>Invoice Date<input type="date" id="invDate"></label>
+</div>
+<div class="row">
+<label>Due Date<input type="date" id="dueDate"></label>
+<label>Place of Supply<input type="text" id="placeOfSupply" placeholder="Maharashtra (27)"></label>
+</div>
+<div style="margin:10px 0">
+<label style="font-size:11px;font-weight:800">GST Type</label>
+<div class="chip"><label style="display:flex;align-items:center;gap:6px;font-size:12px;font-weight:700"><input type="radio" name="gstType" value="intra" checked id="gstTypeIntra"> Intra-State (CGST+SGST)</label><label style="display:flex;align-items:center;gap:6px;font-size:12px;font-weight:700"><input type="radio" name="gstType" value="inter" id="gstTypeInter"> Inter-State (IGST)</label></div>
+</div>
+<div style="margin:10px 0"><label style="font-size:11px;font-weight:800;display:flex;align-items:center;gap:8px"><input type="checkbox" id="roundOffToggle" checked> Enable Round Off (nearest ₹)</label></div>
+
+<!-- CUSTOMER -->
+<h3 style="font-size:13px;margin:18px 0 4px">Customer Details</h3>
+<div class="row">
+<label>Customer Name<input type="text" id="cName" placeholder="Rahul Sharma"></label>
+<label>Customer GSTIN (Optional)<input type="text" id="cGstin" placeholder="Client GSTIN"></label>
+</div>
+<div class="row">
+<label>Customer Address<textarea id="cAddr" placeholder="Client address"></textarea></label>
+<label>Customer Phone / Email<textarea id="cPhone" placeholder="Phone, Email"></textarea></label>
 </div>
 
-<footer><div class="foot-inner"><div><div style="color:#fff;font-weight:800;font-size:20px">📄 KaagazPro</div><p style="font-size:12.5px;color:#94a3b8">India's Most Trusted Tools - Invoice, EMI, Age, Compressor. 100% Free.</p></div><div><b style="color:#fff;font-size:12px">POPULAR</b><div style="margin-top:10px;display:flex;flex-direction:column;gap:6px;font-size:12.5px"><a href="../emi-calculator/" style="color:#94a3b8;text-decoration:none">EMI Calculator</a><a href="../age-calculator/" style="color:#94a3b8;text-decoration:none">Age Calculator</a><a href="./" style="color:#22c55e;text-decoration:none;font-weight:700">Bill Generator</a></div></div><div><b style="color:#fff;font-size:12px">LEGAL</b><div style="margin-top:10px;display:flex;flex-direction:column;gap:6px;font-size:12.5px"><a href="/privacy-policy.html" style="color:#94a3b8;text-decoration:none">Privacy</a><a href="/contact.html" style="color:#94a3b8;text-decoration:none">Contact</a></div></div><div><b style="color:#fff;font-size:12px">FEATURES</b><div style="margin-top:10px;font-size:12px;color:#94a3b8">✔ Logo + GST<br>✔ Discount<br>✔ Print PDF<br>✔ Offline</div></div></div><div style="border-top:1px solid #1e293b;padding:12px;text-align:center;font-size:11px;color:#64748b">© 2025 KaagazPro.com • Made with ❤️ in India</div></footer>
+<!-- ITEMS -->
+<div style="margin:14px 0 6px;display:flex;justify-content:space-between;align-items:center">
+<b style="font-size:13px">Items (Unlimited)</b><button id="addItemBtn" style="padding:6px 12px;border-radius:20px;border:1px solid #0f172a;background:#0f172a;color:#fff;font-weight:700;font-size:11px;cursor:pointer">+ Add Item</button>
+</div>
+<div class="inv-items" id="itemsContainer">
+<div class="inv-head"><span>Item / HSN</span><span>Qty</span><span>Unit</span><span>Rate</span><span>Disc%</span><span>GST%</span><span>Amount</span><span></span></div>
+</div>
+
+<!-- TOTALS -->
+<div class="totbox">
+<div class="line"><span>Subtotal</span><b id="subtotalEl">₹0.00</b></div>
+<div class="line"><span>Total Discount</span><b id="discountTotalEl">- ₹0.00</b></div>
+<div class="line"><span>Taxable Amount</span><b id="taxableEl">₹0.00</b></div>
+<div class="line" id="cgstLine"><span>CGST</span><b id="cgstEl">₹0.00</b></div>
+<div class="line" id="sgstLine"><span>SGST</span><b id="sgstEl">₹0.00</b></div>
+<div class="line" id="igstLine" style="display:none"><span>IGST</span><b id="igstEl">₹0.00</b></div>
+<div class="line"><span>Round Off</span><b id="roundOffEl">₹0.00</b></div>
+<div class="line grand"><span>Grand Total</span><b id="grandTotalEl">₹0.00</b></div>
+<div style="font-size:11px;color:#475569;margin-top:6px"><b>Amount in Words:</b> <span id="amountInWordsEl">Rupees Zero Only</span></div>
+</div>
+
+<div class="row">
+<label>Notes<textarea id="notesEl" placeholder="Thank you for your business!"></textarea></label>
+<label>Terms & Conditions<textarea id="termsEl" placeholder="Payment due in 7 days."></textarea></label>
+</div>
+
+<!-- ACTIONS -->
+<div class="row" style="grid-template-columns:1fr 1fr">
+<button class="btn-outline" id="saveDraftBtn">💾 Save Draft</button>
+<button class="btn-outline" id="loadDraftBtn">📂 Load Draft</button>
+</div>
+<div class="row" style="grid-template-columns:1fr 1fr">
+<button class="btn-outline" id="deleteDraftBtn">🗑 Delete Draft</button>
+<button class="btn-outline" id="resetBtn">↺ Reset Invoice</button>
+</div>
+<button class="btn-green" id="downloadPdfBtn">📄 Download PDF - invoice-INV-001.pdf</button>
+<button class="btn-outline" id="printBtn">🖨️ Print Invoice (Only Invoice)</button>
+<button class="btn-outline" id="shareBtn">📤 Share Invoice</button>
+
+<!-- LIVE PREVIEW -->
+<div class="preview" id="invoicePreview">
+<div style="display:flex;justify-content:space-between">
+<div><h2 id="prevBName" style="margin:0">Your Business</h2><div id="prevBAddr" style="font-size:11px;color:#475569"></div><div id="prevBGstin" style="font-size:11px"></div><img id="prevLogo" style="width:60px;height:60px;object-fit:cover;display:none;border-radius:8px;margin-top:6px"></div>
+<div style="text-align:right"><h3 id="prevInvNo" style="margin:0">INV-001</h3><div id="prevInvDate" style="font-size:11px"></div><div id="prevPlace" style="font-size:11px"></div></div>
+</div>
+<hr style="margin:10px 0">
+<div><b>Bill To:</b> <span id="prevCName">Customer</span> - <span id="prevCAddr"></span> <span id="prevCGstin"></span></div>
+<table style="width:100%;border-collapse:collapse;margin-top:10px;font-size:11px"><thead><tr><th style="border:1px solid #e2e8f0;padding:6px;text-align:left">Item</th><th style="border:1px solid #e2e8f0;padding:6px">Qty</th><th style="border:1px solid #e2e8f0;padding:6px">Rate</th><th style="border:1px solid #e2e8f0;padding:6px">Amount</th></tr></thead><tbody id="prevItems"></tbody></table>
+<div style="text-align:right;margin-top:8px;font-weight:800" id="prevGrand">₹0.00</div>
+</div>
+
+</div>
+</div>
+
+<footer class="pro-footer">
+<div class="foot-grid">
+<div><div style="color:#fff;font-weight:800;font-size:18px">KaagazPro</div><p style="font-size:11.5px">Offline-first toolkit. Files stay on your device. No watermark, free forever.</p></div>
+<div><h4>POPULAR TOOLS</h4><a href="/tools/compressor.html">Compressor</a><a href="/tools/resize.html">Resize Photo</a><a href="/tools/jpg-to-pdf/">JPG to PDF</a><a href="/tools/passport.html">Passport Photo</a></div>
+<div><h4>LEGAL & TRUST</h4><a href="/privacy-policy.html">Privacy Policy</a><a href="/terms.html">Terms</a><a href="/disclaimer.html">Disclaimer</a><a href="/about.html">About Us</a></div>
+<div><h4>WHY KAAGAZPRO?</h4><p style="font-size:11px;line-height:1.8">✔ Exact Formula<br>✔ Private & Offline<br>✔ No Backend<br>✔ Free Forever</p></div>
+</div>
+<div style="border-top:1px solid #1e293b;margin-top:20px;padding-top:12px;text-align:center;font-size:10px;color:#6b7280">© 2026 KaagazPro • Private by design</div>
+</footer>
 
 <script>
-document.getElementById('invDate').valueAsDate=new Date();
-let itemsDiv=document.getElementById('items');
-function addItem(n="",q=1,r=100){let d=document.createElement('div');d.className='item-row';d.innerHTML=`<input placeholder="Item name" value="${n}"><input type="number" placeholder="Qty" value="${q}"><input type="number" placeholder="Rate" value="${r}"><span style="padding:8px;font-weight:700;font-size:12px">₹</span><button onclick="this.parentElement.remove()" style="border:none;background:#fee2e2;border-radius:6px;cursor:pointer">✕</button>`;itemsDiv.appendChild(d)}
-addItem("Product 1",1,500);addItem("Service",1,200);
-document.getElementById('logoIn').addEventListener('change',e=>{let f=e.target.files[0];if(!f)return;let r=new FileReader();r.onload=ev=>{let im=document.getElementById('outLogo');im.src=ev.target.result;im.style.display='block';};r.readAsDataURL(f)});
-function makeBill(){
-let bName=document.getElementById('bName').value||"Your Business",bGst=document.getElementById('bGst').value,invNo=document.getElementById('invNo').value,invDate=document.getElementById('invDate').value,client=document.getElementById('client').value,gstP=parseFloat(document.getElementById('gst').value)||0,disc=parseFloat(document.getElementById('disc').value)||0;
-let rows=[...document.querySelectorAll('.item-row')];let sub=0,html="";
-rows.forEach(row=>{let inp=row.querySelectorAll('input');let name=inp[0].value,q=parseFloat(inp[1].value)||0,rate=parseFloat(inp[2].value)||0,tot=q*rate;sub+=tot;html+=`<tr><td style="padding:8px;border:1px solid #e2e8f0">${name}</td><td style="padding:8px;border:1px solid #e2e8f0;text-align:center">${q}</td><td style="padding:8px;border:1px solid #e2e8f0;text-align:center">₹${rate}</td><td style="padding:8px;border:1px solid #e2e8f0;text-align:right">₹${tot}</td></tr>`});
-let gstAmt=sub*gstP/100,grand=sub+gstAmt-disc;
-document.getElementById('outBName').innerText=bName;document.getElementById('outBGst').innerText=bGst;document.getElementById('outInvNo').innerText=invNo;document.getElementById('outDate').innerText=invDate;document.getElementById('outClient').innerText=client;document.getElementById('outItems').innerHTML=html;document.getElementById('outSub').innerText='₹'+sub;document.getElementById('outGstP').innerText=gstP;document.getElementById('outGstA').innerText='₹'+gstAmt.toFixed(0);document.getElementById('outDisc').innerText='₹'+disc;document.getElementById('outGrand').innerText='₹'+grand.toFixed(0);
-document.getElementById('bill').style.display='block';document.getElementById('bill').scrollIntoView({behavior:'smooth'});
-}
-// Default English, Hindi on toggle
-let cur=localStorage.getItem('kaagaz_lang')||'en';
-const dict={
-en:{
-h1:"Invoice Generator <br><span>GST Bill in 30 Seconds</span>",h1p:"For Shop, Freelancer, Business. Logo, GST, Discount, PDF Print - all offline.",
-l1:"Your Business Name",l2:"Logo Upload",l3:"Your GSTIN / Phone",l4:"Invoice No. & Date",l5:"Bill To (Client Name)",l6:"GST % & Discount ₹",
-itemsH:"Items",addBtn:"+ Add Item",btn:"✨ Generate Bill Preview →",htu:"✨ How to Use?",
-s1:"<b>Business + Client</b><br>Enter your shop and customer name",s2:"<b>Add Items</b><br>Enter product, qty, rate - auto total",s3:"<b>GST + Print</b><br>Apply GST % and Print / Save PDF",
-faqT:"❓ Invoice FAQs",q1:"Is GST bill created?",a1:"Yes, enter GST % - GST will be auto calculated and GSTIN will be printed on bill.",q2:"Is it free? Is data saved?",a2:"100% Free and Private. Everything happens in your browser. We don't store any bill. Works offline too.",q3:"How to save PDF?",a3:"After generating, click Print / Save PDF button - in Chrome select Destination as Save as PDF."
-},
-hi:{
-h1:"बिल जनरेटर <br><span>30 सेकंड में GST बिल</span>",h1p:"दुकान, फ्रीलांसर, बिजनेस के लिए। लोगो, GST, डिस्काउंट, PDF प्रिंट - सब ऑफलाइन।",
-l1:"आपकी दुकान का नाम",l2:"लोगो अपलोड",l3:"आपका GSTIN / फोन",l4:"बिल नंबर और तारीख",l5:"ग्राहक का नाम",l6:"GST % और डिस्काउंट ₹",
-itemsH:"सामान",addBtn:"+ सामान जोड़ें",btn:"✨ बिल का Preview देखें →",htu:"✨ कैसे इस्तेमाल करें?",
-s1:"<b>दुकान + ग्राहक</b><br>अपनी दुकान और ग्राहक का नाम लिखें",s2:"<b>सामान जोड़ें</b><br>प्रोडक्ट, मात्रा, रेट डालें - ऑटो टोटल",s3:"<b>GST + प्रिंट</b><br>GST % लगाएं और प्रिंट / PDF सेव करें",
-faqT:"❓ बिल से जुड़े सवाल",q1:"क्या GST बिल बनता है?",a1:"हाँ, GST % डालें - ऑटो GST कैलकुलेट होगा। GSTIN भी बिल पर प्रिंट होगा।",q2:"क्या ये फ्री है? डेटा सेव होता है?",a2:"100% फ्री और प्राइवेट। सब आपके ब्राउज़र में होता है। हम कोई बिल स्टोर नहीं करते। ऑफलाइन भी चलेगा।",q3:"PDF कैसे सेव करूं?",a3:"बिल बनाने के बाद Print / Save PDF बटन दबाएं - Chrome में Save as PDF सेलेक्ट करें।"
-}
-};
-function apply(){document.querySelectorAll('[data-i]').forEach(e=>{let k=e.getAttribute('data-i');if(dict[cur][k])e.innerHTML=dict[cur][k]});document.getElementById('langBtn').innerText=cur==='hi'?'English':'हिंदी'}
-function toggleLang(){cur=cur==='hi'?'en':'hi';localStorage.setItem('kaagaz_lang',cur);apply()}apply();
+const tools=[{name:"📏 Resize Photo",link:"/tools/resize.html"},{name:"🗜️ Compressor",link:"/tools/compressor.html"},{name:"📄 JPG to PDF",link:"/tools/jpg-to-pdf/"},{name:"🧾 Invoice Generator",link:"/tools/bill-generator.html"},{name:"📊 Attendance Calculator",link:"/tools/attendance-calculator.html"},{name:"🧮 GST Calculator",link:"/tools/gst-calculator.html"}];
+document.getElementById('leftTools').innerHTML=tools.map(t=>`<a class="d-tool" href="${t.link}">${t.name}</a>`).join('');
+const ld=document.getElementById('leftDrawer'),rd=document.getElementById('rightDrawer');
+document.getElementById('openLeft').onclick=()=>ld.style.display='block';
+document.getElementById('closeLeft').onclick=()=>ld.style.display='none';
+ld.onclick=e=>{if(e.target.id==='leftDrawer')ld.style.display='none'};
+document.getElementById('openRight').onclick=()=>rd.style.display='block';
+document.getElementById('closeRight').onclick=()=>rd.style.display='none';
+rd.onclick=e=>{if(e.target.id==='rightDrawer')rd.style.display='none'};
+</script>
+
+<script>
+(function(){
+  const $=id=>document.getElementById(id);
+  const STORAGE_KEY='kaagazpro_invoice_draft';
+  let state={logo:null,signature:null,gstType:'intra',items:[],totals:{}};
+
+  const toNum=v=>{let n=parseFloat(v);return isFinite(n)?n:0;};
+  const rnd=n=>Math.round((n+Number.EPSILON)*100)/100;
+  function formatINR(n){ n=rnd(n); let s=n.toFixed(2); let p=s.split('.'); let intPart=p[0]; let last3=intPart.slice(-3); let other=intPart.slice(0,-3); if(other) other=other.replace(/\B(?=(\d{2})+(?!\d))/g,','); return '₹'+(other?other+','+last3:last3)+'.'+p[1]; }
+  function formatShort(n){ n=rnd(n); let s=n.toFixed(2); if(s.endsWith('.00')) return '₹'+s.slice(0,-3).replace(/\B(?=(\d{2})+(?!\d))/g,',').replace(/^,/,'').replace(/(\d)(?=(\d{3})+$)/,'$1,').replace(/\B(?=(\d{2})+(?!\d))/g,','); return formatINR(n); }
+
+  function amountInWords(num){
+    num=Math.round(num); if(num===0) return 'Rupees Zero Only';
+    const a=['','One','Two','Three','Four','Five','Six','Seven','Eight','Nine','Ten','Eleven','Twelve','Thirteen','Fourteen','Fifteen','Sixteen','Seventeen','Eighteen','Nineteen'];
+    const b=['','','Twenty','Thirty','Forty','Fifty','Sixty','Seventy','Eighty','Ninety'];
+    function inW(n){ if(n<20) return a[n]; if(n<100) return b[Math.floor(n/10)]+(n%10?' '+a[n%10]:''); if(n<1000) return a[Math.floor(n/100)]+' Hundred'+(n%100?' '+inW(n%100):''); return ''; }
+    let str=''; let crore=Math.floor(num/10000000); num%=10000000;
+    let lakh=Math.floor(num/100000); num%=100000;
+    let thou=Math.floor(num/1000); num%=1000;
+    if(crore) str+=inW(crore)+' Crore '; if(lakh) str+=inW(lakh)+' Lakh '; if(thou) str+=inW(thou)+' Thousand '; if(num) str+=inW(num)+' ';
+    return 'Rupees '+str.trim()+' Only';
+  }
+
+  function createItemRow(d={}){
+    const row=document.createElement('div');
+    row.className='inv-row';
+    row.innerHTML=`
+      <div style="display:grid"><input class="itemName" placeholder="Product / Service Name" value="${d.name||''}"><input class="itemHsn" placeholder="HSN/SAC" value="${d.hsn||''}" style="margin-top:4px;font-size:10px"></div>
+      <input type="number" class="itemQty" value="${d.qty??1}" min="0" step="0.01">
+      <input class="itemUnit" value="${d.unit||'pcs'}">
+      <input type="number" class="itemRate" value="${d.rate??0}" min="0" step="0.01">
+      <input type="number" class="itemDiscount" value="${d.discount??0}" min="0" max="100" step="0.01">
+      <input type="number" class="itemGst" value="${d.gst??18}" min="0" max="100" step="0.01">
+      <input class="itemAmount" readonly style="background:#f8fafc;font-weight:800">
+      <div class="del removeItemBtn">✕</div>
+    `;
+    $('itemsContainer').appendChild(row);
+    row.querySelectorAll('input').forEach(i=>i.addEventListener('input',recalc));
+    row.querySelector('.removeItemBtn').onclick=()=>{ if(document.querySelectorAll('.inv-row').length<=1){ alert('At least one item required'); return;} row.remove(); recalc(); };
+    recalc();
+  }
+
+  function recalc(){
+    let subtotal=0,totalDisc=0,taxable=0,totalGst=0;
+    let items=[];
+    document.querySelectorAll('.inv-row').forEach(r=>{
+      const qty=toNum(r.querySelector('.itemQty').value);
+      const rate=toNum(r.querySelector('.itemRate').value);
+      const discP=Math.min(100,Math.max(0,toNum(r.querySelector('.itemDiscount').value)));
+      const gstP=Math.min(100,Math.max(0,toNum(r.querySelector('.itemGst').value)));
+      const sub=rnd(qty*rate);
+      const discAmt=rnd(sub*discP/100);
+      const taxAble=rnd(sub-discAmt);
+      const gstAmt=rnd(taxAble*gstP/100);
+      const itemTotal=rnd(taxAble+gstAmt);
+      r.querySelector('.itemAmount').value='₹'+itemTotal.toFixed(2);
+      if(qty<=0 && r.querySelector('.itemName').value.trim()!==''){ r.querySelector('.itemQty').style.borderColor='#ef4444'; } else { r.querySelector('.itemQty').style.borderColor='#cbd5e1'; }
+      subtotal+=sub; totalDisc+=discAmt; taxable+=taxAble; totalGst+=gstAmt;
+      items.push({name:r.querySelector('.itemName').value,hsn:r.querySelector('.itemHsn').value,qty,unit:r.querySelector('.itemUnit').value,rate,discount:discP,gst:gstP,sub,discAmt,taxAble,gstAmt,itemTotal});
+    });
+    const isIntra=document.querySelector('input[name="gstType"]:checked')?.value==='intra';
+    let cgst=0,sgst=0,igst=0;
+    if(isIntra){ cgst=rnd(totalGst/2); sgst=rnd(totalGst/2); $('cgstLine').style.display='flex'; $('sgstLine').style.display='flex'; $('igstLine').style.display='none'; }
+    else { igst=rnd(totalGst); $('cgstLine').style.display='none'; $('sgstLine').style.display='none'; $('igstLine').style.display='flex'; }
+    let grand=rnd(taxable+totalGst);
+    let roundOff=0;
+    if($('roundOffToggle').checked){ let rounded=Math.round(grand); roundOff=rnd(rounded-grand); grand=rounded; }
+    $('subtotalEl').textContent=formatINR(subtotal);
+    $('discountTotalEl').textContent='- '+formatINR(totalDisc);
+    $('taxableEl').textContent=formatINR(taxable);
+    $('cgstEl').textContent=formatINR(cgst);
+    $('sgstEl').textContent=formatINR(sgst);
+    $('igstEl').textContent=formatINR(igst);
+    $('roundOffEl').textContent=formatINR(roundOff);
+    $('grandTotalEl').textContent=formatINR(grand);
+    $('amountInWordsEl').textContent=amountInWords(grand);
+    $('downloadPdfBtn').textContent='📄 Download PDF - invoice-'+($('invNumber').value||'INV-001')+'.pdf';
+    state.items=items; state.totals={subtotal,totalDisc,taxable,cgst,sgst,igst,roundOff,grand,isIntra,totalGst};
+    updatePreview();
+  }
+
+  function updatePreview(){
+    if(!$('prevBName')) return;
+    $('prevBName').textContent=$('bName').value||'Your Business';
+    $('prevBAddr').textContent=$('bAddr').value||'';
+    $('prevBGstin').textContent=$('bGstin').value? 'GSTIN: '+$('bGstin').value+' | '+$('bPhone').value : $('bPhone').value;
+    $('prevInvNo').textContent=$('invNumber').value||'INV-001';
+    $('prevInvDate').textContent='Date: '+($('invDate').value||'')+' | Due: '+($('dueDate').value||'');
+    $('prevPlace').textContent='Place: '+($('placeOfSupply').value||'');
+    $('prevCName').textContent=$('cName').value||'Customer';
+    $('prevCAddr').textContent=$('cAddr').value||'';
+    $('prevCGstin').textContent=$('cGstin').value? 'GSTIN: '+$('cGstin').value : '';
+    if(state.logo){ $('prevLogo').src=state.logo; $('prevLogo').style.display='block'; $('logoPreview').src=state.logo; $('logoPreview').style.display='block'; $('logoRemoveBtn').style.display='block'; }
+    const tb=$('prevItems'); tb.innerHTML=state.items.map(it=>`<tr><td style="border:1px solid #e2e8f0;padding:6px">${it.name}<small> ${it.hsn||''}</small></td><td style="border:1px solid #e2e8f0;padding:6px;text-align:center">${it.qty} ${it.unit}</td><td style="border:1px solid #e2e8f0;padding:6px;text-align:right">₹${it.rate}</td><td style="border:1px solid #e2e8f0;padding:6px;text-align:right">₹${it.itemTotal}</td></tr>`).join('');
+    $('prevGrand').textContent=$('grandTotalEl').textContent;
+  }
+
+  function handleImage(input,type){
+    const file=input.files[0]; if(!file) return;
+    if(!['image/jpeg','image/png','image/jpg'].includes(file.type)) { alert('Only JPG/JPEG/PNG allowed'); return; }
+    if(file.size>2*1024*1024){ alert('Image <2MB only'); return; }
+    const r=new FileReader(); r.onload=e=>{ if(type==='logo'){ state.logo=e.target.result; } else { state.signature=e.target.result; $('signPreview').src=state.signature; $('signPreview').style.display='block'; } recalc(); }; r.readAsDataURL(file);
+  }
+
+  function getData(){
+    return {
+      bName:$('bName').value,bAddr:$('bAddr').value,bGstin:$('bGstin').value,bPhone:$('bPhone').value,
+      invNumber:$('invNumber').value,invDate:$('invDate').value,dueDate:$('dueDate').value,placeOfSupply:$('placeOfSupply').value,
+      cName:$('cName').value,cAddr:$('cAddr').value,cGstin:$('cGstin').value,cPhone:$('cPhone').value,
+      notes:$('notesEl').value,terms:$('termsEl').value,signName:$('signNameEl').value,
+      gstType:document.querySelector('input[name="gstType"]:checked').value,roundOff:$('roundOffToggle').checked,
+      items:state.items.map(i=>({name:i.name,hsn:i.hsn,qty:i.qty,unit:i.unit,rate:i.rate,discount:i.discount,gst:i.gst})),
+      logo:state.logo,signature:state.signature
+    };
+  }
+
+  function saveDraft(){ localStorage.setItem(STORAGE_KEY,JSON.stringify(getData())); alert('Draft saved in browser (localStorage)'); }
+  function loadDraft(){
+    const raw=localStorage.getItem(STORAGE_KEY); if(!raw){ alert('No draft found'); return; }
+    const d=JSON.parse(raw);
+    $('bName').value=d.bName||''; $('bAddr').value=d.bAddr||''; $('bGstin').value=d.bGstin||''; $('bPhone').value=d.bPhone||'';
+    $('invNumber').value=d.invNumber||'INV-001'; $('invDate').value=d.invDate||''; $('dueDate').value=d.dueDate||''; $('placeOfSupply').value=d.placeOfSupply||'';
+    $('cName').value=d.cName||''; $('cAddr').value=d.cAddr||''; $('cGstin').value=d.cGstin||''; $('cPhone').value=d.cPhone||'';
+    $('notesEl').value=d.notes||''; $('termsEl').value=d.terms||''; $('signNameEl').value=d.signName||'';
+    $('roundOffToggle').checked=!!d.roundOff;
+    document.querySelector(`input[name="gstType"][value="${d.gstType}"]`).checked=true;
+    state.logo=d.logo||null; state.signature=d.signature||null;
+    $('itemsContainer').querySelectorAll('.inv-row').forEach(e=>e.remove());
+    (d.items||[]).forEach(it=>createItemRow(it));
+    if((d.items||[]).length===0) createItemRow({name:'Product A',qty:2,rate:5000,gst:18});
+    recalc(); alert('Draft loaded');
+  }
+
+  async function downloadPDF(){
+    const invNo=$('invNumber').value.trim(); if(!invNo){ alert('Invoice number required'); return; }
+    const {jsPDF}=window.jspdf; const doc=new jsPDF('p','mm','a4'); let y=12;
+    if(state.logo){ try{ doc.addImage(state.logo,'PNG',12,y,18,18);}catch{}}
+    doc.setFont('helvetica','bold'); doc.setFontSize(13); doc.text($('bName').value||'Your Business', state.logo?34:12, y+6);
+    doc.setFontSize(8); doc.setFont('helvetica','normal'); doc.text(($('bAddr').value||'').substring(0,90),12,y+12); doc.text(`GSTIN: ${$('bGstin').value} | ${$('bPhone').value}`,12,y+16);
+    doc.setFontSize(11); doc.setFont('helvetica','bold'); doc.text(`INVOICE ${invNo}`,198,y+6,{align:'right'}); doc.setFontSize(8); doc.setFont('helvetica','normal'); doc.text(`Date:${$('invDate').value} Due:${$('dueDate').value}`,198,y+12,{align:'right'}); y+=22; doc.line(12,y,198,y); y+=6;
+    doc.setFontSize(9); doc.setFont('helvetica','bold'); doc.text('Bill To:',12,y); y+=5; doc.setFont('helvetica','normal'); doc.text($('cName').value||'Customer',12,y); y+=4; doc.text(($('cAddr').value||'').substring(0,90),12,y); y+=6;
+    // table header
+    doc.setFont('helvetica','bold'); doc.setFontSize(8); doc.text('Item',12,y); doc.text('Qty',80,y); doc.text('Rate',100,y); doc.text('Disc%',125,y); doc.text('GST%',145,y); doc.text('Amount',198,y,{align:'right'}); y+=3; doc.line(12,y,198,y); y+=5;
+    doc.setFont('helvetica','normal');
+    state.items.forEach(it=>{ if(y>265){ doc.addPage(); y=12; } doc.text((it.name||'-').substring(0,38),12,y); doc.text(`${it.qty} ${it.unit}`,80,y); doc.text(`${it.rate}`,100,y); doc.text(`${it.discount}%`,125,y); doc.text(`${it.gst}%`,145,y); doc.text(`Rs ${it.itemTotal}`,198,y,{align:'right'}); y+=6; });
+    y+=2; doc.line(12,y,198,y); y+=6;
+    const t=state.totals;
+    function rLine(l,v){ doc.text(l,130,y); doc.text(v,198,y,{align:'right'}); y+=5; }
+    doc.setFontSize(9); rLine('Subtotal:', 'Rs '+t.subtotal.toFixed(2)); rLine('Discount:', '- Rs '+t.totalDisc.toFixed(2)); rLine('Taxable:', 'Rs '+t.taxable.toFixed(2));
+    if(t.isIntra){ rLine('CGST:', 'Rs '+t.cgst.toFixed(2)); rLine('SGST:', 'Rs '+t.sgst.toFixed(2)); } else { rLine('IGST:', 'Rs '+t.igst.toFixed(2)); }
+    if(t.roundOff) rLine('Round Off:', 'Rs '+t.roundOff.toFixed(2));
+    doc.setFont('helvetica','bold'); rLine('Grand Total:', 'Rs '+t.grand.toFixed(2));
+    y+=2; doc.setFont('helvetica','normal'); doc.setFontSize(8); doc.text(amountInWords(t.grand),12,y,{maxWidth:186}); y+=10;
+    if($('notesEl').value) { doc.text('Notes: '+$('notesEl').value,12,y,{maxWidth:186}); y+=6; }
+    if($('termsEl').value) { doc.text('Terms: '+$('termsEl').value,12,y,{maxWidth:186}); y+=6; }
+    if($('signNameEl').value){ doc.text(`For ${$('bName').value}`,198,y,{align:'right'}); y+=10; if(state.signature){ try{ doc.addImage(state.signature,'PNG',168,y,20,10);}catch{}} doc.text($('signNameEl').value,198,y+12,{align:'right'}); }
+    doc.save(`invoice-${invNo}.pdf`);
+  }
+
+  function init(){
+    $('invDate').valueAsDate=new Date(); const d=new Date(); d.setDate(d.getDate()+7); $('dueDate').valueAsDate=d;
+    createItemRow({name:'Product A',qty:2,rate:5000,discount:0,gst:18,unit:'pcs'});
+    ['bName','bAddr','bGstin','bPhone','invNumber','invDate','dueDate','placeOfSupply','cName','cAddr','cGstin','cPhone','notesEl','termsEl','signNameEl'].forEach(id=>{ if($(id)) $(id).addEventListener('input',recalc); });
+    $('addItemBtn').onclick=()=>createItemRow();
+    $('logoInput').onchange=e=>handleImage(e.target,'logo');
+    $('logoRemoveBtn').onclick=()=>{ state.logo=null; $('logoPreview').style.display='none'; $('logoInput').value=''; $('logoRemoveBtn').style.display='none'; recalc(); };
+    $('signInput').onchange=e=>handleImage(e.target,'sign');
+    document.querySelectorAll('input[name="gstType"]').forEach(r=>r.addEventListener('change',recalc));
+    $('roundOffToggle').addEventListener('change',recalc);
+    $('saveDraftBtn').onclick=saveDraft;
+    $('loadDraftBtn').onclick=loadDraft;
+    $('deleteDraftBtn').onclick=()=>{ if(confirm('Delete draft?')){ localStorage.removeItem(STORAGE_KEY); alert('Deleted'); } };
+    $('resetBtn').onclick=()=>{ if(confirm('Reset invoice? All data cleared')){ localStorage.removeItem(STORAGE_KEY); location.reload(); } };
+    $('downloadPdfBtn').onclick=downloadPDF;
+    $('printBtn').onclick=()=>window.print();
+    $('shareBtn').onclick=async()=>{
+      const t=state.totals; const txt=`Invoice generated using KaagazPro\nInvoice No: ${$('invNumber').value}\nTotal: ${$('grandTotalEl').textContent}\nDate: ${$('invDate').value}\n${location.href}`;
+      if(navigator.share){ try{ await navigator.share({title:`Invoice ${$('invNumber').value}`,text:txt}); return; }catch{} }
+      try{ await navigator.clipboard.writeText(txt); alert('Invoice details copied'); }catch{ prompt('Copy:',txt); }
+    };
+    recalc();
+  }
+  document.readyState==='loading'?document.addEventListener('DOMContentLoaded',init):init();
+})();
 </script>
 </body>
 </html>
