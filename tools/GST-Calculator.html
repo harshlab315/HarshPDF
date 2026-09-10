@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1, maximum-scale=1">
+<title>GST Calculator - Calculate CGST, SGST & GST Online | KaagazPro</title>
+<meta name="description" content="Calculate GST, CGST, SGST and total amount instantly with the free KaagazPro GST Calculator. Supports GST inclusive and exclusive calculations.">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6640527517870664" crossorigin="anonymous"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Plus+Jakarta+Sans:wght@700;800&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box}html,body{overflow-x:hidden;width:100%}body{margin:0;background:#f6f7fb;color:#0f172a;font-family:'Inter',sans-serif}
+.header{position:sticky;top:0;z-index:100;background:#fff;border-bottom:1px solid #e2e8f0;display:flex;justify-content:space-between;align-items:center;height:58px;padding:0 12px;box-shadow:0 2px 12px rgba(0,0,0,.04)}
+.header-left{display:flex;align-items:center;gap:12px}
+.logo{font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;font-size:20px;letter-spacing:-.5px;display:flex;align-items:center;gap:2px}
+.logo.pro{background:linear-gradient(90deg,#4f46e5,#06b6d4);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.logo-badge{font-size:8px;background:#0f172a;color:#fff;padding:2px 6px;border-radius:20px;margin-left:5px;font-weight:700}
+.icon-btn{width:42px;height:42px;display:grid;place-items:center;border-radius:12px;cursor:pointer;flex-shrink:0}.icon-btn:hover{background:#f1f5f9}
+.dots3{display:flex;flex-direction:column;gap:4px}.dots3 span{width:5px;height:5px;background:#0f172a;border-radius:50%;display:block}
+.hamburger{display:flex;flex-direction:column;gap:5px;width:20px}.hamburger span{display:block;height:2.5px;background:#0f172a;border-radius:10px}
+#leftDrawer,#rightDrawer{display:none;position:fixed;inset:0;z-index:9999;background:rgba(15,23,42,.55)}
+.left-box{position:absolute;left:0;top:0;width:92%;max-width:380px;height:100%;background:#fff;overflow:auto}
+.right-box{position:absolute;right:0;top:0;width:92%;max-width:360px;height:100%;background:#fff;overflow:auto}
+.d-tool{display:flex;gap:8px;padding:11px 14px;border-radius:10px;text-decoration:none;color:#334155;font-size:13px;font-weight:600;margin:4px 10px}.d-tool:hover{background:#f1f5f9}
+.d-link{display:block;padding:12px 14px;text-decoration:none;color:#334155;font-weight:600;margin:4px 10px;border-radius:10px}.d-link:hover{background:#f1f5f9}
+.wrap{max-width:700px;margin:0 auto;padding:10px;width:100%;overflow:hidden}
+.book{background:#fff;border:1px solid #e2e8f0;border-radius:20px;padding:14px;box-shadow:0 8px 28px rgba(0,0,0,.06);width:100%;overflow:hidden}
+.badges{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:8px}.badge{font-size:10.5px;font-weight:700;padding:5px 10px;border-radius:20px;border:1px solid #e2e8f0}
+.title{font-family:'Plus Jakarta Sans';font-size:24px;font-weight:800;line-height:1.1;margin:0}.grad{background:linear-gradient(90deg,#4f46e5,#06b6d4);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.yellow{background:linear-gradient(90deg,#fef9c3,#fde047);border:1px dashed #eab308;padding:10px;border-radius:12px;text-align:center;font-weight:700;font-size:12px;margin:12px 0}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:12px 0;width:100%}
+.row label{font-size:11px;font-weight:800;color:#334155;display:flex;flex-direction:column;gap:5px;width:100%;min-width:0}
+.row input,.row select{padding:11px;border:1.5px solid #cbd5e1;border-radius:10px;font-weight:600;background:#fff;width:100%;font-size:14px}
+@media(max-width:600px){.row{grid-template-columns:1fr}.wrap{padding:8px}.book{padding:12px}}
+.btn-green{width:100%;background:#0f172a;color:#fff;border:0;padding:15px;border-radius:12px;font-weight:800;font-size:15px;cursor:pointer;box-shadow:0 6px 16px rgba(15,23,42,.2)}
+.btn-outline{width:100%;background:#fff;color:#0f172a;border:1.5px solid #cbd5e1;padding:12px;border-radius:12px;font-weight:700;font-size:13px;cursor:pointer;margin-top:8px}
+.hidden{display:none!important}
+.sec{max-width:700px;margin:24px auto;padding:0 10px;width:100%}
+.step{display:flex;gap:12px;align-items:flex-start;background:#fff;border:1px solid #e2e8f0;border-radius:14px;padding:14px;margin:8px 0;width:100%}
+.num{width:32px;height:32px;border-radius:10px;display:grid;place-items:center;font-weight:800;color:#fff;flex-shrink:0}
+.quick-card{background:#fff;border:1px solid #e2e8f0;border-radius:14px;padding:14px;margin:8px 0;width:100%}
+.quick-card a{display:inline-block;background:#f1f5f9;border:1px solid #e2e8f0;padding:6px 12px;border-radius:20px;font-size:11px;font-weight:600;color:#334155;text-decoration:none;margin:4px}
+.pro-footer{background:#0f172a;color:#94a3b8;padding:28px 14px 12px;margin-top:26px}.foot-grid{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1.2fr 1fr 1fr 1fr;gap:20px}@media(max-width:800px){.foot-grid{grid-template-columns:1fr 1fr}}@media(max-width:500px){.foot-grid{grid-template-columns:1fr;text-align:center}}
+.pro-footer h4{color:#fff;font-size:11px;margin:0 0 10px;letter-spacing:.08em}.pro-footer a{color:#94a3b8;text-decoration:none;font-size:12px;display:block;margin:6px 0}.pro-footer a:hover{color:#fff}
+.att-targets{display:flex;flex-wrap:wrap;gap:6px;margin-top:6px}
+.att-targets button{padding:7px 12px;border-radius:20px;border:1px solid #e2e8f0;background:#f8fafc;font-size:12px;font-weight:700;cursor:pointer}
+.att-targets button.active{background:#0f172a;color:#fff;border-color:#0f172a}
+.att-error{display:none;background:#fff1f2;border:1px solid #fecdd3;color:#be123c;padding:10px 12px;border-radius:10px;font-size:12px;font-weight:600;margin-top:12px}
+.att-results{display:none;margin-top:14px;background:#f8fafc;border:1px solid #e2e8f0;border-radius:12px;padding:12px}
+.att-results.show{display:block}
+.att-main{text-align:center;padding:12px 0;border-bottom:1px dashed #e2e8f0;margin-bottom:10px}
+.att-main.perc{font-size:28px;font-weight:800;line-height:1.1}
+.att-card{background:#fff;border:1px solid #e2e8f0;border-radius:10px;padding:12px;margin-top:8px;display:flex;justify-content:space-between;align-items:center;font-size:13px}
+.att-card span{font-weight:800}
+.att-card.total{background:#0f172a;color:#fff;border-color:#0f172a}
+.att-card.total span{color:#fff}
+</style>
+</head>
+<body>
+
+<nav class="header">
+<div class="header-left">
+<div class="icon-btn" id="openLeft"><div class="dots3"><span></span><span></span><span></span></div></div>
+<div class="logo"><span style="color:#0f172a">Kaagaz</span><span class="pro">Pro</span><span class="logo-badge">PRO</span></div>
+</div>
+<div class="icon-btn" id="openRight"><div class="hamburger"><span></span><span></span><span></span></div></div>
+</nav>
+
+<div id="leftDrawer"><div class="left-box"><div style="display:flex;justify-content:space-between;align-items:center;padding:18px;border-bottom:1px solid #e2e8f0"><b style="font-size:11px;color:#94a3b8;letter-spacing:1px">ALL TOOLS</b><span id="closeLeft" style="cursor:pointer;font-size:22px">✕</span></div><div id="leftTools"></div></div></div>
+<div id="rightDrawer"><div class="right-box"><div style="display:flex;justify-content:space-between;padding:16px;border-bottom:1px solid #e2e8f0"><b>MENU</b><span id="closeRight" style="cursor:pointer">✕</span></div><a class="d-link" href="/">Home</a><a class="d-link" href="/about.html">About</a><a class="d-link" href="/contact.html">Contact</a><a class="d-link" href="/privacy-policy.html">Privacy</a><a class="d-link" href="/terms.html">Terms</a><a class="d-link" href="/disclaimer.html">Disclaimer</a></div></div>
+
+<div class="wrap">
+<div class="book">
+<div class="badges"><span class="badge" style="background:#dcfce7">✓ Exact Formula</span><span class="badge" style="background:#dbeafe">🔒 Private & Offline</span><span class="badge" style="background:#f3e8ff">⚡ No Backend</span></div>
+<h1 class="title">GST <span class="grad">Calculator</span></h1>
+<p style="color:#64748b;font-size:12.5px;margin:6px 0 0">Calculate GST, CGST, SGST and total amount instantly.</p>
+<div class="yellow">👉 Choose Exclusive / Inclusive - Get GST, CGST, SGST instantly!</div>
+
+<div style="margin:12px 0">
+<label style="font-size:11px;font-weight:800;color:#334155">Calculation Mode</label>
+<div class="att-targets" id="modeBtns">
+<button data-mode="exclusive" class="active">GST Exclusive (Add GST)</button>
+<button data-mode="inclusive">GST Inclusive (Extract GST)</button>
+</div>
+</div>
+
+<div class="row" id="exRow">
+<label>Original Amount (₹)<input type="number" id="gstAmountEx" placeholder="e.g. 10000" inputmode="decimal" min="0" step="0.01"></label>
+<label style="display:none" id="dummy1"><input></label>
+</div>
+
+<div class="row" id="inRow" style="display:none">
+<label>Final Amount Including GST (₹)<input type="number" id="gstAmountIn" placeholder="e.g. 11800" inputmode="decimal" min="0" step="0.01"></label>
+<label style="display:none"><input></label>
+</div>
+
+<div style="margin:12px 0">
+<label style="font-size:11px;font-weight:800;color:#334155">GST Rate %</label>
+<div class="att-targets" id="gstRateBtns">
+<button data-val="0">0%</button>
+<button data-val="5">5%</button>
+<button data-val="12">12%</button>
+<button data-val="18" class="active">18%</button>
+<button data-val="28">28%</button>
+<button data-val="custom">Custom</button>
+</div>
+<div id="customInput" style="display:none;margin-top:8px"><input type="number" id="gstCustom" placeholder="Enter custom GST % e.g. 7.5" style="width:100%;padding:11px;border:1.5px solid #cbd5e1;border-radius:10px;font-weight:600" min="0" max="100" step="0.01"></div>
+</div>
+
+<button class="btn-green" id="gstCalcBtn">Calculate GST</button>
+<button class="btn-outline" id="gstResetBtn">↺ Reset</button>
+
+<div class="att-error" id="gstError"></div>
+
+<div class="att-results" id="gstResults">
+<div class="att-main">
+<div class="perc" id="gstPerc">₹0</div>
+<div style="font-size:12px;color:#64748b;margin-top:4px" id="gstSub">GST Exclusive • 18%</div>
+</div>
+<div class="att-card"><b>Original / Final Input</b><span id="rInput">₹0</span></div>
+<div class="att-card"><b>GST Rate</b><span id="rRate">18%</span></div>
+<div class="att-card"><b>GST Amount</b><span id="rGst" style="color:#4f46e5">₹0</span></div>
+<div class="att-card"><b>CGST (½)</b><span id="rCgst">₹0</span></div>
+<div class="att-card"><b>SGST (½)</b><span id="rSgst">₹0</span></div>
+<div class="att-card total"><b id="rFinalLabel">Final Amount</b><span id="rFinal">₹0</span></div>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:10px">
+<button class="btn-outline" id="saveBtn" style="margin:0">💾 Save PNG</button>
+<button class="btn-outline" id="shareBtn" style="margin:0">📤 Share</button>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="sec">
+<h2 style="font-family:'Plus Jakarta Sans'">How to Use?</h2>
+<div class="step"><div class="num" style="background:#0f172a">1</div><div><b>Choose Mode</b><p style="font-size:12px;color:#475569;margin:4px 0 0">Exclusive = Add GST to amount. Inclusive = Extract GST from total.</p></div></div>
+<div class="step"><div class="num" style="background:#4f46e5">2</div><div><b>Enter Amount & Rate</b><p style="font-size:12px;color:#475569;margin:4px 0 0">Select 0%, 5%, 12%, 18%, 28% or Custom like 7.5%.</p></div></div>
+<div class="step"><div class="num" style="background:#16a34a">3</div><div><b>Calculate</b><p style="font-size:12px;color:#475569;margin:4px 0 0">Tap Calculate - see GST, CGST, SGST and Final/Original instantly. Save or Share result.</p></div></div>
+</div>
+
+<div class="sec">
+<h2 style="font-family:'Plus Jakarta Sans'">GST FAQ - Simple Answers</h2>
+<div class="step" style="background:linear-gradient(135deg,#eef2ff,#e0e7ff)"><div class="num" style="background:#4f46e5">?</div><div><b>What is GST?</b><p style="font-size:12px;color:#475569;margin:4px 0 0">GST is Goods and Services Tax. It's a single tax on goods and services, e.g. 18% on base price.</p></div></div>
+<div class="step"><div class="num" style="background:#16a34a">?</div><div><b>How is GST calculated?</b><p style="font-size:12px;color:#475569;margin:4px 0 0"><b>Exclusive:</b> GST = Amount × Rate / 100. Total = Amount + GST.<br><b>Inclusive:</b> Original = Total × 100 / (100+Rate). GST = Total - Original.</p></div></div>
+<div class="step"><div class="num" style="background:#f59e0b">?</div><div><b>What is CGST and SGST?</b><p style="font-size:12px;color:#475569;margin:4px 0 0">Total GST is divided into two halves for same-state sale. CGST = GST/2 goes to Central Govt. SGST = GST/2 goes to State Govt. For other state sale, IGST = full GST.</p></div></div>
+<div class="step"><div class="num" style="background:#06b6d4">?</div><div><b>Example: ₹10,000 with 18%?</b><p style="font-size:12px;color:#475569;margin:4px 0 0">GST = 10000×18/100 = ₹1,800. CGST = ₹900, SGST = ₹900. Total = ₹11,800.</p></div></div>
+<div class="step"><div class="num" style="background:#ef4444">?</div><div><b>How to calculate inclusive price? (₹11,800 inclusive 18%)</b><p style="font-size:12px;color:#475569;margin:4px 0 0">Original = 11800×100/118 = ₹10,000. GST = 11800-10000 = ₹1,800.</p></div></div>
+</div>
+
+<div class="sec">
+<h2 style="font-family:'Plus Jakarta Sans'">Related Tools</h2>
+<div class="quick-card">
+<a href="/tools/resize.html">Resize Photo</a>
+<a href="/tools/compressor.html">Image Compressor</a>
+<a href="/tools/passport.html">Passport Photo Maker</a>
+<a href="/tools/jpg-to-pdf/">JPG to PDF</a>
+<a href="/tools/percentage-calculator.html">Percentage Calculator</a>
+<a href="/tools/emi-calculator/">EMI Calculator</a>
+</div>
+</div>
+
+<footer class="pro-footer">
+<div class="foot-grid">
+<div><div style="color:#fff;font-weight:800;font-size:18px">KaagazPro</div><p style="font-size:11.5px">Offline-first toolkit. Files stay on your device. No watermark, free forever. Calculations happen in your browser.</p></div>
+<div><h4>POPULAR TOOLS</h4><a href="/tools/compressor.html">Compressor</a><a href="/tools/resize.html">Resize Photo</a><a href="/tools/jpg-to-pdf/">JPG to PDF</a><a href="/tools/passport.html">Passport Photo</a><a href="/tools/merge-pdf.html">Merge PDF</a></div>
+<div><h4>LEGAL & TRUST</h4><a href="/privacy-policy.html">Privacy Policy</a><a href="/terms.html">Terms & Conditions</a><a href="/disclaimer.html">Disclaimer</a><a href="/about.html">About Us</a><a href="/contact.html">Contact</a></div>
+<div><h4>WHY KAAGAZPRO?</h4><p style="font-size:11px;line-height:1.8">✔ Exact Formula<br>✔ Private & Offline<br>✔ No Backend<br>✔ Free Forever</p></div>
+</div>
+<div style="border-top:1px solid #1e293b;margin-top:20px;padding-top:12px;text-align:center;font-size:10px;color:#6b7280">© 2026 KaagazPro • Private by design • Made for Bharat</div>
+</footer>
+
+<canvas id="pngCanvas" style="display:none"></canvas>
+
+<script>
+const tools=[{name:"📏 Resize Photo",link:"/tools/resize.html"},{name:"🗜️ Compressor",link:"/tools/compressor.html"},{name:"📄 JPG to PDF",link:"/tools/jpg-to-pdf/"},{name:"🖼️ PDF to JPG",link:"/tools/pdf-to-jpg/"},{name:"📝 PDF to Word",link:"/tools/pdf-to-word/"},{name:"📃 Word to PDF",link:"/tools/word-to-pdf/"},{name:"🆔 Aadhaar Resize",link:"/tools/aadhaar.html"},{name:"🖌️ BG Remover",link:"/tools/bg-remover.html"},{name:"🔍 DPI Changer",link:"/tools/dpi.html"},{name:"🔗 Merge PDF",link:"/tools/merge-pdf.html"},{name:"🎓 Passport Photo",link:"/tools/passport.html"},{name:"✍️ Signature Resize",link:"/tools/signature.html"},{name:"📊 Attendance Calculator",link:"/tools/attendance-calculator.html"},{name:"🧮 GST Calculator",link:"/tools/gst-calculator.html"}];
+document.getElementById('leftTools').innerHTML=tools.map(t=>`<a class="d-tool" href="${t.link}">${t.name}</a>`).join('');
+const ld=document.getElementById('leftDrawer'),rd=document.getElementById('rightDrawer');
+document.getElementById('openLeft').onclick=()=>ld.style.display='block';
+document.getElementById('closeLeft').onclick=()=>ld.style.display='none';
+ld.onclick=e=>{if(e.target.id==='leftDrawer')ld.style.display='none'};
+document.getElementById('openRight').onclick=()=>rd.style.display='block';
+document.getElementById('closeRight').onclick=()=>rd.style.display='none';
+rd.onclick=e=>{if(e.target.id==='rightDrawer')rd.style.display='none'};
+
+(function(){
+  const exInput = document.getElementById('gstAmountEx');
+  const inInput = document.getElementById('gstAmountIn');
+  const exRow = document.getElementById('exRow');
+  const inRow = document.getElementById('inRow');
+  const modeBtns = document.querySelectorAll('#modeBtns button');
+  const rateBtns = document.querySelectorAll('#gstRateBtns button');
+  const customWrap = document.getElementById('customInput');
+  const customEl = document.getElementById('gstCustom');
+  const errorEl = document.getElementById('gstError');
+  const resultsEl = document.getElementById('gstResults');
+  let mode='exclusive', rate=18;
+
+  modeBtns.forEach(b=>{
+    b.addEventListener('click', ()=>{
+      modeBtns.forEach(x=>x.classList.remove('active'));
+      b.classList.add('active');
+      mode=b.dataset.mode;
+      if(mode==='exclusive'){ exRow.style.display='grid'; inRow.style.display='none'; }
+      else { exRow.style.display='none'; inRow.style.display='grid'; }
+    });
+  });
+
+  rateBtns.forEach(b=>{
+    b.addEventListener('click', ()=>{
+      rateBtns.forEach(x=>x.classList.remove('active'));
+      b.classList.add('active');
+      if(b.dataset.val==='custom'){ customWrap.style.display='block'; customEl.focus(); rate='custom'; }
+      else { customWrap.style.display='none'; rate=parseFloat(b.dataset.val); }
+    });
+  });
+  customEl.addEventListener('input', ()=>{ rate=parseFloat(customEl.value); });
+
+  function showError(m){ errorEl.textContent=m; errorEl.style.display='block'; resultsEl.classList.remove('show'); }
+  function hideError(){ errorEl.style.display='none'; }
+  function rnd(n){ return Math.round((n+Number.EPSILON)*100)/100; }
+  function fmt(n){
+    const r=rnd(n);
+    let s=r.toFixed(2);
+    if(s.endsWith('.00')) s=String(Math.round(r));
+    else s=Number(s).toString();
+    const parts=s.split('.');
+    let intPart=parts[0];
+    let dec=parts[1]?'.'+parts[1]:'';
+    if(intPart.length>3){
+      const last3=intPart.slice(-3);
+      let other=intPart.slice(0,-3);
+      other=other.replace(/\B(?=(\d{2})+(?!\d))/g,',');
+      intPart=other+','+last3;
+    }
+    return '₹'+intPart+dec;
+  }
+
+  function calculate(){
+    hideError();
+    let amt = mode==='exclusive'? parseFloat(exInput.value) : parseFloat(inInput.value);
+    let r = rate;
+    if(isNaN(amt) || amt<0) return showError(mode==='exclusive'?'Please enter original amount.':'Please enter final amount (including GST).');
+    if(isNaN(r) || r<0) return showError('Please enter valid GST rate.');
+    if(r>100) return showError('GST rate cannot be more than 100%.');
+    let orig=0, gst=0, cgst=0, sgst=0, finalAmt=0;
+    if(mode==='exclusive'){
+      orig=amt; gst=rnd(orig*r/100); cgst=rnd(gst/2); sgst=rnd(gst/2); finalAmt=rnd(orig+gst);
+    } else {
+      finalAmt=amt;
+      if(r===0){ orig=finalAmt; gst=0; }
+      else { orig=rnd(finalAmt*100/(100+r)); gst=rnd(finalAmt-orig); }
+      cgst=rnd(gst/2); sgst=rnd(gst/2);
+    }
+    document.getElementById('gstPerc').textContent = fmt(mode==='exclusive'?finalAmt:orig);
+    document.getElementById('gstSub').textContent = (mode==='exclusive'?'GST Exclusive':'GST Inclusive')+' • '+r+'%';
+    document.getElementById('rInput').textContent = fmt(amt);
+    document.getElementById('rRate').textContent = r+'%';
+    document.getElementById('rGst').textContent = fmt(gst);
+    document.getElementById('rCgst').textContent = fmt(cgst);
+    document.getElementById('rSgst').textContent = fmt(sgst);
+    document.getElementById('rFinalLabel').textContent = mode==='exclusive'?'Final Amount':'Original Amount';
+    document.getElementById('rFinal').textContent = fmt(mode==='exclusive'?finalAmt:orig);
+    resultsEl.classList.add('show');
+    resultsEl.dataset.orig=orig; resultsEl.dataset.gst=gst; resultsEl.dataset.cgst=cgst; resultsEl.dataset.sgst=sgst; resultsEl.dataset.final=finalAmt; resultsEl.dataset.rate=r; resultsEl.dataset.mode=mode; resultsEl.dataset.input=amt;
+    resultsEl.scrollIntoView({behavior:'smooth'});
+  }
+
+  function reset(){
+    exInput.value=''; inInput.value=''; customEl.value='';
+    rate=18; mode='exclusive';
+    modeBtns.forEach(b=>b.classList.toggle('active', b.dataset.mode==='exclusive'));
+    rateBtns.forEach(b=>b.classList.toggle('active', b.dataset.val==='18'));
+    customWrap.style.display='none'; exRow.style.display='grid'; inRow.style.display='none';
+    hideError(); resultsEl.classList.remove('show');
+  }
+
+  document.getElementById('gstCalcBtn').addEventListener('click', calculate);
+  document.getElementById('gstResetBtn').addEventListener('click', reset);
+  [exInput,inInput,customEl].forEach(el=>el.addEventListener('keydown',e=>{ if(e.key==='Enter') calculate(); }));
+
+  // SAVE PNG
+  document.getElementById('saveBtn').onclick=()=>{
+    if(!resultsEl.classList.contains('show')) return showError('Calculate first to save.');
+    try{
+      const W=1080,H=1180,P=60,c=document.getElementById('pngCanvas');
+      c.width=W; c.height=H;
+      const x=c.getContext('2d');
+      x.fillStyle='#fff'; x.fillRect(0,0,W,H);
+      x.fillStyle='#0f172a'; x.fillRect(0,0,W,100);
+      x.fillStyle='#fff'; x.font='800 42px Plus Jakarta Sans'; x.fillText('KaagazPro',P,65);
+      x.fillStyle='rgba(255,255,255,.75)'; x.font='600 18px Inter'; x.fillText('GST Calculator • Private & Offline • No Backend',P,88);
+      let y=160;
+      const modeTxt = resultsEl.dataset.mode==='exclusive'?'GST Exclusive':'GST Inclusive';
+      x.fillStyle='#0f172a'; x.font='800 36px Plus Jakarta Sans'; x.fillText(modeTxt,P,y);
+      y+=32; x.fillStyle='#64748b'; x.font='500 20px Inter'; x.fillText(new Date().toLocaleString('en-IN',{day:'2-digit',month:'short',year:'numeric',hour:'2-digit',minute:'2-digit'})+' • '+resultsEl.dataset.rate+'%',P,y);
+      y+=40; x.strokeStyle='#e2e8f0'; x.beginPath(); x.moveTo(P,y); x.lineTo(W-P,y); x.stroke(); y+=46;
+      const rows=[
+        ['Input Amount', fmt(Number(resultsEl.dataset.input))],
+        ['GST Rate', resultsEl.dataset.rate+'%'],
+        ['GST Amount', fmt(Number(resultsEl.dataset.gst))],
+        ['CGST (½)', fmt(Number(resultsEl.dataset.cgst))],
+        ['SGST (½)', fmt(Number(resultsEl.dataset.sgst))],
+        [resultsEl.dataset.mode==='exclusive'?'Final Amount':'Original Amount', fmt(Number(resultsEl.dataset.mode==='exclusive'?resultsEl.dataset.final:resultsEl.dataset.orig))]
+      ];
+      rows.forEach(([l,v],i)=>{
+        const isLast=i===rows.length-1;
+        const h=88;
+        x.fillStyle=isLast?'#0f172a':'#f8fafc'; x.fillRect(P,y-30,W-P*2,h);
+        if(!isLast){ x.strokeStyle='#e2e8f0'; x.strokeRect(P,y-30,W-P*2,h); }
+        x.fillStyle=isLast?'rgba(255,255,255,.7)':'#64748b'; x.font='600 20px Inter'; x.fillText(l,P+22,y+16);
+        x.fillStyle=isLast?'#fff':'#0f172a'; x.font='800 26px Inter'; x.textAlign='right'; x.fillText(v,W-P-22,y+16); x.textAlign='left';
+        y+=h+14;
+      });
+      const a=document.createElement('a'); a.download='kaagazpro-gst-result.png'; a.href=c.toDataURL('image/png'); a.click();
+    }catch(e){ showError('Image save not supported. Take screenshot.'); }
+  };
+
+  // SHARE
+  document.getElementById('shareBtn').onclick=async()=>{
+    if(!resultsEl.classList.contains('show')) return showError('Calculate first to share.');
+    const orig=fmt(Number(resultsEl.dataset.orig));
+    const gst=fmt(Number(resultsEl.dataset.gst));
+    const cgst=fmt(Number(resultsEl.dataset.cgst));
+    const sgst=fmt(Number(resultsEl.dataset.sgst));
+    const finalAmt=fmt(Number(resultsEl.dataset.final));
+    const rateTxt=resultsEl.dataset.rate+'%';
+    const modeTxt=resultsEl.dataset.mode==='exclusive'?'GST Exclusive':'GST Inclusive';
+    const inputAmt=fmt(Number(resultsEl.dataset.input));
+    const text=`GST Calculation - KaagazPro\n\n${modeTxt}\nInput: ${inputAmt}\nGST Rate: ${rateTxt}\nGST: ${gst}\nCGST: ${cgst}\nSGST: ${sgst}\n${resultsEl.dataset.mode==='exclusive'?'Final: ':'Original: '}${resultsEl.dataset.mode==='exclusive'?finalAmt:orig}\n\nCalculated using KaagazPro GST Calculator\n${location.href}`;
+    if(navigator.share){
+      try{ await navigator.share({title:'GST Calculation - KaagazPro', text}); return; }catch{}
+    }
+    try{ await navigator.clipboard.writeText(text); errorEl.textContent='Result copied. You can share anywhere.'; errorEl.style.display='block'; errorEl.style.background='#f0fdf4'; errorEl.style.borderColor='#bbf7d0'; errorEl.style.color='#166534'; setTimeout(()=>{ hideError(); errorEl.style.background=''; errorEl.style.borderColor=''; errorEl.style.color=''; },2200); }catch{ const ta=document.createElement('textarea'); ta.value=text; document.body.appendChild(ta); ta.select(); document.execCommand('copy'); ta.remove(); }
+  };
+})();
+</script>
+</body>
+</html>
