@@ -1,81 +1,137 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About Us - KaagazPro.co.in | 100% Private & Free Tool</title>
-    <meta name="description" content="About KaagazPro.co.in - India's trusted 100% private offline image compressor. No data stored, free for all.">
-    <link rel="stylesheet" href="css/style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6640527517870664" crossorigin="anonymous"></script>
-    <style>
-        *{font-family:'Inter',sans-serif}
-        body{background:#f6f7fb;margin:0}
-        .page{max-width:900px;margin:24px auto;background:#fff;padding:32px;border-radius:20px;box-shadow:0 10px 40px rgba(0,0,0,.07);line-height:1.9}
-        .page h1{font-size:30px;margin:0;color:#0f172a;font-weight:800}
-        .page h2{font-size:18px;margin:24px 0 10px;color:#0f172a;font-weight:700}
-        .page p{font-size:14.5px;color:#475569}
-        .badge{display:inline-flex;background:#f0fdf4;border:1px solid #bbf7d0;color:#15803d;padding:7px 14px;border-radius:100px;font-size:12px;font-weight:700;margin-bottom:14px}
-        .grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin:16px 0}
-        .gbox{background:#f8fafc;border:1px solid #e2e8f0;padding:14px;border-radius:12px;text-align:center}
-        .gbox b{font-size:22px;display:block}
-        .gbox span{font-size:12px;color:#64748b}
-        .highlight{background:linear-gradient(90deg,#eff6ff,#dbeafe);border:1px solid #bfdbfe;border-radius:12px;padding:16px;margin:16px 0}
-        @media(max-width:600px){.grid{grid-template-columns:1fr}}
-    </style>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>About KaagazPro</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Plus+Jakarta+Sans:wght@700;800&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box}body{margin:0;background:#f8f9ff;color:#0f172a;font-family:'Inter',sans-serif;overflow-x:hidden}
+.header{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.92);backdrop-filter:blur(12px);border-bottom:1px solid #e2e8f0;display:flex;justify-content:space-between;align-items:center;height:62px;padding:0 14px}
+.logo{font-family:'Plus Jakarta Sans';font-weight:800;font-size:21px;display:flex;align-items:center}
+.logo-kaagaz{color:#0f172a}.logo-pro{background:linear-gradient(90deg,#4f46e5,#06b6d4,#8b5cf6);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.logo-badge{font-size:9px;background:linear-gradient(90deg,#4f46e5,#7c3aed);color:#fff;padding:3px 8px;border-radius:20px;margin-left:6px;font-weight:800;letter-spacing:.5px;box-shadow:0 2px 10px rgba(79,70,229,.45)}
+.icon-btn{width:42px;height:42px;display:grid;place-items:center;border-radius:12px;cursor:pointer;background:#fff;border:1px solid #eef2ff}.dots3{display:flex;flex-direction:column;gap:4px}.dots3 span{width:5px;height:5px;background:#0f172a;border-radius:50%;display:block}
+.hamburger{display:flex;flex-direction:column;gap:5px;width:20px}.hamburger span{height:2.5px;background:#0f172a;border-radius:10px;display:block}
+#leftDrawer,#rightDrawer{display:none;position:fixed;inset:0;z-index:9999;background:rgba(15,23,42,.5);backdrop-filter:blur(4px)}
+.left-box{position:absolute;left:0;top:0;width:92%;max-width:380px;height:100%;background:#fff;overflow:auto}
+.right-box{position:absolute;right:0;top:0;width:92%;max-width:360px;height:100%;background:#fff;overflow:auto}
+.d-tool{display:flex;gap:8px;padding:11px 14px;border-radius:10px;text-decoration:none;color:#334155;font-size:13px;font-weight:600;margin:4px 10px}.d-tool:hover{background:#f1f5f9}
+.d-link{display:block;padding:12px 14px;text-decoration:none;color:#334155;font-weight:600;margin:4px 10px;border-radius:10px}.d-link:hover{background:#f1f5f9}
+.wrap{max-width:900px;margin:0 auto;padding:0 16px}
+.hero{margin:20px 0;background:linear-gradient(135deg,#eef2ff 0%,#f0fdfa 50%,#fdf4ff 100%);border:1px solid #e0e7ff;border-radius:24px;padding:32px 24px;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;top:-40px;right:-40px;width:180px;height:180px;background:radial-gradient(circle,#4f46e520,#06b6d420,transparent 70%);border-radius:50%}
+.hero-label{font-size:11px;letter-spacing:1.2px;font-weight:800;color:#fff;background:linear-gradient(90deg,#4f46e5,#7c3aed);display:inline-block;padding:6px 14px;border-radius:20px;margin-bottom:16px}
+.hero h1{font-family:'Plus Jakarta Sans';font-size:40px;line-height:1.05;letter-spacing:-1px;margin:0;font-weight:800}@media(max-width:600px){.hero h1{font-size:28px}}
+.hero p{font-size:16px;color:#334155;margin:14px 0 0;max-width:620px;line-height:1.6}
+.section{margin:28px 0}
+.card{background:#fff;border:1px solid #e2e8f0;border-radius:18px;padding:22px;box-shadow:0 4px 20px rgba(0,0,0,.03)}
+h2{font-family:'Plus Jakarta Sans';font-size:22px;margin:0 0 14px;font-weight:800;letter-spacing:-.4px}
+p{font-size:15px;color:#475569;margin:0 0 12px;line-height:1.65}
+.avatar-ring{background:linear-gradient(135deg,#4f46e5,#06b6d4,#ec4899);padding:4px;border-radius:50%;flex-shrink:0;box-shadow:0 6px 20px rgba(79,70,229,.25)}
+.avatar{width:104px;height:104px;border-radius:50%;object-fit:cover;background:#fff;display:block;border:4px solid #fff}
+.founder-top{background:linear-gradient(135deg,#ffffff 0%,#eef2ff 100%);border:1px solid #c7d2fe;border-radius:22px;padding:24px;position:relative;overflow:hidden;box-shadow:0 8px 30px rgba(79,70,229,.08)}
+.founder-top::after{content:'';position:absolute;bottom:-30px;right:-30px;width:140px;height:140px;background:linear-gradient(135deg,#4f46e530,#ec489930);border-radius:50%;filter:blur(12px)}
+.story-card{border-left:4px solid #4f46e5;background:linear-gradient(180deg,#fff,#f8faff)}
+.why-item{display:flex;gap:12px;align-items:flex-start;background:#fff;border:1px solid #e2e8f0;border-radius:14px;padding:14px;margin-bottom:10px}
+.why-icon{width:36px;height:36px;border-radius:10px;display:grid;place-items:center;flex-shrink:0}
+.build-card{background:linear-gradient(135deg,#fff 0%,#f8faff 100%);border:1px solid #e0e7ff}
+.matter-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}@media(max-width:600px){.matter-grid{grid-template-columns:1fr}}
+.matter-card{border-radius:16px;padding:18px;border:1px solid #e2e8f0}
+.matter-card h4{margin:0 0 6px;font-size:14px;font-weight:800}
+.matter-1{background:linear-gradient(135deg,#eef2ff,#f5f3ff)} .matter-2{background:linear-gradient(135deg,#f0fdf4,#ecfdf5)} .matter-3{background:linear-gradient(135deg,#fefce8,#fff7ed)} .matter-4{background:linear-gradient(135deg,#fdf2f8,#fef2f2)}
+.note{background:linear-gradient(135deg,#fff 0%,#eef2ff 100%);border:1px dashed #c7d2fe;border-radius:18px;padding:22px}
+.cta{background:linear-gradient(135deg,#0f172a 0%,#1e1b4b 50%,#312e81 100%);color:#fff;border-radius:20px;padding:26px;display:flex;justify-content:space-between;align-items:center;gap:16px;position:relative;overflow:hidden}
+.btn-white{background:#fff;color:#0f172a;padding:12px 20px;border-radius:12px;font-weight:800;text-decoration:none;display:inline-block;box-shadow:0 4px 12px rgba(0,0,0,.15)}
+.pro-footer{background:#0f172a;color:#94a3b8;padding:28px 14px 12px;margin-top:40px;border-top:3px solid transparent;border-image:linear-gradient(90deg,#4f46e5,#06b6d4,#ec4899) 1}
+.foot-grid{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1.2fr 1fr 1fr 1fr;gap:20px}@media(max-width:800px){.foot-grid{grid-template-columns:1fr 1fr}}@media(max-width:500px){.foot-grid{grid-template-columns:1fr;text-align:center}}
+.pro-footer h4{color:#fff;font-size:11px;margin:0 0 10px}.pro-footer a{color:#94a3b8;text-decoration:none;font-size:12px;display:block;margin:6px 0}
+</style>
 </head>
 <body>
-    <nav style="background:#fff;padding:14px 20px;display:flex;justify-content:space-between;align-items:center;box-shadow:0 2px 10px rgba(0,0,0,.05);position:sticky;top:0;z-index:99">
-        <div class="logo" style="font-weight:800;font-size:20px">Kaagaz<span style="color:#4f46e5">Pro</span><span style="font-size:12px;color:#64748b">.co.in</span></div>
-        <a href="index.html" style="text-decoration:none;color:#fff;background:#0f172a;padding:8px 16px;border-radius:20px;font-weight:700;font-size:13px">← Home</a>
-    </nav>
+<nav class="header"><div style="display:flex;align-items:center;gap:12px"><div class="icon-btn" id="openLeft"><div class="dots3"><span></span><span></span><span></span></div></div><div class="logo"><span class="logo-kaagaz">Kaagaz</span><span class="logo-pro">Pro</span><span class="logo-badge">PRO</span></div></div><div class="icon-btn" id="openRight"><div class="hamburger"><span></span><span></span><span></span></div></div></nav>
+<div id="leftDrawer"><div class="left-box"><div style="display:flex;justify-content:space-between;padding:18px;border-bottom:1px solid #e2e8f0"><b style="font-size:11px;color:#94a3b8">ALL TOOLS</b><span id="closeLeft" style="cursor:pointer;font-size:22px">✕</span></div><div id="leftTools"></div></div></div>
+<div id="rightDrawer"><div class="right-box"><div style="display:flex;justify-content:space-between;padding:16px;border-bottom:1px solid #e2e8f0"><b>MENU</b><span id="closeRight" style="cursor:pointer">✕</span></div><a class="d-link" href="/">Home</a><a class="d-link" href="/about.html">About</a><a class="d-link" href="/contact.html">Contact</a><a class="d-link" href="/privacy-policy.html">Privacy</a></div></div>
 
-    <div class="page">
-        <span class="badge">🇮🇳 Made in India - Kanpur, UP</span>
-        <h1>About KaagazPro.co.in</h1>
-        <p style="color:#64748b;font-size:13px">Free • Private • Offline • No Login Required</p>
+<div class="wrap">
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-label">ABOUT KAAGAZPRO</div>
+    <h1>Built to make everyday document tasks <span style="background:linear-gradient(90deg,#4f46e5,#06b6d4);-webkit-background-clip:text;-webkit-text-fill-color:transparent">simpler.</span></h1>
+    <p>KaagazPro is a collection of useful tools for everyday document and image work — resizing photos for forms, compressing images, converting PDFs, and handling small tasks that otherwise take too many websites.</p>
+  </div>
 
-        <p style="margin-top:16px"><b>KaagazPro.co.in</b> was built with one simple mission: <b>Make document work easy, private and free for every Indian.</b></p>
-        
-        <p>We saw people struggling daily to compress photos to 20KB, 50KB, 100KB, 200KB. Most websites ask for login and secretly store your photos on their servers. We decided to build something different - 100% offline and 100% private.</p>
-
-        <div class="grid">
-            <div class="gbox"><b>🔒</b><span><b>100% Private</b><br>No file goes to server</span></div>
-            <div class="gbox"><b>⚡</b><span><b>Offline Processing</b><br>Canvas API in browser</span></div>
-            <div class="gbox"><b>💚</b><span><b>100% Free Forever</b><br>No hidden charges</span></div>
+  <!-- 1. FOUNDER FIRST AS YOU ASKED -->
+  <div class="section">
+    <h2 style="margin-bottom:10px">The Founder</h2>
+    <div class="founder-top">
+      <div style="display:flex;gap:20px;align-items:center;position:relative;z-index:1">
+        <div class="avatar-ring"><img class="avatar" src="images/harsh.jpeg" alt="Harsh Pandey"></div>
+        <div>
+          <div style="font-weight:800;font-size:18px">Harsh Pandey <span style="font-size:11px;background:linear-gradient(90deg,#4f46e5,#7c3aed);color:#fff;padding:4px 10px;border-radius:20px;margin-left:8px;letter-spacing:.5px">FOUNDER & CREATOR</span></div>
+          <p style="margin:10px 0 0;font-size:15px;color:#334155;line-height:1.6">Hi, I'm Harsh, the person behind KaagazPro. I started building KaagazPro because I wanted to create something genuinely useful while learning how websites and software are built.</p>
+          <p style="margin:8px 0 0;font-size:14px;color:#475569">It's an independent project I'm building and maintaining myself — from design to testing to fixing issues. My focus is on useful tools, simple design, and reliability.</p>
         </div>
-
-        <h2>🚀 What Makes Us Different?</h2>
-        <div class="highlight">
-            ✔ <b>Zero Storage Policy</b> - Your photos never leave your device<br>
-            ✔ <b>Up to 90% smaller — quality optimized</b> - Best compression tech<br>
-            ✔ <b>Delete Button</b> - Remove wrong image instantly<br>
-            ✔ <b>Before / After Comparison</b> - See original vs compressed<br>
-            ✔ <b>Auto Delete After ZIP</b> - One click download + auto clean<br>
-            ✔ <b>Convert JPG, PNG, WEBP</b> - PNG → JPG saves huge size
-        </div>
-
-        <h2>👨‍💻 Our Story</h2>
-        <p>KaagazPro.co.in is a small initiative started from <b>Kanpur, Uttar Pradesh, India</b>. We are not a big company, we are just a small team who loves solving real problems. We built this tool because we faced the same problem ourselves - forms rejecting photos due to size limits.</p>
-        <p>We believe privacy should not be a premium feature. That's why our tool works 100% offline. No tracking of your photos, no Aadhaar collection, nothing.</p>
-
-        <h2>📈 Future Plans</h2>
-        <p>We are constantly adding new tools - PDF Compressor, Image Resizer, Document Scanner and more. All will be free and private, just like this one.</p>
-
-        <h2>📩 Contact Us</h2>
-        <p>Have a suggestion, complaint or want to say thanks? We reply within 24 hours.</p>
-        <div style="background:#f8fafc;border:1px solid #e2e8f0;border-radius:12px;padding:16px">
-            <b>📧 Email:</b> viscosity315@gmail.com<br>
-            <b>🌐 Website:</b> KaagazPro.co.in<br>
-            <b>📍 Location:</b> Kanpur, Uttar Pradesh, India
-        </div>
-
-        <div style="margin-top:24px;display:flex;gap:10px;flex-wrap:wrap">
-            <a href="index.html" style="background:#16a34a;color:#fff;padding:12px 20px;border-radius:10px;text-decoration:none;font-size:13px;font-weight:700">🚀 Try Compressor Now</a>
-            <a href="contact.html" style="background:#f1f5f9;color:#0f172a;padding:12px 20px;border-radius:10px;text-decoration:none;font-size:13px;font-weight:700">Contact Us</a>
-        </div>
+      </div>
     </div>
+  </div>
 
-    <div style="text-align:center;padding:20px;color:#94a3b8;font-size:12px">© 2025 KaagazPro.co.in - Made with ❤️ in India | 100% Private & Offline | Email: viscosity315@gmail.com</div>
+  <!-- 2. OUR STORY -->
+  <div class="section card story-card">
+    <h2>Our Story</h2>
+    <p>It started with a practical problem I kept noticing. Whenever I or someone around me needed to do a small document task — like getting a photo to exactly 20KB or 50KB for a form, converting a JPG to PDF, or merging two PDFs — we had to search for a different website each time. Some sites were full of ads, some asked to upload files, and some just didn’t work well on mobile.</p>
+    <p>I thought, why not bring these everyday tools together in one simple website? That’s how KaagazPro started. I didn’t start it as a big company idea. I started building it because I wanted to create something genuinely useful while learning how websites are actually built. One tool at a time.</p>
+    <p style="margin:0">KaagazPro is still growing. Some tools run completely in the browser, some need more work to get right. I test them myself, fix what breaks, and try to make the mobile experience a little better each time.</p>
+  </div>
+
+  <!-- 3. WHY I BUILT -->
+  <div class="section">
+    <h2>Why I built KaagazPro</h2>
+    <div style="margin-top:12px">
+      <div class="why-item"><div class="why-icon" style="background:#eef2ff">🧩</div><div><b style="font-size:14px">Everyday tasks are scattered</b><p style="margin:4px 0 0;font-size:13.5px">People need small tools for forms, photos, PDFs — but every task is on a different site.</p></div></div>
+      <div class="why-item"><div class="why-icon" style="background:#f0fdf4">⚡</div><div><b style="font-size:14px">I wanted one simple place</b><p style="margin:4px 0 0;font-size:13.5px">One place where you can find a tool, use it quickly, and download without extra steps.</p></div></div>
+      <div class="why-item"><div class="why-icon" style="background:#fefce8">🔒</div><div><b style="font-size:14px">Privacy matters</b><p style="margin:4px 0 0;font-size:13.5px">Where possible, files are processed directly in your browser instead of being uploaded to a server.</p></div></div>
+    </div>
+  </div>
+
+  <!-- 4. BUILDING -->
+  <div class="section card build-card">
+    <h2>Building KaagazPro</h2>
+    <p>KaagazPro is being built step by step. Most of the work is testing a tool with real files, finding where it breaks, fixing bugs, improving how it looks on mobile, and checking if the result actually preserves quality.</p>
+    <p style="margin:0">I'm learning web development through this project itself. So every improvement comes from actually building and using the product. It's still a work in progress, and that's how I want to keep building it.</p>
+  </div>
+
+  <!-- 5. WHAT MATTERS -->
+  <div class="section">
+    <h2>What matters to me</h2>
+    <div class="matter-grid" style="margin-top:12px">
+      <div class="matter-card matter-1"><h4>🔵 Useful</h4><p style="margin:0;font-size:13.5px;color:#475569">Every tool should solve a real problem. If it doesn’t help with a form or document, it doesn’t need to be there.</p></div>
+      <div class="matter-card matter-2"><h4>🟢 Simple</h4><p style="margin:0;font-size:13.5px;color:#475569">People should not need technical knowledge. Upload, click, download — that’s how it should feel.</p></div>
+      <div class="matter-card matter-3"><h4>🟡 Privacy-conscious</h4><p style="margin:0;font-size:13.5px;color:#475569">When browser processing is possible, I prefer keeping files on the user’s device.</p></div>
+      <div class="matter-card matter-4"><h4>🟣 Continuous improvement</h4><p style="margin:0;font-size:13.5px;color:#475569">KaagazPro is still growing, and every improvement starts with making existing tools better.</p></div>
+    </div>
+  </div>
+
+  <div class="section note">
+    <h2 style="font-size:18px">A small note from me</h2>
+    <p>KaagazPro is still being built, one tool at a time. I'm learning as I go and trying to make each tool work a little better than before.</p>
+    <p style="margin:0">If something doesn’t work as expected or you have an idea for a useful tool, I’d really like to hear about it. Real feedback is what helps me improve it.</p>
+    <div style="margin-top:12px;font-weight:800">— Harsh</div>
+  </div>
+
+  <div class="section cta">
+    <div style="position:relative;z-index:1"><h2 style="color:#fff;margin:0 0 6px">Found a problem or have an idea?</h2><p style="color:#cbd5e1;margin:0;font-size:14px">Tell me what didn’t work or what tool you need next.</p></div>
+    <a class="btn-white" href="contact.html" style="position:relative;z-index:1">Contact Me →</a>
+  </div>
+</div>
+
+<footer class="pro-footer"><div class="foot-grid"><div><div style="color:#fff;font-weight:800;font-size:18px">KaagazPro</div><p style="font-size:11.5px">A secure, offline-first toolkit. Fast, private and free.</p></div><div><h4>POPULAR</h4><a href="/tools/compressor.html">Compressor</a><a href="/tools/word-to-pdf/">Word to PDF</a></div><div><h4>LEGAL</h4><a href="/privacy-policy.html">Privacy</a><a href="/terms.html">Terms</a></div><div><h4>WHY?</h4><p style="font-size:11px;line-height:1.8">✔ Secure<br>✔ No Upload<br>✔ High Quality</p></div></div><div style="border-top:1px solid #1e293b;margin-top:20px;padding-top:12px;text-align:center;font-size:10px;color:#6b7280">© 2026 KaagazPro • Made for Bharat</div></footer>
+
+<script>
+const tools=[{name:"📏 Resize Photo",link:"/tools/resize.html"},{name:"🗜️ Compressor",link:"/tools/compressor.html"},{name:"📄 JPG to PDF",link:"/tools/jpg-to-pdf/"},{name:"📝 Word to PDF",link:"/tools/word-to-pdf/"},{name:"🔗 Merge PDF",link:"/tools/merge-pdf.html"},{name:"🖼️ PDF to JPG",link:"/tools/pdf-to-jpg/"},{name:"🎓 Passport Photo",link:"/tools/passport.html"}];
+document.getElementById('leftTools').innerHTML=tools.map(t=>`<a class="d-tool" href="${t.link}">${t.name}</a>`).join('');
+const ld=document.getElementById('leftDrawer'),rd=document.getElementById('rightDrawer');
+document.getElementById('openLeft').onclick=()=>ld.style.display='block';document.getElementById('closeLeft').onclick=()=>ld.style.display='none';ld.onclick=e=>{if(e.target.id==='leftDrawer')ld.style.display='none'};
+document.getElementById('openRight').onclick=()=>rd.style.display='block';document.getElementById('closeRight').onclick=()=>rd.style.display='none';rd.onclick=e=>{if(e.target.id==='rightDrawer')rd.style.display='none'};
+</script>
 </body>
 </html>
