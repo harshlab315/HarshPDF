@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1, maximum-scale=1">
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
 <title>Word to PDF - High Quality DOCX to PDF Converter | KaagazPro</title>
-<meta name="description" content="Convert Word DOCX to PDF online. Preserves images, tables, formatting. Secure, private, offline.">
+<meta name="description" content="Convert Word DOCX to PDF online. Preserves images, tables, diagrams. Secure, private, offline.">
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6640527517870664" crossorigin="anonymous"></script>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Plus+Jakarta+Sans:wght@700;800&display=swap" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/jszip@3.10.1/dist/jszip.min.js"></script>
@@ -44,49 +44,34 @@
 .upload-area.dragover{border-color:#4f46e5;background:#eef2ff}
 #status{display:none;padding:10px;border-radius:10px;font-size:12px;font-weight:600;margin-top:10px;border:1px solid #e2e8f0}
 .previewBox{border:1px solid #e2e8f0;border-radius:12px;padding:12px;background:#fff;display:none;margin-top:12px;max-height:600px;overflow:auto}
-.docx-wrapper{padding:10px!important;background:#fff!important}.docx-wrapper img{max-width:100%!important;height:auto!important}
+.docx-wrapper{padding:0!important;background:#fff!important}
+.docx{width:100%!important;max-width:100%!important;background:#fff!important;box-shadow:none!important;padding:20px 30px!important}
+.docx img{max-width:100%!important;height:auto!important}
 </style>
 </head>
 <body>
 
 <nav class="header">
-<div class="header-left">
-<div class="icon-btn" id="openLeft"><div class="dots3"><span></span><span></span><span></span></div></div>
-<div class="logo"><span style="color:#0f172a">Kaagaz</span><span class="pro">Pro</span><span class="logo-badge">PRO</span></div>
-</div>
+<div class="header-left"><div class="icon-btn" id="openLeft"><div class="dots3"><span></span><span></span><span></span></div></div><div class="logo"><span style="color:#0f172a">Kaagaz</span><span class="logo pro">Pro</span><span class="logo-badge">PRO</span></div></div>
 <div class="icon-btn" id="openRight"><div class="hamburger"><span></span><span></span><span></span></div></div>
 </nav>
 
 <div id="leftDrawer"><div class="left-box"><div style="display:flex;justify-content:space-between;align-items:center;padding:18px;border-bottom:1px solid #e2e8f0"><b style="font-size:11px;color:#94a3b8;letter-spacing:1px">ALL TOOLS</b><span id="closeLeft" style="cursor:pointer;font-size:22px">✕</span></div><div id="leftTools"></div></div></div>
-<div id="rightDrawer"><div class="right-box"><div style="display:flex;justify-content:space-between;padding:16px;border-bottom:1px solid #e2e8f0"><b>MENU</b><span id="closeRight" style="cursor:pointer">✕</span></div><a class="d-link" href="/">Home</a><a class="d-link" href="/about.html">About</a><a class="d-link" href="/contact.html">Contact</a><a class="d-link" href="/privacy-policy.html">Privacy</a><a class="d-link" href="/terms.html">Terms</a><a class="d-link" href="/disclaimer.html">Disclaimer</a></div></div>
+<div id="rightDrawer"><div class="right-box"><div style="display:flex;justify-content:space-between;padding:16px;border-bottom:1px solid #e2e8f0"><b>MENU</b><span id="closeRight" style="cursor:pointer">✕</span></div><a class="d-link" href="/">Home</a><a class="d-link" href="/about.html">About</a><a class="d-link" href="/contact.html">Contact</a><a class="d-link" href="/privacy-policy.html">Privacy Policy</a><a class="d-link" href="/terms.html">Terms</a><a class="d-link" href="/disclaimer.html">Disclaimer</a></div></div>
 
 <div class="wrap">
 <div class="book">
 <div class="badges"><span class="badge" style="background:#dcfce7">✓ High Quality</span><span class="badge" style="background:#dbeafe">🔒 100% Secure</span><span class="badge" style="background:#f3e8ff">⚡ Fast & Offline</span></div>
 <h1 class="title">Word to <span class="grad">PDF</span></h1>
-<p style="color:#64748b;font-size:12.5px;margin:6px 0 0">High-quality DOCX to PDF conversion that preserves images, tables, and formatting.</p>
+<p style="color:#64748b;font-size:12.5px;margin:6px 0 0">High-quality DOCX to PDF conversion that preserves images, tables, and diagrams exactly like original.</p>
 <div class="yellow">🔒 Secure & Private — Your files are processed locally and never uploaded to any server</div>
-
 <input type="file" id="wordFile" accept=".docx" style="display:none">
-<div class="upload-area" id="dropArea">
-<div style="font-size:32px">📄</div>
-<div style="font-weight:800;margin-top:6px">Click to Upload Word Document</div>
-<div style="font-size:11px;color:#64748b;margin-top:4px">Supports.docx files up to 25MB with images, tables and charts</div>
-<div style="font-size:10px;color:#94a3b8;margin-top:8px">100% private — processed offline in your browser</div>
-</div>
-
+<div class="upload-area" id="dropArea"><div style="font-size:32px">📄</div><div style="font-weight:800;margin-top:6px">Click to Upload Word Document</div><div style="font-size:11px;color:#64748b;margin-top:4px">Supports.docx files up to 25MB with images, tables and hand-drawn diagrams</div><div style="font-size:10px;color:#94a3b8;margin-top:8px">100% private — processed offline in your browser</div></div>
 <div id="fileInfo" style="display:none;font-size:12px;font-weight:700;padding:8px 10px;background:#f1f5f9;border-radius:8px;margin-top:8px"></div>
-
 <button class="btn-green" id="convertBtn">Convert to PDF</button>
 <button class="btn-outline" id="resetBtn">Reset</button>
-
 <div id="status"></div>
-
-<div class="previewBox" id="previewBox">
-<div style="font-size:11px;font-weight:800;color:#64748b;margin-bottom:8px;letter-spacing:.05em">DOCUMENT PREVIEW</div>
-<div id="docxPreview"></div>
-</div>
-
+<div class="previewBox" id="previewBox"><div style="font-size:11px;font-weight:800;color:#64748b;margin-bottom:8px;letter-spacing:.05em">DOCUMENT PREVIEW</div><div id="docxPreview"></div></div>
 </div>
 </div>
 
@@ -99,9 +84,9 @@
 
 <div class="sec">
 <h2 style="font-family:'Plus Jakarta Sans'">Why Choose KaagazPro?</h2>
-<div class="step"><div class="num" style="background:#4f46e5">🖼️</div><div><b>Preserves Quality & Layout</b><p style="font-size:12px;color:#475569;margin:4px 0 0">Maintains original formatting including images, diagrams, tables, fonts, and spacing for a professional result.</p></div></div>
-<div class="step"><div class="num" style="background:#16a34a">🔒</div><div><b>Secure and Private</b><p style="font-size:12px;color:#475569;margin:4px 0 0">Documents are processed entirely on your device. No files are uploaded to any server, ensuring complete privacy.</p></div></div>
-<div class="step"><div class="num" style="background:#f59e0b">📄</div><div><b>Professional PDF Output</b><p style="font-size:12px;color:#475569;margin:4px 0 0">Generates clean, high-quality, print-ready A4 PDFs with accurate pagination and no content loss.</p></div></div>
+<div class="step"><div class="num" style="background:#4f46e5">🖼️</div><div><b>Preserves Diagrams & Quality</b><p style="font-size:12px;color:#475569;margin:4px 0 0">Maintains original formatting including hand-drawn images, diagrams, tables, fonts for professional result.</p></div></div>
+<div class="step"><div class="num" style="background:#16a34a">🔒</div><div><b>Secure and Private</b><p style="font-size:12px;color:#475569;margin:4px 0 0">Documents are processed entirely on your device. No files uploaded to server.</p></div></div>
+<div class="step"><div class="num" style="background:#f59e0b">📄</div><div><b>Professional PDF Output</b><p style="font-size:12px;color:#475569;margin:4px 0 0">Generates clean, high-quality, print-ready A4 PDFs with accurate layout and no content loss.</p></div></div>
 </div>
 
 <div class="sec">
@@ -114,7 +99,6 @@
 <a href="/tools/merge-pdf.html">Merge PDF</a>
 <a href="/tools/pdf-to-jpg/">PDF to JPG</a>
 <a href="/tools/bill-generator.html">Invoice Generator</a>
-<a href="/tools/attendance-calculator.html">Attendance Calculator</a>
 </div>
 </div>
 
@@ -132,150 +116,80 @@
 const tools=[{name:"📏 Resize Photo",link:"/tools/resize.html"},{name:"🗜️ Compressor",link:"/tools/compressor.html"},{name:"📄 JPG to PDF",link:"/tools/jpg-to-pdf/"},{name:"📝 Word to PDF",link:"/tools/word-to-pdf/"},{name:"🧾 Invoice Generator",link:"/tools/bill-generator.html"},{name:"📊 Attendance Calculator",link:"/tools/attendance-calculator.html"},{name:"🧮 GST Calculator",link:"/tools/gst-calculator.html"},{name:"🎓 Passport Photo",link:"/tools/passport.html"},{name:"🖼️ PDF to JPG",link:"/tools/pdf-to-jpg/"},{name:"🔗 Merge PDF",link:"/tools/merge-pdf.html"}];
 document.getElementById('leftTools').innerHTML=tools.map(t=>`<a class="d-tool" href="${t.link}">${t.name}</a>`).join('');
 const ld=document.getElementById('leftDrawer'),rd=document.getElementById('rightDrawer');
-document.getElementById('openLeft').onclick=()=>ld.style.display='block';
-document.getElementById('closeLeft').onclick=()=>ld.style.display='none';
-ld.onclick=e=>{if(e.target.id==='leftDrawer')ld.style.display='none'};
-document.getElementById('openRight').onclick=()=>rd.style.display='block';
-document.getElementById('closeRight').onclick=()=>rd.style.display='none';
-rd.onclick=e=>{if(e.target.id==='rightDrawer')rd.style.display='none'};
+document.getElementById('openLeft').onclick=()=>ld.style.display='block';document.getElementById('closeLeft').onclick=()=>ld.style.display='none';ld.onclick=e=>{if(e.target.id==='leftDrawer')ld.style.display='none'};
+document.getElementById('openRight').onclick=()=>rd.style.display='block';document.getElementById('closeRight').onclick=()=>rd.style.display='none';rd.onclick=e=>{if(e.target.id==='rightDrawer')rd.style.display='none'};
 </script>
 
 <script>
 (function(){
-  const fileInput = document.getElementById('wordFile');
-  const dropArea = document.getElementById('dropArea');
-  const convertBtn = document.getElementById('convertBtn');
-  const resetBtn = document.getElementById('resetBtn');
-  const statusEl = document.getElementById('status');
-  const fileInfo = document.getElementById('fileInfo');
-  const previewBox = document.getElementById('previewBox');
-  const previewEl = document.getElementById('docxPreview');
-  let selectedFile = null;
-
-  function setStatus(msg, isError=false){
-    statusEl.style.display='block';
-    statusEl.textContent=msg;
-    statusEl.style.background=isError?'#fff1f2':'#f0fdf4';
-    statusEl.style.borderColor=isError?'#fecdd3':'#bbf7d0';
-    statusEl.style.color=isError?'#be123c':'#166534';
-  }
-
-  dropArea.onclick = ()=> fileInput.click();
-  fileInput.onchange = e=>{ const f=e.target.files[0]; if(f) handleFile(f); };
-  dropArea.addEventListener('dragover', e=>{ e.preventDefault(); dropArea.classList.add('dragover'); });
-  dropArea.addEventListener('dragleave', ()=> dropArea.classList.remove('dragover'));
-  dropArea.addEventListener('drop', e=>{ e.preventDefault(); dropArea.classList.remove('dragover'); const f=e.dataTransfer.files[0]; if(f) handleFile(f); });
-
-  function handleFile(file){
-    if(!file.name.toLowerCase().endsWith('.docx')){ setStatus('Please upload a valid.docx file.', true); return; }
-    selectedFile=file;
-    fileInfo.style.display='block';
-    fileInfo.textContent=`Selected: ${file.name} (${(file.size/1024/1024).toFixed(2)} MB)`;
-    setStatus('File ready for conversion.');
-    previewBox.style.display='none';
-  }
-
-  resetBtn.onclick=()=>{ selectedFile=null; fileInput.value=''; fileInfo.style.display='none'; statusEl.style.display='none'; previewBox.style.display='none'; previewEl.innerHTML=''; previewBox.style.maxHeight='600px'; previewBox.style.overflow='auto'; };
+  const fileInput=document.getElementById('wordFile'),dropArea=document.getElementById('dropArea'),convertBtn=document.getElementById('convertBtn'),resetBtn=document.getElementById('resetBtn'),statusEl=document.getElementById('status'),fileInfo=document.getElementById('fileInfo'),previewBox=document.getElementById('previewBox'),previewEl=document.getElementById('docxPreview');
+  let selectedFile=null;
+  function setStatus(m,e=false){statusEl.style.display='block';statusEl.textContent=m;statusEl.style.background=e?'#fff1f2':'#f0fdf4';statusEl.style.borderColor=e?'#fecdd3':'#bbf7d0';statusEl.style.color=e?'#be123c':'#166534';}
+  dropArea.onclick=()=>fileInput.click();
+  fileInput.onchange=e=>{const f=e.target.files[0];if(f) handle(f);};
+  dropArea.addEventListener('dragover',e=>{e.preventDefault();dropArea.classList.add('dragover');});
+  dropArea.addEventListener('dragleave',()=>dropArea.classList.remove('dragover'));
+  dropArea.addEventListener('drop',e=>{e.preventDefault();dropArea.classList.remove('dragover');const f=e.dataTransfer.files[0];if(f) handle(f);});
+  function handle(f){if(!f.name.toLowerCase().endsWith('.docx')){setStatus('Please upload valid.docx',true);return;}selectedFile=f;fileInfo.style.display='block';fileInfo.textContent=`Selected: ${f.name} (${(f.size/1024/1024).toFixed(2)} MB)`;setStatus('File ready - Click Convert');previewBox.style.display='none';}
+  resetBtn.onclick=()=>{selectedFile=null;fileInput.value='';fileInfo.style.display='none';statusEl.style.display='none';previewBox.style.display='none';previewEl.innerHTML='';};
 
   convertBtn.onclick=async()=>{
-    if(!selectedFile){ setStatus('Please select a document first.', true); return; }
+    if(!selectedFile){setStatus('Select file first',true);return;}
     try{
-      convertBtn.disabled=true;
-      convertBtn.textContent='Rendering...';
-      setStatus('Step 1/2: Rendering Word pages...');
-
+      convertBtn.disabled=true;convertBtn.textContent='Rendering...';setStatus('Step 1/2: Rendering full document without corner cut...');
       previewEl.innerHTML='';
-      const arrayBuffer = await selectedFile.arrayBuffer();
+      const buf=await selectedFile.arrayBuffer();
 
-      await window.docx.renderAsync(arrayBuffer, previewEl, null, {
-        className: 'docx',
-        inWrapper: true,
-        ignoreWidth: false,
-        ignoreHeight: false,
-        breakPages: true,
-        renderHeaders: true,
-        renderFooters: true,
-        renderFootnotes: true
+      // FINAL WORKING LOGIC - breakPages FALSE se kone cut khatam
+      await window.docx.renderAsync(buf, previewEl, null, {
+        className:'docx', inWrapper:true, ignoreWidth:true, ignoreHeight:true, breakPages:false, renderHeaders:true, renderFooters:true
       });
 
       previewBox.style.display='block';
-      // FIX 1: Remove clipping before capture
-      previewBox.style.maxHeight='none';
-      previewBox.style.overflow='visible';
-      previewEl.style.overflow='visible';
+      await new Promise(r=>setTimeout(r,1000));
 
-      await new Promise(r=>setTimeout(r, 1200));
+      const fileName=selectedFile.name.replace(/\.docx$/i,'')+'.pdf';
+      const jsPDF=window.jspdf?window.jspdf.jsPDF:window.jsPDF;
+      const pdf=new jsPDF({unit:'mm',format:'a4',orientation:'portrait'});
+      const pdfW=210, pdfH=297;
+      const margin=10;
+      const contentW=pdfW - margin*2;
+      const contentH=pdfH - margin*2;
 
-      // FIX 2: Robust page detection
-      let pages = previewEl.querySelectorAll('section.docx-page, article.docx-page');
-      if(pages.length === 0) pages = previewEl.querySelectorAll('article');
-      if(pages.length === 0) pages = previewEl.querySelectorAll('.docx > section');
-      if(pages.length === 0) {
-        const w = previewEl.querySelector('.docx');
-        if(w) pages = w.children;
-      }
-      if(pages.length === 0) pages = [previewEl];
+      setStatus('Step 2/2: Capturing full width and splitting to A4...');
 
-      console.log('Pages found:', pages.length);
-      setStatus(`Found ${pages.length} pages. Generating PDF...`);
+      const fullCanvas=await window.html2canvas(previewEl,{
+        scale:2, useCORS:true, allowTaint:true, backgroundColor:'#ffffff', scrollX:0, scrollY:0,
+        windowWidth:document.documentElement.clientWidth, width:previewEl.scrollWidth, height:previewEl.scrollHeight
+      });
 
-      const fileName = selectedFile.name.replace(/\.docx$/i,'')+'.pdf';
-      const jsPDF = window.jspdf? window.jspdf.jsPDF : window.jsPDF;
-      const pdf = new jsPDF({unit:'mm', format:'a4', orientation:'portrait'});
-      const pdfW = pdf.internal.pageSize.getWidth();
-      const pdfH = pdf.internal.pageSize.getHeight();
+      const pageHeightPx = Math.floor((contentH * fullCanvas.width) / contentW);
+      let y=0;
+      let pageNum=0;
 
-      for(let i=0; i<pages.length; i++){
-        const pageEl = pages[i];
-        if(!pageEl || pageEl.offsetHeight < 30) continue;
-
-        convertBtn.textContent = `Converting page ${i+1}/${pages.length}...`;
-
-        // FIX 3: Capture with full width, no scroll clipping
-        const canvas = await window.html2canvas(pageEl, {
-          scale: 2,
-          useCORS: true,
-          allowTaint: true,
-          backgroundColor: '#ffffff',
-          scrollX: 0,
-          scrollY: 0,
-          windowWidth: pageEl.scrollWidth,
-          windowHeight: pageEl.scrollHeight
-        });
-
-        const imgData = canvas.toDataURL('image/jpeg', 0.92);
-        const imgW = pdfW;
-        const imgH = (canvas.height * imgW) / canvas.width;
-
-        if(i > 0) pdf.addPage();
-
-        // FIX 4: Fit image properly within A4 without cutting right side
-        if(imgH <= pdfH){
-          pdf.addImage(imgData, 'JPEG', 0, 0, imgW, imgH);
-        } else {
-          // If page is taller than A4, scale to fit height
-          const ratio = pdfH / imgH;
-          const finalW = imgW * ratio;
-          const finalH = pdfH;
-          const x = (pdfW - finalW) / 2;
-          pdf.addImage(imgData, 'JPEG', x, 0, finalW, finalH);
-        }
+      while(y < fullCanvas.height){
+        const sliceH = Math.min(pageHeightPx, fullCanvas.height - y);
+        const sliceCanvas=document.createElement('canvas');
+        sliceCanvas.width=fullCanvas.width;
+        sliceCanvas.height=sliceH;
+        const ctx=sliceCanvas.getContext('2d');
+        ctx.fillStyle='#ffffff';
+        ctx.fillRect(0,0,sliceCanvas.width,sliceCanvas.height);
+        ctx.drawImage(fullCanvas, 0, y, fullCanvas.width, sliceH, 0, 0, fullCanvas.width, sliceH);
+        const imgData=sliceCanvas.toDataURL('image/png');
+        const imgH=(sliceH * contentW) / fullCanvas.width;
+        if(pageNum>0) pdf.addPage();
+        pdf.addImage(imgData,'PNG',margin,margin,contentW,imgH);
+        y+=sliceH;
+        pageNum++;
+        convertBtn.textContent=`Page ${pageNum}...`;
       }
 
       pdf.save(fileName);
-      setStatus(`Success! ${pages.length} pages PDF downloaded. Check Downloads.`);
+      setStatus(`Success! ${pageNum} pages PDF downloaded - normal PDF jaisa, bina cut ke.`);
 
-      // Restore preview box style
-      previewBox.style.maxHeight='600px';
-      previewBox.style.overflow='auto';
-
-    }catch(err){
-      console.error(err);
-      setStatus('Failed: '+(err.message||err), true);
-    }finally{
-      convertBtn.disabled=false;
-      convertBtn.textContent='Convert to PDF';
-    }
+    }catch(err){console.error(err);setStatus('Failed: '+(err.message||err),true);}
+    finally{convertBtn.disabled=false;convertBtn.textContent='Convert to PDF';}
   };
 })();
 </script>
