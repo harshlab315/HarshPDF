@@ -171,18 +171,18 @@ rd.onclick=e=>{if(e.target.id==='rightDrawer')rd.style.display='none'};
     selectedFile=file;
     fileInfo.style.display='block';
     fileInfo.textContent=`Selected: ${file.name} (${(file.size/1024/1024).toFixed(2)} MB)`;
-    setStatus('File ready for conversion. Click Convert to PDF to continue.');
+    setStatus('File ready for conversion.');
     previewBox.style.display='none';
   }
 
-  resetBtn.onclick=()=>{ selectedFile=null; fileInput.value=''; fileInfo.style.display='none'; statusEl.style.display='none'; previewBox.style.display='none'; previewEl.innerHTML=''; };
+  resetBtn.onclick=()=>{ selectedFile=null; fileInput.value=''; fileInfo.style.display='none'; statusEl.style.display='none'; previewBox.style.display='none'; previewEl.innerHTML=''; previewBox.style.maxHeight='600px'; previewBox.style.overflow='auto'; };
 
   convertBtn.onclick=async()=>{
     if(!selectedFile){ setStatus('Please select a document first.', true); return; }
     try{
       convertBtn.disabled=true;
-      convertBtn.textContent='Processing document...';
-      setStatus('Step 1/2: Rendering original Word layout with images...');
+      convertBtn.textContent='Rendering...';
+      setStatus('Step 1/2: Rendering Word pages...');
 
       previewEl.innerHTML='';
       const arrayBuffer = await selectedFile.arrayBuffer();
@@ -199,40 +199,79 @@ rd.onclick=e=>{if(e.target.id==='rightDrawer')rd.style.display='none'};
       });
 
       previewBox.style.display='block';
-      setStatus('Layout ready. Generating PDF with original layout...');
+      // FIX 1: Remove clipping before capture
+      previewBox.style.maxHeight='none';
+      previewBox.style.overflow='visible';
+      previewEl.style.overflow='visible';
 
-      await new Promise(r=>setTimeout(r, 800));
+      await new Promise(r=>setTimeout(r, 1200));
 
-      let pages = previewEl.querySelectorAll('.docx-page');
-      if(pages.length === 0) pages = previewEl.querySelectorAll('section.docx');
+      // FIX 2: Robust page detection
+      let pages = previewEl.querySelectorAll('section.docx-page, article.docx-page');
+      if(pages.length === 0) pages = previewEl.querySelectorAll('article');
+      if(pages.length === 0) pages = previewEl.querySelectorAll('.docx > section');
+      if(pages.length === 0) {
+        const w = previewEl.querySelector('.docx');
+        if(w) pages = w.children;
+      }
       if(pages.length === 0) pages = [previewEl];
+
+      console.log('Pages found:', pages.length);
+      setStatus(`Found ${pages.length} pages. Generating PDF...`);
 
       const fileName = selectedFile.name.replace(/\.docx$/i,'')+'.pdf';
       const jsPDF = window.jspdf? window.jspdf.jsPDF : window.jsPDF;
       const pdf = new jsPDF({unit:'mm', format:'a4', orientation:'portrait'});
-
-      convertBtn.textContent=`Generating PDF (${pages.length} pages)...`;
+      const pdfW = pdf.internal.pageSize.getWidth();
+      const pdfH = pdf.internal.pageSize.getHeight();
 
       for(let i=0; i<pages.length; i++){
-        const canvas = await window.html2canvas(pages[i], {
+        const pageEl = pages[i];
+        if(!pageEl || pageEl.offsetHeight < 30) continue;
+
+        convertBtn.textContent = `Converting page ${i+1}/${pages.length}...`;
+
+        // FIX 3: Capture with full width, no scroll clipping
+        const canvas = await window.html2canvas(pageEl, {
           scale: 2,
           useCORS: true,
           allowTaint: true,
-          backgroundColor: '#ffffff'
+          backgroundColor: '#ffffff',
+          scrollX: 0,
+          scrollY: 0,
+          windowWidth: pageEl.scrollWidth,
+          windowHeight: pageEl.scrollHeight
         });
-        const imgData = canvas.toDataURL('image/jpeg', 0.98);
-        const pdfWidth = pdf.internal.pageSize.getWidth();
-        const pdfHeight = (canvas.height * pdfWidth) / canvas.width;
+
+        const imgData = canvas.toDataURL('image/jpeg', 0.92);
+        const imgW = pdfW;
+        const imgH = (canvas.height * imgW) / canvas.width;
+
         if(i > 0) pdf.addPage();
-        pdf.addImage(imgData, 'JPEG', 0, 0, pdfWidth, pdfHeight);
+
+        // FIX 4: Fit image properly within A4 without cutting right side
+        if(imgH <= pdfH){
+          pdf.addImage(imgData, 'JPEG', 0, 0, imgW, imgH);
+        } else {
+          // If page is taller than A4, scale to fit height
+          const ratio = pdfH / imgH;
+          const finalW = imgW * ratio;
+          const finalH = pdfH;
+          const x = (pdfW - finalW) / 2;
+          pdf.addImage(imgData, 'JPEG', x, 0, finalW, finalH);
+        }
       }
 
       pdf.save(fileName);
-      setStatus(`Success! ${pages.length} page PDF downloaded with original layout preserved.`);
+      setStatus(`Success! ${pages.length} pages PDF downloaded. Check Downloads.`);
+
+      // Restore preview box style
+      previewBox.style.maxHeight='600px';
+      previewBox.style.overflow='auto';
 
     }catch(err){
       console.error(err);
-      setStatus('Conversion failed: '+(err.message||err), true);
+      setStatus('Failed: '+(err.message||err), true);
     }finally{
       convertBtn.disabled=false;
       convertBtn.textContent='Convert to PDF';
