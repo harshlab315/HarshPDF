@@ -2,58 +2,179 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1">
     <title>Disclaimer - KaagazPro</title>
     <link rel="stylesheet" href="css/style.css">
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6640527517870664" crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="icon" href="images/logo.jpeg">
     <style>
-        .page{max-width:900px;margin:24px auto;background:#fff;padding:28px;border-radius:16px;box-shadow:0 4px 20px rgba(0,0,0,.06);line-height:1.8}
-        .page h1{font-size:26px;margin:0 0 6px;color:#0f172a}
-        .page h2{font-size:17px;margin:22px 0 8px;color:#b45309}
-        .page p,.page li{font-size:14px;color:#334155}
-        .badge{display:inline-block;background:#fffbeb;border:1px solid #fde68a;color:#92400e;padding:6px 12px;border-radius:20px;font-size:12px;font-weight:700;margin-bottom:12px}
-        .warn{background:#fef3c7;border-left:4px solid #f59e0b;padding:12px;border-radius:8px;font-size:13px;margin:12px 0}
+        :root{
+         --primary:#4f46e5;--primary2:#06b6d4;--primary3:#8b5cf6;
+         --bg:#f8f9ff;--card:#ffffff;--border:#e6e8ef;--text:#0f172a;--muted:#64748b;
+         --shadow-sm:0 1px 3px rgba(0,0,0,.05);--shadow:0 8px 24px rgba(79,70,229,.08);--shadow-lg:0 18px 32px rgba(0,0,0,.12);
+         --radius-lg:20px;--radius-full:999px;
+        }
+        *{box-sizing:border-box}html,body{overflow-x:hidden}
+        body{margin:0;background:var(--bg);color:var(--text);font-family:'Inter',system-ui,sans-serif;position:relative;line-height:1.7}
+        body::before{content:'';position:fixed;inset:0;z-index:-2;background:radial-gradient(600px 400px at 10% 5%, rgba(79,70,229,.08), transparent 70%), radial-gradient(500px 350px at 90% 10%, rgba(6,182,214,.08), transparent 70%), linear-gradient(180deg,#f8f9ff 0%, #ffffff 100%);pointer-events:none}
+        .bg-blobs{position:fixed;inset:0;z-index:-1;overflow:hidden;pointer-events:none}
+        .bg-blobs div{position:absolute;border-radius:50%;filter:blur(40px);opacity:.5}
+        .blob1{width:320px;height:320px;background:linear-gradient(135deg,#4f46e520,#06b6d420);top:80px;left:-60px}
+        .blob2{width:280px;height:280px;background:linear-gradient(135deg,#8b5cf620,#ec489920);top:400px;right:-80px}
+        .site-header{position:sticky;top:0;z-index:90;background:rgba(255,255,255,.85);backdrop-filter:blur(18px);border-bottom:1px solid rgba(79,70,229,.12);display:flex;justify-content:space-between;align-items:center;height:62px;padding:0 16px}
+        .logo-wrap{display:flex;align-items:center;gap:10px}
+        .logo-mark{height:34px;width:34px;border-radius:10px;object-fit:cover;border:2px solid #fff;box-shadow:0 2px 10px rgba(79,70,229,.2)}
+        .logo-text{font-family:'Plus Jakarta Sans';font-weight:800;font-size:17px;letter-spacing:-.3px}
+        .logo-text span{background:linear-gradient(90deg,var(--primary),var(--primary2));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+        .icon-btn{width:42px;height:42px;display:grid;place-items:center;border-radius:12px;cursor:pointer;border:1px solid var(--border);background:#fff;box-shadow:var(--shadow-sm)}
+
+        /* HOME KE LIYE 9 DOT - 3x3 */
+        .dots-grid{display:grid;grid-template-columns:repeat(3,5px);grid-template-rows:repeat(3,5px);gap:4px;justify-content:center;align-content:center}
+        .dots-grid span{width:5px;height:5px;background:#111827;border-radius:50%;display:block}
+
+        /* INNER PAGES KE LIYE 3 DOT VERTICAL - FIXED */
+        .dots-grid.dots-3{
+          display:flex;
+          flex-direction:column;
+          gap:5px;
+          align-items:center;
+          justify-content:center;
+        }
+        .dots-grid.dots-3 span{
+          width:4px;
+          height:4px;
+          background:#111827;
+          border-radius:50%;
+          display:block;
+        }
+
+        #leftDrawer,#rightDrawer{display:none;position:fixed;inset:0;z-index:9999;background:rgba(15,23,42,.45);backdrop-filter:blur(10px)}
+        .left-box{position:absolute;left:0;top:0;width:92%;max-width:360px;height:100%;background:#fff;border-right:1px solid var(--border);overflow-y:auto}
+        .right-box{position:absolute;right:0;top:0;width:92%;max-width:340px;height:100%;background:#fff;border-left:1px solid var(--border);overflow-y:auto}
+        .drawer-head{display:flex;justify-content:space-between;align-items:center;padding:18px 16px;border-bottom:1px solid var(--border)}
+        .drawer-title{margin:0;font-size:10.5px;letter-spacing:.1em;color:#94a3b8;font-weight:800}
+        .drawer-close{font-size:22px;cursor:pointer;width:32px;height:32px;display:grid;place-items:center;border-radius:8px}
+        .d-tool,.d-link{display:flex;gap:10px;padding:11px 12px;border-radius:12px;text-decoration:none;color:#334155;font-size:13px;font-weight:600;margin:4px 10px;border:1px solid transparent}
+        .d-tool:hover{background:linear-gradient(135deg,#eef2ff,#f5f3ff);border-color:#c7d2fe;color:var(--primary)}
+        .d-link:hover{background:#f3f4f6}
+        .page{max-width:860px;margin:28px auto;background:linear-gradient(180deg,#fff 0%, #fbfcff 100%);padding:32px 28px;border-radius:20px;border:1px solid var(--border);box-shadow:0 8px 32px rgba(79,70,229,.08);position:relative;overflow:hidden}
+        .page::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--primary),var(--primary2),var(--primary3))}
+        .page h1{font-family:'Plus Jakarta Sans';font-size:28px;margin:0 0 6px;letter-spacing:-.6px}
+        .page h2{font-family:'Plus Jakarta Sans';font-size:16px;margin:26px 0 10px;color:#0f172a;font-weight:800;letter-spacing:-.2px}
+        .page p,.page li{font-size:13.8px;color:#334155}
+        .page ul{padding-left:18px}
+        .badge{display:inline-flex;align-items:center;gap:6px;background:linear-gradient(135deg,#fffbeb,#fef3c7);border:1px solid #fde68a;color:#92400e;padding:7px 14px;border-radius:var(--radius-full);font-size:11px;font-weight:700;letter-spacing:.02em}
+        .warn{background:linear-gradient(135deg,#fffbeb,#fff7ed);border-left:4px solid #f59e0b;padding:14px 16px;border-radius:12px;font-size:13px;margin:16px 0;border-top:1px solid #fde68a;border-right:1px solid #fde68a;border-bottom:1px solid #fde68a;color:#78350f}
+        .info-box{background:#f8f9ff;border:1px solid #e0e7ff;padding:14px 16px;border-radius:12px;margin:14px 0}
+        .pro-footer{background:linear-gradient(180deg,#0f1117 0%, #151525 100%);color:#9ca3af;padding:44px 18px 16px;margin-top:64px;border-top:1px solid #1f2330;position:relative}
+        .pro-footer::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,#4f46e5,#06b6d4,#8b5cf6)}
+        .foot-grid{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1.2fr 1fr 1fr 1fr;gap:28px}
+        @media(max-width:800px){.foot-grid{grid-template-columns:1fr 1fr} .foot-grid .about{grid-column:1/-1}}
+        .pro-footer h4{color:#fff;font-size:11px;font-weight:800;margin:0 0 14px;letter-spacing:.08em}
+        .pro-footer a{display:block;color:#9ca3af;text-decoration:none;font-size:12.8px;margin:9px 0}
+        .pro-footer a:hover{color:#fff}
+        .foot-bottom{border-top:1px solid #1f2330;margin-top:32px;padding-top:16px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;font-size:11.5px;max-width:1100px;margin-inline:auto}
     </style>
 </head>
 <body>
-    <nav>
-        <div class="logo">Kaagaz<span>Pro</span></div>
-        <a href="index.html" style="text-decoration:none;color:#4f46e5;font-weight:700">← Home</a>
-    </nav>
+<div class="bg-blobs"><div class="blob1"></div><div class="blob2"></div></div>
+
+<nav class="site-header">
+<div class="logo-wrap">
+<div class="icon-btn" id="openLeft" title="All Tools">
+  <div class="dots-grid dots-3">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<div class="logo-wrap" style="gap:8px"><a href="index.html" style="display:flex;align-items:center;gap:8px;text-decoration:none;color:inherit"><img src="images/logo.jpeg" class="logo-mark" alt="KaagazPro"><div class="logo-text">Kaagaz<span>Pro</span></div></a></div>
+</div>
+<div class="icon-btn" id="openRight" title="Menu">☰</div>
+</nav>
+
+<div id="leftDrawer"><div class="left-box"><div class="drawer-head"><h4 class="drawer-title">ALL TOOLS</h4><span id="closeLeft" class="drawer-close">×</span></div><div id="leftTools" style="padding:10px 0 16px"></div></div></div>
+<div id="rightDrawer"><div class="right-box"><div class="drawer-head"><h4 class="drawer-title">MENU</h4><span id="closeRight" class="drawer-close">×</span></div><div style="padding:10px 0 16px"><a class="d-link" href="index.html">Home</a><a class="d-link" href="about.html">About Us</a><a class="d-link" href="contact.html">Contact Us</a><a class="d-link" href="privacy-policy.html">Privacy Policy</a><a class="d-link" href="terms.html">Terms & Conditions</a><a class="d-link" href="disclaimer.html">Disclaimer</a></div></div></div>
 
     <div class="page">
-        <span class="badge">⚠️ Important Legal Information</span>
+        <span class="badge">⚠️ Legal Information • Effective Date: 13 Sep 2026</span>
         <h1>Disclaimer</h1>
-        <p style="color:#64748b;font-size:13px">Last Updated: 25 May 2025 | Website: KaagazPro.co.in | Contact: viscosity315@gmail.com</p>
+        <p style="color:#64748b;font-size:12.5px;margin-top:4px">Website: KaagazPro.co.in • Contact: viscosity315@gmail.com • Location: Kanpur, UP, India</p>
 
-        <div class="warn">The information and tools on KaagazPro.co.in are provided for general utility purposes only. Use at your own risk.</div>
+        <div class="warn"><b>Important:</b> All tools on KaagazPro run 100% in your browser. We do not store, upload or view your files. Use the tools at your own discretion and always verify output before using it for official purposes.</div>
 
-        <h2>1. General Information</h2>
-        <p>All tools and content on <b>KaagazPro.co.in</b> are provided in good faith for compressing and converting images. We make no representation or warranty of any kind, express or implied, regarding the accuracy, adequacy, validity, reliability, or completeness of any tool.</p>
+        <h2>1. General Purpose</h2>
+        <p>KaagazPro is a collection of free, browser-based utilities for everyday document needs such as image resizing, compression, PDF conversion, calculators and photo editing. All information and tools are provided in good faith for general utility only. While we strive to keep tools accurate and updated, we do not make any warranty about completeness, reliability or accuracy.</p>
 
-        <h2>2. Image Compression Disclaimer</h2>
-        <p>Our compressor uses browser-based Canvas technology to reduce image size. While we aim for <b>Up to 90% smaller — quality optimized</b> results, we do not guarantee:</p>
+        <h2>2. No Guarantee on Output</h2>
+        <p>Our tools use client-side technologies like HTML5 Canvas and JavaScript PDF libraries. Results may vary based on your original file:</p>
         <ul>
-            <li>Exact file size (e.g. exactly 20KB / 50KB / 100KB)</li>
-            <li>100% visual quality retention for all images</li>
-            <li>Acceptance of compressed images on any third-party website, portal, or application</li>
+            <li>Exact file size like 20KB, 50KB, 100KB is targeted on best-effort basis and depends on image content. Some images may need quality adjustment.</li>
+            <li>Image quality after compression depends on original format, resolution and complexity.</li>
+            <li>PDF conversions preserve content as best as possible but complex layouts may change.</li>
+            <li>We do not guarantee that output will be accepted by any third-party portal, government form, university or employer. Please check their specific requirements.</li>
         </ul>
-        <p>Always check your compressed image before uploading it elsewhere. Tip: PNG → JPG can significantly reduce file size.</p>
 
-        <h2>3. No Storage - User Responsibility</h2>
-        <p>We do NOT store your files. All processing happens 100% offline in your browser. You are solely responsible for the files you compress and how you use them. Do not upload illegal or copyrighted content.</p>
+        <h2>3. Browser-Based Processing & Privacy</h2>
+        <p>All processing happens offline inside your browser. Your files never leave your device, are never uploaded to our server, and are never stored by us. Because of this, we cannot recover your files. You are solely responsible for keeping backup copies of your original and processed files.</p>
 
-        <h2>4. External Links Disclaimer</h2>
-        <p>Our website may contain links to other websites or tools. We have no control over their content, privacy policies, or practices and assume no responsibility for them.</p>
+        <h2>4. No Professional, Legal or Official Advice</h2>
+        <p>KaagazPro does not provide legal, financial, academic or government-related advice. Tools like GST Calculator, EMI Calculator, Age Calculator, Attendance Calculator provide estimates for informational purposes only. For official decisions, consult a qualified professional or official source.</p>
 
-        <h2>5. No Professional Advice</h2>
-        <p>KaagazPro.co.in does not provide any legal, technical certification, or official document verification advice. Our tools are for utility only.</p>
+        <h2>5. Third-Party Links and Ads</h2>
+        <p>Our site may show advertisements via Google AdSense and may contain links to external sites for your convenience. We have no control over content, privacy policies or practices of third-party sites and we are not responsible for them. Clicking external links is at your own risk.</p>
 
-        <h2>6. Consent & Contact</h2>
-        <p>By using KaagazPro.co.in, you hereby consent to our Disclaimer and agree to its terms. If you need clarification, contact us:</p>
-        <p style="background:#f8fafc;border:1px solid #e2e8f0;padding:12px;border-radius:10px"><b>Email:</b> viscosity315@gmail.com<br><b>Domain:</b> KaagazPro.co.in<br><b>Location:</b> Kanpur, Uttar Pradesh, India</p>
+        <h2>6. User Responsibility</h2>
+        <p>You agree that:</p>
+        <ul>
+            <li>You will not upload or process illegal, copyrighted without permission, or harmful content.</li>
+            <li>You are responsible for ensuring you have rights to use the files you process.</li>
+            <li>You will verify the final file before using it for any official submission.</li>
+        </ul>
 
-        <a href="index.html" style="display:inline-block;margin-top:18px;background:#0f172a;color:#fff;padding:10px 16px;border-radius:8px;text-decoration:none;font-size:13px;font-weight:700">← Back to Home</a>
+        <h2>7. Limitation of Liability</h2>
+        <p>To the fullest extent permitted by law, KaagazPro, its owner and contributors shall not be liable for any direct, indirect, incidental or consequential damages arising from use or inability to use our tools, including but not limited to loss of data, rejection of forms, or financial loss.</p>
+
+        <h2>8. Changes to Tools and Disclaimer</h2>
+        <p>We may update, add or remove tools and update this Disclaimer at any time without prior notice. Continued use of the website after changes means you accept the updated Disclaimer.</p>
+
+        <h2>9. Contact for Concerns</h2>
+        <p>If you have any questions about this Disclaimer or find any tool giving incorrect results, please contact us. We genuinely try to fix issues quickly.</p>
+        
+        <div class="info-box"><b>Email:</b> viscosity315@gmail.com<br><b>Website:</b> https://kaagazpro.co.in<br><b>Location:</b> Kanpur, Uttar Pradesh, India<br><b>Project Type:</b> Free, privacy-first, offline tools built for students and professionals</div>
+
+        <a href="index.html" style="display:inline-flex;align-items:center;gap:6px;margin-top:20px;background:#111827;color:#fff;padding:11px 18px;border-radius:12px;text-decoration:none;font-size:13px;font-weight:700;box-shadow:0 4px 12px rgba(0,0,0,.15)">← Back to Home</a>
     </div>
+
+<footer class="pro-footer">
+<div class="foot-grid">
+<div class="about"><div style="display:flex;align-items:center;gap:8px;font-weight:800;color:#fff"><img src="images/logo.jpeg" style="height:24px;border-radius:6px"> KaagazPro</div><p>KaagazPro is an offline-first toolkit. Files are processed in your browser, not uploaded. Designed to be simple, private and useful for everyone.</p><p style="margin-top:10px;color:#fff;font-weight:600">Made with care in India</p></div>
+<div><h4>PRODUCT</h4><a href="index.html">Home</a><a href="index.html#toolGrid">All Tools</a><a href="index.html#faq">FAQ</a></div>
+<div><h4>RESOURCES</h4><a href="tools/jpg-to-pdf/">JPG to PDF</a><a href="tools/pdf-to-jpg/">PDF to JPG</a><a href="tools/compressor.html">Compressor</a><a href="tools/resize.html">Resize to KB</a></div>
+<div><h4>COMPANY</h4><a href="about.html">About Us</a><a href="contact.html">Contact Us</a><a href="disclaimer.html">Disclaimer</a><a href="privacy-policy.html">Privacy Policy</a><a href="terms.html">Terms & Conditions</a></div>
+</div>
+<div class="foot-bottom"><span>© 2026 KaagazPro</span><span>Private by design • Files stay on your device</span></div>
+</footer>
+
+<script>
+const tools=[
+ {name:"Resize Photo to KB",link:"tools/resize.html",icon:"🖼️"},
+ {name:"Smart Compressor",link:"tools/compressor.html",icon:"⚡"},
+ {name:"JPG to PDF",link:"tools/jpg-to-pdf/",icon:"📄"},
+ {name:"Merge PDF / Images",link:"tools/merge-pdf.html",icon:"🔗"},
+ {name:"PDF to JPG",link:"tools/pdf-to-jpg/",icon:"🖼️"},
+ {name:"Passport Photo Maker",link:"tools/passport.html",icon:"👤"},
+];
+const leftTools=document.getElementById('leftTools');
+leftTools.innerHTML=tools.map(t=>`<a class="d-tool" href="${t.link}"><span>${t.icon}</span> ${t.name}</a>`).join('');
+const leftDrawer=document.getElementById('leftDrawer'),rightDrawer=document.getElementById('rightDrawer');
+document.getElementById('openLeft').onclick=()=>leftDrawer.style.display='block';
+document.getElementById('closeLeft').onclick=()=>leftDrawer.style.display='none';
+leftDrawer.onclick=e=>{if(e.target.id==='leftDrawer') leftDrawer.style.display='none'};
+document.getElementById('openRight').onclick=()=>rightDrawer.style.display='block';
+document.getElementById('closeRight').onclick=()=>rightDrawer.style.display='none';
+rightDrawer.onclick=e=>{if(e.target.id==='rightDrawer') rightDrawer.style.display='none'};
+</script>
 </body>
 </html>
