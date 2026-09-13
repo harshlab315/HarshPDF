@@ -1,59 +1,138 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Privacy Policy - KaagazPro</title>
-    <link rel="stylesheet" href="css/style.css">
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6640527517870664" crossorigin="anonymous"></script>
-    <style>
-        .page{max-width:900px;margin:24px auto;background:#fff;padding:28px;border-radius:16px;box-shadow:0 4px 20px rgba(0,0,0,.06);line-height:1.8}
-        .page h2{font-size:26px;margin:0 0 6px;color:#0f172a}
-        .page h3{font-size:17px;margin:22px 0 8px;color:#1e40af}
-        .page p,.page li{font-size:14px;color:#334155}
-        .badge{display:inline-block;background:#f0fdf4;border:1px solid #bbf7d0;color:#15803d;padding:6px 12px;border-radius:20px;font-size:12px;font-weight:700;margin-bottom:12px}
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1">
+<title>Privacy Policy - KaagazPro</title>
+<link rel="stylesheet" href="css/style.css">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6640527517870664" crossorigin="anonymous"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="icon" href="images/logo.jpeg">
+<style>
+:root{--primary:#4f46e5;--primary2:#06b6d4;--primary3:#8b5cf6;--bg:#f8f9ff;--border:#e6e8ef;--text:#0f172a;--muted:#64748b;--shadow-sm:0 1px 3px rgba(0,0,0,.05);--shadow:0 8px 24px rgba(79,70,229,.08)}
+*{box-sizing:border-box}html,body{overflow-x:hidden}
+body{margin:0;background:var(--bg);color:var(--text);font-family:'Inter',system-ui,sans-serif;position:relative;line-height:1.7}
+body::before{content:'';position:fixed;inset:0;z-index:-2;background:radial-gradient(600px 400px at 10% 5%, rgba(79,70,229,.08), transparent 70%), radial-gradient(500px 350px at 90% 10%, rgba(6,182,214,.08), transparent 70%), linear-gradient(180deg,#f8f9ff 0%, #ffffff 100%);pointer-events:none}
+.bg-blobs{position:fixed;inset:0;z-index:-1;overflow:hidden;pointer-events:none}
+.bg-blobs div{position:absolute;border-radius:50%;filter:blur(40px);opacity:.5}
+.blob1{width:320px;height:320px;background:linear-gradient(135deg,#4f46e520,#06b6d420);top:80px;left:-60px}
+.blob2{width:280px;height:280px;background:linear-gradient(135deg,#8b5cf620,#ec489920);top:400px;right:-80px}
+.site-header{position:sticky;top:0;z-index:90;background:rgba(255,255,255,.85);backdrop-filter:blur(18px);border-bottom:1px solid rgba(79,70,229,.12);display:flex;justify-content:space-between;align-items:center;height:62px;padding:0 16px}
+.logo-wrap{display:flex;align-items:center;gap:10px}
+.logo-mark{height:34px;width:34px;border-radius:10px;object-fit:cover;border:2px solid #fff;box-shadow:0 2px 10px rgba(79,70,229,.2)}
+.logo-text{font-family:'Plus Jakarta Sans';font-weight:800;font-size:17px;letter-spacing:-.3px}
+.logo-text span{background:linear-gradient(90deg,var(--primary),var(--primary2));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.icon-btn{width:42px;height:42px;display:grid;place-items:center;border-radius:12px;cursor:pointer;border:1px solid var(--border);background:#fff;box-shadow:var(--shadow-sm)}
+.dots-grid.dots-3{display:flex;flex-direction:column;gap:5px;align-items:center;justify-content:center}
+.dots-grid.dots-3 span{width:4px;height:4px;background:#111827;border-radius:50%;display:block}
+#leftDrawer,#rightDrawer{display:none;position:fixed;inset:0;z-index:9999;background:rgba(15,23,42,.45);backdrop-filter:blur(10px)}
+.left-box{position:absolute;left:0;top:0;width:92%;max-width:360px;height:100%;background:#fff;border-right:1px solid var(--border);overflow-y:auto}
+.right-box{position:absolute;right:0;top:0;width:92%;max-width:340px;height:100%;background:#fff;border-left:1px solid var(--border);overflow-y:auto}
+.drawer-head{display:flex;justify-content:space-between;align-items:center;padding:18px 16px;border-bottom:1px solid var(--border)}
+.drawer-title{margin:0;font-size:10.5px;letter-spacing:.1em;color:#94a3b8;font-weight:800}
+.drawer-close{font-size:22px;cursor:pointer;width:32px;height:32px;display:grid;place-items:center;border-radius:8px}
+.d-tool,.d-link{display:flex;gap:10px;padding:11px 12px;border-radius:12px;text-decoration:none;color:#334155;font-size:13px;font-weight:600;margin:4px 10px;border:1px solid transparent}
+.d-tool:hover{background:linear-gradient(135deg,#eef2ff,#f5f3ff);border-color:#c7d2fe;color:var(--primary)}
+.d-link:hover{background:#f3f4f6}
+.page{max-width:860px;margin:28px auto;background:linear-gradient(180deg,#fff 0%, #fbfcff 100%);padding:32px 28px;border-radius:20px;border:1px solid var(--border);box-shadow:0 8px 32px rgba(79,70,229,.08);position:relative;overflow:hidden}
+.page::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--primary),var(--primary2),var(--primary3))}
+.page h1{font-family:'Plus Jakarta Sans';font-size:28px;margin:0 0 6px;letter-spacing:-.6px}
+.page h3{font-family:'Plus Jakarta Sans';font-size:16px;margin:26px 0 10px;color:#0f172a;font-weight:800}
+.page p,.page li{font-size:13.8px;color:#334155}
+.page ul{padding-left:18px}
+.badge{display:inline-flex;align-items:center;gap:6px;background:linear-gradient(135deg,#f0fdf4,#dcfce7);border:1px solid #bbf7d0;color:#15803d;padding:7px 14px;border-radius:999px;font-size:11px;font-weight:700}
+.info-box{background:#f8f9ff;border:1px solid #e0e7ff;padding:14px 16px;border-radius:12px;margin:14px 0;font-size:13.5px}
+.pro-footer{background:linear-gradient(180deg,#0f1117 0%, #151525 100%);color:#9ca3af;padding:44px 18px 16px;margin-top:64px;border-top:1px solid #1f2330;position:relative}
+.pro-footer::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,#4f46e5,#06b6d4,#8b5cf6)}
+.foot-grid{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1.2fr 1fr 1fr 1fr;gap:28px}
+@media(max-width:800px){.foot-grid{grid-template-columns:1fr 1fr} .foot-grid .about{grid-column:1/-1}}
+.pro-footer h4{color:#fff;font-size:11px;font-weight:800;margin:0 0 14px;letter-spacing:.08em}
+.pro-footer a{display:block;color:#9ca3af;text-decoration:none;font-size:12.8px;margin:9px 0}
+.foot-bottom{border-top:1px solid #1f2330;margin-top:32px;padding-top:16px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;font-size:11.5px;max-width:1100px;margin-inline:auto}
+</style>
 </head>
 <body>
-    <nav>
-        <div class="logo">Kaagaz<span>Pro</span></div>
-        <a href="index.html" style="text-decoration:none;color:#4f46e5;font-weight:700">← Home</a>
-    </nav>
-    
-    <div class="page">
-        <span class="badge">🔒 100% Private & Offline</span>
-        <h2>Privacy Policy</h2>
-        <p style="color:#64748b;font-size:13px"><b>Last Updated:</b> 25 May 2025 | <b>Email:</b> viscosity315@gmail.com | <b>Website:</b> KaagazPro.co.in</p>
+<div class="bg-blobs"><div class="blob1"></div><div class="blob2"></div></div>
+<nav class="site-header">
+<div class="logo-wrap">
+<div class="icon-btn" id="openLeft"><div class="dots-grid dots-3"><span></span><span></span><span></span></div></div>
+<div class="logo-wrap" style="gap:8px"><a href="index.html" style="display:flex;align-items:center;gap:8px;text-decoration:none;color:inherit"><img src="images/logo.jpeg" class="logo-mark" alt="KaagazPro"><div class="logo-text">Kaagaz<span>Pro</span></div></a></div>
+</div>
+<div class="icon-btn" id="openRight">☰</div>
+</nav>
+<div id="leftDrawer"><div class="left-box"><div class="drawer-head"><h4 class="drawer-title">ALL TOOLS</h4><span id="closeLeft" class="drawer-close">×</span></div><div id="leftTools" style="padding:10px 0 16px"></div></div></div>
+<div id="rightDrawer"><div class="right-box"><div class="drawer-head"><h4 class="drawer-title">MENU</h4><span id="closeRight" class="drawer-close">×</span></div><div style="padding:10px 0 16px"><a class="d-link" href="index.html">Home</a><a class="d-link" href="about.html">About Us</a><a class="d-link" href="contact.html">Contact Us</a><a class="d-link" href="privacy-policy.html">Privacy Policy</a><a class="d-link" href="terms.html">Terms & Conditions</a><a class="d-link" href="disclaimer.html">Disclaimer</a></div></div></div>
 
-        <p style="margin-top:12px">At <b>KaagazPro</b>, your privacy is our first priority. We are a 100% offline, browser-based tool. We do NOT store your files.</p>
+<div class="page">
+    <span class="badge">🔒 100% Private • Files Stay On Device</span>
+    <h1>Privacy Policy</h1>
+    <p style="color:#64748b;font-size:12.5px;margin-top:4px"><b>Last Updated:</b> 13 Sep 2026 | <b>Email:</b> viscosity315@gmail.com | <b>Website:</b> kaagazpro.co.in</p>
 
-        <h3>1. Zero Storage Policy - We Do NOT Store Your Files</h3>
-        <p>All image processing happens in your browser using Canvas API. Your photos never leave your device. They are never uploaded to our server, never viewed, never stored, and never shared by us. When you close the tab or click ZIP download, files are auto-deleted from memory.</p>
+    <p style="margin-top:14px">At <b>KaagazPro</b>, your privacy is our priority. We built this site as a <b>100% offline, browser-based toolkit</b>. That means your files are processed inside your own browser, not on our server.</p>
 
-        <h3>2. What We Do NOT Collect</h3>
-        <ul>
-            <li>We do NOT collect personal photos, Aadhaar, PAN, or any document images</li>
-            <li>We do NOT collect your name, phone number, or address</li>
-            <li>We do NOT save compressed images on our server</li>
-        </ul>
+    <h3>1. Zero Storage Policy - We Do NOT Store Your Files</h3>
+    <p>This is our core principle. All tools (Resize to KB, Compressor, JPG to PDF, PDF to JPG, Background Remover etc.) use client-side technology like HTML5 Canvas and JavaScript. Your photos, PDFs and documents <b>never leave your device, are never uploaded to our server, never viewed and never stored</b> by us. When you close the tab, data is cleared from browser memory.</p>
 
-        <h3>3. What We Collect (Non-Personal Only)</h3>
-        <p>We use Google Analytics and Google AdSense to understand our traffic. This includes only anonymous data like device type, browser type, pages visited, and time spent. This helps us improve speed and user experience.</p>
+    <h3>2. What We Do NOT Collect</h3>
+    <ul>
+        <li>We do NOT collect your photos, Aadhaar, PAN, signature or any document images</li>
+        <li>We do NOT collect your name, phone number, address or personal details (except what you send via contact form)</li>
+        <li>We do NOT save compressed or converted files on any server</li>
+        <li>We do NOT have access to your files</li>
+    </ul>
 
-        <h3>4. Cookies & Google AdSense</h3>
-        <p>We use Google AdSense to show ads and keep KaagazPro free. Google may use cookies and DoubleClick DART cookies to show relevant ads based on your interests. You can opt out of personalized ads at <a href="https://adssettings.google.com" target="_blank">adssettings.google.com</a>. You can also disable cookies in your browser settings.</p>
+    <h3>3. What We Collect (Anonymous Only)</h3>
+    <p>To keep KaagazPro fast and free, we use:</p>
+    <ul>
+        <li><b>Google Analytics:</b> Anonymous data like device type, browser type, pages visited, approximate location (city level). No personal files.</li>
+        <li><b>Contact Form:</b> Only when you contact us via form at contact.html, we receive your name, email and message via FormSubmit to reply you. We don't share it.</li>
+    </ul>
 
-        <h3>5. Third-Party Links</h3>
-        <p>Our website may contain links to other tools. We are not responsible for their privacy practices.</p>
+    <h3>4. Cookies & Google AdSense</h3>
+    <p>We use Google AdSense to show ads and keep all tools free. Google may use cookies and DoubleClick DART cookies to show relevant ads. You can:</p>
+    <ul>
+        <li>Opt-out of personalized ads at <a href="https://adssettings.google.com" target="_blank">adssettings.google.com</a></li>
+        <li>Disable cookies from your browser settings</li>
+    </ul>
+    <p>AdSense does NOT get access to your files, because files never leave your device.</p>
 
-        <h3>6. Children's Privacy</h3>
-        <p>Our service is for general audience and does not knowingly collect data from children under 13.</p>
+    <h3>5. Third-Party Links</h3>
+    <p>Our website may contain links to other websites. We are not responsible for their privacy practices. Please check their policies when you visit them.</p>
 
-        <h3>7. Your Consent & Contact</h3>
-        <p>By using KaagazPro.com, you consent to this Privacy Policy. If you have any questions, contact us anytime:</p>
-        <p style="background:#f8fafc;border:1px solid #e2e8f0;padding:12px;border-radius:10px"><b>Email:</b> viscosity315@gmail.com<br><b>Location:</b> Kanpur, Uttar Pradesh, India</p>
+    <h3>6. Children's Privacy</h3>
+    <p>KaagazPro is for general audience (students, job seekers, professionals). We do not knowingly collect personal data from children under 13. Our tools work without login.</p>
 
-        <a href="index.html" style="display:inline-block;margin-top:18px;background:#0f172a;color:#fff;padding:10px 16px;border-radius:8px;text-decoration:none;font-size:13px;font-weight:700">← Back to Home</a>
-    </div>
+    <h3>7. Data Security</h3>
+    <p>Since we don't store your files, there is no risk of file leak from our server. Your files remain on your device. We use HTTPS to secure the connection between your browser and our website.</p>
+
+    <h3>8. Your Consent & Contact</h3>
+    <p>By using KaagazPro.co.in, you consent to this Privacy Policy. If you have any question about privacy, you can contact us anytime and we reply within 24 hours.</p>
+
+    <div class="info-box"><b>Email:</b> viscosity315@gmail.com<br><b>Website:</b> https://kaagazpro.co.in<br><b>Location:</b> Kanpur, Uttar Pradesh, India<br><b>Note:</b> This is a privacy-first project. No login, no tracking of your documents, free forever.</div>
+
+    <a href="index.html" style="display:inline-flex;align-items:center;gap:6px;margin-top:20px;background:#111827;color:#fff;padding:11px 18px;border-radius:12px;text-decoration:none;font-size:13px;font-weight:700">← Back to Home</a>
+</div>
+
+<footer class="pro-footer">
+<div class="foot-grid">
+<div class="about"><div style="display:flex;align-items:center;gap:8px;font-weight:800;color:#fff"><img src="images/logo.jpeg" style="height:24px;border-radius:6px"> KaagazPro</div><p>KaagazPro is an offline-first toolkit. Files are processed in your browser, not uploaded.</p></div>
+<div><h4>PRODUCT</h4><a href="index.html">Home</a><a href="index.html#toolGrid">All Tools</a><a href="index.html#faq">FAQ</a></div>
+<div><h4>RESOURCES</h4><a href="tools/jpg-to-pdf/">JPG to PDF</a><a href="tools/pdf-to-jpg/">PDF to JPG</a><a href="tools/compressor.html">Compressor</a><a href="tools/resize.html">Resize to KB</a></div>
+<div><h4>COMPANY</h4><a href="about.html">About Us</a><a href="contact.html">Contact Us</a><a href="disclaimer.html">Disclaimer</a><a href="privacy-policy.html">Privacy Policy</a><a href="terms.html">Terms & Conditions</a></div>
+</div>
+<div class="foot-bottom"><span>© 2026 KaagazPro</span><span>Private by design • Files stay on your device</span></div>
+</footer>
+
+<script>
+const tools=[{name:"Resize Photo to KB",link:"tools/resize.html",icon:"🖼️"},{name:"Smart Compressor",link:"tools/compressor.html",icon:"⚡"},{name:"JPG to PDF",link:"tools/jpg-to-pdf/",icon:"📄"},{name:"Merge PDF / Images",link:"tools/merge-pdf.html",icon:"🔗"},{name:"PDF to JPG",link:"tools/pdf-to-jpg/",icon:"🖼️"}];
+document.getElementById('leftTools').innerHTML=tools.map(t=>`<a class="d-tool" href="${t.link}"><span>${t.icon}</span> ${t.name}</a>`).join('');
+const leftDrawer=document.getElementById('leftDrawer'),rightDrawer=document.getElementById('rightDrawer');
+document.getElementById('openLeft').onclick=()=>leftDrawer.style.display='block';
+document.getElementById('closeLeft').onclick=()=>leftDrawer.style.display='none';
+leftDrawer.onclick=e=>{if(e.target.id==='leftDrawer') leftDrawer.style.display='none'};
+document.getElementById('openRight').onclick=()=>rightDrawer.style.display='block';
+document.getElementById('closeRight').onclick=()=>rightDrawer.style.display='none';
+rightDrawer.onclick=e=>{if(e.target.id==='rightDrawer') rightDrawer.style.display='none'};
+</script>
 </body>
 </html>
