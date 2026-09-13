@@ -1,92 +1,183 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
 <title>KaagazPro - Free Online Tools for Images, PDF & Documents</title>
+<meta name="description" content="KaagazPro - Free tools to resize photo to 20KB, compress image, JPG to PDF, PDF tools. Private by design, files stay on device.">
+<link rel="canonical" href="https://kaagazpro.co.in/">
 <link rel="stylesheet" href="css/style.css">
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6640527517870664" crossorigin="anonymous"></script>
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="icon" href="images/logo.jpeg">
 <style>
-*{box-sizing:border-box}
-.tabs-wrap{overflow-x:auto;scrollbar-width:none;margin:18px 0 10px}.tabs-wrap::-webkit-scrollbar{display:none}
-.tabs{display:flex;gap:8px;justify-content:center;flex-wrap:nowrap;width:max-content;margin:0 auto;padding:4px}
-@media(min-width:800px){.tabs{flex-wrap:wrap;width:auto}}
-.tab{padding:9px 18px;border:1.5px solid #e2e8f0;border-radius:30px;font-size:12.5px;font-weight:700;cursor:pointer;background:#fff;font-family:'Inter';white-space:nowrap}.tab.active{background:#0f172a;color:#fff;border-color:#0f172a}
-.search-wrap{max-width:560px;margin:16px auto}.search-box{background:#fff;border:1.5px solid #e2e8f0;border-radius:16px;display:flex;align-items:center;box-shadow:0 4px 16px rgba(0,0,0,.05)}.search-box:focus-within{border-color:#4f46e5;box-shadow:0 0 0 4px rgba(79,70,229,.1)}.search-box input{width:100%;padding:14px 10px;border:none;outline:none;font-size:13.5px;font-family:'Inter';background:transparent}
-#secure-badge{position:fixed;bottom:18px;right:18px;z-index:9999;background:#fff;color:#334155;border:1.5px solid #e2e8f0;padding:10px 14px;border-radius:100px;font-family:'Inter';font-size:11px;font-weight:600;display:flex;gap:8px;align-items:center;box-shadow:0 4px 20px rgba(0,0,0,.12);cursor:pointer}
-.dot{width:8px;height:8px;background:#22c55e;border-radius:50%;box-shadow:0 0 8px rgba(34,197,94,.5);animation:blink 2s infinite}@keyframes blink{0%,100%{opacity:1}50%{opacity:.4}}@keyframes pop{from{transform:scale(.95);opacity:0}to{transform:scale(1);opacity:1}}@keyframes slideLeft{from{transform:translateX(-100%)}to{transform:translateX(0)}}@keyframes slideRight{from{transform:translateX(100%)}to{transform:translateX(0)}}
-.icon-btn{width:42px;height:42px;display:grid;place-items:center;border-radius:10px;cursor:pointer;border:1px solid transparent}.icon-btn:hover{background:#f1f5f9;border-color:#e2e8f0}
+:root{
+ --primary:#4f46e5;--primary2:#06b6d4;--primary3:#8b5cf6;
+ --bg:#f8f9ff;--card:#ffffff;--border:#e6e8ef;--border-strong:#d4d7e5;
+ --text:#0f172a;--muted:#64748b;--muted-2:#94a3b8;
+ --shadow-sm:0 1px 3px rgba(0,0,0,.05);--shadow:0 8px 24px rgba(79,70,229,.08);--shadow-lg:0 18px 32px rgba(0,0,0,.12);
+ --radius:16px;--radius-lg:20px;--radius-full:999px;
+}
+*{box-sizing:border-box}html,body{overflow-x:hidden;max-width:100vw}
+body{margin:0;background:var(--bg);color:var(--text);font-family:'Inter',system-ui,sans-serif;position:relative}
+body::before{content:'';position:fixed;inset:0;z-index:-2;background:
+ radial-gradient(600px 400px at 10% 5%, rgba(79,70,229,.08), transparent 70%),
+ radial-gradient(500px 350px at 90% 10%, rgba(6,182,214,.08), transparent 70%),
+ radial-gradient(700px 500px at 50% 90%, rgba(139,92,246,.06), transparent 70%),
+ linear-gradient(180deg,#f8f9ff 0%, #ffffff 100%);pointer-events:none}
+.bg-blobs{position:fixed;inset:0;z-index:-1;overflow:hidden;pointer-events:none}
+.bg-blobs div{position:absolute;border-radius:50%;filter:blur(40px);opacity:.5}
+.blob1{width:320px;height:320px;background:linear-gradient(135deg,#4f46e520,#06b6d420);top:80px;left:-60px}
+.blob2{width:280px;height:280px;background:linear-gradient(135deg,#8b5cf620,#ec489920);top:400px;right:-80px}
+.blob3{width:400px;height:400px;background:linear-gradient(135deg,#06b6d415,#4f46e515);bottom:200px;left:20%}
+.site-header{position:sticky;top:0;z-index:90;background:rgba(255,255,255,.85);backdrop-filter:blur(18px) saturate(180%);-webkit-backdrop-filter:blur(18px);border-bottom:1px solid rgba(79,70,229,.12);display:flex;justify-content:space-between;align-items:center;height:62px;padding:0 16px;box-shadow:0 1px 0 rgba(79,70,229,.06), 0 8px 24px rgba(0,0,0,.03)}
+.logo-wrap{display:flex;align-items:center;gap:10px}
+.logo-mark{height:34px;width:34px;border-radius:10px;object-fit:cover;border:2px solid #fff;box-shadow:0 2px 10px rgba(79,70,229,.2)}
+.logo-text{font-family:'Plus Jakarta Sans';font-weight:800;font-size:17px;letter-spacing:-.3px;color:var(--text)}
+.logo-text span{background:linear-gradient(90deg,var(--primary),var(--primary2));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.icon-btn{width:42px;height:42px;display:grid;place-items:center;border-radius:12px;cursor:pointer;border:1px solid var(--border);background:#fff;color:var(--text);transition:.18s ease;box-shadow:var(--shadow-sm)}
+.icon-btn:hover{background:#eef2ff;border-color:#c7d2fe;transform:translateY(-1px)}
 
-.dots-grid{display:grid;grid-template-columns:repeat(3,6px);gap:4px}.dots-grid span{width:6px;height:6px;background:#0f172a;border-radius:50%;display:block}
-#leftDrawer,#rightDrawer{display:none;position:fixed;inset:0;z-index:9999;background:rgba(15,23,42,.55);backdrop-filter:blur(6px)}
-.left-box{position:absolute;left:0;top:0;width:92%;max-width:380px;height:100%;background:#fff;border-right:1px solid #e2e8f0;overflow-y:auto;animation:slideLeft .25s ease}
-.right-box{position:absolute;right:0;top:0;width:92%;max-width:360px;height:100%;background:#fff;border-left:1px solid #e2e8f0;overflow-y:auto;animation:slideRight .25s ease}
-.d-tool{display:flex;gap:10px;padding:11px 14px;border-radius:10px;text-decoration:none;color:#334155;font-size:13.5px;font-weight:600;margin:3px 10px;border:1px solid transparent}.d-tool:hover{background:#f8fafc;border-color:#e2e8f0;color:#0f172a}
-.d-link{display:block;padding:12px 14px;border-radius:10px;text-decoration:none;color:#334155;font-size:14px;font-weight:600;margin:4px 10px}.d-link:hover{background:#f1f5f9;color:#0f172a}
-.sec{max-width:1100px;margin:42px auto;padding:0 16px}.sec h2{font-family:'Plus Jakarta Sans';font-size:22px;font-weight:800;margin:0 0 6px}.sec p.sub{color:#64748b;font-size:13px;margin:0 0 18px;line-height:1.5}
-.steps,.why{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}@media(max-width:700px){.steps,.why{grid-template-columns:1fr}}
-.step,.w-card{background:#fff;border:1px solid #e2e8f0;border-radius:16px;padding:18px}.step b{width:32px;height:32px;background:#0f172a;color:#fff;border-radius:50%;display:grid;place-items:center;font-size:14px;margin-bottom:10px}
-.w-card h4{margin:8px 0 6px;font-size:14px}.w-card p{font-size:12.5px;color:#64748b;line-height:1.6;margin:0}
-.faq-item{border:1px solid #e2e8f0;border-radius:12px;margin:8px 0;background:#fff;overflow:hidden}.faq-q{padding:14px 16px;font-weight:600;font-size:13.5px;cursor:pointer;display:flex;justify-content:space-between}.faq-a{display:none;padding:0 16px 14px;font-size:12.5px;color:#475569;line-height:1.6}.faq-item.open .faq-a{display:block}.faq-item.open .faq-q{background:#f8fafc}
-.pro-footer{background:#15151f;color:#a1a1b5;padding:36px 18px 14px;font-family:'Inter'}.foot-grid{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1.2fr 1fr 1fr 1fr;gap:28px}
-@media(max-width:800px){.foot-grid{grid-template-columns:1fr 1fr;gap:22px} .foot-grid .about{grid-column:1/-1;text-align:center}}@media(max-width:500px){.foot-grid{grid-template-columns:1fr;text-align:center}}
-.pro-footer h4{color:#fff;font-size:13px;font-weight:800;margin:0 0 12px}.pro-footer a{display:block;color:#a1a1b5;text-decoration:none;font-size:12.5px;margin:7px 0}.pro-footer a:hover{color:#fff}.pro-footer p{font-size:12px;line-height:1.6;margin:6px 0;color:#8b8ba3}
-.foot-bottom{border-top:1px solid #2a2a38;margin-top:26px;padding-top:14px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;font-size:11px;color:#7a7a8a;max-width:1100px;margin-inline:auto}
-.badge{display:inline-flex;gap:6px;align-items:center;background:#eef2ff;border:1px solid #e0e7ff;color:#4f46e5;padding:6px 14px;border-radius:100px;font-size:11px;font-weight:700;font-family:'Inter';margin:0 auto}
+/* 9 DOT GRID - FIXED */
+.dots-grid{display:grid;grid-template-columns:repeat(3,5px);grid-template-rows:repeat(3,5px);gap:4px;justify-content:center;align-content:center}
+.dots-grid span{width:5px;height:5px;background:#111827;border-radius:50%;display:block}
+
+#leftDrawer,#rightDrawer{display:none;position:fixed;inset:0;z-index:9999;background:rgba(15,23,42,.45);backdrop-filter:blur(10px)}
+.left-box{position:absolute;left:0;top:0;width:92%;max-width:360px;height:100%;background:#fff;border-right:1px solid var(--border);overflow-y:auto;animation:slideLeft .24s ease}
+.right-box{position:absolute;right:0;top:0;width:92%;max-width:340px;height:100%;background:#fff;border-left:1px solid var(--border);overflow-y:auto;animation:slideRight .24s ease}
+@keyframes slideLeft{from{transform:translateX(-12px)}to{transform:translateX(0)}}@keyframes slideRight{from{transform:translateX(12px)}to{transform:translateX(0)}}@keyframes pop{from{transform:scale(.97);opacity:0}to{transform:scale(1);opacity:1}}@keyframes blink{0%,100%{opacity:1}50%{opacity:.4}}
+.drawer-head{display:flex;justify-content:space-between;align-items:center;padding:18px 16px;border-bottom:1px solid var(--border)}
+.drawer-title{margin:0;font-size:10.5px;letter-spacing:.1em;color:var(--muted-2);font-weight:800}
+.drawer-close{font-size:22px;cursor:pointer;width:32px;height:32px;display:grid;place-items:center;border-radius:8px}.drawer-close:hover{background:#f3f4f6}
+.d-tool{display:flex;gap:10px;align-items:center;padding:11px 12px;border-radius:12px;text-decoration:none;color:#334155;font-size:13px;font-weight:600;margin:4px 10px;border:1px solid transparent;transition:.15s}
+.d-tool:hover{background:linear-gradient(135deg,#eef2ff,#f5f3ff);border-color:#c7d2fe;color:var(--primary)}
+.d-link{display:block;padding:11px 12px;border-radius:10px;text-decoration:none;color:#334155;font-size:13.5px;font-weight:600;margin:3px 10px}
+.d-link:hover{background:#f3f4f6;color:var(--text)}
+.hero{text-align:center;padding:48px 16px 16px;max-width:780px;margin:0 auto;position:relative}
+.hero::before{content:'';position:absolute;top:20px;left:50%;transform:translateX(-50%);width:600px;height:300px;background:radial-gradient(ellipse at center, rgba(79,70,229,.12), rgba(6,182,214,.08) 50%, transparent 70%);border-radius:50%;filter:blur(20px);pointer-events:none}
+.badge{display:inline-flex;align-items:center;gap:8px;background:linear-gradient(135deg,#ffffff,#eef2ff);border:1px solid #c7d2fe;color:#4338ca;padding:8px 16px;border-radius:var(--radius-full);font-size:11px;font-weight:700;letter-spacing:.03em;box-shadow:0 2px 12px rgba(79,70,229,.12)}
+.badge::before{content:'';width:7px;height:7px;background:#22c55e;border-radius:50%;box-shadow:0 0 0 4px rgba(34,197,94,.15);display:inline-block}
+.hero h1{font-family:'Plus Jakarta Sans';font-size:clamp(30px,5vw,46px);line-height:1.05;letter-spacing:-1px;margin:20px 0 0;font-weight:800;color:var(--text);position:relative}
+.hero-gradient{background:linear-gradient(90deg,#4f46e5 0%,#06b6d4 50%,#8b5cf6 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero p{color:var(--muted);font-size:14.8px;margin:16px auto 0;max-width:540px;line-height:1.6;font-weight:500}
+.tabs-wrap{overflow-x:auto;scrollbar-width:none;margin:32px 0 16px;-webkit-overflow-scrolling:touch}.tabs-wrap::-webkit-scrollbar{display:none}
+.tabs{display:flex;gap:8px;justify-content:flex-start;flex-wrap:nowrap;width:max-content;margin:0 auto;padding:6px;background:rgba(255,255,255,.7);border:1px solid var(--border);border-radius:var(--radius-full);box-shadow:var(--shadow-sm);backdrop-filter:blur(10px)}
+@media(min-width:900px){.tabs{justify-content:center;width:auto;flex-wrap:wrap}}
+.tab{padding:8px 16px;border:1px solid transparent;border-radius:var(--radius-full);font-size:12.5px;font-weight:600;cursor:pointer;background:transparent;font-family:'Inter';white-space:nowrap;color:#4b5563;transition:all .18s ease}
+.tab:hover{background:#fff;color:var(--text);box-shadow:var(--shadow-sm)}
+.tab.active{background:linear-gradient(135deg,#111827,#1e1b4b);color:#fff;box-shadow:0 4px 12px rgba(15,23,42,.2)}
+.search-wrap{max-width:560px;margin:0 auto 20px}
+.search-box{background:rgba(255,255,255,.9);border:1.5px solid var(--border);border-radius:18px;display:flex;align-items:center;box-shadow:0 4px 20px rgba(79,70,229,.06);height:54px;transition:.2s ease;padding:0 6px 0 16px;backdrop-filter:blur(10px)}
+.search-box:focus-within{border-color:#a5b4fc;box-shadow:0 0 0 4px #eef2ff, 0 8px 24px rgba(79,70,229,.12)}
+.search-box input{width:100%;padding:12px 8px;border:none;outline:none;font-size:14.5px;font-family:'Inter';background:transparent;color:var(--text)}
+.search-icon{color:var(--primary);font-size:16px}
+.clear-btn{padding:8px 12px;cursor:pointer;display:none;color:var(--muted);border-radius:10px}.clear-btn:hover{background:#f3f4f6}
+#noResult{display:none;text-align:center;padding:32px;color:var(--muted);font-size:13.5px}
+.grid{display:grid;grid-template-columns:repeat(1,1fr);gap:14px;max-width:1100px;margin:20px auto 0;padding:0 16px}
+@media(min-width:600px){.grid{grid-template-columns:repeat(2,1fr);gap:16px}}
+@media(min-width:980px){.grid{grid-template-columns:repeat(3,1fr);gap:18px}}
+.card{background:linear-gradient(180deg,#ffffff 0%, #fcfcff 100%);border:1px solid var(--border);border-radius:var(--radius-lg);padding:20px 18px 16px;text-decoration:none;color:inherit;display:flex;flex-direction:column;transition:transform .2s ease, box-shadow .2s ease, border-color .2s ease;box-shadow:0 1px 3px rgba(0,0,0,.04), 0 4px 12px rgba(0,0,0,.03);position:relative;min-height:152px;overflow:hidden}
+.card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--primary),var(--primary2),var(--primary3));opacity:0;transition:.2s}
+.card:hover{transform:translateY(-3px);box-shadow:0 12px 28px rgba(79,70,229,.12), 0 4px 12px rgba(0,0,0,.06);border-color:#c7d2fe}
+.card:hover::before{opacity:1}
+.card .top{margin-bottom:14px}
+.card .ico{width:44px;height:44px;border-radius:12px;display:grid;place-items:center;font-size:20px;background:linear-gradient(135deg,#eef2ff,#f5f3ff);border:1px solid #e0e7ff}
+.card:nth-child(3n+1) .ico{background:linear-gradient(135deg,#eef2ff,#e0e7ff)}
+.card:nth-child(3n+2) .ico{background:linear-gradient(135deg,#f0fdfa,#ccfbf1)}
+.card:nth-child(3n+3) .ico{background:linear-gradient(135deg,#fdf4ff,#fae8ff)}
+.card h3{margin:0 0 6px;font-family:'Plus Jakarta Sans';font-size:15px;font-weight:700;letter-spacing:-.2px;color:var(--text);line-height:1.3}
+.card p{margin:0;font-size:12.8px;color:var(--muted);line-height:1.55;font-weight:500;flex:1}
+.card .act{margin-top:14px;font-size:12.5px;font-weight:700;color:var(--primary);display:flex;align-items:center;gap:5px}
+.card:hover .act{gap:8px;color:#4338ca}
+.sec{max-width:1100px;margin:64px auto;padding:0 16px}
+.sec h2{font-family:'Plus Jakarta Sans';font-size:23px;font-weight:800;letter-spacing:-.5px;margin:0 0 8px}
+.sec h2::after{content:'';display:block;width:36px;height:3px;background:linear-gradient(90deg,var(--primary),var(--primary2));border-radius:10px;margin-top:8px}
+.sec p.sub{color:var(--muted);font-size:13.5px;margin:0 0 22px;line-height:1.5;font-weight:500}
+.steps,.why{display:grid;grid-template-columns:repeat(1,1fr);gap:16px}
+@media(min-width:720px){.steps,.why{grid-template-columns:repeat(3,1fr);gap:18px}}
+.step,.w-card{background:linear-gradient(180deg,#fff 0%, #fbfcff 100%);border:1px solid var(--border);border-radius:var(--radius-lg);padding:22px;box-shadow:var(--shadow-sm);transition:.2s ease;position:relative;overflow:hidden}
+.step::before,.w-card::before{content:'';position:absolute;top:-30px;right:-30px;width:100px;height:100px;background:radial-gradient(circle, rgba(79,70,229,.08), transparent 70%);border-radius:50%}
+.step:hover,.w-card:hover{transform:translateY(-2px);box-shadow:var(--shadow);border-color:#c7d2fe}
+.step b{width:36px;height:36px;background:linear-gradient(135deg,#111827,#1e1b4b);color:#fff;border-radius:50%;display:grid;place-items:center;font-size:13px;font-weight:800;margin-bottom:14px}
+.step h4,.w-card h4{margin:0 0 8px;font-size:14.5px;font-weight:700}
+.step p,.w-card p{font-size:13px;color:var(--muted);line-height:1.65;margin:0;font-weight:500}
+.w-card .w-icon{width:42px;height:42px;border-radius:12px;background:linear-gradient(135deg,#eef2ff,#f5f3ff);border:1px solid #e0e7ff;display:grid;place-items:center;font-size:20px;margin-bottom:12px}
+.faq-item{border:1px solid var(--border);border-radius:16px;margin:12px 0;background:#fff;overflow:hidden;box-shadow:var(--shadow-sm);transition:.2s ease}
+.faq-item:hover{border-color:#c7d2fe}
+.faq-q{padding:18px 20px;font-weight:600;font-size:14px;cursor:pointer;display:flex;justify-content:space-between;align-items:center;color:var(--text)}
+.faq-q span{width:26px;height:26px;border-radius:50%;border:1px solid var(--border);display:grid;place-items:center;font-size:14px;color:var(--muted);flex-shrink:0;transition:.2s;background:#f8f9ff}
+.faq-item.open .faq-q span{transform:rotate(45deg);background:linear-gradient(135deg,var(--primary),var(--primary3));color:#fff;border-color:var(--primary)}
+.faq-a{display:none;padding:0 20px 18px;font-size:13.2px;color:#475569;line-height:1.65}
+.faq-item.open .faq-a{display:block}
+.faq-item.open{background:linear-gradient(180deg,#ffffff,#f8f9ff);border-color:#c7d2fe}
+.pro-footer{background:linear-gradient(180deg,#0f1117 0%, #151525 100%);color:#9ca3af;padding:48px 18px 16px;border-top:1px solid #1f2330;margin-top:72px;position:relative;overflow:hidden}
+.pro-footer::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,#4f46e5,#06b6d4,#8b5cf6)}
+.foot-grid{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1.2fr 1fr 1fr 1fr;gap:28px}
+@media(max-width:900px){.foot-grid{grid-template-columns:1fr 1fr;gap:28px} .foot-grid .about{grid-column:1/-1}}
+@media(max-width:520px){.foot-grid{grid-template-columns:1fr;gap:26px}}
+.pro-footer h4{color:#fff;font-size:11px;font-weight:800;margin:0 0 16px;letter-spacing:.1em}
+.pro-footer a{display:block;color:#9ca3af;text-decoration:none;font-size:13px;margin:10px 0;font-weight:500;transition:.15s}
+.pro-footer a:hover{color:#fff;transform:translateX(2px)}
+.pro-footer p{font-size:12.5px;line-height:1.65;margin:8px 0;color:#8a8fa3}
+.foot-bottom{border-top:1px solid #1f2330;margin-top:36px;padding-top:18px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;font-size:11.5px;color:#6b7280;max-width:1100px;margin-inline:auto}
+#secure-badge{position:fixed;bottom:18px;right:18px;z-index:9999;background:rgba(255,255,255,.96);backdrop-filter:blur(12px);color:#3730a3;border:1px solid #c7d2fe;padding:11px 16px;border-radius:100px;font-family:'Inter';font-size:11.5px;font-weight:700;display:flex;gap:8px;align-items:center;box-shadow:0 8px 24px rgba(79,70,229,.18);cursor:pointer;transition:.2s}
+#secure-badge:hover{transform:translateY(-2px);box-shadow:0 12px 32px rgba(79,70,229,.24)}
+.dot{width:8px;height:8px;background:#22c55e;border-radius:50%;box-shadow:0 0 0 4px rgba(34,197,94,.18), 0 0 10px rgba(34,197,94,.5);animation:blink 2.4s infinite}
+@media(max-width:600px){#secure-badge{bottom:12px;right:12px;left:12px;width:auto;justify-content:center}}
+#trustModal{display:none;position:fixed;inset:0;z-index:10000;background:rgba(15,23,42,.5);backdrop-filter:blur(12px)}
+.trust-box{background:linear-gradient(180deg,#fff,#f8f9ff);max-width:440px;width:92%;margin:10% auto;border-radius:20px;padding:26px;border:1px solid #e0e7ff;box-shadow:0 24px 64px rgba(0,0,0,.22);font-family:'Inter';animation:pop .22s ease}
 </style>
 </head>
 <body>
-<nav style="position:sticky;top:0;z-index:90;background:#fff;border-bottom:1px solid #e2e8f0;display:flex;justify-content:space-between;align-items:center;padding:10px 14px">
-<div style="display:flex;align-items:center;gap:8px">
-<div class="icon-btn" id="openLeft" title="All Tools"><div class="dots-grid"><span></span><span></span><span></span></div></div>
-<div class="logo" style="display:flex;align-items:center;gap:8px"><img src="images/logo.jpeg" style="height:30px;border-radius:6px"><div style="font-weight:800;font-family:'Plus Jakarta Sans'">Kaagaz<span style="color:#4f46e5">Pro</span></div></div>
+<div class="bg-blobs"><div class="blob1"></div><div class="blob2"></div><div class="blob3"></div></div>
+
+<nav class="site-header">
+<div class="logo-wrap">
+<div class="icon-btn" id="openLeft" title="All Tools">
+  <div class="dots-grid">
+    <span></span><span></span><span></span>
+    <span></span><span></span><span></span>
+    <span></span><span></span><span></span>
+  </div>
 </div>
-<div class="icon-btn" id="openRight" style="font-size:22px" title="Menu">☰</div>
+<div class="logo-wrap" style="gap:8px"><img src="images/logo.jpeg" class="logo-mark" alt="KaagazPro"><div class="logo-text">Kaagaz<span>Pro</span></div></div>
+</div>
+<div class="icon-btn" id="openRight" title="Menu">☰</div>
 </nav>
 
-<div id="leftDrawer"><div class="left-box"><div style="display:flex;justify-content:space-between;align-items:center;padding:16px 14px;border-bottom:1px solid #e2e8f0"><h4 style="margin:0;font-size:11px;letter-spacing:.08em;color:#94a3b8;font-weight:800">ALL TOOLS</h4><span id="closeLeft" style="font-size:22px;cursor:pointer">×</span></div><div id="leftTools" style="padding-top:8px"></div></div></div>
-<div id="rightDrawer"><div class="right-box"><div style="display:flex;justify-content:space-between;align-items:center;padding:16px 14px;border-bottom:1px solid #e2e8f0"><h4 style="margin:0;font-size:11px;letter-spacing:.08em;color:#94a3b8;font-weight:800">MENU</h4><span id="closeRight" style="font-size:22px;cursor:pointer">×</span></div><div style="padding-top:8px"><a class="d-link" href="index.html">Home</a><a class="d-link" href="about.html">About Us</a><a class="d-link" href="contact.html">Contact Us</a><a class="d-link" href="privacy-policy.html">Privacy Policy</a><a class="d-link" href="terms.html">Terms & Conditions</a><a class="d-link" href="disclaimer.html">Disclaimer</a></div></div></div>
+<div id="leftDrawer"><div class="left-box"><div class="drawer-head"><h4 class="drawer-title">ALL TOOLS</h4><span id="closeLeft" class="drawer-close">×</span></div><div id="leftTools" style="padding:10px 0 16px"></div></div></div>
+<div id="rightDrawer"><div class="right-box"><div class="drawer-head"><h4 class="drawer-title">MENU</h4><span id="closeRight" class="drawer-close">×</span></div><div style="padding:10px 0 16px"><a class="d-link" href="index.html">Home</a><a class="d-link" href="about.html">About Us</a><a class="d-link" href="contact.html">Contact Us</a><a class="d-link" href="privacy-policy.html">Privacy Policy</a><a class="d-link" href="terms.html">Terms & Conditions</a><a class="d-link" href="disclaimer.html">Disclaimer</a></div></div></div>
 
-<div id="trustModal" style="display:none;position:fixed;inset:0;z-index:10000;background:rgba(15,23,42,.55);backdrop-filter:blur(8px)">
-<div style="background:#fff;max-width:420px;width:90%;margin:12% auto;border-radius:20px;padding:24px;border:1px solid #e2e8f0;box-shadow:0 20px 60px rgba(0,0,0,.2);font-family:'Inter';animation:pop .2s ease">
-<div style="display:flex;justify-content:space-between;align-items:center"><h3 style="margin:0;font-size:15px;font-weight:800">Why people use KaagazPro</h3><span id="closeTrust" style="font-size:22px;cursor:pointer">×</span></div>
-<div style="margin-top:14px;font-size:12.5px;line-height:1.7;color:#334155">
-<p style="margin:0 0 10px">KaagazPro was built to make document work simple for everyone - students, job seekers, and professionals.</p>
-<p style="margin:0 0 10px"><b>Privacy by design:</b> Your files are processed directly in your browser. They stay on your device and are never uploaded to any server. Perfect for personal and official documents.</p>
-<p style="margin:0 0 12px"><b>Made for everyone:</b> Whether you need a photo resized to an exact KB, a PDF converted, or a background removed - you can do it here in one click without any technical knowledge.</p>
-<p style="margin:0;background:#f8fafc;border:1px dashed #e2e8f0;padding:10px;border-radius:10px;text-align:center;font-weight:600;font-size:11.5px">Made in India • No login • No watermark • Free forever • No app required</p>
-</div></div></div>
+<div id="trustModal"><div class="trust-box"><div style="display:flex;justify-content:space-between;align-items:center"><h3 style="margin:0;font-size:15px;font-weight:800">Why people use KaagazPro</h3><span id="closeTrust" class="drawer-close">×</span></div><div style="margin-top:16px;font-size:13px;line-height:1.7;color:#334155"><p style="margin:0 0 10px">KaagazPro was built to make document work simple for everyone - students, job seekers, and professionals.</p><p style="margin:0 0 10px"><b>Privacy by design:</b> Your files are processed directly in your browser. They stay on your device and are never uploaded to any server.</p><p style="margin:0 0 14px"><b>Made for everyone:</b> Whether you need a photo resized to an exact KB, a PDF converted, or a background removed - you can do it here in one click without any technical knowledge.</p><p style="margin:0;background:#fff;border:1px dashed #c7d2fe;padding:10px 12px;border-radius:12px;text-align:center;font-weight:700;font-size:11.5px;color:#4338ca">Made in India • No login • No watermark • Free forever • No app required</p></div></div></div>
 
-<div class="hero" style="text-align:center;padding:32px 14px 10px">
+<div class="hero">
 <div class="badge">Files stay on your device • Private by design • Works offline</div>
-<h1 style="font-family:'Plus Jakarta Sans';font-size:clamp(28px,5vw,44px);line-height:1.05;margin:12px 0 0">All Tools for <span style="background:linear-gradient(90deg,#4f46e5,#06b6d4);-webkit-background-clip:text;-webkit-text-fill-color:transparent">All Documents</span><br>in One Place</h1>
-<p style="color:#64748b;font-size:13.5px;margin-top:10px">Resize, Compress, Convert, PDF - Fast, Free & Secure in your Browser</p>
+<h1>All Tools for <span class="hero-gradient">All Documents</span><br>in One Place</h1>
+<p>Resize, Compress, Convert, PDF - Fast, Free & Secure in your Browser</p>
 </div>
 
 <div style="max-width:1000px;margin:0 auto;padding:0 14px">
 <div class="tabs-wrap"><div class="tabs"><div class="tab active" data-cat="all">All Tools</div><div class="tab" data-cat="compress">Compress & Resize</div><div class="tab" data-cat="pdf">PDF Tools</div><div class="tab" data-cat="id">ID & Govt</div><div class="tab" data-cat="bg">BG & Edit</div><div class="tab" data-cat="image">Image Tools</div><div class="tab" data-cat="calculator">Calculators</div></div></div>
-<div class="search-wrap"><div class="search-box"><span style="padding-left:14px">🔍</span><input id="toolSearch" placeholder="Search tools... e.g. 20kb, pdf, passport"><span id="clearSearch" style="padding-right:12px;cursor:pointer;display:none">✕</span></div></div>
-<div id="noResult" style="display:none;text-align:center;padding:20px;color:#64748b;font-size:13px">No tools found</div>
+<div class="search-wrap"><div class="search-box"><span class="search-icon">🔍</span><input id="toolSearch" placeholder="Search tools... e.g. 20kb, pdf, passport"><span id="clearSearch" class="clear-btn">✕</span></div></div>
+<div id="noResult">No tools found</div>
 </div>
 
-<div class="grid" id="toolGrid" style="margin-top:14px;max-width:1100px;margin-inline:auto;padding:0 14px"></div>
+<div class="grid" id="toolGrid"></div>
 
 <div class="sec">
 <h2>How to use KaagazPro?</h2><p class="sub">Simple, fast and secure - your files stay on your device</p>
 <div class="steps">
-<div class="step"><b>1</b><h4 style="margin:0 0 6px;font-size:14px">Select File</h4><p style="font-size:12.5px;color:#64748b;margin:0">Choose a photo or PDF from your device. The file stays on your device and is never uploaded.</p></div>
-<div class="step"><b>2</b><h4 style="margin:0 0 6px;font-size:14px">Process in Browser</h4><p style="font-size:12.5px;color:#64748b;margin:0">The tool runs offline inside your browser. Resize, compress or convert instantly.</p></div>
-<div class="step"><b>3</b><h4 style="margin:0 0 6px;font-size:14px">Download</h4><p style="font-size:12.5px;color:#64748b;margin:0">Download your final file. Close the tab and it is gone. No watermark, no signup required.</p></div>
+<div class="step"><b>1</b><h4>Select File</h4><p>Choose a photo or PDF from your device. The file stays on your device and is never uploaded.</p></div>
+<div class="step"><b>2</b><h4>Process in Browser</h4><p>The tool runs offline inside your browser. Resize, compress or convert instantly.</p></div>
+<div class="step"><b>3</b><h4>Download</h4><p>Download your final file. Close the tab and it is gone. No watermark, no signup required.</p></div>
 </div>
 </div>
 
 <div class="sec">
 <h2>Why KaagazPro?</h2><p class="sub">Built for everyone who works with documents</p>
 <div class="why">
-<div class="w-card"><span style="font-size:22px">🔒</span><h4>Your Files Stay Private</h4><p>Many online tools upload your files to a server. KaagazPro does not. Everything is processed directly in your browser. Your documents stay on your device, making it suitable for both personal and official use.</p></div>
-<div class="w-card"><span style="font-size:22px">🎯</span><h4>Perfect Size, Every Time</h4><p>Need a photo in exact KB, a specific dimension, or a print-ready format? Get the exact size you need in one click - whether for job portals, university forms, or office work - without trial and error.</p></div>
-<div class="w-card"><span style="font-size:22px">⚡</span><h4>Fast, Free and Simple</h4><p>No login, no watermark, no limits. Lightweight, fast, and works on slow connections. Works offline after the first load. Made in India with a focus on simplicity and privacy.</p></div>
+<div class="w-card"><div class="w-icon">🔒</div><h4>Your Files Stay Private</h4><p>Many online tools upload your files to a server. KaagazPro does not. Everything is processed directly in your browser. Your documents stay on your device, making it suitable for both personal and official use.</p></div>
+<div class="w-card"><div class="w-icon">🎯</div><h4>Perfect Size, Every Time</h4><p>Need a photo in exact KB, a specific dimension, or a print-ready format? Get the exact size you need in one click - whether for job portals, university forms, or office work - without trial and error.</p></div>
+<div class="w-card"><div class="w-icon">⚡</div><h4>Fast, Free and Simple</h4><p>No login, no watermark, no limits. Lightweight, fast, and works on slow connections. Works offline after the first load. Made in India with a focus on simplicity and privacy.</p></div>
 </div>
 </div>
 
@@ -100,7 +191,7 @@
 
 <footer class="pro-footer">
 <div class="foot-grid">
-<div class="about"><div style="display:flex;align-items:center;gap:8px;font-weight:800;color:#fff"><img src="images/logo.jpeg" style="height:24px;border-radius:4px"> KaagazPro</div><p>KaagazPro is an offline-first toolkit. Files are processed in your browser, not uploaded. Designed to be simple, private and useful for everyone.</p><p style="margin-top:10px;color:#fff;font-weight:600">Made with care in India</p><p>Private by design • No tracking • Free • No app required</p></div>
+<div class="about"><div style="display:flex;align-items:center;gap:8px;font-weight:800;color:#fff"><img src="images/logo.jpeg" style="height:26px;border-radius:6px" alt="logo"> KaagazPro</div><p>KaagazPro is an offline-first toolkit. Files are processed in your browser, not uploaded. Designed to be simple, private and useful for everyone.</p><p style="margin-top:12px;color:#fff;font-weight:700">Made with care in India</p><p>Private by design • No tracking • Free • No app required</p></div>
 <div><h4>PRODUCT</h4><a href="index.html">Home</a><a href="#toolGrid">All Tools</a><a href="#faq">FAQ</a></div>
 <div><h4>RESOURCES</h4><a href="tools/jpg-to-pdf/">JPG to PDF</a><a href="tools/pdf-to-jpg/">PDF to JPG</a><a href="tools/compressor.html">Compressor</a><a href="tools/resize.html">Resize to KB</a></div>
 <div><h4>COMPANY</h4><a href="about.html">About Us</a><a href="contact.html">Contact Us</a><a href="disclaimer.html">Disclaimer</a><a href="privacy-policy.html">Privacy Policy</a><a href="terms.html">Terms & Conditions</a></div>
@@ -122,7 +213,7 @@ const tools=[
  {name:"Word to PDF",desc:"Convert Word document to PDF",icon:"📄",link:"tools/word-to-pdf/",cat:"pdf"},
  {name:"Aadhaar Photo Maker",desc:"Standard ID photo size maker",icon:"🪪",link:"tools/aadhaar.html",cat:"id"},
  {name:"Attendance Calculator",desc:"Calculate attendance %, how many you can miss & need to attend - 75% target",icon:"📊",link:"tools/attendence-calculator.html",cat:"calculator"},
-{name:"GST Calculator",desc:"Calculate GST, CGST, SGST & IGST",icon:"💵",link:"tools/GST-Calculator.html",cat:"calculator"},
+ {name:"GST Calculator",desc:"Calculate GST, CGST, SGST & IGST",icon:"💵",link:"tools/GST-Calculator.html",cat:"calculator"},
  {name:"Percentage Calculator",desc:"Calculate percentages with ease",icon:"%",link:"tools/percentage-calculator.html",cat:"calculator"},
  {name:"Passport Photo Maker",desc:"4x6 inch print ready photo sheet",icon:"👤",link:"tools/passport.html",cat:"id"},
  {name:"Background Remover",desc:"White or transparent background",icon:"🤍",link:"tools/bg-remover.html",cat:"bg image"},
