@@ -2,43 +2,81 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1">
 <title>Contact Us - KaagazPro.co.in</title>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6640527517870664" crossorigin="anonymous"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="icon" href="images/logo.jpeg">
 <style>
-*{box-sizing:border-box;font-family:'Inter',system-ui;-webkit-tap-highlight-color:transparent}
-body{background:#f6f7fb;margin:0;color:#0f172a}
-nav{background:#ffffff;padding:12px 16px;display:flex;justify-content:space-between;align-items:center;box-shadow:0 1px 8px rgba(0,0,0,.06);position:sticky;top:0;z-index:99}
-.card{max-width:680px;margin:0 auto;background:#fff;padding:20px 16px 24px;min-height:100vh}
-@media(min-width:700px){
-  .card{margin:24px auto;border-radius:20px;box-shadow:0 10px 40px rgba(0,0,0,.07);min-height:auto;padding:28px}
-  body{background:#f6f7fb}
-}
-.badge{background:#eff6ff;border:1px solid #bfdbfe;color:#1e40af;padding:6px 12px;border-radius:100px;font-size:11px;font-weight:700;display:inline-flex;letter-spacing:.3px}
-h1{font-size:24px;font-weight:800;margin:12px 0 6px;letter-spacing:-.5px;line-height:1.2}
-@media(min-width:700px){h1{font-size:28px}}
-.sub{color:#64748b;font-size:14px;line-height:1.5;margin:0 0 20px}
-label{font-size:11.5px;font-weight:700;margin-top:16px;display:block;letter-spacing:.4px;color:#334155;text-transform:uppercase}
-input,textarea{width:100%;padding:15px 16px;border-radius:12px;border:1.5px solid #e2e8f0;font-size:15px;outline:none;margin-top:7px;background:#f8fafc;transition:.2s;-webkit-appearance:none;appearance:none}
-input:focus,textarea:focus{border-color:#4f46e5;background:#fff;box-shadow:0 0 0 4px #eef2ff}
+:root{--primary:#4f46e5;--primary2:#06b6d4;--primary3:#8b5cf6;--bg:#f8f9ff;--border:#e6e8ef;--text:#0f172a;--muted:#64748b;--shadow-sm:0 1px 3px rgba(0,0,0,.05);--shadow:0 8px 24px rgba(79,70,229,.08)}
+*{box-sizing:border-box}html,body{overflow-x:hidden}
+body{margin:0;background:var(--bg);color:var(--text);font-family:'Inter',system-ui,sans-serif;position:relative}
+body::before{content:'';position:fixed;inset:0;z-index:-2;background:radial-gradient(600px 400px at 10% 5%, rgba(79,70,229,.08), transparent 70%), radial-gradient(500px 350px at 90% 10%, rgba(6,182,214,.08), transparent 70%), linear-gradient(180deg,#f8f9ff 0%, #ffffff 100%);pointer-events:none}
+.bg-blobs{position:fixed;inset:0;z-index:-1;overflow:hidden;pointer-events:none}
+.bg-blobs div{position:absolute;border-radius:50%;filter:blur(40px);opacity:.5}
+.blob1{width:320px;height:320px;background:linear-gradient(135deg,#4f46e520,#06b6d420);top:80px;left:-60px}
+.blob2{width:280px;height:280px;background:linear-gradient(135deg,#8b5cf620,#ec489920);top:400px;right:-80px}
+.site-header{position:sticky;top:0;z-index:90;background:rgba(255,255,255,.85);backdrop-filter:blur(18px);border-bottom:1px solid rgba(79,70,229,.12);display:flex;justify-content:space-between;align-items:center;height:62px;padding:0 16px}
+.logo-wrap{display:flex;align-items:center;gap:10px}
+.logo-mark{height:34px;width:34px;border-radius:10px;object-fit:cover;border:2px solid #fff;box-shadow:0 2px 10px rgba(79,70,229,.2)}
+.logo-text{font-family:'Plus Jakarta Sans';font-weight:800;font-size:17px;letter-spacing:-.3px}
+.logo-text span{background:linear-gradient(90deg,var(--primary),var(--primary2));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.icon-btn{width:42px;height:42px;display:grid;place-items:center;border-radius:12px;cursor:pointer;border:1px solid var(--border);background:#fff;box-shadow:var(--shadow-sm)}
+/* VERTICAL 3 DOT */
+.dots-grid.dots-3{display:flex;flex-direction:column;gap:5px;align-items:center;justify-content:center}
+.dots-grid.dots-3 span{width:4px;height:4px;background:#111827;border-radius:50%;display:block}
+#leftDrawer,#rightDrawer{display:none;position:fixed;inset:0;z-index:9999;background:rgba(15,23,42,.45);backdrop-filter:blur(10px)}
+.left-box{position:absolute;left:0;top:0;width:92%;max-width:360px;height:100%;background:#fff;border-right:1px solid var(--border);overflow-y:auto}
+.right-box{position:absolute;right:0;top:0;width:92%;max-width:340px;height:100%;background:#fff;border-left:1px solid var(--border);overflow-y:auto}
+.drawer-head{display:flex;justify-content:space-between;align-items:center;padding:18px 16px;border-bottom:1px solid var(--border)}
+.drawer-title{margin:0;font-size:10.5px;letter-spacing:.1em;color:#94a3b8;font-weight:800}
+.drawer-close{font-size:22px;cursor:pointer;width:32px;height:32px;display:grid;place-items:center;border-radius:8px}
+.d-tool,.d-link{display:flex;gap:10px;padding:11px 12px;border-radius:12px;text-decoration:none;color:#334155;font-size:13px;font-weight:600;margin:4px 10px;border:1px solid transparent}
+.d-tool:hover{background:linear-gradient(135deg,#eef2ff,#f5f3ff);border-color:#c7d2fe;color:var(--primary)}
+.d-link:hover{background:#f3f4f6}
+.card-wrap{max-width:720px;margin:28px auto;padding:0 16px}
+.card{background:linear-gradient(180deg,#fff 0%, #fbfcff 100%);border:1px solid var(--border);border-radius:20px;box-shadow:0 8px 32px rgba(79,70,229,.08);padding:26px 22px;position:relative;overflow:hidden}
+.card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--primary),var(--primary2),var(--primary3))}
+.badge{background:linear-gradient(135deg,#eff6ff,#e0e7ff);border:1px solid #bfdbfe;color:#1e40af;padding:6px 12px;border-radius:999px;font-size:11px;font-weight:700;display:inline-flex;letter-spacing:.3px}
+h1{font-family:'Plus Jakarta Sans';font-size:26px;font-weight:800;margin:14px 0 6px;letter-spacing:-.6px}
+.sub{color:var(--muted);font-size:13.8px;line-height:1.6;margin:0 0 20px}
+label{font-size:11px;font-weight:700;margin-top:16px;display:block;letter-spacing:.5px;color:#334155;text-transform:uppercase}
+input,textarea{width:100%;padding:14px 16px;border-radius:12px;border:1.5px solid var(--border);font-size:14px;outline:none;margin-top:7px;background:#f8fafc;transition:.2s;font-family:'Inter'}
+input:focus,textarea:focus{border-color:#a5b4fc;background:#fff;box-shadow:0 0 0 4px #eef2ff}
 textarea{resize:none;min-height:120px}
-button{width:100%;margin-top:20px;padding:16px;background:#0f172a;color:#fff;border:0;border-radius:14px;font-weight:700;font-size:15px;cursor:pointer;letter-spacing:.2px}
+button{width:100%;margin-top:20px;padding:15px;background:#111827;color:#fff;border:0;border-radius:12px;font-weight:700;font-size:14px;cursor:pointer;box-shadow:0 6px 16px rgba(0,0,0,.15);transition:.15s}
 button:active{transform:scale(.98)}button:disabled{opacity:.6}
 #status{margin-top:14px;padding:12px 14px;border-radius:12px;font-size:13px;font-weight:600;display:none;line-height:1.4}
 .success{background:#dcfce7;color:#166534;border:1px solid #bbf7d0}.error{background:#fee2e2;color:#991b1b;border:1px solid #fecaca}
-.infoGrid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:20px}
-.infoBox{background:#f8fafc;border:1px solid #e2e8f0;border-radius:12px;padding:12px}
+.infoGrid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:20px}
+.infoBox{background:#f8f9ff;border:1px solid #e0e7ff;border-radius:12px;padding:12px}
 .infoBox span{font-size:10px;font-weight:700;color:#94a3b8;letter-spacing:.6px;display:block}
-.infoBox b{font-size:13px;font-weight:600;margin-top:3px;display:block;word-break:break-all}
+.infoBox b{font-size:12.5px;font-weight:600;margin-top:3px;display:block;word-break:break-all}
+.pro-footer{background:linear-gradient(180deg,#0f1117 0%, #151525 100%);color:#9ca3af;padding:44px 18px 16px;margin-top:64px;border-top:1px solid #1f2330;position:relative}
+.pro-footer::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,#4f46e5,#06b6d4,#8b5cf6)}
+.foot-grid{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1.2fr 1fr 1fr 1fr;gap:28px}
+@media(max-width:800px){.foot-grid{grid-template-columns:1fr 1fr} .foot-grid .about{grid-column:1/-1}}
+.pro-footer h4{color:#fff;font-size:11px;font-weight:800;margin:0 0 14px;letter-spacing:.08em}
+.pro-footer a{display:block;color:#9ca3af;text-decoration:none;font-size:12.8px;margin:9px 0}
+.foot-bottom{border-top:1px solid #1f2330;margin-top:32px;padding-top:16px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;font-size:11.5px;max-width:1100px;margin-inline:auto}
 </style>
 </head>
 <body>
-<nav>
-  <div style="font-weight:800;font-size:18px;letter-spacing:-.3px">Kaagaz<span style="color:#4f46e5">Pro</span><span style="font-size:10px;color:#64748b">.co.in</span></div>
-  <a href="index.html" style="text-decoration:none;color:#fff;background:#0f172a;padding:8px 16px;border-radius:20px;font-size:12px;font-weight:700">← Home</a>
+<div class="bg-blobs"><div class="blob1"></div><div class="blob2"></div></div>
+
+<nav class="site-header">
+<div class="logo-wrap">
+<div class="icon-btn" id="openLeft" title="All Tools"><div class="dots-grid dots-3"><span></span><span></span><span></span></div></div>
+<div class="logo-wrap" style="gap:8px"><a href="index.html" style="display:flex;align-items:center;gap:8px;text-decoration:none;color:inherit"><img src="images/logo.jpeg" class="logo-mark" alt="KaagazPro"><div class="logo-text">Kaagaz<span>Pro</span></div></a></div>
+</div>
+<div class="icon-btn" id="openRight" title="Menu">☰</div>
 </nav>
 
+<div id="leftDrawer"><div class="left-box"><div class="drawer-head"><h4 class="drawer-title">ALL TOOLS</h4><span id="closeLeft" class="drawer-close">×</span></div><div id="leftTools" style="padding:10px 0 16px"></div></div></div>
+<div id="rightDrawer"><div class="right-box"><div class="drawer-head"><h4 class="drawer-title">MENU</h4><span id="closeRight" class="drawer-close">×</span></div><div style="padding:10px 0 16px"><a class="d-link" href="index.html">Home</a><a class="d-link" href="about.html">About Us</a><a class="d-link" href="contact.html">Contact Us</a><a class="d-link" href="privacy-policy.html">Privacy Policy</a><a class="d-link" href="terms.html">Terms & Conditions</a><a class="d-link" href="disclaimer.html">Disclaimer</a></div></div></div>
+
+<div class="card-wrap">
 <div class="card">
   <span class="badge">💬 WE REPLY WITHIN 24 HOURS</span>
   <h1>Contact Us</h1>
@@ -46,14 +84,11 @@ button:active{transform:scale(.98)}button:disabled{opacity:.6}
 
   <form id="contactForm" novalidate>
     <label>Your Name</label>
-    <input type="text" id="name" placeholder="Enter your full name" required autocomplete="name" inputmode="text">
-
+    <input type="text" id="name" placeholder="Enter your full name" required autocomplete="name">
     <label>Your Email</label>
-    <input type="email" id="email" placeholder="Enter your email address" required autocomplete="email" inputmode="email">
-
+    <input type="email" id="email" placeholder="Enter your email address" required autocomplete="email">
     <label>Your Message</label>
     <textarea id="message" placeholder="Enter your message here..." required></textarea>
-
     <button type="submit" id="btn">Send Message</button>
     <div id="status"></div>
   </form>
@@ -62,15 +97,31 @@ button:active{transform:scale(.98)}button:disabled{opacity:.6}
     <div class="infoBox"><span>EMAIL</span><b>viscosity315@gmail.com</b></div>
     <div class="infoBox"><span>LOCATION</span><b>Kanpur, UP, India</b></div>
   </div>
-
-  <div style="margin-top:14px;background:#f8fafc;border:1px dashed #cbd5e1;border-radius:12px;padding:10px;text-align:center;font-size:11px;color:#64748b">🔒 Secure & Private • No Spam</div>
+  <div style="margin-top:14px;background:#f8f9ff;border:1px dashed #cbd5e1;border-radius:12px;padding:10px;text-align:center;font-size:11px;color:#64748b">🔒 Secure & Private • No Spam • Made in India</div>
+</div>
 </div>
 
-<script>
-const form=document.getElementById('contactForm');
-const statusDiv=document.getElementById('status');
-const btn=document.getElementById('btn');
+<footer class="pro-footer">
+<div class="foot-grid">
+<div class="about"><div style="display:flex;align-items:center;gap:8px;font-weight:800;color:#fff"><img src="images/logo.jpeg" style="height:24px;border-radius:6px"> KaagazPro</div><p>KaagazPro is an offline-first toolkit. Files are processed in your browser, not uploaded.</p></div>
+<div><h4>PRODUCT</h4><a href="index.html">Home</a><a href="index.html#toolGrid">All Tools</a><a href="index.html#faq">FAQ</a></div>
+<div><h4>RESOURCES</h4><a href="tools/jpg-to-pdf/">JPG to PDF</a><a href="tools/pdf-to-jpg/">PDF to JPG</a><a href="tools/compressor.html">Compressor</a><a href="tools/resize.html">Resize to KB</a></div>
+<div><h4>COMPANY</h4><a href="about.html">About Us</a><a href="contact.html">Contact Us</a><a href="disclaimer.html">Disclaimer</a><a href="privacy-policy.html">Privacy Policy</a><a href="terms.html">Terms & Conditions</a></div>
+</div>
+<div class="foot-bottom"><span>© 2026 KaagazPro</span><span>Private by design</span></div>
+</footer>
 
+<script>
+const tools=[{name:"Resize Photo to KB",link:"tools/resize.html",icon:"🖼️"},{name:"Smart Compressor",link:"tools/compressor.html",icon:"⚡"},{name:"JPG to PDF",link:"tools/jpg-to-pdf/",icon:"📄"},{name:"Merge PDF / Images",link:"tools/merge-pdf.html",icon:"🔗"},{name:"PDF to JPG",link:"tools/pdf-to-jpg/",icon:"🖼️"}];
+document.getElementById('leftTools').innerHTML=tools.map(t=>`<a class="d-tool" href="${t.link}"><span>${t.icon}</span> ${t.name}</a>`).join('');
+const leftDrawer=document.getElementById('leftDrawer'),rightDrawer=document.getElementById('rightDrawer');
+document.getElementById('openLeft').onclick=()=>leftDrawer.style.display='block';
+document.getElementById('closeLeft').onclick=()=>leftDrawer.style.display='none';
+leftDrawer.onclick=e=>{if(e.target.id==='leftDrawer') leftDrawer.style.display='none'};
+document.getElementById('openRight').onclick=()=>rightDrawer.style.display='block';
+document.getElementById('closeRight').onclick=()=>rightDrawer.style.display='none';
+rightDrawer.onclick=e=>{if(e.target.id==='rightDrawer') rightDrawer.style.display='none'};
+const form=document.getElementById('contactForm'),statusDiv=document.getElementById('status'),btn=document.getElementById('btn');
 form.addEventListener('submit', async (e)=>{
   e.preventDefault();
   const name=document.getElementById('name').value.trim();
@@ -92,7 +143,7 @@ form.addEventListener('submit', async (e)=>{
     window.location.href=`mailto:viscosity315@gmail.com?subject=${subject}&body=${body}`;
   }finally{btn.disabled=false;btn.innerText='Send Message';}
 });
-function show(m,t){statusDiv.innerText=m;statusDiv.className=t;statusDiv.style.display='block';statusDiv.scrollIntoView({behavior:'smooth',block:'center'});}
+function show(m,t){statusDiv.innerText=m;statusDiv.className=t;statusDiv.style.display='block';}
 </script>
 </body>
 </html>
